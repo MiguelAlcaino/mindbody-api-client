@@ -28,6 +28,8 @@ class Client implements JsonSerializable
         if (null !== $this->PromotionalEmailOptIn) {
             $jsonArray['PromotionalEmailOptIn'] = $this->PromotionalEmailOptIn ? 'true' : 'false';
         }
+
+        return $jsonArray;
     }
 
     public function getID(): string

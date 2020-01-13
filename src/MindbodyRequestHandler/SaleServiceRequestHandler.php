@@ -2,11 +2,11 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyRequestHandler;
 
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\SOAPService\SaleService\Model\CheckoutShoppingCartRequest;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\SOAPService\SaleService\Model\GetServicesRequest;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\SOAPService\SaleService\Model\CartItem;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\SOAPService\SaleService\Model\PaymentInfo;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\SaleServiceSOAPRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CheckoutShoppingCartRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\GetServicesRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\PaymentInfo;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SaleServiceSOAPRequest;
 
 class SaleServiceRequestHandler
 {

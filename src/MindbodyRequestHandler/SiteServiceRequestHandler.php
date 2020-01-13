@@ -3,7 +3,7 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyRequestHandler;
 
 use MiguelAlcaino\MindbodyPaymentsBundle\Service\MB_API;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\SiteServiceSOAPRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SiteServiceSOAPRequest;
 use Psr\SimpleCache\CacheInterface;
 
 class SiteServiceRequestHandler

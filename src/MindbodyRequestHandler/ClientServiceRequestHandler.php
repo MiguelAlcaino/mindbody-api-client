@@ -2,8 +2,8 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyRequestHandler;
 
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\ClientServiceSOAPRequester;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAPRequest\SOAPService\ClientService\Model\GetClientServicesRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\ClientServiceSOAPRequester;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\GetClientServicesRequest;
 
 class ClientServiceRequestHandler
 {

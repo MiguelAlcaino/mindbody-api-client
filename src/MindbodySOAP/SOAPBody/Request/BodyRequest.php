@@ -6,9 +6,6 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request;
 
 use JMS\Serializer\Annotation as Serializer;
 
-/**
- * @Serializer\XmlNamespace("http://clients.mindbodyonline.com/api/0_5_1")
- */
 class BodyRequest
 {
     /**

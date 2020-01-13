@@ -15,9 +15,9 @@ class SourceCredentials extends AbstractCredentials
      */
     private $sourceName;
 
-    public function __construct(string $sourceName, string $password, array $siteIds)
+    public function __construct(string $username, string $password, array $siteIds)
     {
-        $this->sourceName = $sourceName;
+        $this->sourceName = $username;
         parent::__construct($password, $siteIds);
     }
 

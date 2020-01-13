@@ -1,10 +1,11 @@
 <?php
 
-namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\ClientService;
+namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService;
 
-use MiguelAlcaino\MindbodyApiClient\BaseRequester\AbstractSOAPRequester;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\AddOrUpdateClientsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\ClientService\AddOrUpdateClientsSerializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\GetClientServicesRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\ValidateLoginRequest;
 
 class ClientServiceSOAPRequester extends AbstractSOAPRequester
@@ -20,15 +21,17 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
         );
     }
 
-    public function addOrUpdateClient(AddOrUpdateClientsRequest $request)
+    public function addOrUpdateClient(AddOrUpdateClientsParamsRequest $request): array
     {
-        $response = $this->minbodySoapRequester->createEnvelopeAndExecuteRequest(
-            self::SERVICE_URI,
-            'AddOrUpdateClient',
-            $this->decodeRequesterObject($request)
-        );
+        /** @var AddOrUpdateClientsSerializer $serializer */
+        $serializer = $this->getSerializer(AddOrUpdateClientsSerializer::class);
 
-        return $response;
+        return $this->minbodySoapRequester->createAndExecuteRequest(
+            self::SERVICE_URI,
+            $request,
+            $serializer,
+            false
+        );
     }
 
     public function validateLogin(ValidateLoginRequest $request): array

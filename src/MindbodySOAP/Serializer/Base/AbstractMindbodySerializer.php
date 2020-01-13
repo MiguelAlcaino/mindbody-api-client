@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Base;
 
 use JMS\Serializer\SerializerInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredentials;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\UserCredentials;
 
 abstract class AbstractMindbodySerializer
 {
@@ -31,4 +34,12 @@ abstract class AbstractMindbodySerializer
     {
         return $this->serializer->serialize($data, $this->format);
     }
+
+    abstract public function serialize(
+        RequestParamsInterface $requestParams,
+        SourceCredentials $sourceCredentials,
+        ?UserCredentials $userCredentials = null
+    ): string;
+
+    abstract public function getSoapMethodName(): string;
 }

@@ -2,21 +2,14 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyRequestHandler;
 
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\ClientServiceSOAPRequester;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\ClientServiceSOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\GetClientServicesRequest;
 
 class ClientServiceRequestHandler
 {
-    /**
-     * @var ClientServiceSOAPRequester
-     */
+    /** @var ClientServiceSOAPRequester */
     private $clientServiceSOAPRequester;
 
-    /**
-     * ClientServiceRequestHandler constructor.
-     *
-     * @param ClientServiceSOAPRequester $clientServiceSOAPRequester
-     */
     public function __construct(ClientServiceSOAPRequester $clientServiceSOAPRequester)
     {
         $this->clientServiceSOAPRequester = $clientServiceSOAPRequester;

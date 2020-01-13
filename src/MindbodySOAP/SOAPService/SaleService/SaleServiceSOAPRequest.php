@@ -2,7 +2,7 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SaleService;
 
-use MiguelAlcaino\MindbodyApiClient\BaseRequester\AbstractSOAPRequester;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CheckoutShoppingCartRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\GetServicesRequest;
 

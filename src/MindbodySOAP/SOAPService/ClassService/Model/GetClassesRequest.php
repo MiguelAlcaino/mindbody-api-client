@@ -2,7 +2,9 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model;
 
-use MiguelAlcaino\MindbodyApiClient\BaseRequester\AbstractSOAPRequester;
+
+
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 
 class GetClassesRequest implements \JsonSerializable
 {

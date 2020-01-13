@@ -2,7 +2,7 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\ClassService;
 
-use MiguelAlcaino\MindbodyApiClient\BaseRequester\AbstractSOAPRequester;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\AddClientToClassRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\GetClassDescriptionsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\GetClassesRequest;

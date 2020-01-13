@@ -10,6 +10,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestContain
 
 class AddOrUpdateClientsRequest extends AbstractSOAPMethod
 {
+    public const SOAP_METHOD = 'AddOrUpdateClients';
+
     /**
      * @var RequestContainer
      * @Serializer\SerializedName("AddOrUpdateClients")

@@ -2,7 +2,8 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SiteService;
 
-use MiguelAlcaino\MindbodyApiClient\BaseRequester\AbstractSOAPRequester;
+
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 
 class SiteServiceSOAPRequest extends AbstractSOAPRequester
 {

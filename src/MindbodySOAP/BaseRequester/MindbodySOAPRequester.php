@@ -1,9 +1,12 @@
 <?php
 
-namespace MiguelAlcaino\MindbodyApiClient\BaseRequester;
+namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester;
 
 use GuzzleHttp\Client;
-use MiguelAlcaino\MindbodyApiClient\Credentials\MindbodyCredentials;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Base\AbstractMindbodySerializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Factory\SourceCredentialsFactory;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Factory\UserCredentialsFactory;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
 use SimpleXMLElement;
 use Spatie\ArrayToXml\ArrayToXml;
 
@@ -12,16 +15,40 @@ class MindbodySOAPRequester
     private const METHOD_XMNLS = 'http://clients.mindbodyonline.com/api/0_5_1';
     private const HEADER_HOST  = 'api.mindbodyonline.com';
 
-    /** @var MindbodyCredentials */
-    private $mindbodyCredentials;
-
     /** @var Client */
     private $guzzleClient;
 
-    public function __construct(MindbodyCredentials $mindbodyCredentials, ?Client $guzzleClient = null)
-    {
-        $this->mindbodyCredentials = $mindbodyCredentials;
-        $this->guzzleClient        = $guzzleClient ?? new Client();
+    /** @var SourceCredentialsFactory */
+    private $sourceCredentialsFactory;
+
+    /** @var UserCredentialsFactory */
+    private $userCredentialsFactory;
+
+    public function __construct(
+        SourceCredentialsFactory $sourceCredentialsFactory,
+        UserCredentialsFactory $userCredentialsFactory,
+        ?Client $guzzleClient = null
+    ) {
+        $this->sourceCredentialsFactory = $sourceCredentialsFactory;
+        $this->userCredentialsFactory   = $userCredentialsFactory;
+        $this->guzzleClient             = $guzzleClient ?? new Client();
+    }
+
+    public function createAndExecuteRequest(
+        string $uri,
+        RequestParamsInterface $requestParams,
+        AbstractMindbodySerializer $mindbodySerializer,
+        bool $useUserCredentials = true
+    ) {
+        $userCredentials = $useUserCredentials ? $this->userCredentialsFactory->create() : null;
+
+        $body = $mindbodySerializer->serialize(
+            $requestParams,
+            $this->sourceCredentialsFactory->create(),
+            $userCredentials
+        );
+
+        return $this->executeRequest($uri, $mindbodySerializer->getSoapMethodName(), $body);
     }
 
     public function createEnvelopeAndExecuteRequest(

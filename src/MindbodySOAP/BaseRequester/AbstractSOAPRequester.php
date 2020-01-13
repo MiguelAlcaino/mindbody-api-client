@@ -1,6 +1,11 @@
 <?php
 
-namespace MiguelAlcaino\MindbodyApiClient\BaseRequester;
+namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester;
+
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\MindbodySOAPRequester;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Base\AbstractMindbodySerializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\JmsSerializerFactory;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\MindbodySerializerFactory;
 
 abstract class AbstractSOAPRequester
 {
@@ -25,5 +30,16 @@ abstract class AbstractSOAPRequester
     public function decodeRequesterObject($requesterObject): array
     {
         return $requesterObject === null ? [] : json_decode(json_encode($requesterObject), true);
+    }
+
+    public function getSerializer(string $mindbodySerializerClass): AbstractMindbodySerializer
+    {
+        $jmsFactory                = new JmsSerializerFactory();
+        $mindbodySerializerFactory = new MindbodySerializerFactory(
+            $jmsFactory->create(),
+            $mindbodySerializerClass
+        );
+
+        return $mindbodySerializerFactory->create();
     }
 }

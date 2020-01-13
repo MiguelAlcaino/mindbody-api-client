@@ -15,6 +15,12 @@ class Request
     private $sourceCredentials;
 
     /**
+     * @var RequestParamsInterface
+     * @Serializer\XmlList(inline=true)
+     */
+    private $requestParams;
+
+    /**
      * @var UserCredentials
      * @Serializer\SerializedName("UserCredentials")
      * @Serializer\SkipWhenEmpty()
@@ -30,12 +36,13 @@ class Request
 
     public function __construct(
         SourceCredentials $sourceCredentials,
+        RequestParamsInterface $requestParams,
         ?UserCredentials $userCredentials = null,
         string $xmlDetails = 'Full'
     ) {
         $this->sourceCredentials = $sourceCredentials;
+        $this->requestParams     = $requestParams;
         $this->userCredentials   = $userCredentials;
         $this->xmlDetails        = $xmlDetails;
     }
-
 }

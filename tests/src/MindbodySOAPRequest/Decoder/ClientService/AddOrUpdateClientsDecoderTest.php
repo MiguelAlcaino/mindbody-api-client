@@ -2,9 +2,7 @@
 
 namespace MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAPRequest\Decoder\ClientService;
 
-use JMS\Serializer\EventDispatcher\EventDispatcher;
 use JMS\Serializer\SerializerBuilder;
-use MiguelAlcaino\MindbodyApiClient\EventSubscriber\BodyRequestPostSerializeSubscriber;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\ClientService\AddOrUpdateClientsSerializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredentials;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\UserCredentials;

@@ -6,12 +6,13 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService
 
 use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractSOAPMethod;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestContainer;
 
-/**
- * @Serializer\ExclusionPolicy(policy="all")
- */
 class AddOrUpdateClientsRequest extends AbstractSOAPMethod
 {
-    public const SOAP_METHOD_NAME = 'AddOrUpdateClients';
-
+    /**
+     * @var RequestContainer
+     * @Serializer\SerializedName("AddOrUpdateClients")
+     */
+    protected $soapMethodName;
 }

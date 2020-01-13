@@ -8,13 +8,14 @@ use MiguelAlcaino\MindbodyApiClient\EventSubscriber\BodyRequestPostSerializeSubs
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\ClientService\AddOrUpdateClientsSerializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredentials;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\UserCredentials;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
 use PHPUnit\Framework\TestCase;
 
 class AddOrUpdateClientsDecoderTest extends TestCase
 {
 
-    public function testDeserialize()
+    public function testSerialize()
     {
         $serializer = SerializerBuilder::create()
             ->configureListeners(
@@ -27,9 +28,13 @@ class AddOrUpdateClientsDecoderTest extends TestCase
         $serializer = new AddOrUpdateClientsSerializer($serializer);
 
         $xml = $serializer->serialize(
-            new AddOrUpdateClientsRequest(),
-            new SourceCredentials('xxx', 'yyy', [12,23]),
-            new UserCredentials('zzz', 'uuu', [12,23])
+            new AddOrUpdateClientsParamsRequest(
+                [
+                    (new Client('12312321'))->setPromotionalEmailOptIn(true),
+                ]
+            ),
+            new SourceCredentials('xxx', 'yyy', [12, 23]),
+            new UserCredentials('zzz', 'uuu', [12, 23])
         );
 
         $this->addToAssertionCount(1);

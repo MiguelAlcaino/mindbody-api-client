@@ -28,8 +28,8 @@ class AddOrUpdateClientsDecoderTest extends TestCase
 
         $xml = $serializer->serialize(
             new AddOrUpdateClientsRequest(),
-            new SourceCredentials('xxx', 'yyy', [12]),
-            new UserCredentials('zzz', 'uuu', [12])
+            new SourceCredentials('xxx', 'yyy', [12,23]),
+            new UserCredentials('zzz', 'uuu', [12,23])
         );
 
         $this->addToAssertionCount(1);

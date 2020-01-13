@@ -8,34 +8,24 @@ use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @Serializer\XmlNamespace("http://clients.mindbodyonline.com/api/0_5_1")
+ * @Serializer\ExclusionPolicy(policy="all")
  */
 abstract class AbstractSOAPMethod
 {
     /**
      * @var Request
      * @Serializer\SerializedName("Request")
+     * @Serializer\Expose()
      */
     private $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
 
     public function getSoapMethodName(): string
     {
         return static::SOAP_METHOD_NAME;
-    }
-
-    public function getRequest(): Request
-    {
-        return $this->request;
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return AbstractSOAPMethod
-     */
-    public function setRequest(Request $request): AbstractSOAPMethod
-    {
-        $this->request = $request;
-
-        return $this;
     }
 }

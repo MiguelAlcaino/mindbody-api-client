@@ -4,112 +4,78 @@ declare(strict_types=1);
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model;
 
-use JsonSerializable;
+use JMS\Serializer\Annotation as Serializer;
 
-class Client implements JsonSerializable
+class Client
 {
-    /** @var string */
-    private $ID;
-
-    /** @var bool */
-    private $PromotionalEmailOptIn;
-
-    /** @var string */
-    private $FirstName;
-
-    /** @var string */
-    private $LastName;
-
-    /** @var string */
-    private $Email;
-
-    public function __construct(string $ID)
-    {
-        $this->ID = $ID;
-    }
-
-    public function jsonSerialize()
-    {
-        $jsonArray = [
-            'ID' => $this->ID,
-        ];
-
-        if (null !== $this->PromotionalEmailOptIn) {
-            $jsonArray['PromotionalEmailOptIn'] = $this->PromotionalEmailOptIn ? 'true' : 'false';
-        }
-
-        return $jsonArray;
-    }
-
-    public function getID(): string
-    {
-        return $this->ID;
-    }
-
-    public function isPromotionalEmailOptIn(): bool
-    {
-        return $this->PromotionalEmailOptIn;
-    }
+    /**
+     * @var string
+     * @Serializer\SerializedName("ID")
+     * @Serializer\XmlElement(cdata=false)
+     */
+    private $id;
 
     /**
-     * @param bool $PromotionalEmailOptIn
-     *
-     * @return Client
+     * @var bool
+     * @Serializer\SerializedName("PromotionalEmailOptIn")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
      */
-    public function setPromotionalEmailOptIn(bool $PromotionalEmailOptIn): Client
+    private $promotionalEmailOptIn;
+
+    /**
+     * @var string
+     * @Serializer\SerializedName("FirstName")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     * @Serializer\SerializedName("LastName")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     * @Serializer\SerializedName("Email")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     */
+    private $email;
+
+    public function __construct(string $id)
     {
-        $this->PromotionalEmailOptIn = $PromotionalEmailOptIn;
+        $this->id = $id;
+    }
+
+    public function setPromotionalEmailOptIn(bool $promotionalEmailOptIn): Client
+    {
+        $this->promotionalEmailOptIn = $promotionalEmailOptIn;
 
         return $this;
     }
 
-    public function getFirstName(): string
+    public function setFirstName(string $firstName): Client
     {
-        return $this->FirstName;
-    }
-
-    /**
-     * @param string $FirstName
-     *
-     * @return Client
-     */
-    public function setFirstName(string $FirstName): Client
-    {
-        $this->FirstName = $FirstName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getLastName(): string
+    public function setLastName(string $lastName): Client
     {
-        return $this->LastName;
-    }
-
-    /**
-     * @param string $LastName
-     *
-     * @return Client
-     */
-    public function setLastName(string $LastName): Client
-    {
-        $this->LastName = $LastName;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getEmail(): string
+    public function setEmail(string $email): Client
     {
-        return $this->Email;
-    }
-
-    /**
-     * @param string $Email
-     *
-     * @return Client
-     */
-    public function setEmail(string $Email): Client
-    {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }

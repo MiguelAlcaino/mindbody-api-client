@@ -18,11 +18,6 @@ class AddOrUpdateClientsDecoderTest extends TestCase
     public function testSerialize()
     {
         $serializer = SerializerBuilder::create()
-            ->configureListeners(
-                static function (EventDispatcher $dispatcher) {
-                    $dispatcher->addSubscriber(new BodyRequestPostSerializeSubscriber());
-                }
-            )
             ->build();
 
         $serializer = new AddOrUpdateClientsSerializer($serializer);

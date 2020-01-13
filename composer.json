@@ -20,7 +20,7 @@
     "autoload": {
         "psr-4": {
             "MiguelAlcaino\\MindbodyApiClient\\": "src",
-            "MiguelAlcainoTest\\MindbodyApiClient\\Unit\\": "tests/src"
+            "MiguelAlcainoTest\\MindbodyApiClient\\Unit\\": "tests/unit"
         }
     },
     "require-dev": {

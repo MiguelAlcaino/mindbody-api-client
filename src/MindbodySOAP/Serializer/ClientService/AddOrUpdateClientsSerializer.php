@@ -16,7 +16,7 @@ class AddOrUpdateClientsSerializer extends AbstractMindbodySerializer
 {
     protected const DESERIALIZABLE_CLASS = AddOrUpdateClientsResponse::class;
 
-    public function serialize(AbstractSOAPMethod $data, SourceCredentials $sourceCredentials, UserCredentials $userCredentials): string
+    public function serialize(AbstractSOAPMethod $data, SourceCredentials $sourceCredentials, ?UserCredentials $userCredentials = null): string
     {
         $data->setRequest(new Request($sourceCredentials, $userCredentials));
 

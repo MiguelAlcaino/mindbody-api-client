@@ -17,6 +17,7 @@ class Request
     /**
      * @var UserCredentials
      * @Serializer\SerializedName("UserCredentials")
+     * @Serializer\SkipWhenEmpty()
      */
     private $userCredentials;
 
@@ -29,7 +30,7 @@ class Request
 
     public function __construct(
         SourceCredentials $sourceCredentials,
-        UserCredentials $userCredentials,
+        ?UserCredentials $userCredentials = null,
         string $xmlDetails = 'Full'
     ) {
         $this->sourceCredentials = $sourceCredentials;

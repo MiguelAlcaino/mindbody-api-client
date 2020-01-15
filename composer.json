@@ -15,7 +15,8 @@
         "spatie/array-to-xml": "^2.11",
         "ext-json": "*",
         "ext-simplexml": "*",
-        "jms/serializer": "^3.4"
+        "jms/serializer": "^3.4",
+        "ext-dom": "*"
     },
     "autoload": {
         "psr-4": {

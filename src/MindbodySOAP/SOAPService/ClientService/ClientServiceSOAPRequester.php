@@ -4,8 +4,10 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService
 
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\ClientService\AddOrUpdateClientsSerializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\ClientService\GetClientsSerializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\GetClientServicesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\ValidateLoginRequest;
 
 class ClientServiceSOAPRequester extends AbstractSOAPRequester
@@ -31,6 +33,18 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             $request,
             $serializer,
             false
+        );
+    }
+
+    public function getClients(GetClientsParamsRequest $request): array
+    {
+        $serializer = $this->getSerializer(GetClientsSerializer::class);
+
+        return $this->minbodySoapRequester->createAndExecuteRequest(
+            self::SERVICE_URI,
+            $request,
+            $serializer,
+            true
         );
     }
 

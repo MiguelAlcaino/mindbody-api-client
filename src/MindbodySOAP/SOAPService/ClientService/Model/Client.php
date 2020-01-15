@@ -11,7 +11,8 @@ class Client
     /**
      * @var string
      * @Serializer\SerializedName("ID")
-     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\Type("int")
      */
     private $id;
 
@@ -19,7 +20,8 @@ class Client
      * @var bool
      * @Serializer\SerializedName("PromotionalEmailOptIn")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\Type("bool")
      */
     private $promotionalEmailOptIn;
 
@@ -27,7 +29,8 @@ class Client
      * @var string
      * @Serializer\SerializedName("FirstName")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\Type("string")
      */
     private $firstName;
 
@@ -35,7 +38,8 @@ class Client
      * @var string
      * @Serializer\SerializedName("LastName")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\Type("string")
      */
     private $lastName;
 
@@ -43,7 +47,8 @@ class Client
      * @var string
      * @Serializer\SerializedName("Email")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\Type("string")
      */
     private $email;
 

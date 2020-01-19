@@ -11,7 +11,7 @@ class Client
     /**
      * @var string
      * @Serializer\SerializedName("ID")
-     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\XmlElement(cdata=false)
      * @Serializer\Type("int")
      */
     private $id;
@@ -20,7 +20,7 @@ class Client
      * @var bool
      * @Serializer\SerializedName("PromotionalEmailOptIn")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\XmlElement(cdata=false)
      * @Serializer\Type("bool")
      */
     private $promotionalEmailOptIn;
@@ -29,7 +29,7 @@ class Client
      * @var string
      * @Serializer\SerializedName("FirstName")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\XmlElement(cdata=false)
      * @Serializer\Type("string")
      */
     private $firstName;
@@ -38,7 +38,7 @@ class Client
      * @var string
      * @Serializer\SerializedName("LastName")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\XmlElement(cdata=false)
      * @Serializer\Type("string")
      */
     private $lastName;
@@ -47,7 +47,7 @@ class Client
      * @var string
      * @Serializer\SerializedName("Email")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false, namespace="http://clients.mindbodyonline.com/api/0_5_1")
+     * @Serializer\XmlElement(cdata=false)
      * @Serializer\Type("string")
      */
     private $email;
@@ -83,5 +83,30 @@ class Client
         $this->email = $email;
 
         return $this;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function isPromotionalEmailOptIn(): bool
+    {
+        return $this->promotionalEmailOptIn;
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
     }
 }

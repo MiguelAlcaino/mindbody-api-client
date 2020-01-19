@@ -2,10 +2,9 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester;
 
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\MindbodySOAPRequester;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Base\AbstractMindbodySerializer;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\JmsSerializerFactory;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\MindbodySerializerFactory;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Serializer\MindbodySerializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\SOAPMethodResultInterface;
 
 abstract class AbstractSOAPRequester
 {
@@ -17,9 +16,13 @@ abstract class AbstractSOAPRequester
     /** @var MindbodySOAPRequester */
     protected $minbodySoapRequester;
 
-    public function __construct(MindbodySOAPRequester $minbodySoapRequester)
+    /** @var MindbodySerializer */
+    protected $mindbodySerializer;
+
+    public function __construct(MindbodySOAPRequester $minbodySoapRequester, MindbodySerializer $mindbodySerializer)
     {
         $this->minbodySoapRequester = $minbodySoapRequester;
+        $this->mindbodySerializer   = $mindbodySerializer;
     }
 
     /**
@@ -32,14 +35,21 @@ abstract class AbstractSOAPRequester
         return $requesterObject === null ? [] : json_decode(json_encode($requesterObject), true);
     }
 
-    public function getSerializer(string $mindbodySerializerClass): AbstractMindbodySerializer
-    {
-        $jmsFactory                = new JmsSerializerFactory();
-        $mindbodySerializerFactory = new MindbodySerializerFactory(
-            $jmsFactory->create(),
-            $mindbodySerializerClass
+    protected function executeRequest(
+        string $requestClass,
+        string $resultClass,
+        string $methodName,
+        string $serviceUrl,
+        RequestParamsInterface $request
+    ): SOAPMethodResultInterface {
+        $serializedBody = $this->mindbodySerializer->serialize($requestClass, $request);
+
+        $responseBody = $this->minbodySoapRequester->request(
+            $serviceUrl,
+            $methodName,
+            $serializedBody
         );
 
-        return $mindbodySerializerFactory->create();
+        return $this->mindbodySerializer->deserialize($resultClass, $responseBody);
     }
 }

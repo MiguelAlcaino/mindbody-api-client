@@ -3,11 +3,13 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\ClientService\AddOrUpdateClientsSerializer;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\ClientService\GetClientsSerializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\GetClientServicesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\AddOrUpdateClientsResult;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\GetClientsResult;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\ValidateLoginRequest;
 
 class ClientServiceSOAPRequester extends AbstractSOAPRequester
@@ -23,28 +25,25 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
         );
     }
 
-    public function addOrUpdateClient(AddOrUpdateClientsParamsRequest $request): array
+    public function addOrUpdateClient(AddOrUpdateClientsParamsRequest $request): AddOrUpdateClientsResult
     {
-        /** @var AddOrUpdateClientsSerializer $serializer */
-        $serializer = $this->getSerializer(AddOrUpdateClientsSerializer::class);
-
-        return $this->minbodySoapRequester->createAndExecuteRequest(
+        return $this->executeRequest(
+            AddOrUpdateClientsRequest::class,
+            AddOrUpdateClientsResult::class,
+            'AddOrUpdateClients',
             self::SERVICE_URI,
-            $request,
-            $serializer,
-            false
+            $request
         );
     }
 
-    public function getClients(GetClientsParamsRequest $request): array
+    public function getClients(GetClientsParamsRequest $request): GetClientsResult
     {
-        $serializer = $this->getSerializer(GetClientsSerializer::class);
-
-        return $this->minbodySoapRequester->createAndExecuteRequest(
+        return $this->executeRequest(
+            GetClientsRequest::class,
+            GetClientsResult::class,
+            'GetClients',
             self::SERVICE_URI,
-            $request,
-            $serializer,
-            true
+            $request
         );
     }
 

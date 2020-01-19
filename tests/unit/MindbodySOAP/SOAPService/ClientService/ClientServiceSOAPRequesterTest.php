@@ -3,8 +3,11 @@
 namespace MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAP\SOAPService\ClientService;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\MindbodySOAPRequester;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Factory\SourceCredentialsFactory;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Factory\UserCredentialsFactory;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Deserializer\MindbodyDeserializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\JmsSerializerFactory;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Serializer\MindbodySerializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredentials;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\UserCredentials;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\ClientServiceSOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
@@ -42,22 +45,33 @@ class ClientServiceSOAPRequesterTest extends TestCase
     private function getClientServiceSoapRequester()
     {
         return new ClientServiceSOAPRequester(
-            $this->getMindbodySoapRequester()
+            $this->getMindbodySoapRequester(),
+            $this->getMindbodySerializer()
+        );
+    }
+
+    public function getMindbodySerializer()
+    {
+        $jmsserializerFactory = new JmsSerializerFactory();
+        $jmsSerializer        = $jmsserializerFactory->create();
+
+        return new MindbodySerializer(
+            $jmsSerializer,
+            new MindbodyDeserializer($jmsSerializer),
+            new SourceCredentials(
+                'xxx',
+                'xxx',
+                [-99]
+            ), new UserCredentials(
+                'xxx',
+                'xxx',
+                [-99]
+            )
         );
     }
 
     private function getMindbodySoapRequester(): MindbodySOAPRequester
     {
-        return new MindbodySOAPRequester(
-            new SourceCredentialsFactory(
-                'CrankGymDubai',
-                'PUT PASSWORD HERE',
-                [564676]
-            ), new UserCredentialsFactory(
-                'Miguelalcaino',
-                'PUT PASSWORD HERE',
-                [564676]
-            )
-        );
+        return new MindbodySOAPRequester();
     }
 }

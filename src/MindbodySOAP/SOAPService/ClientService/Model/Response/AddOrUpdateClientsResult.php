@@ -24,6 +24,9 @@ class AddOrUpdateClientsResult extends AbstractBaseResultResponse implements SOA
         return 'AddOrUpdateClients';
     }
 
+    /**
+     * @return Client[]
+     */
     public function getClients(): array
     {
         return $this->clients;

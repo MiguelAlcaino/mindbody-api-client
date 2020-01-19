@@ -24,6 +24,9 @@ class GetClientsResult extends AbstractBaseResultResponse implements SOAPMethodR
         return 'GetClients';
     }
 
+    /**
+     * @return Client[]
+     */
     public function getClients(): array
     {
         return $this->clients;

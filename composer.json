@@ -20,7 +20,11 @@
     },
     "autoload": {
         "psr-4": {
-            "MiguelAlcaino\\MindbodyApiClient\\": "./src",
+            "MiguelAlcaino\\MindbodyApiClient\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "MiguelAlcainoTest\\MindbodyApiClient\\Unit\\": "./tests/unit"
         }
     },

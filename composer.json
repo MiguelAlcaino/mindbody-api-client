@@ -1,7 +1,7 @@
 {
     "name": "miguelalcaino/mindbody-api-client",
     "description": "Php client for Mindbody",
-    "type": "symfony-bundle",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -11,12 +11,11 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "guzzlehttp/guzzle": "^6.5",
-        "spatie/array-to-xml": "^2.11",
+        "ext-dom": "*",
         "ext-json": "*",
         "ext-simplexml": "*",
-        "jms/serializer": "^3.4",
-        "ext-dom": "*"
+        "guzzlehttp/guzzle": "^6.5",
+        "jms/serializer": "^3.4"
     },
     "autoload": {
         "psr-4": {

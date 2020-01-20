@@ -24,6 +24,14 @@ abstract class AbstractBaseResultResponse
      */
     private $errorCode;
 
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("XMLDetail")
+     * @Serializer\XmlElement(cdata=false)
+     */
+    private $xmlDetail;
+
     public function getStatus(): string
     {
         return $this->status;
@@ -34,4 +42,8 @@ abstract class AbstractBaseResultResponse
         return $this->errorCode;
     }
 
+    public function getXmlDetail(): string
+    {
+        return $this->xmlDetail;
+    }
 }

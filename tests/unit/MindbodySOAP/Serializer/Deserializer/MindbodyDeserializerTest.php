@@ -25,6 +25,10 @@ class MindbodyDeserializerTest extends TestCase
         $this->assertEquals('K', $response->getClients()[0]->getFirstName());
         $this->assertEquals('', $response->getClients()[0]->getLastName());
         $this->assertEquals(false, $response->getClients()[0]->isPromotionalEmailOptIn());
+        $this->assertEquals(16517, $response->getResultCount());
+        $this->assertEquals(0, $response->getCurrentPageIndex());
+        $this->assertEquals(8259, $response->getTotalPageCount());
+        $this->assertEquals('Full', $response->getXmlDetail());
     }
 
     private function getGetClientsResponse()

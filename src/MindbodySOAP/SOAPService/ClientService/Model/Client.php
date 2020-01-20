@@ -17,7 +17,7 @@ class Client
     private $id;
 
     /**
-     * @var bool
+     * @var bool|null
      * @Serializer\SerializedName("PromotionalEmailOptIn")
      * @Serializer\SkipWhenEmpty()
      * @Serializer\XmlElement(cdata=false)
@@ -26,7 +26,7 @@ class Client
     private $promotionalEmailOptIn;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\SerializedName("FirstName")
      * @Serializer\SkipWhenEmpty()
      * @Serializer\XmlElement(cdata=false)
@@ -35,7 +35,7 @@ class Client
     private $firstName;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\SerializedName("LastName")
      * @Serializer\SkipWhenEmpty()
      * @Serializer\XmlElement(cdata=false)
@@ -44,7 +44,7 @@ class Client
     private $lastName;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\SerializedName("Email")
      * @Serializer\SkipWhenEmpty()
      * @Serializer\XmlElement(cdata=false)
@@ -57,56 +57,56 @@ class Client
         $this->id = $id;
     }
 
-    public function setPromotionalEmailOptIn(bool $promotionalEmailOptIn): Client
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function isPromotionalEmailOptIn(): ?bool
+    {
+        return $this->promotionalEmailOptIn;
+    }
+
+    public function setPromotionalEmailOptIn(?bool $promotionalEmailOptIn): Client
     {
         $this->promotionalEmailOptIn = $promotionalEmailOptIn;
 
         return $this;
     }
 
-    public function setFirstName(string $firstName): Client
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(?string $firstName): Client
     {
         $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function setLastName(string $lastName): Client
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(?string $lastName): Client
     {
         $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function setEmail(string $email): Client
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): Client
     {
         $this->email = $email;
 
         return $this;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function isPromotionalEmailOptIn(): bool
-    {
-        return $this->promotionalEmailOptIn;
-    }
-
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
-
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
-
-    public function getEmail(): string
-    {
-        return $this->email;
     }
 }

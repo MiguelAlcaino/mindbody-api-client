@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Deserializer;
 
 use JMS\Serializer\SerializerInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\AbstractBaseResultResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\SOAPMethodResultInterface;
 
 class MindbodyDeserializer
@@ -27,7 +28,10 @@ class MindbodyDeserializer
         $output = $xml->xpath('//result:' . $soapMethodResultInstance->getMethodName() . 'Result');
 
         $newXml = $output[0]->asXML();
+        /** @var AbstractBaseResultResponse $result */
+        $result = $this->serializer->deserialize($newXml, $soapMethodResultClass, $format);
+        $result->setPayload($content);
 
-        return $this->serializer->deserialize($newXml, $soapMethodResultClass, $format);
+        return $result;
     }
 }

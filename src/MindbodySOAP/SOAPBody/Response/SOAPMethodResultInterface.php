@@ -5,4 +5,6 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response;
 interface SOAPMethodResultInterface
 {
     public function getMethodName(): string;
+
+    public function getPayload(): string;
 }

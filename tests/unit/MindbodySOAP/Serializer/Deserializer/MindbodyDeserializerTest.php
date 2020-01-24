@@ -15,9 +15,10 @@ class MindbodyDeserializerTest extends TestCase
         $deserializer         = new MindbodyDeserializer(
             $jmsSerializerFactory->create()
         );
+        $responseBody         = $this->getGetClientsResponse();
 
         /** @var GetClientsResult $response */
-        $response = $deserializer->deserialize($this->getGetClientsResponse(), GetClientsResult::class);
+        $response = $deserializer->deserialize($responseBody, GetClientsResult::class);
 
         $this->assertEquals(200, $response->getErrorCode());
         $this->assertEquals('Success', $response->getStatus());
@@ -29,6 +30,7 @@ class MindbodyDeserializerTest extends TestCase
         $this->assertEquals(0, $response->getCurrentPageIndex());
         $this->assertEquals(8259, $response->getTotalPageCount());
         $this->assertEquals('Full', $response->getXmlDetail());
+        $this->assertEquals($responseBody, $response->getPayload());
     }
 
     private function getGetClientsResponse()

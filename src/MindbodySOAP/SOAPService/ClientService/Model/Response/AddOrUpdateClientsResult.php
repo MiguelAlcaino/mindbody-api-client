@@ -6,10 +6,9 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService
 
 use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\AbstractBaseResultResponse;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\SOAPMethodResultInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client;
 
-class AddOrUpdateClientsResult extends AbstractBaseResultResponse implements SOAPMethodResultInterface
+class AddOrUpdateClientsResult extends AbstractBaseResultResponse
 {
     /**
      * @var Client[]

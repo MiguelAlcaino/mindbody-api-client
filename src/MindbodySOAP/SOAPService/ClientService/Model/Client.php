@@ -12,7 +12,7 @@ class Client
      * @var string
      * @Serializer\SerializedName("ID")
      * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("int")
+     * @Serializer\Type("string")
      */
     private $id;
 

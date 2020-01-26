@@ -18,7 +18,7 @@ class GetClientsParamsRequest implements RequestParamsInterface
     private $searchText;
 
     /**
-     * @var DateTimeImmutable
+     * @var DateTimeImmutable|null
      * @Serializer\SerializedName("LastModifiedDate")
      * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
      * @Serializer\XmlElement(cdata=false)
@@ -26,14 +26,14 @@ class GetClientsParamsRequest implements RequestParamsInterface
     private $lastModifiedDate;
 
     /**
-     * @var int
+     * @var int|null
      * @Serializer\SerializedName("PageSize")
      * @Serializer\XmlElement(cdata=false)
      */
     private $pageSize;
 
     /**
-     * @var int
+     * @var int|null
      * @Serializer\SerializedName("CurrentPageIndex")
      * @Serializer\XmlElement(cdata=true)
      */
@@ -44,29 +44,44 @@ class GetClientsParamsRequest implements RequestParamsInterface
         $this->searchText = $searchText;
     }
 
-    public function setPageSize(int $pageSize): GetClientsParamsRequest
+    public function setPageSize(?int $pageSize): GetClientsParamsRequest
     {
         $this->pageSize = $pageSize;
 
         return $this;
     }
 
-    public function setCurrentPageIndex(int $currentPageIndex): GetClientsParamsRequest
+    public function setCurrentPageIndex(?int $currentPageIndex): GetClientsParamsRequest
     {
         $this->currentPageIndex = $currentPageIndex;
 
         return $this;
     }
 
-    /**
-     * @param DateTimeImmutable $lastModifiedDate
-     *
-     * @return GetClientsParamsRequest
-     */
-    public function setLastModifiedDate(DateTimeImmutable $lastModifiedDate): GetClientsParamsRequest
+    public function setLastModifiedDate(?DateTimeImmutable $lastModifiedDate): GetClientsParamsRequest
     {
         $this->lastModifiedDate = $lastModifiedDate;
 
         return $this;
+    }
+
+    public function getSearchText(): string
+    {
+        return $this->searchText;
+    }
+
+    public function getLastModifiedDate(): ?DateTimeImmutable
+    {
+        return $this->lastModifiedDate;
+    }
+
+    public function getPageSize(): ?int
+    {
+        return $this->pageSize;
+    }
+
+    public function getCurrentPageIndex(): ?int
+    {
+        return $this->currentPageIndex;
     }
 }

@@ -22,4 +22,8 @@ class AddOrUpdateClientsParamsRequest implements RequestParamsInterface
         $this->clients = $clients;
     }
 
+    public function getClients(): array
+    {
+        return $this->clients;
+    }
 }

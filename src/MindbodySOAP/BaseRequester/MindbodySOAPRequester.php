@@ -3,6 +3,7 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class MindbodySOAPRequester
 {
@@ -16,6 +17,9 @@ class MindbodySOAPRequester
         $this->guzzleClient = $guzzleClient ?? new Client();
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function request(string $uri, string $methodName, string $body): string
     {
         $result = $this->guzzleClient->request(

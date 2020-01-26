@@ -3,6 +3,7 @@
 namespace MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAP\Serializer\Deserializer;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Deserializer\MindbodyDeserializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Exception\MindbodyDeserializerException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\JmsSerializerFactory;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\GetClientsResult;
 use PHPUnit\Framework\TestCase;
@@ -31,6 +32,45 @@ class MindbodyDeserializerTest extends TestCase
         $this->assertEquals(8259, $response->getTotalPageCount());
         $this->assertEquals('Full', $response->getXmlDetail());
         $this->assertEquals($responseBody, $response->getPayload());
+    }
+
+    public function testDeserializeError()
+    {
+        $jmsSerializerFactory = new JmsSerializerFactory();
+        $deserializer         = new MindbodyDeserializer(
+            $jmsSerializerFactory->create()
+        );
+        $responseBody         = 'mierda';
+
+        try {
+            /** @var GetClientsResult $response */
+            $response = $deserializer->deserialize($responseBody, GetClientsResult::class);
+        } catch (MindbodyDeserializerException $exception) {
+            $this->assertEquals($responseBody, $exception->getPayload());
+        }
+    }
+
+    private function getGetBadClientsResponse()
+    {
+        return '<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <GetClientsResponse
+            xmlns="http://clients.mindbodyonline.com/api/0_5_1">
+            <GetClientsResult>
+                <Status>Error</Status>
+                <ErrorCode>900</ErrorCode>
+                <XMLDetail>Full</XMLDetail>
+                <ResultCount>16517</ResultCount>
+                <CurrentPageIndex>0</CurrentPageIndex>
+                <TotalPageCount>8259</TotalPageCount>
+            </GetClientsResult>
+        </GetClientsResponse>
+    </soap:Body>
+</soap:Envelope>';
     }
 
     private function getGetClientsResponse()

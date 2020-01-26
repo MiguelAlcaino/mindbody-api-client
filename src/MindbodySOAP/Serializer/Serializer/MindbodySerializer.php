@@ -6,12 +6,14 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Serializer;
 
 use JMS\Serializer\SerializerInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Deserializer\MindbodyDeserializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Exception\MindbodySerializerException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Factory\EnvelopeRequestFactory;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\Request;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredentials;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\UserCredentials;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\SOAPMethodResultInterface;
+use Throwable;
 
 class MindbodySerializer
 {
@@ -44,13 +46,23 @@ class MindbodySerializer
         $this->format            = $format;
     }
 
+    /**
+     * @param string                 $requestClass
+     * @param RequestParamsInterface $requestParams
+     *
+     * @return string
+     * @throws MindbodySerializerException
+     */
     public function serialize(string $requestClass, RequestParamsInterface $requestParams): string
     {
         $envelope = EnvelopeRequestFactory::create(
             new $requestClass(new Request($this->sourceCredentials, $requestParams, $this->userCredentials))
         );
-
-        return $this->serializer->serialize($envelope, $this->format);
+        try {
+            return $this->serializer->serialize($envelope, $this->format);
+        } catch (Throwable $exception) {
+            throw MindbodySerializerException::createFromEnvelopeRequest($envelope, $exception);
+        }
     }
 
     public function deserialize(string $soapMethodResultClass, string $data): SOAPMethodResultInterface

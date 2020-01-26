@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response;
 
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Model\AbstractSerializable;
 
-abstract class AbstractBaseResultResponse implements SOAPMethodResultInterface
+abstract class AbstractBaseResultResponse extends AbstractSerializable implements SOAPMethodResultInterface
 {
     /**
      * @var string
@@ -32,12 +33,6 @@ abstract class AbstractBaseResultResponse implements SOAPMethodResultInterface
      */
     private $xmlDetail;
 
-    /**
-     * @var string
-     * @Serializer\Exclude()
-     */
-    private $payload;
-
     public function getStatus(): string
     {
         return $this->status;
@@ -51,17 +46,5 @@ abstract class AbstractBaseResultResponse implements SOAPMethodResultInterface
     public function getXmlDetail(): string
     {
         return $this->xmlDetail;
-    }
-
-    public function getPayload(): string
-    {
-        return $this->payload;
-    }
-
-    public function setPayload(string $payload): AbstractBaseResultResponse
-    {
-        $this->payload = $payload;
-
-        return $this;
     }
 }

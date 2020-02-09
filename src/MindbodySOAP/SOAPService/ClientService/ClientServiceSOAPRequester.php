@@ -8,9 +8,11 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\ValidateLoginParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\ValidateLoginRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\AddOrUpdateClientsResult;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\GetClientsResult;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\ValidateLoginRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\ValidateLoginResult;
 
 class ClientServiceSOAPRequester extends AbstractSOAPRequester
 {
@@ -47,12 +49,14 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
         );
     }
 
-    public function validateLogin(ValidateLoginRequest $request): array
+    public function validateLogin(ValidateLoginParamsRequest $request): ValidateLoginResult
     {
-        return $this->minbodySoapRequester->createEnvelopeAndExecuteRequest(
-            self::SERVICE_URI,
+        return $this->executeRequest(
+            ValidateLoginRequest::class,
+            ValidateLoginResult::class,
             'ValidateLogin',
-            $this->decodeRequesterObject($request)
+            self::SERVICE_URI,
+            $request
         );
     }
 }

@@ -22,7 +22,7 @@ class SaleServiceSOAPRequestTest extends TestCase
 
         $response = $saleServiceRequester->checkoutShoppingCart(
             (new CheckoutShoppingCartParamsRequest(
-                '100000008', [
+                $this->getTestUserId(), [
                 new CartItem(
                     new Item(
                         100007,

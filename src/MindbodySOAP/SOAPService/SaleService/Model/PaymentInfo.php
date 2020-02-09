@@ -2,86 +2,59 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model;
 
-class PaymentInfo implements \JsonSerializable
+use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Enum\PaymentInfoTypeEnum;
+
+class PaymentInfo
 {
     /**
      * In case of $type=CustomPaymentInfo
      *
      * @var int
+     * @Serializer\SerializedName("ID")
+     * @Serializer\Type("int")
      */
-    private $ID;
+    private $id;
 
     /**
      * @var float
+     * @Serializer\SerializedName("Amount")
+     * @Serializer\Type("float")
      */
-    private $Amount;
+    private $amount;
 
     /**
      * @var string
+     * @Serializer\XmlAttribute()
+     * @Serializer\SerializedName("xsi:type")
      */
     private $type;
 
-    /**
-     * PaymentInfoRequest constructor.
-     *
-     * @param float  $Amount
-     * @param string $type
-     */
-    public function __construct(float $Amount, string $type = 'CustomPaymentInfo')
+    public function __construct(float $amount, PaymentInfoTypeEnum $type)
     {
-        $this->Amount = $Amount;
-        $this->type   = $type;
+        $this->amount = $amount;
+        $this->type   = $type->getValue();
     }
 
-    public function jsonSerialize()
+    public function getId(): int
     {
-        $jsonArray = [
-            '_attributes' => [
-                'xsi:type' => $this->type,
-            ],
-            'Amount'      => $this->Amount,
-        ];
-
-        if ($this->ID !== null) {
-            $jsonArray['ID'] = $this->ID;
-        }
-
-        return $jsonArray;
+        return $this->id;
     }
 
-    /**
-     * @return int
-     */
-    public function getID(): int
+    public function setId(int $id): self
     {
-        return $this->ID;
-    }
-
-    /**
-     * @param int $ID
-     *
-     * @return PaymentInfo
-     */
-    public function setID(int $ID): PaymentInfo
-    {
-        $this->ID = $ID;
+        $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getAmount(): float
     {
-        return $this->Amount;
+        return $this->amount;
     }
 
-    /**
-     * @return string
-     */
-    public function getType(): string
+    public function getType(): PaymentInfoTypeEnum
     {
-        return $this->type;
+        return PaymentInfoTypeEnum::make($this->type);
     }
 }

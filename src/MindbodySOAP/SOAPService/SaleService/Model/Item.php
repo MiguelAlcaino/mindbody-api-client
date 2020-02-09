@@ -2,38 +2,68 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model;
 
-class Item implements \JsonSerializable
+use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Enum\ItemTypeEnum;
+
+class Item
 {
     /**
      * @var int
+     * @Serializer\SerializedName("ID")
+     * @Serializer\Type("int")
+     * @Serializer\XmlElement(cdata=false)
      */
-    private $ID;
+    private $id;
 
     /**
      * @var string
+     * @Serializer\XmlAttribute()
+     * @Serializer\SerializedName("xsi:type")
+     * @Serializer\Type("string")
      */
     private $type;
 
     /**
-     * ItemRequest constructor.
-     *
-     * @param int    $ID
-     * @param string $type
+     * @var float
+     * @Serializer\SerializedName("Price")
+     * @Serializer\Type("float")
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\SkipWhenEmpty()
      */
-    public function __construct(int $ID, string $type)
+    private $price;
+
+    /**
+     * @var string
+     * @Serializer\SerializedName("Name")
+     * @Serializer\Type("string")
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\SkipWhenEmpty()
+     */
+    private $name;
+
+    public function __construct(int $id, ItemTypeEnum $type)
     {
-        $this->ID   = $ID;
-        $this->type = $type;
+        $this->id   = $id;
+        $this->type = $type->getValue();
     }
 
-    public function jsonSerialize()
+    public function getId(): int
     {
-        return [
-            '_attributes' => [
-                'xsi:type' => $this->type
-            ],
-            'ID' => $this->ID
-        ];
+        return $this->id;
     }
 
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }

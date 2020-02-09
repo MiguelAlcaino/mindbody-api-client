@@ -2,22 +2,32 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model;
 
-class CartItem implements \JsonSerializable
+use JMS\Serializer\Annotation as Serializer;
+
+class CartItem
 {
     /**
      * @var Item
+     * @Serializer\SerializedName("Item")
+     * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Item")
      */
-    private $Item;
+    private $item;
 
     /**
      * @var int
+     * @Serializer\SerializedName("Quantity")
+     * @Serializer\Type("int")
+     * @Serializer\XmlElement(cdata=false)
      */
-    private $Quantity;
+    private $quantity;
 
     /**
      * @var float
+     * @Serializer\SerializedName("DiscountAmount")
+     * @Serializer\Type("float")
+     * @Serializer\XmlElement(cdata=false)
      */
-    private $DiscountAmount;
+    private $discountAmount;
 
     /**
      * CartItemRequest constructor.
@@ -28,41 +38,23 @@ class CartItem implements \JsonSerializable
      */
     public function __construct(Item $Item, int $Quantity, float $DiscountAmount = 0)
     {
-        $this->Item           = $Item;
-        $this->Quantity       = $Quantity;
-        $this->DiscountAmount = $DiscountAmount;
+        $this->item           = $Item;
+        $this->quantity       = $Quantity;
+        $this->discountAmount = $DiscountAmount;
     }
 
-    public function jsonSerialize()
-    {
-        return [
-            'Item' => $this->Item,
-            'Quantity' => $this->Quantity,
-            'DiscountAmount' => $this->DiscountAmount
-        ];
-    }
-
-    /**
-     * @return Item
-     */
     public function getItem(): Item
     {
-        return $this->Item;
+        return $this->item;
     }
 
-    /**
-     * @return int
-     */
     public function getQuantity(): int
     {
-        return $this->Quantity;
+        return $this->quantity;
     }
 
-    /**
-     * @return float
-     */
     public function getDiscountAmount(): float
     {
-        return $this->DiscountAmount;
+        return $this->discountAmount;
     }
 }

@@ -12,10 +12,13 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Clien
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsParamsRequest;
+use MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAP\Helper\MindbodySerializerTestTrait;
 use PHPUnit\Framework\TestCase;
 
 class ClientServiceSOAPRequesterTest extends TestCase
 {
+    use MindbodySerializerTestTrait;
+
     public function testAddOrUpdateClient()
     {
         $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
@@ -48,30 +51,5 @@ class ClientServiceSOAPRequesterTest extends TestCase
             $this->getMindbodySoapRequester(),
             $this->getMindbodySerializer()
         );
-    }
-
-    public function getMindbodySerializer()
-    {
-        $jmsserializerFactory = new JmsSerializerFactory();
-        $jmsSerializer        = $jmsserializerFactory->create();
-
-        return new MindbodySerializer(
-            $jmsSerializer,
-            new MindbodyDeserializer($jmsSerializer),
-            new SourceCredentials(
-                'xxx',
-                'xxx',
-                [-99]
-            ), new UserCredentials(
-                'xxx',
-                'xxx',
-                [-99]
-            )
-        );
-    }
-
-    private function getMindbodySoapRequester(): MindbodySOAPRequester
-    {
-        return new MindbodySOAPRequester();
     }
 }

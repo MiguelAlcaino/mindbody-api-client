@@ -42,6 +42,34 @@ class SaleServiceSOAPRequestTest extends TestCase
         $this->addToAssertionCount(1);
     }
 
+    public function testCalculateShoppingCart()
+    {
+        $saleServiceRequester = $this->getSaleServiceSoapRequester();
+
+        $response = $saleServiceRequester->checkoutShoppingCart(
+            (new CheckoutShoppingCartParamsRequest(
+                $this->getTestUserId(), [
+                new CartItem(
+                    new Item(
+                        100007,
+                        ItemTypeEnum::Service()
+                    ),
+                    1
+                ),
+            ], [
+                    (new PaymentInfo(
+                        1050,
+                        PaymentInfoTypeEnum::CustomPaymentInfo()
+                    ))->setId(17),
+                ], true
+            ))
+                ->setFields(['paymentcheck'])
+                ->setInStore(true)
+        );
+
+        $this->addToAssertionCount(1);
+    }
+
     private function getSaleServiceSoapRequester()
     {
         return new SaleServiceSOAPRequester(

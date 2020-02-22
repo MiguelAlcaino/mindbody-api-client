@@ -40,6 +40,25 @@ class CheckoutShoppingCartParamsRequest implements RequestParamsInterface
     private $test;
 
     /**
+     * @var string[]
+     * @Serializer\SerializedName("Fields")
+     * @Serializer\XmlList(entry="string")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("array<string>")
+     */
+    private $fields;
+
+    /**
+     * @var boolean
+     * @Serializer\SerializedName("InStore")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("bool")
+     */
+    private $inStore;
+
+    /**
      * @param string        $clientId
      * @param CartItem[]    $cartItems
      * @param PaymentInfo[] $payments
@@ -53,4 +72,17 @@ class CheckoutShoppingCartParamsRequest implements RequestParamsInterface
         $this->test      = $test;
     }
 
+    public function setFields(array $fields): self
+    {
+        $this->fields = $fields;
+
+        return $this;
+    }
+
+    public function setInStore(bool $inStore): self
+    {
+        $this->inStore = $inStore;
+
+        return $this;
+    }
 }

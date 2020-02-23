@@ -35,7 +35,9 @@ class SaleServiceSOAPRequestTest extends TestCase
                         1050,
                         PaymentInfoTypeEnum::CustomPaymentInfo()
                     ))->setId(17),
-                ], true
+                ],
+                null,
+                true
             ))
         );
 
@@ -61,7 +63,39 @@ class SaleServiceSOAPRequestTest extends TestCase
                         1050,
                         PaymentInfoTypeEnum::CustomPaymentInfo()
                     ))->setId(17),
-                ], true
+                ],
+                null,
+                true
+            ))
+                ->setFields(['paymentcheck'])
+                ->setInStore(true)
+        );
+
+        $this->addToAssertionCount(1);
+    }
+
+    public function testCalculateShoppingCartWithPromoCode()
+    {
+        $saleServiceRequester = $this->getSaleServiceSoapRequester();
+
+        $response = $saleServiceRequester->checkoutShoppingCart(
+            (new CheckoutShoppingCartParamsRequest(
+                $this->getTestUserId(), [
+                new CartItem(
+                    new Item(
+                        100007,
+                        ItemTypeEnum::Service()
+                    ),
+                    1
+                ),
+            ], [
+                    (new PaymentInfo(
+                        1050,
+                        PaymentInfoTypeEnum::CustomPaymentInfo()
+                    ))->setId(17),
+                ],
+                $this->getPromoCode(),
+                true
             ))
                 ->setFields(['paymentcheck'])
                 ->setInStore(true)

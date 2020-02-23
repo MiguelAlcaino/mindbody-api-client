@@ -59,17 +59,33 @@ class CheckoutShoppingCartParamsRequest implements RequestParamsInterface
     private $inStore;
 
     /**
+     * @var string
+     * @Serializer\SerializedName("PromotionCode")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $promotionCode;
+
+    /**
      * @param string        $clientId
      * @param CartItem[]    $cartItems
      * @param PaymentInfo[] $payments
+     * @param null|string   $promotionCode
      * @param bool          $test
      */
-    public function __construct(string $clientId, array $cartItems, array $payments, bool $test = true)
-    {
-        $this->clientId  = $clientId;
-        $this->cartItems = $cartItems;
-        $this->payments  = $payments;
-        $this->test      = $test;
+    public function __construct(
+        string $clientId,
+        array $cartItems,
+        array $payments,
+        ?string $promotionCode = null,
+        bool $test = true
+    ) {
+        $this->clientId      = $clientId;
+        $this->cartItems     = $cartItems;
+        $this->payments      = $payments;
+        $this->promotionCode = $promotionCode;
+        $this->test          = $test;
     }
 
     public function setFields(array $fields): self

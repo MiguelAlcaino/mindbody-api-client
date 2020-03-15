@@ -26,7 +26,8 @@ class MindbodyDeserializer
             /** @var SOAPMethodResultInterface $soapMethodResultInstance */
             $soapMethodResultInstance = new $soapMethodResultClass();
 
-            $xml = simplexml_load_string($content);
+            $cleanedContent           = $this->cleanResponseContent($content);
+            $xml                      = simplexml_load_string($cleanedContent);
             $xml->registerXPathNamespace('result', 'http://clients.mindbodyonline.com/api/0_5_1');
             $output = $xml->xpath('//result:' . $soapMethodResultInstance->getMethodName() . 'Result');
 
@@ -40,5 +41,10 @@ class MindbodyDeserializer
         } catch (Throwable $exception) {
             throw MindbodyDeserializerException::create($content, $exception);
         }
+    }
+
+    public function cleanResponseContent(string $content): string
+    {
+        return str_replace('<BirthDate xsi:nil="true" />', '', $content);
     }
 }

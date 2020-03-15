@@ -117,6 +117,24 @@ class Client
     private $mobilePhone;
 
     /**
+     * @var string|null
+     * @Serializer\SerializedName("HomePhone")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $homePhone;
+
+    /**
+     * @var string|null
+     * @Serializer\SerializedName("WorkPhone")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $workPhone;
+
+    /**
      * @var DateTimeImmutable|null
      * @Serializer\SerializedName("BirthDate")
      * @Serializer\SkipWhenEmpty()
@@ -296,6 +314,30 @@ class Client
     public function setGender(?string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getHomePhone(): ?string
+    {
+        return $this->homePhone;
+    }
+
+    public function setHomePhone(?string $homePhone): Client
+    {
+        $this->homePhone = $homePhone;
+
+        return $this;
+    }
+
+    public function getWorkPhone(): ?string
+    {
+        return $this->workPhone;
+    }
+
+    public function setWorkPhone(?string $workPhone): Client
+    {
+        $this->workPhone = $workPhone;
 
         return $this;
     }

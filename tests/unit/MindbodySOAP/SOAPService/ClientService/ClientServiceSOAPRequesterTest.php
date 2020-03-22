@@ -3,10 +3,14 @@
 namespace MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAP\SOAPService\ClientService;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\ClientServiceSOAPRequester;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Factory\GetClientServicesParamsRequestFactory;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientPurchasesParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\ValidateLoginParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Request\GetProgramsParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\SiteServiceSOAPRequester;
 use MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAP\Helper\MindbodySerializerTestTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -40,7 +44,8 @@ class ClientServiceSOAPRequesterTest extends TestCase
         $this->addToAssertionCount(1);
     }
 
-    public function testValidateLogin(){
+    public function testValidateLogin()
+    {
         $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
 
         $response = $clientServiceSOAPRequester->validateLogin(new ValidateLoginParamsRequest($this->getTestUsername(), $this->getTestUserPassword()));
@@ -48,9 +53,43 @@ class ClientServiceSOAPRequesterTest extends TestCase
         $this->addToAssertionCount(1);
     }
 
+    public function testGetClientServices()
+    {
+        $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
+        $siteRequester              = $this->getSiteServiceSoapRequester();
+
+        $programResponse = $siteRequester->getPrograms(new GetProgramsParamsRequest());
+
+        $response = $clientServiceSOAPRequester->getClientServices(
+            GetClientServicesParamsRequestFactory::createFromPrograms(
+                $this->getClientWithPurchasesId(),
+                $programResponse->getPrograms()
+            )
+        );
+
+        $this->addToAssertionCount(1);
+    }
+
+    public function testGetClientPurchases(){
+        $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
+        $params = new GetClientPurchasesParamsRequest($this->getClientWithPurchasesId());
+        $params->setStartDate(new \DateTimeImmutable('2000-01-01'));
+        $result = $clientServiceSOAPRequester->getClientPurchases($params);
+
+        $this->addToAssertionCount(1);
+    }
+
     private function getClientServiceSoapRequester()
     {
         return new ClientServiceSOAPRequester(
+            $this->getMindbodySoapRequester(),
+            $this->getMindbodySerializer()
+        );
+    }
+
+    private function getSiteServiceSoapRequester()
+    {
+        return new SiteServiceSOAPRequester(
             $this->getMindbodySoapRequester(),
             $this->getMindbodySerializer()
         );

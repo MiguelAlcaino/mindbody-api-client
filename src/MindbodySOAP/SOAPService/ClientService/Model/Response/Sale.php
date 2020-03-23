@@ -22,4 +22,14 @@ class Sale
      * @Serializer\XmlElement(cdata=false)
      */
     private $saleDateTime;
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getSaleDateTime(): DateTimeImmutable
+    {
+        return $this->saleDateTime;
+    }
 }

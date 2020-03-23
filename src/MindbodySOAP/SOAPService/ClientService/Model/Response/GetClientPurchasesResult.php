@@ -22,4 +22,12 @@ class GetClientPurchasesResult extends AbstractBaseResultResponse
     {
         return 'GetClientPurchases';
     }
+
+    /**
+     * @return SaleItem[]
+     */
+    public function getPurchases(): array
+    {
+        return $this->purchases;
+    }
 }

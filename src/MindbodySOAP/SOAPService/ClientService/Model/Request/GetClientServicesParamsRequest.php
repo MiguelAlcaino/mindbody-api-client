@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request;
 
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Model\MindbodyPaginatedRequestTrait;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
 
 class GetClientServicesParamsRequest implements RequestParamsInterface
 {
+    use MindbodyPaginatedRequestTrait;
+
     /**
      * @var string
      * @Serializer\SerializedName("ClientID")

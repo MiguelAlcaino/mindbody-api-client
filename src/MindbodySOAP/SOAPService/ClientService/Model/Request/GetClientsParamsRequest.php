@@ -6,10 +6,13 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Model\MindbodyPaginatedRequestTrait;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
 
 class GetClientsParamsRequest implements RequestParamsInterface
 {
+    use MindbodyPaginatedRequestTrait;
+
     /**
      * @var string
      * @Serializer\SerializedName("SearchText")
@@ -25,37 +28,9 @@ class GetClientsParamsRequest implements RequestParamsInterface
      */
     private $lastModifiedDate;
 
-    /**
-     * @var int|null
-     * @Serializer\SerializedName("PageSize")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $pageSize;
-
-    /**
-     * @var int|null
-     * @Serializer\SerializedName("CurrentPageIndex")
-     * @Serializer\XmlElement(cdata=true)
-     */
-    private $currentPageIndex;
-
     public function __construct(string $searchText = '')
     {
         $this->searchText = $searchText;
-    }
-
-    public function setPageSize(?int $pageSize): GetClientsParamsRequest
-    {
-        $this->pageSize = $pageSize;
-
-        return $this;
-    }
-
-    public function setCurrentPageIndex(?int $currentPageIndex): GetClientsParamsRequest
-    {
-        $this->currentPageIndex = $currentPageIndex;
-
-        return $this;
     }
 
     public function setLastModifiedDate(?DateTimeImmutable $lastModifiedDate): GetClientsParamsRequest
@@ -73,15 +48,5 @@ class GetClientsParamsRequest implements RequestParamsInterface
     public function getLastModifiedDate(): ?DateTimeImmutable
     {
         return $this->lastModifiedDate;
-    }
-
-    public function getPageSize(): ?int
-    {
-        return $this->pageSize;
-    }
-
-    public function getCurrentPageIndex(): ?int
-    {
-        return $this->currentPageIndex;
     }
 }

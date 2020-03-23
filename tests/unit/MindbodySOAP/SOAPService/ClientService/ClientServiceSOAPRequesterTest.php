@@ -70,9 +70,10 @@ class ClientServiceSOAPRequesterTest extends TestCase
         $this->addToAssertionCount(1);
     }
 
-    public function testGetClientPurchases(){
+    public function testGetClientPurchases()
+    {
         $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
-        $params = new GetClientPurchasesParamsRequest($this->getClientWithPurchasesId());
+        $params                     = new GetClientPurchasesParamsRequest($this->getClientWithPurchasesId());
         $params->setStartDate(new \DateTimeImmutable('2000-01-01'));
         $result = $clientServiceSOAPRequester->getClientPurchases($params);
 

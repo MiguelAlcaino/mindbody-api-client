@@ -1,6 +1,6 @@
 <?php
 
-namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\ClassService;
+namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\AddClientToClassRequest;

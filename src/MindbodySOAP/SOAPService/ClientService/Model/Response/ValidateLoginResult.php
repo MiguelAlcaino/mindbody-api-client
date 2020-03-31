@@ -9,7 +9,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model
 class ValidateLoginResult extends AbstractBaseResultResponse
 {
     /**
-     * @var string
+     * @var string|null
      * @Serializer\SerializedName("GUID")
      * @Serializer\Type("string")
      * @Serializer\XmlElement(cdata=false)
@@ -17,7 +17,7 @@ class ValidateLoginResult extends AbstractBaseResultResponse
     private $guid;
 
     /**
-     * @var Client
+     * @var Client|null
      * @Serializer\SerializedName("Client")
      * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client")
      */
@@ -28,12 +28,12 @@ class ValidateLoginResult extends AbstractBaseResultResponse
         return 'ValidateLogin';
     }
 
-    public function getGuid(): string
+    public function getGuid(): ?string
     {
         return $this->guid;
     }
 
-    public function getClient(): Client
+    public function getClient(): ?Client
     {
         return $this->client;
     }

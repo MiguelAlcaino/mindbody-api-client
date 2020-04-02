@@ -14,6 +14,15 @@ class GetCustomPaymentMethodsResult extends AbstractBaseResultResponse
      * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\CustomPaymentInfo>")
      */
     private $paymentMethods;
+
+    /**
+     * @return CustomPaymentInfo[]
+     */
+    public function getPaymentMethods(): array
+    {
+        return $this->paymentMethods;
+    }
+
     public function getMethodName(): string
     {
         return 'GetCustomPaymentMethods';

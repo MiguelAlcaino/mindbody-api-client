@@ -104,6 +104,14 @@ class SaleServiceSOAPRequestTest extends TestCase
         $this->addToAssertionCount(1);
     }
 
+    public function testGetCustomPaymentMethods()
+    {
+        $requester = $this->getSaleServiceSoapRequester();
+        $result    = $requester->getCustomPaymentMethods();
+
+        $this->addToAssertionCount(1);
+    }
+
     private function getSaleServiceSoapRequester()
     {
         return new SaleServiceSOAPRequester(

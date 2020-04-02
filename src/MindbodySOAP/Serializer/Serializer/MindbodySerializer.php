@@ -53,7 +53,7 @@ class MindbodySerializer
      * @return string
      * @throws MindbodySerializerException
      */
-    public function serialize(string $requestClass, RequestParamsInterface $requestParams): string
+    public function serialize(string $requestClass, RequestParamsInterface $requestParams = null): string
     {
         $envelope = EnvelopeRequestFactory::create(
             new $requestClass(new Request($this->sourceCredentials, $requestParams, $this->userCredentials))

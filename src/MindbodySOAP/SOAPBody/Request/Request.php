@@ -17,6 +17,7 @@ class Request
     /**
      * @var RequestParamsInterface
      * @Serializer\XmlList(inline=true)
+     * @Serializer\SkipWhenEmpty()
      */
     private $requestParams;
 
@@ -36,7 +37,7 @@ class Request
 
     public function __construct(
         SourceCredentials $sourceCredentials,
-        RequestParamsInterface $requestParams,
+        RequestParamsInterface $requestParams = null,
         ?UserCredentials $userCredentials = null,
         string $xmlDetails = 'Full'
     ) {

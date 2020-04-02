@@ -56,7 +56,7 @@ abstract class AbstractSOAPRequester
         string $resultClass,
         string $methodName,
         string $serviceUrl,
-        RequestParamsInterface $request
+        RequestParamsInterface $request = null
     ): SOAPMethodResultInterface {
         $serializedBody = $this->mindbodySerializer->serialize($requestClass, $request);
 

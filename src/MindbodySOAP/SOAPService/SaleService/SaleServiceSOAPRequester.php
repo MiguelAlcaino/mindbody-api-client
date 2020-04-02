@@ -5,7 +5,9 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\CheckoutShoppingCartParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\CheckoutShoppingCartRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\GetCustomPaymentMethodsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\CheckoutShoppingCartResult;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\GetCustomPaymentMethodsResult;
 
 class SaleServiceSOAPRequester extends AbstractSOAPRequester
 {
@@ -31,11 +33,13 @@ class SaleServiceSOAPRequester extends AbstractSOAPRequester
         );
     }
 
-    public function getCustomPaymentMethods(): array
+    public function getCustomPaymentMethods(): GetCustomPaymentMethodsResult
     {
-        return $this->minbodySoapRequester->createEnvelopeAndExecuteRequest(
-            self::SERVICE_URI,
-            'GetCustomPaymentMethods'
+        return $this->executeRequest(
+            GetCustomPaymentMethodsRequest::class,
+            GetCustomPaymentMethodsResult::class,
+            'GetCustomPaymentMethods',
+            self::SERVICE_URI
         );
     }
 }

@@ -40,13 +40,6 @@ abstract class AbstractSOAPRequester
     }
 
     /**
-     * @param string                 $requestClass
-     * @param string                 $resultClass
-     * @param string                 $methodName
-     * @param string                 $serviceUrl
-     * @param RequestParamsInterface $request
-     *
-     * @return SOAPMethodResultInterface
      * @throws MindbodySerializerException
      * @throws MindbodyDeserializerException
      * @throws RequestException
@@ -56,9 +49,10 @@ abstract class AbstractSOAPRequester
         string $resultClass,
         string $methodName,
         string $serviceUrl,
-        RequestParamsInterface $request = null
+        RequestParamsInterface $request = null,
+        bool $useUserCredentials = true
     ): SOAPMethodResultInterface {
-        $serializedBody = $this->mindbodySerializer->serialize($requestClass, $request);
+        $serializedBody = $this->mindbodySerializer->serialize($requestClass, $request, $useUserCredentials);
 
         try {
             $responseBody = $this->minbodySoapRequester->request(

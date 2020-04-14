@@ -52,7 +52,8 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             AddOrUpdateClientsResult::class,
             'AddOrUpdateClients',
             self::SERVICE_URI,
-            $request
+            $request,
+            false
         );
     }
 
@@ -74,7 +75,8 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             ValidateLoginResult::class,
             'ValidateLogin',
             self::SERVICE_URI,
-            $request
+            $request,
+            false
         );
     }
 }

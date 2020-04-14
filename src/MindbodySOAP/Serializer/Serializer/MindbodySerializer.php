@@ -46,17 +46,19 @@ class MindbodySerializer
         $this->format            = $format;
     }
 
-    /**
-     * @param string                 $requestClass
-     * @param RequestParamsInterface $requestParams
-     *
-     * @return string
-     * @throws MindbodySerializerException
-     */
-    public function serialize(string $requestClass, RequestParamsInterface $requestParams = null): string
-    {
+    public function serialize(
+        string $requestClass,
+        RequestParamsInterface $requestParams = null,
+        bool $useUserCredentials = true
+    ): string {
         $envelope = EnvelopeRequestFactory::create(
-            new $requestClass(new Request($this->sourceCredentials, $requestParams, $this->userCredentials))
+            new $requestClass(
+                new Request(
+                    $this->sourceCredentials,
+                    $requestParams,
+                    $useUserCredentials ? $this->userCredentials : null
+                )
+            )
         );
         try {
             return $this->serializer->serialize($envelope, $this->format);

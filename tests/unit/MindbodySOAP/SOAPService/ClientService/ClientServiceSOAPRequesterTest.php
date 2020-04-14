@@ -48,7 +48,11 @@ class ClientServiceSOAPRequesterTest extends TestCase
     {
         $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
 
-        $response = $clientServiceSOAPRequester->validateLogin(new ValidateLoginParamsRequest($this->getTestUsername(), $this->getTestUserPassword()));
+        $response = $clientServiceSOAPRequester->validateLogin(
+            new ValidateLoginParamsRequest(
+                $this->getTestUsername(),
+                $this->getTestUserPassword()
+            ));
 
         $this->addToAssertionCount(1);
     }
@@ -76,6 +80,22 @@ class ClientServiceSOAPRequesterTest extends TestCase
         $params                     = new GetClientPurchasesParamsRequest($this->getClientWithPurchasesId());
         $params->setStartDate(new \DateTimeImmutable('2000-01-01'));
         $result = $clientServiceSOAPRequester->getClientPurchases($params);
+
+        $this->addToAssertionCount(1);
+    }
+
+    public function testUpdatePassword(){
+        $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
+
+        $response = $clientServiceSOAPRequester->addOrUpdateClient(
+            new AddOrUpdateClientsParamsRequest(
+                [
+                    (new Client($this->getTestUserId()))
+                        ->setEmail($this->getTestUsername())
+                        ->setPassword('newpassword123'),
+                ]
+            )
+        );
 
         $this->addToAssertionCount(1);
     }

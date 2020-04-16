@@ -161,6 +161,15 @@ class Client
      */
     private $password;
 
+    /**
+     * @var string
+     * @Serializer\SerializedName("Username")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $username;
+
     public function __construct(string $id)
     {
         $this->id = $id;
@@ -359,6 +368,18 @@ class Client
     public function setPassword(?string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }

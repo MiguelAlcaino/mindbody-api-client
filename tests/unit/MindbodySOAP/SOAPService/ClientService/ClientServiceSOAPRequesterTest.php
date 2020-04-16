@@ -84,14 +84,15 @@ class ClientServiceSOAPRequesterTest extends TestCase
         $this->addToAssertionCount(1);
     }
 
-    public function testUpdatePassword(){
+    public function testUpdatePassword()
+    {
         $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
 
         $response = $clientServiceSOAPRequester->addOrUpdateClient(
             new AddOrUpdateClientsParamsRequest(
                 [
                     (new Client($this->getTestUserId()))
-                        ->setEmail($this->getTestUsername())
+                        ->setUsername($this->getTestUsername())
                         ->setPassword('newpassword123'),
                 ]
             )

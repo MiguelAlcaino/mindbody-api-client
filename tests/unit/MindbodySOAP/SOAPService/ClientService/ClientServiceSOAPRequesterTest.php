@@ -52,7 +52,8 @@ class ClientServiceSOAPRequesterTest extends TestCase
             new ValidateLoginParamsRequest(
                 $this->getTestUsername(),
                 $this->getTestUserPassword()
-            ));
+            )
+        );
 
         $this->addToAssertionCount(1);
     }
@@ -99,6 +100,17 @@ class ClientServiceSOAPRequesterTest extends TestCase
         );
 
         $this->addToAssertionCount(1);
+    }
+
+    public function testGetClientById()
+    {
+        $clientServiceSOAPRequester = $this->getClientServiceSoapRequester();
+        $params                     = new GetClientsParamsRequest();
+        $params->setClientIds([$this->getTestUserId()]);
+
+        $response = $clientServiceSOAPRequester->getClients($params);
+
+        $this->assertEquals($this->getTestUserId(), $response->getClients()[0]->getId());
     }
 
     private function getClientServiceSoapRequester()

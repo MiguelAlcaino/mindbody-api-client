@@ -28,6 +28,15 @@ class GetClientsParamsRequest implements RequestParamsInterface
      */
     private $lastModifiedDate;
 
+    /**
+     * @var array
+     * @Serializer\SerializedName("ClientIDs")
+     * @Serializer\XmlList(entry="string")
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\SkipWhenEmpty()
+     */
+    private $clientIds;
+
     public function __construct(string $searchText = '')
     {
         $this->searchText = $searchText;
@@ -36,6 +45,18 @@ class GetClientsParamsRequest implements RequestParamsInterface
     public function setLastModifiedDate(?DateTimeImmutable $lastModifiedDate): GetClientsParamsRequest
     {
         $this->lastModifiedDate = $lastModifiedDate;
+
+        return $this;
+    }
+
+    public function getClientIds(): array
+    {
+        return $this->clientIds;
+    }
+
+    public function setClientIds(array $clientIds): self
+    {
+        $this->clientIds = $clientIds;
 
         return $this;
     }

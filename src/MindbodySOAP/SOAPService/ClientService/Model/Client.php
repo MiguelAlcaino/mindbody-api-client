@@ -162,7 +162,7 @@ class Client
     private $password;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\SerializedName("Username")
      * @Serializer\SkipWhenEmpty()
      * @Serializer\XmlElement(cdata=false)
@@ -372,7 +372,7 @@ class Client
         return $this;
     }
 
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return $this->username;
     }

@@ -16,6 +16,9 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
     AnnotationRegistry::registerLoader('class_exists');
 
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
-    $dotenv->load();
+    if (file_exists(__DIR__ . '/../.env')) {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+        $dotenv->load();
+    }
+
 })();

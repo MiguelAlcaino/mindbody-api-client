@@ -172,7 +172,7 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
         );
         $handlerStack               = HandlerStack::create($mock);
         $guzzleClient               = new \GuzzleHttp\Client(['handler' => $handlerStack]);
-        $clientServiceSOAPRequester = $this->getClientServiceSoapRequester(false, $guzzleClient);
+        $clientServiceSOAPRequester = $this->getClientServiceSoapRequester(true, $guzzleClient);
 
         $requestParams = new GetClientVisitsParamsRequest('FAKE_CLIENT_ID');
         //Not setting parameters as the response is mocked

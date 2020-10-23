@@ -141,8 +141,8 @@ class SaleServiceSOAPRequestTest extends Unit
          * <OnlinePrice>100.0000</OnlinePrice>
          * <ProgramID>10</ProgramID>
          * <TaxRate>0</TaxRate>
-         * <ProductID>1403</ProductID>
-         * <ID>1403</ID>
+         * <ProductID>1111</ProductID>
+         * <ID>1111</ID>
          * <Name>Intense Bootcamp</Name>
          * <Count>8</Count>
          * </Service>
@@ -152,8 +152,8 @@ class SaleServiceSOAPRequestTest extends Unit
         self::assertEquals(100.0000, $service->getOnlinePrice());
         self::assertEquals(10, $service->getProgramId());
         self::assertEquals(0, $service->getTaxRate());
-        self::assertEquals(1403, $service->getProductId());
-        self::assertEquals(1403, $service->getId());
+        self::assertEquals(1111, $service->getProductId());
+        self::assertEquals(1111, $service->getId());
         self::assertEquals('Intense Bootcamp', $service->getName());
         self::assertEquals(8, $service->getCount());
     }

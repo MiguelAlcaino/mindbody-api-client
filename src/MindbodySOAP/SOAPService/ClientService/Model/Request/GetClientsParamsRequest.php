@@ -7,9 +7,9 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Model\MindbodyPaginatedRequestTrait;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParamsRequest;
 
-class GetClientsParamsRequest implements RequestParamsInterface
+class GetClientsParamsRequest extends AbstractParamsRequest
 {
     use MindbodyPaginatedRequestTrait;
 

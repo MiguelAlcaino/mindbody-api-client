@@ -3,11 +3,11 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request;
 
 use JMS\Serializer\Annotation as Serializer;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\PaymentInfo;
 
-class CheckoutShoppingCartParamsRequest implements RequestParamsInterface
+class CheckoutShoppingCartParamsRequest extends AbstractParamsRequest
 {
     /**
      * @var string

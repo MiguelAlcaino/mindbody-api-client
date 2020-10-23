@@ -6,19 +6,24 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPReque
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\CheckoutShoppingCartParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\CheckoutShoppingCartRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\GetCustomPaymentMethodsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\GetServicesParamsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\GetServicesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\CheckoutShoppingCartResult;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\GetCustomPaymentMethodsResult;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\GetServicesResult;
 
 class SaleServiceSOAPRequester extends AbstractSOAPRequester
 {
     private const SERVICE_URI = 'https://api.mindbodyonline.com/0_5_1/SaleService.asmx';
 
-    public function getServices(?GetServicesRequest $request = null): array
+    public function getServices(GetServicesParamsRequest $request): GetServicesResult
     {
-        return $this->minbodySoapRequester->createEnvelopeAndExecuteRequest(
-            self::SERVICE_URI,
+        return $this->executeRequest(
+            GetServicesRequest::class,
+            GetServicesResult::class,
             'GetServices',
-            $this->decodeRequesterObject($request)
+            self::SERVICE_URI,
+            $request
         );
     }
 

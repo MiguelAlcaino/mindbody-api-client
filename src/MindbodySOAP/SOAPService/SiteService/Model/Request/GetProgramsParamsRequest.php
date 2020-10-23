@@ -2,10 +2,10 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Request;
 
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParamsRequest;
 
-class GetProgramsParamsRequest implements RequestParamsInterface
+class GetProgramsParamsRequest extends AbstractParamsRequest
 {
     /**
      * @var bool

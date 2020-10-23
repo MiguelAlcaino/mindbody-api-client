@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soap:Body>
+        <GetClientVisitsResponse xmlns="http://clients.mindbodyonline.com/api/0_5_1">
+            <GetClientVisitsResult>
+                <Status>Success</Status>
+                <ErrorCode>200</ErrorCode>
+                <XMLDetail>Full</XMLDetail>
+                <ResultCount>1</ResultCount>
+                <CurrentPageIndex>0</CurrentPageIndex>
+                <TotalPageCount>1</TotalPageCount>
+                <ClientAssociatedSitesOffset>0</ClientAssociatedSitesOffset>
+                <ClientAssociatedSitesTotalResults>1</ClientAssociatedSitesTotalResults>
+                <Visits>
+                    <Visit>
+                        <ID>364563</ID>
+                        <ClassID>33609</ClassID>
+                        <AppointmentID>0</AppointmentID>
+                        <StartDateTime>2020-10-24T19:30:00</StartDateTime>
+                        <LateCancelled>false</LateCancelled>
+                        <EndDateTime>2020-10-24T20:15:00</EndDateTime>
+                        <Name>Ride</Name>
+                        <Staff>
+                            <SortOrder>0</SortOrder>
+                            <AppointmentTrn>false</AppointmentTrn>
+                            <ReservationTrn>false</ReservationTrn>
+                            <IndependentContractor>false</IndependentContractor>
+                            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+                            <ID>100000046</ID>
+                            <Name>Amy</Name>
+                            <FirstName>Amy</FirstName>
+                            <LastName>Wu</LastName>
+                            <isMale>false</isMale>
+                        </Staff>
+                        <Location>
+                            <SiteID>564676</SiteID>
+                            <AdditionalImageURLs/>
+                            <FacilitySquareFeet xsi:nil="true"/>
+                            <TreatmentRooms xsi:nil="true"/>
+                            <HasClasses>true</HasClasses>
+                            <ID>1</ID>
+                            <Name>CRANK</Name>
+                            <Address>Unit 43 Al Serkal Avenue</Address>
+                            <Address2>Dubai DU</Address2>
+                            <Tax1>0.05</Tax1>
+                            <Tax2>0</Tax2>
+                            <Tax3>0</Tax3>
+                            <Tax4>0</Tax4>
+                            <Tax5>0</Tax5>
+                            <Phone>043212095</Phone>
+                            <City>Dubai</City>
+                            <StateProvCode>DU</StateProvCode>
+                            <Latitude>25.14071</Latitude>
+                            <Longitude>55.226317999999992</Longitude>
+                        </Location>
+                        <WebSignup>false</WebSignup>
+                        <SignedIn>false</SignedIn>
+                        <MakeUp>false</MakeUp>
+                    </Visit>
+                </Visits>
+            </GetClientVisitsResult>
+        </GetClientVisitsResponse>
+    </soap:Body>
+</soap:Envelope>

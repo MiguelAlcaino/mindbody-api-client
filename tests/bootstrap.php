@@ -15,4 +15,7 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
     $loader->add('JMS\Serializer\Tests', __DIR__);
 
     AnnotationRegistry::registerLoader('class_exists');
+
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+    $dotenv->load();
 })();

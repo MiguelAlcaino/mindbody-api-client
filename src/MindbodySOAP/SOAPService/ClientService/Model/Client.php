@@ -170,7 +170,16 @@ class Client
      */
     private $username;
 
-    public function __construct(string $id)
+    /**
+     * @var string|null
+     * @Serializer\SerializedName("ReferredBy")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $referredBy;
+
+    public function __construct(string $id = null)
     {
         $this->id = $id;
     }
@@ -380,6 +389,18 @@ class Client
     public function setUsername(?string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getReferredBy(): ?string
+    {
+        return $this->referredBy;
+    }
+
+    public function setReferredBy(?string $referredBy): Client
+    {
+        $this->referredBy = $referredBy;
 
         return $this;
     }

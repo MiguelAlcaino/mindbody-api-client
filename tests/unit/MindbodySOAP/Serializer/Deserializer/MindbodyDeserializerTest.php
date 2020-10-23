@@ -1,6 +1,6 @@
 <?php
 
-namespace MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAP\Serializer\Deserializer;
+namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\Serializer\Deserializer;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Deserializer\MindbodyDeserializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Exception\MindbodyDeserializerException;

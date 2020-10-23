@@ -1,15 +1,16 @@
 <?php
 
-namespace MindbodySOAP\SOAPService\SiteService;
+namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\SOAPService\SiteService;
 
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\MindbodySOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Request\GetProgramsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\SiteServiceSOAPRequester;
-use MiguelAlcainoTest\MindbodyApiClient\Unit\MindbodySOAP\Helper\MindbodySerializerTestTrait;
+use MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\Helper\MindbodyUtilsTrait;
 use PHPUnit\Framework\TestCase;
 
 class SiteServiceSOAPRequesterTest extends TestCase
 {
-    use MindbodySerializerTestTrait;
+    use MindbodyUtilsTrait;
 
     public function testGetPrograms()
     {
@@ -17,14 +18,15 @@ class SiteServiceSOAPRequesterTest extends TestCase
 
         $response = $requester->getPrograms(new GetProgramsParamsRequest());
 
-        $this->addToAssertionCount(1);
+        $programs = $response->getPrograms();
+        self::assertGreaterThan(0, count($programs));
     }
 
     private function getSiteServiceSoapRequester()
     {
         return new SiteServiceSOAPRequester(
-            $this->getMindbodySoapRequester(),
-            $this->getMindbodySerializer()
+            new MindbodySOAPRequester(),
+            $this->getMindbodySerializer(true)
         );
     }
 }

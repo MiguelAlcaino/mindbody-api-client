@@ -14,9 +14,10 @@
         "ext-dom": "*",
         "ext-json": "*",
         "ext-simplexml": "*",
-        "guzzlehttp/guzzle": "^6.5",
+        "guzzlehttp/guzzle": "^7.2",
         "jms/serializer": "^3.4",
-        "spatie/enum": "^2.3"
+        "spatie/enum": "^3.3",
+        "vlucas/phpdotenv": "^5.2"
     },
     "autoload": {
         "psr-4": {
@@ -25,10 +26,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "MiguelAlcainoTest\\MindbodyApiClient\\Unit\\": "./tests/unit"
+            "MiguelAlcainoTest\\MindbodyApiClient\\Test\\Unit\\": "./tests/unit"
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^8"
+        "codeception/codeception": "^4.1",
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/specify": "^1.4"
     }
 }

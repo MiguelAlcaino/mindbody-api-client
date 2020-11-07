@@ -14,7 +14,7 @@
         "ext-dom": "*",
         "ext-json": "*",
         "ext-simplexml": "*",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^6.5",
         "jms/serializer": "^3.4",
         "spatie/enum": "^3.3",
         "vlucas/phpdotenv": "^5.2"

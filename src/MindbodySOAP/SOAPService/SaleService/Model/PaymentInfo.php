@@ -33,7 +33,7 @@ class PaymentInfo
     public function __construct(float $amount, PaymentInfoTypeEnum $type)
     {
         $this->amount = $amount;
-        $this->type   = $type->getValue();
+        $this->type   = $type->value;
     }
 
     public function getId(): int

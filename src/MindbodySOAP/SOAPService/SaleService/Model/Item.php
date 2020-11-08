@@ -44,7 +44,7 @@ class Item
     public function __construct(int $id, ItemTypeEnum $type)
     {
         $this->id   = $id;
-        $this->type = $type->getValue();
+        $this->type = $type->value;
     }
 
     public function getId(): int

@@ -7,6 +7,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Exception\RequestException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Exception\MindbodyDeserializerException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Exception\MindbodySerializerException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Serializer\MindbodySerializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\SOAPMethodResultInterface;
 
@@ -40,6 +41,7 @@ abstract class AbstractSOAPRequester
     }
 
     /**
+     * @param AbstractParamsRequest|RequestParamsInterface $request
      * @throws MindbodySerializerException
      * @throws MindbodyDeserializerException
      * @throws RequestException
@@ -58,7 +60,8 @@ abstract class AbstractSOAPRequester
             $responseBody = $this->minbodySoapRequester->request(
                 $serviceUrl,
                 $methodName,
-                $serializedBody
+                $serializedBody,
+                $request->getHeaders()
             );
         } catch (GuzzleException $exception) {
             throw RequestException::createFromRequest($serializedBody, $request, $exception);

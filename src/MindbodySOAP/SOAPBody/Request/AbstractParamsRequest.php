@@ -15,8 +15,23 @@ abstract class AbstractParamsRequest implements RequestParamsInterface
      */
     private $test;
 
+    /** @var array */
+    private $headers = [];
+
     public function setTest(bool $test): void
     {
         $this->test = $test;
+    }
+
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
+    public function setHeaders(array $headers): self
+    {
+        $this->headers = $headers;
+
+        return $this;
     }
 }

@@ -20,18 +20,26 @@ class MindbodySOAPRequester
     /**
      * @throws GuzzleException
      */
-    public function request(string $uri, string $methodName, string $body): string
-    {
-        $result = $this->guzzleClient->request(
+    public function request(
+        string $uri,
+        string $methodName,
+        string $body,
+        array $newHeaders = []
+    ): string {
+        $headers = [
+            'Content-Type' => 'text/xml; charset=utf-8',
+            'SOAPAction'   => "http://clients.mindbodyonline.com/api/0_5_1/{$methodName}",
+            'Host'         => self::HEADER_HOST,
+        ];
+
+        $headers = array_merge($headers, $newHeaders);
+
+        $result  = $this->guzzleClient->request(
             'POST',
             $uri,
             [
                 'body'    => $body,
-                'headers' => [
-                    'Content-Type' => 'text/xml; charset=utf-8',
-                    'SOAPAction'   => "http://clients.mindbodyonline.com/api/0_5_1/{$methodName}",
-                    'Host'         => self::HEADER_HOST,
-                ],
+                'headers' => $headers,
             ]
         );
 

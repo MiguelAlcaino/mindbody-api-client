@@ -15,7 +15,10 @@ abstract class AbstractParamsRequest implements RequestParamsInterface
      */
     private $test;
 
-    /** @var array */
+    /**
+     * @var array
+     * @Serializer\Exclude
+     */
     private $headers = [];
 
     public function setTest(bool $test): void

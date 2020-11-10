@@ -42,6 +42,7 @@ abstract class AbstractSOAPRequester
 
     /**
      * @param AbstractParamsRequest|RequestParamsInterface $request
+     *
      * @throws MindbodySerializerException
      * @throws MindbodyDeserializerException
      * @throws RequestException
@@ -61,7 +62,7 @@ abstract class AbstractSOAPRequester
                 $serviceUrl,
                 $methodName,
                 $serializedBody,
-                $request->getHeaders()
+                null !== $request ? $request->getHeaders() : []
             );
         } catch (GuzzleException $exception) {
             throw RequestException::createFromRequest($serializedBody, $request, $exception);

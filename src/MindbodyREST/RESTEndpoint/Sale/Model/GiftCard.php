@@ -17,7 +17,7 @@ class GiftCard
     private string $description;
 
     /**
-     * @Serializer\SerializedName("SalePrice")
+     * @Serializer\SerializedName("CardValue")
      */
     private float $cardValue;
 

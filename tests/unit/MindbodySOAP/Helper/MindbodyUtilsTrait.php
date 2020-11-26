@@ -36,6 +36,14 @@ trait MindbodyUtilsTrait
         );
     }
 
+    private function getSiteIds(): array {
+        return json_decode($_SERVER['MINDBODY_SITE_IDS']);
+    }
+
+    private function getApiKey(): string {
+        return $_SERVER['MINDBODY_REST_API_KEY'];
+    }
+
     private function getTestUsername(): string
     {
         return $_SERVER['MINDBODY_TEST_CLIENT_EMAIL'];

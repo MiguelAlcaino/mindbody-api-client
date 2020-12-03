@@ -47,13 +47,18 @@ class MindbodyRESTRequester
 
         $headers = array_merge($headers, $newHeaders);
 
+        $options = ['headers' => $headers];
+
+        if (strtoupper($method) === 'GET') {
+            $options['query'] = json_decode($body, true);
+        } elseif (strtoupper($method) === 'POST') {
+            $options['body'] = $body;
+        }
+
         $result = $this->guzzleClient->request(
             $method,
             $this->apiHost . $endpointPath,
-            [
-                'body'    => $body,
-                'headers' => $headers,
-            ]
+            $options
         );
 
         return $result->getBody()->getContents();

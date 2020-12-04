@@ -4,9 +4,10 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester;
 
 use JMS\Serializer\SerializerInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserStaffTokenRequiredInterface;
 
-abstract class AbstractRESTRequester
+class RESTRequesterExecutor
 {
     private MindbodyRESTRequester $mindbodyRESTRequester;
     private SerializerInterface   $serializer;
@@ -19,7 +20,7 @@ abstract class AbstractRESTRequester
         $this->serializer            = $serializer;
     }
 
-    protected function executeRequest(RESTRequest $request, string $responseClass)
+    public function executeRequest(RESTRequest $request, string $responseClass): RESTResponse
     {
         $body = $this->serializer->serialize($request, 'json');
 
@@ -36,6 +37,12 @@ abstract class AbstractRESTRequester
             $userStaffToken
         );
 
-        return $this->serializer->deserialize($data, $responseClass, 'json');
+        /**
+         * @var RESTResponse $response
+         */
+        $response = $this->serializer->deserialize($data, $responseClass, 'json');
+        $response->setPayload($data);
+
+        return $response;
     }
 }

@@ -3,8 +3,9 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\UserToken\Response;
 
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTResponse;
 
-class POSTIssueResponse
+class POSTIssueResponse extends RESTResponse
 {
     /**
      * @Serializer\SerializedName("TokenType")

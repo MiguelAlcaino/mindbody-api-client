@@ -3,8 +3,9 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response;
 
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTResponse;
 
-class GetGiftCardBalanceResponse
+class GetGiftCardBalanceResponse extends RESTResponse
 {
     /**
      * @Serializer\SerializedName("BarcodeId")

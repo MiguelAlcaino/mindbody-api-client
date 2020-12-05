@@ -5,6 +5,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util;
 use GuzzleHttp\Exception\ClientException;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Exception\MindbodyRESTResponseException;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Exception\NotEnoughBalanceInGiftCardException;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\UserToken\Exception\AccessDeniedException;
 
 class ResponseExceptionHandler
 {
@@ -18,6 +19,8 @@ class ResponseExceptionHandler
                 $explodedErrorMessage = explode('Balance is $', $decodedBody['Error']['Message']);
 
                 return NotEnoughBalanceInGiftCardException::create((float)$explodedErrorMessage[1]);
+            } elseif (isset($decodedBody['Error']['Code']) && $decodedBody['Error']['Code'] === 'DeniedAccess') {
+                return AccessDeniedException::create($decodedBody['Error']['Message']);
             }
         }
 

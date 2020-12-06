@@ -59,4 +59,24 @@ class PaymentMetadata
 
         return $this;
     }
+
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getCardNumber(): ?string
+    {
+        return $this->cardNumber;
+    }
+
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
 }

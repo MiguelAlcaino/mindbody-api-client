@@ -27,4 +27,9 @@ class PaymentInfo
     {
         return PaymentInfoTypeEnum::make($this->type);
     }
+
+    public function getPaymentMetadata(): PaymentMetadata
+    {
+        return $this->paymentMetadata;
+    }
 }

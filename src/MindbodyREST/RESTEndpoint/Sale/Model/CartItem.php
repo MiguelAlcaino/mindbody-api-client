@@ -16,10 +16,38 @@ class CartItem
      */
     private int $quantity;
 
+    /**
+     * @Serializer\SerializedName("VisitIds")
+     * @Serializer\Type("array<int>")
+     * @Serializer\SkipWhenEmpty
+     */
+    private ?array $visitIds;
+
+    /**
+     * @Serializer\SerializedName("DiscountAmount")
+     * @Serializer\SkipWhenEmpty
+     */
+    private ?float $discountAmount;
+
     public function __construct(Item $item, int $quantity)
     {
-        $this->item     = $item;
-        $this->quantity = $quantity;
+        $this->item           = $item;
+        $this->quantity       = $quantity;
+        $this->visitIds       = null;
+        $this->discountAmount = null;
     }
 
+    public function setVisitIds(array $visitIds): self
+    {
+        $this->visitIds = $visitIds;
+
+        return $this;
+    }
+
+    public function setDiscountAmount(float $discountAmount): self
+    {
+        $this->discountAmount = $discountAmount;
+
+        return $this;
+    }
 }

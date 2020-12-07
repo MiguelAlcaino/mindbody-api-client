@@ -101,6 +101,11 @@ class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTo
         return $this;
     }
 
+    public function getPayments(): array
+    {
+        return $this->payments;
+    }
+
     public function getMethod(): string
     {
         return 'POST';

@@ -8,10 +8,7 @@ use JMS\Serializer\SerializerInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Deserializer\MindbodyDeserializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Exception\MindbodySerializerException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Factory\EnvelopeRequestFactory;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\Request;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestParamsInterface;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredentials;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\UserCredentials;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractSOAPMethod;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\SOAPMethodResultInterface;
 use Throwable;
 
@@ -23,43 +20,22 @@ class MindbodySerializer
     /** @var MindbodyDeserializer */
     protected $deserializer;
 
-    /** @var SourceCredentials */
-    private $sourceCredentials;
-
-    /** @var UserCredentials|null */
-    private $userCredentials;
-
     /** @var string */
     private $format;
 
     public function __construct(
         SerializerInterface $serializer,
         MindbodyDeserializer $deserializer,
-        SourceCredentials $sourceCredentials,
-        ?UserCredentials $userCredentials = null,
         string $format = 'xml'
     ) {
-        $this->serializer        = $serializer;
-        $this->deserializer      = $deserializer;
-        $this->sourceCredentials = $sourceCredentials;
-        $this->userCredentials   = $userCredentials;
-        $this->format            = $format;
+        $this->serializer   = $serializer;
+        $this->deserializer = $deserializer;
+        $this->format       = $format;
     }
 
-    public function serialize(
-        string $requestClass,
-        RequestParamsInterface $requestParams = null,
-        bool $useUserCredentials = true
-    ): string {
-        $envelope = EnvelopeRequestFactory::create(
-            new $requestClass(
-                new Request(
-                    $this->sourceCredentials,
-                    $requestParams,
-                    $useUserCredentials ? $this->userCredentials : null
-                )
-            )
-        );
+    public function serialize(AbstractSOAPMethod $requestCredentials): string
+    {
+        $envelope = EnvelopeRequestFactory::create($requestCredentials);
         try {
             return $this->serializer->serialize($envelope, $this->format);
         } catch (Throwable $exception) {

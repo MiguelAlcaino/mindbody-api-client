@@ -162,7 +162,9 @@ class SaleServiceSOAPRequestTest extends Unit
     {
         return new SaleServiceSOAPRequester(
             new MindbodySOAPRequester($guzzleClient),
-            $this->getMindbodySerializer($useFreeSite)
+            $this->getMindbodySerializer(),
+            $this->getSourceCredentials($useFreeSite),
+            $this->getUserCredentials($useFreeSite)
         );
     }
 

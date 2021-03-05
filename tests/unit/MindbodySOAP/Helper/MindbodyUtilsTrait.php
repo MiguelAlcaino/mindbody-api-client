@@ -10,30 +10,38 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\UserCredential
 
 trait MindbodyUtilsTrait
 {
-    public function getMindbodySerializer(bool $useFreeClient = true)
+    public function getMindbodySerializer()
     {
-        $siteIds        = $useFreeClient ? json_decode($_SERVER['MINDBODY_FREE_API_SITE_IDS']) : json_decode($_SERVER['MINDBODY_SITE_IDS']);
-        $sourceName     = $useFreeClient ? $_SERVER['MINDBODY_FREE_API_SOURCE_NAME'] : $_SERVER['MINDBODY_SOURCE_NAME'];
-        $sourcePassword = $useFreeClient ? $_SERVER['MINDBODY_FREE_API_SOURCE_PASSWORD'] : $_SERVER['MINDBODY_SOURCE_PASSWORD'];
-        $adminUser      = $useFreeClient ? $_SERVER['MINDBODY_FREE_API_ADMIN_USER'] : $_SERVER['MINDBODY_ADMIN_USER'];
-        $adminPassword  = $useFreeClient ? $_SERVER['MINDBODY_FREE_API_ADMIN_PASSWORD'] : $_SERVER['MINDBODY_ADMIN_PASSWORD'];
-
         $jmsSerializerFactory = new JmsSerializerFactory();
         $jmsSerializer        = $jmsSerializerFactory->create();
 
         return new MindbodySerializer(
             $jmsSerializer,
-            new MindbodyDeserializer($jmsSerializer),
-            new SourceCredentials(
-                $sourceName,
-                $sourcePassword,
-                $siteIds
-            ), new UserCredentials(
-                $adminUser,
-                $adminPassword,
-                $siteIds
-            )
+            new MindbodyDeserializer($jmsSerializer)
         );
+    }
+
+    public function getSourceCredentials(bool $useFreeClient = true): SourceCredentials
+    {
+        return new SourceCredentials(
+            $useFreeClient ? $_SERVER['MINDBODY_FREE_API_SOURCE_NAME'] : $_SERVER['MINDBODY_SOURCE_NAME'],
+            $useFreeClient ? $_SERVER['MINDBODY_FREE_API_SOURCE_PASSWORD'] : $_SERVER['MINDBODY_SOURCE_PASSWORD'],
+            $this->getSiteIds($useFreeClient)
+        );
+    }
+
+    public function getUserCredentials(bool $useFreeClient = true): UserCredentials
+    {
+        return new UserCredentials(
+            $useFreeClient ? $_SERVER['MINDBODY_FREE_API_ADMIN_USER'] : $_SERVER['MINDBODY_ADMIN_USER'],
+            $useFreeClient ? $_SERVER['MINDBODY_FREE_API_ADMIN_PASSWORD'] : $_SERVER['MINDBODY_ADMIN_PASSWORD'],
+            $this->getSiteIds($useFreeClient)
+        );
+    }
+
+    private function getSiteIds(bool $useFreeClient = true)
+    {
+        return $useFreeClient ? json_decode($_SERVER['MINDBODY_FREE_API_SITE_IDS']) : json_decode($_SERVER['MINDBODY_SITE_IDS']);
     }
 
     private function getSiteIds(): array {

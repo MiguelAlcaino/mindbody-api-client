@@ -26,7 +26,9 @@ class SiteServiceSOAPRequesterTest extends TestCase
     {
         return new SiteServiceSOAPRequester(
             new MindbodySOAPRequester(),
-            $this->getMindbodySerializer(true)
+            $this->getMindbodySerializer(),
+            $this->getSourceCredentials(),
+            $this->getUserCredentials()
         );
     }
 }

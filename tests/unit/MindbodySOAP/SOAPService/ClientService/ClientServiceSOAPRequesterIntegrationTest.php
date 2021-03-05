@@ -224,7 +224,9 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
     {
         return new ClientServiceSOAPRequester(
             new MindbodySOAPRequester($guzzleClient),
-            $this->getMindbodySerializer($useFreeSite)
+            $this->getMindbodySerializer(),
+            $this->getSourceCredentials($useFreeSite),
+            $this->getUserCredentials($useFreeSite)
         );
     }
 
@@ -232,7 +234,9 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
     {
         return new SiteServiceSOAPRequester(
             new MindbodySOAPRequester(),
-            $this->getMindbodySerializer()
+            $this->getMindbodySerializer(),
+            $this->getSourceCredentials(),
+            $this->getUserCredentials()
         );
     }
 

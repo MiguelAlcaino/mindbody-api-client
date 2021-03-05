@@ -44,11 +44,18 @@ trait MindbodyUtilsTrait
         return $useFreeClient ? json_decode($_SERVER['MINDBODY_FREE_API_SITE_IDS']) : json_decode($_SERVER['MINDBODY_SITE_IDS']);
     }
 
-    private function getSiteIds(): array {
-        return json_decode($_SERVER['MINDBODY_SITE_IDS']);
+    private function getAdminUsername(): string
+    {
+        return $_SERVER['MINDBODY_ADMIN_USER'];
     }
 
-    private function getApiKey(): string {
+    private function getAdminPassword(): string
+    {
+        return $_SERVER['MINDBODY_ADMIN_PASSWORD'];
+    }
+
+    private function getApiKey(): string
+    {
         return $_SERVER['MINDBODY_REST_API_KEY'];
     }
 

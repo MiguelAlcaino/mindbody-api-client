@@ -100,7 +100,7 @@ abstract class AbstractSOAPRequester
 
     private function getRequest(
         string $requestClass,
-        AbstractParamsRequest $requestParams,
+        ?AbstractParamsRequest $requestParams,
         bool $useUserCredentials
     ): AbstractSOAPMethod {
         $preEnvelopedInstance = new $requestClass(

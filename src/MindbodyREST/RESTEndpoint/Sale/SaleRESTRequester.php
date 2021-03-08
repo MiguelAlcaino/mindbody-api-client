@@ -7,9 +7,11 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExec
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\GETGiftCardBalanceRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\GETGiftCardsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\GETServicesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\POSTCheckoutShoppingCartRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\GetGiftCardBalanceResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\GETGiftCardsResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\GETServicesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\POSTCheckoutShoppingCartResponse;
 
 class SaleRESTRequester
@@ -42,5 +44,10 @@ class SaleRESTRequester
         } catch (ClientException $exception) {
             throw $this->responseExceptionHandler->getMindbodyException($exception);
         }
+    }
+
+    public function getServices(GETServicesRequest $request): GETServicesResponse
+    {
+        return $this->restRequester->executeRequest($request, GETServicesResponse::class);
     }
 }

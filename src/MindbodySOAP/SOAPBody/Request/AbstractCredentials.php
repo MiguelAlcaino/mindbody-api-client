@@ -28,7 +28,7 @@ abstract class AbstractCredentials
         $this->siteIds  = $siteIds;
     }
 
-    protected function getPassword(): string
+    public function getPassword(): string
     {
         return $this->password;
     }

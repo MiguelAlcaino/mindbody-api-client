@@ -21,4 +21,8 @@ class UserCredentials extends AbstractCredentials
         parent::__construct($password, $siteIds);
     }
 
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
 }

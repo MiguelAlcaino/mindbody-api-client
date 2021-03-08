@@ -9,18 +9,15 @@ class MindbodyRESTRequester
 {
     private const API_HOST = 'https://api.mindbodyonline.com/public/v6/';
     private string $apiKey;
-    private int    $siteId;
     private Client $guzzleClient;
     private string $apiHost;
 
     public function __construct(
         string $apiKey,
-        int $siteId,
         Client $guzzleClient,
         string $apiHost = null
     ) {
         $this->apiKey       = $apiKey;
-        $this->siteId       = $siteId;
         $this->guzzleClient = $guzzleClient;
         $this->apiHost      = $apiHost ?? self::API_HOST;
     }
@@ -32,13 +29,14 @@ class MindbodyRESTRequester
         string $method,
         string $endpointPath,
         string $body,
+        int $siteId,
         ?string $staffUserToken = null,
         array $newHeaders = []
     ): string {
         $headers = [
             'Content-Type' => 'application/json',
             'Api-Key'      => $this->apiKey,
-            'SiteId'       => $this->siteId,
+            'SiteId'       => $siteId,
         ];
 
         if (null !== $staffUserToken) {

@@ -11,11 +11,28 @@ abstract class RESTRequest
      */
     private bool $test = false;
 
+    /**
+     * @Serializer\Exclude
+     */
+    private int $siteId;
+
     public function setTest(bool $test): self
     {
         $this->test = $test;
 
         return $this;
+    }
+
+    public function setSiteId(int $siteId): self
+    {
+        $this->siteId = $siteId;
+
+        return $this;
+    }
+
+    public function getSiteId(): int
+    {
+        return $this->siteId;
     }
 
     public abstract function getMethod(): string;

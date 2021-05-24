@@ -10,7 +10,7 @@ class GETClientServicesResponse extends RESTResponse
 {
     /**
      * @Serializer\SerializedName("ClientServices")
-     * @Serializer\Type(array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model\ClientService>)
+     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\ClientService>")
      * @var ClientService[]
      */
     private array $clientServices;

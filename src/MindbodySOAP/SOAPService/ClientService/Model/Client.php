@@ -14,6 +14,7 @@ class Client
      * @Serializer\SerializedName("ID")
      * @Serializer\XmlElement(cdata=false)
      * @Serializer\Type("string")
+     * @Serializer\SkipWhenEmpty()
      */
     private $id;
 
@@ -179,6 +180,33 @@ class Client
      */
     private $referredBy;
 
+    /**
+     * @var string|null
+     * @Serializer\SerializedName("EmergencyContactInfoName")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $emergencyContactInfoName;
+
+    /**
+     * @var string|null
+     * @Serializer\SerializedName("EmergencyContactInfoRelationship")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $emergencyContactInfoRelationship;
+
+    /**
+     * @var string|null
+     * @Serializer\SerializedName("EmergencyContactInfoPhone")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("string")
+     */
+    private $emergencyContactInfoPhone;
+
     public function __construct(string $id = null)
     {
         $this->id = $id;
@@ -187,6 +215,13 @@ class Client
     public function getId(): string
     {
         return $this->id;
+    }
+
+    public function clearId(): self
+    {
+        $this->id = null;
+
+        return $this;
     }
 
     public function isPromotionalEmailOptIn(): ?bool
@@ -403,5 +438,20 @@ class Client
         $this->referredBy = $referredBy;
 
         return $this;
+    }
+
+    public function getEmergencyContactInfoName(): ?string
+    {
+        return $this->emergencyContactInfoName;
+    }
+
+    public function getEmergencyContactInfoRelationship(): ?string
+    {
+        return $this->emergencyContactInfoRelationship;
+    }
+
+    public function getEmergencyContactInfoPhone(): ?string
+    {
+        return $this->emergencyContactInfoPhone;
     }
 }

@@ -13,8 +13,9 @@ class GETServicesRequest extends RESTRequest implements UserStaffTokenRequiredIn
 
     /**
      * @Serializer\SerializedName("SellOnline")
+     * @Serializer\Type("string")
      */
-    private bool $sellOnline;
+    private string $sellOnline;
 
     public function __construct()
     {
@@ -23,7 +24,7 @@ class GETServicesRequest extends RESTRequest implements UserStaffTokenRequiredIn
 
     public function setSellOnline(bool $sellOnline): self
     {
-        $this->sellOnline = $sellOnline;
+        $this->sellOnline = $sellOnline ? 'true' : 'false';
 
         return $this;
     }

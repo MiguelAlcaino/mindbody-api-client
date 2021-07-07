@@ -9,7 +9,7 @@ class PurchasedCartItem
     /**
      * @Serializer\SerializedName("Id")
      */
-    private string $id;
+    private ?string $id;
 
     /**
      * @Serializer\SerializedName("Name")
@@ -47,7 +47,7 @@ class PurchasedCartItem
      */
     private float $taxIncluded;
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }

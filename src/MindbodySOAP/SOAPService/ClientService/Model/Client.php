@@ -140,7 +140,7 @@ class Client
      * @Serializer\SerializedName("BirthDate")
      * @Serializer\SkipWhenEmpty()
      * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
+     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s','',['Y-m-d\TH:i:s.v','Y-m-d\TH:i:s']>")
      */
     private $birthday;
 

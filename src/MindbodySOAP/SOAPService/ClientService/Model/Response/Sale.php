@@ -23,6 +23,14 @@ class Sale
      */
     private $saleDateTime;
 
+    /**
+     * @var DateTimeImmutable
+     * @Serializer\SerializedName("OriginalSaleDateTime")
+     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s\Z'>")
+     * @Serializer\XmlElement(cdata=false)
+     */
+    private $originalSaleDateTime;
+
     public function getId(): string
     {
         return $this->id;
@@ -31,5 +39,10 @@ class Sale
     public function getSaleDateTime(): DateTimeImmutable
     {
         return $this->saleDateTime;
+    }
+
+    public function getOriginalSaleDateTime(): DateTimeImmutable
+    {
+        return $this->originalSaleDateTime;
     }
 }

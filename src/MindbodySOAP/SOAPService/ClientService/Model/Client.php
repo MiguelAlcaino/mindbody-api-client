@@ -6,6 +6,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\HomeLocation;
 
 class Client
 {
@@ -206,6 +207,15 @@ class Client
      * @Serializer\Type("string")
      */
     private $emergencyContactInfoPhone;
+
+    /**
+     * @var HomeLocation|null
+     * @Serializer\SerializedName("HomeLocation")
+     * @Serializer\SkipWhenEmpty
+     * @Serializer\XmlElement(cdata=false)
+     * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\HomeLocation")
+     */
+    private $homeLocation;
 
     public function __construct(string $id = null)
     {
@@ -453,5 +463,10 @@ class Client
     public function getEmergencyContactInfoPhone(): ?string
     {
         return $this->emergencyContactInfoPhone;
+    }
+
+    public function getHomeLocation(): ?HomeLocation
+    {
+        return $this->homeLocation;
     }
 }

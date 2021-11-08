@@ -36,12 +36,12 @@ class Sale
         return $this->id;
     }
 
-    public function getSaleDateTime(): DateTimeImmutable
+    public function getSaleDateTime(): ?DateTimeImmutable
     {
         return $this->saleDateTime;
     }
 
-    public function getOriginalSaleDateTime(): DateTimeImmutable
+    public function getOriginalSaleDateTime(): ?DateTimeImmutable
     {
         return $this->originalSaleDateTime;
     }

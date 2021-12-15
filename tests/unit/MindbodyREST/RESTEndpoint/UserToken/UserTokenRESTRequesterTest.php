@@ -2,7 +2,6 @@
 
 namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodyREST\RESTEndpoint\UserToken;
 
-use Codeception\Test\Unit;
 use GuzzleHttp\Client;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\MindbodyRESTRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
@@ -11,8 +10,9 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\UserToken\Request\
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\UserToken\UserTokenRESTRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\JmsSerializerFactory;
 use MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\Helper\MindbodyUtilsTrait;
+use PHPUnit\Framework\TestCase;
 
-class UserTokenRESTRequesterTest extends Unit
+class UserTokenRESTRequesterTest extends TestCase
 {
     use MindbodyUtilsTrait;
 
@@ -29,7 +29,7 @@ class UserTokenRESTRequesterTest extends Unit
         self::assertNotNull($response);
     }
 
-    private function getRequester()
+    private function getRequester(): UserTokenRESTRequester
     {
         $serializerFactory = new JmsSerializerFactory();
         $serializer        = $serializerFactory->create();

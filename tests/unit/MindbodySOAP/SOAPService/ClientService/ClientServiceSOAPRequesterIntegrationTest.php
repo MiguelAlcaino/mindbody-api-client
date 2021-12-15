@@ -2,35 +2,29 @@
 
 namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\SOAPService\ClientService;
 
-use Codeception\Specify;
-use Codeception\Test\Unit;
-use DateTimeImmutable;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\MindbodySOAPRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\ClientServiceSOAPRequester;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Factory\GetClientServicesParamsRequestFactory;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\AddOrUpdateClientsParamsRequest;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientPurchasesParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\GetClientVisitsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Request\ValidateLoginParamsRequest;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Request\GetProgramsParamsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\SiteServiceSOAPRequester;
 use MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\Helper\MindbodyUtilsTrait;
+use PHPUnit\Framework\TestCase;
 
-class ClientServiceSOAPRequesterIntegrationTest extends Unit
+class ClientServiceSOAPRequesterIntegrationTest extends TestCase
 {
     use MindbodyUtilsTrait;
-    use Specify;
 
-    public function testClientService()
+    public function testClientService(): void
     {
         $clientServiceSOAPRequester = $this->getClientServiceSoapRequester(true);
 
-        $email    = sprintf('alfonso%s@pacheco.com', uniqid());
+        $email    = sprintf('alfonso%s@pacheco.com', uniqid('', true));
         $password = 'RandomBailecito2020';
 
         $newClient = new Client();
@@ -54,98 +48,70 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
             ]
         );
 
-        $this->specify(
-            'Add a new client to Mindbody',
-            function () use (&$newClient, $clientServiceSOAPRequester, $newClientParamsRequest) {
-                $response = $clientServiceSOAPRequester->addOrUpdateClient($newClientParamsRequest);
-                $clients  = $response->getClients();
-                self::assertCount(1, $clients);
+        // Add a new client to Mindbody
+        $response = $clientServiceSOAPRequester->addOrUpdateClient($newClientParamsRequest);
+        $clients  = $response->getClients();
+        self::assertCount(1, $clients);
 
-                $newClient = $clients[0];
+        $newClient = $clients[0];
 
-                self::assertEquals('Alfonso', $newClient->getFirstName());
-                self::assertEquals(false, $newClient->isPromotionalEmailOptIn());
-            }
+        self::assertEquals('Alfonso', $newClient->getFirstName());
+        self::assertEquals(false, $newClient->isPromotionalEmailOptIn());
+
+        // Opt-in Promo emails
+
+        $request = new AddOrUpdateClientsParamsRequest(
+            [
+                (new Client($newClient->getId()))->setPromotionalEmailOptIn(true),
+            ]
         );
 
-        $this->specify(
-            'Opt-in Promo emails',
-            function () use ($newClient, $clientServiceSOAPRequester) {
-                $request = new AddOrUpdateClientsParamsRequest(
-                    [
-                        (new Client($newClient->getId()))->setPromotionalEmailOptIn(true),
-                    ]
-                );
+        $response = $clientServiceSOAPRequester->addOrUpdateClient($request);
 
-                $response = $clientServiceSOAPRequester->addOrUpdateClient($request);
+        $clients = $response->getClients();
 
-                $clients = $response->getClients();
+        self::assertCount(1, $clients);
+        self::assertEquals(true, $clients[0]->isPromotionalEmailOptIn());
 
-                self::assertCount(1, $clients);
-                self::assertEquals(true, $clients[0]->isPromotionalEmailOptIn());
-            }
+        // Get full list of clients in Mindbody
+        $response = $clientServiceSOAPRequester->getClients(
+            (new GetClientsParamsRequest())->setPageSize(2)->setCurrentPageIndex(0)
         );
 
-        $this->specify(
-            'Get full list of clients in Mindbody',
-            function () use ($clientServiceSOAPRequester) {
-                $response = $clientServiceSOAPRequester->getClients(
-                    (new GetClientsParamsRequest())->setPageSize(2)->setCurrentPageIndex(0)
-                );
+        $clients = $response->getClients();
 
-                $clients = $response->getClients();
+        self::assertCount(2, $clients);
 
-                self::assertCount(2, $clients);
-            }
-        );
+        // Test user login
+        $client = $this->testLogin($clientServiceSOAPRequester, $email, $password);
 
-        $client = null;
-        $this->specify(
-            'Test user login',
-            function () use (&$client, $clientServiceSOAPRequester, $email, $password) {
-                $client = $this->testLogin($clientServiceSOAPRequester, $email, $password);
-            }
-        );
+        // Find a client by its ID
+        $params = new GetClientsParamsRequest();
+        $params->setClientIds([$client->getId()]);
 
-        $this->specify(
-            'Find a client by its ID',
-            function () use ($clientServiceSOAPRequester, $client) {
-                $params = new GetClientsParamsRequest();
-                $params->setClientIds([$client->getId()]);
+        $response = $clientServiceSOAPRequester->getClients($params);
 
-                $response = $clientServiceSOAPRequester->getClients($params);
-
-                self::assertEquals($client->getId(), $response->getClients()[0]->getId());
-            }
-        );
+        self::assertEquals($client->getId(), $response->getClients()[0]->getId());
 
         $newPassword = 'BailecitoBienMeneao12';
 
-        $this->specify(
-            'Update client\'s password',
-            function () use ($clientServiceSOAPRequester, $email, $newPassword, $client) {
-                $response = $clientServiceSOAPRequester->addOrUpdateClient(
-                    new AddOrUpdateClientsParamsRequest(
-                        [
-                            (new Client($client->getId()))
-                                ->setUsername($email)
-                                ->setPassword($newPassword),
-                        ]
-                    )
-                );
-
-                $clients = $response->getClients();
-                self::assertCount(1, $clients);
-                self::assertEquals($email, $clients[0]->getEmail());
-            }
+        // Update client's password
+        $response = $clientServiceSOAPRequester->addOrUpdateClient(
+            new AddOrUpdateClientsParamsRequest(
+                [
+                    (new Client($client->getId()))
+                        ->setUsername($email)
+                        ->setPassword($newPassword),
+                ]
+            )
         );
 
-        $this->specify(
-            'Login with new password',
-            function () use ($clientServiceSOAPRequester, $email, $newPassword) {
-                $this->testLogin($clientServiceSOAPRequester, $email, $newPassword);
-            }
-        );
+        $clients = $response->getClients();
+        self::assertCount(1, $clients);
+        self::assertEquals($email, $clients[0]->getEmail());
+
+        //Login with new password
+        $this->testLogin($clientServiceSOAPRequester, $email, $newPassword);
     }
 
     private function testLogin(ClientServiceSOAPRequester $clientServiceSOAPRequester, string $email, string $password): Client
@@ -163,7 +129,7 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
         return $client;
     }
 
-    public function testClientVisitsWithMockedResponse()
+    public function testClientVisitsWithMockedResponse(): void
     {
         $mock                       = new MockHandler(
             [
@@ -220,7 +186,7 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
     //     $this->addToAssertionCount(1);
     // }
 
-    private function getClientServiceSoapRequester($useFreeSite = true, \GuzzleHttp\Client $guzzleClient = null)
+    private function getClientServiceSoapRequester($useFreeSite = true, \GuzzleHttp\Client $guzzleClient = null): ClientServiceSOAPRequester
     {
         return new ClientServiceSOAPRequester(
             new MindbodySOAPRequester($guzzleClient),
@@ -230,7 +196,7 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
         );
     }
 
-    private function getSiteServiceSoapRequester()
+    private function getSiteServiceSoapRequester(): SiteServiceSOAPRequester
     {
         return new SiteServiceSOAPRequester(
             new MindbodySOAPRequester(),
@@ -242,6 +208,6 @@ class ClientServiceSOAPRequesterIntegrationTest extends Unit
 
     private function getClientVisitsResponseBody(): string
     {
-        return file_get_contents(__DIR__ . '/../../../Resources/mindbody_responses/GetClientVisitsResponse.xml');
+        return file_get_contents(__DIR__.'/../../../Resources/mindbody_responses/GetClientVisitsResponse.xml');
     }
 }

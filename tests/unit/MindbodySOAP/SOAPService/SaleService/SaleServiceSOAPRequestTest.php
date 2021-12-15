@@ -2,7 +2,6 @@
 
 namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\SOAPService\SaleService;
 
-use Codeception\Test\Unit;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -19,7 +18,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\SaleSer
 use MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\Helper\MindbodyUtilsTrait;
 use PHPUnit\Framework\TestCase;
 
-class SaleServiceSOAPRequestTest extends Unit
+class SaleServiceSOAPRequestTest extends TestCase
 {
     use MindbodyUtilsTrait;
 

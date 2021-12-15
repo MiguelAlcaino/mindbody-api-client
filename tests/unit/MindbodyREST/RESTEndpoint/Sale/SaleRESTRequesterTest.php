@@ -2,7 +2,6 @@
 
 namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodyREST\RESTEndpoint\Sale;
 
-use Codeception\Test\Unit;
 use GuzzleHttp\Client;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\MindbodyRESTRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
@@ -18,10 +17,10 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\SaleRESTRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\UserToken\Exception\AccessDeniedException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\JmsSerializerFactory;
-
 use MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\Helper\MindbodyUtilsTrait;
+use PHPUnit\Framework\TestCase;
 
-class SaleRESTRequesterTest extends Unit
+class SaleRESTRequesterTest extends TestCase
 {
     use MindbodyUtilsTrait;
 

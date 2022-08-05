@@ -30,7 +30,7 @@ class Visit
     /**
      * @Serializer\SerializedName("Name")
      */
-    private string $name;
+    private ?string $name;
     /**
      * @Serializer\SerializedName("CrossRegionalBookingPerformed")
      */
@@ -72,7 +72,7 @@ class Visit
         return $this->endDateTime;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }

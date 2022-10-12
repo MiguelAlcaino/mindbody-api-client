@@ -7,8 +7,12 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClas
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassesRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassVisitsRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassWaitlistEntriesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTAddClientToClassRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassesResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassVisitsResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassWaitlistEntriesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\POSTAddClientToClassResponse;
 
 class ClassRESTRequester
@@ -32,5 +36,15 @@ class ClassRESTRequester
     public function addClientToClass(POSTAddClientToClassRequest $request): POSTAddClientToClassResponse
     {
         return $this->restRequester->executeRequest($request, POSTAddClientToClassResponse::class);
+    }
+
+    public function getClassVisits(GETClassVisitsRequest $request): GETClassVisitsResponse
+    {
+        return $this->restRequester->executeRequest($request, GETClassVisitsResponse::class);
+    }
+
+    public function getClassWaitlistEntries(GETClassWaitlistEntriesRequest $request): GETClassWaitlistEntriesResponse
+    {
+        return $this->restRequester->executeRequest($request, GETClassWaitlistEntriesResponse::class);
     }
 }

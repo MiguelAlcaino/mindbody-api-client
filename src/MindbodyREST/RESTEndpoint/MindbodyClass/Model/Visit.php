@@ -33,23 +33,44 @@ class Visit
     private ?string $name;
     /**
      * @Serializer\SerializedName("CrossRegionalBookingPerformed")
+     * @Serializer\SkipWhenEmpty()
      */
-    private bool $crossRegionalBookingPerformed;
+    private ?bool $crossRegionalBookingPerformed = null;
+    /**
+     * @Serializer\SerializedName("AppointmentStatus")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?string $appointmentStatus = null;
+    /**
+     * @Serializer\SerializedName("LateCancelled")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?bool $lateCancelled = null;
+    /**
+     * @Serializer\SerializedName("ClientId")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?string $clientId = null;
+
+    /**
+     * @Serializer\SerializedName("LastModifiedDateTime")
+     * @Serializer\SkipWhenEmpty()
+     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
+     */
+    private ?DateTimeImmutable $lastModifiedDateTime;
 
     public function __construct(
         int $id,
         int $classId,
         DateTimeImmutable $startDateTime,
         DateTimeImmutable $endDateTime,
-        string $name,
-        bool $crossRegionalBookingPerformed
+        string $name
     ) {
-        $this->id                            = $id;
-        $this->classId                       = $classId;
-        $this->startDateTime                 = $startDateTime;
-        $this->endDateTime                   = $endDateTime;
-        $this->name                          = $name;
-        $this->crossRegionalBookingPerformed = $crossRegionalBookingPerformed;
+        $this->id            = $id;
+        $this->classId       = $classId;
+        $this->startDateTime = $startDateTime;
+        $this->endDateTime   = $endDateTime;
+        $this->name          = $name;
     }
 
     public function getId(): int
@@ -77,8 +98,28 @@ class Visit
         return $this->name;
     }
 
-    public function isCrossRegionalBookingPerformed(): bool
+    public function isCrossRegionalBookingPerformed(): ?bool
     {
         return $this->crossRegionalBookingPerformed;
+    }
+
+    public function getAppointmentStatus(): ?string
+    {
+        return $this->appointmentStatus;
+    }
+
+    public function getLateCancelled(): ?bool
+    {
+        return $this->lateCancelled;
+    }
+
+    public function getClientId(): ?string
+    {
+        return $this->clientId;
+    }
+
+    public function getLastModifiedDateTime(): ?DateTimeImmutable
+    {
+        return $this->lastModifiedDateTime;
     }
 }

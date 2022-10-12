@@ -6,6 +6,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClas
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffMember;
 
 class MindbodyClass
 {
@@ -32,7 +33,32 @@ class MindbodyClass
     /**
      * @Serializer\SerializedName("Staff")
      */
-    private Staff $staff;
+    private StaffMember $staff;
+
+    /**
+     * @Serializer\SerializedName("MaxCapacity")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?int $maxCapacity;
+
+    /**
+     * @Serializer\SerializedName("WebCapacity")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?int $webCapacity;
+    /**
+     * @Serializer\SerializedName("TotalBooked")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?int $totalBooked;
+
+    /**
+     * @var Visit[] $visits
+     * @Serializer\SerializedName("Visits")
+     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\Visit>")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private array $visits;
 
     public function __construct(
         int $id,
@@ -64,5 +90,33 @@ class MindbodyClass
     public function getClassDescription(): ClassDescription
     {
         return $this->classDescription;
+    }
+
+    public function getMaxCapacity(): ?int
+    {
+        return $this->maxCapacity;
+    }
+
+    public function getTotalBooked(): ?int
+    {
+        return $this->totalBooked;
+    }
+
+    /**
+     * @return Visit[]
+     */
+    public function getVisits(): array
+    {
+        return $this->visits;
+    }
+
+    public function getStaff(): StaffMember
+    {
+        return $this->staff;
+    }
+
+    public function getWebCapacity(): ?int
+    {
+        return $this->webCapacity;
     }
 }

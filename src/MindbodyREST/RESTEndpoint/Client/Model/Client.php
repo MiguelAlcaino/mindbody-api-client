@@ -5,12 +5,9 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
 
-class Client
+class Client extends BasicClient
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
-    private int $id;
+
 
     /**
      * @Serializer\SerializedName("SendPromotionalEmails")
@@ -108,10 +105,7 @@ class Client
      */
     private string $gender;
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
+
 
     public function isSendPromotionalEmail(): bool
     {

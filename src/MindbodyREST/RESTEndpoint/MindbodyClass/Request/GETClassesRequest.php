@@ -17,16 +17,24 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
     /**
      * @Serializer\SerializedName("StartDateTime")
      * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
+     * @Serializer\SkipWhenEmpty()
      */
-    private DateTimeImmutable $startDateTime;
+    private ?DateTimeImmutable $startDateTime;
 
     /**
      * @Serializer\SerializedName("EndDateTime")
      * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
+     * @Serializer\SkipWhenEmpty()
      */
-    private DateTimeImmutable $endDateTime;
+    private ?DateTimeImmutable $endDateTime;
 
-    public function getStartDateTime(): DateTimeImmutable
+    /**
+     * @Serializer\SerializedName("ClassIds")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?int $classId;
+
+    public function getStartDateTime(): ?DateTimeImmutable
     {
         return $this->startDateTime;
     }
@@ -38,7 +46,7 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
         return $this;
     }
 
-    public function getEndDateTime(): DateTimeImmutable
+    public function getEndDateTime(): ?DateTimeImmutable
     {
         return $this->endDateTime;
     }
@@ -46,6 +54,18 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
     public function setEndDateTime(DateTimeImmutable $endDateTime): GETClassesRequest
     {
         $this->endDateTime = $endDateTime;
+
+        return $this;
+    }
+
+    public function getClassId(): ?int
+    {
+        return $this->classId;
+    }
+
+    public function setClassId(int $classId): self
+    {
+        $this->classId = $classId;
 
         return $this;
     }

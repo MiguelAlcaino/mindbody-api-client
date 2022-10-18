@@ -6,13 +6,16 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClas
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\PaginatedRequestInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserStaffTokenRequiredInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\PaginatedRequestTrait;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\UserStaffTokenRequiredTrait;
 
-class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInterface
+class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInterface, PaginatedRequestInterface
 {
     use UserStaffTokenRequiredTrait;
+    use PaginatedRequestTrait;
 
     /**
      * @Serializer\SerializedName("StartDateTime")
@@ -34,12 +37,19 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
      */
     private ?int $classId;
 
+    public function __construct()
+    {
+        $this->startDateTime = null;
+        $this->endDateTime   = null;
+        $this->classId       = null;
+    }
+
     public function getStartDateTime(): ?DateTimeImmutable
     {
         return $this->startDateTime;
     }
 
-    public function setStartDateTime(DateTimeImmutable $startDateTime): GETClassesRequest
+    public function setStartDateTime(?DateTimeImmutable $startDateTime): GETClassesRequest
     {
         $this->startDateTime = $startDateTime;
 
@@ -51,7 +61,7 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
         return $this->endDateTime;
     }
 
-    public function setEndDateTime(DateTimeImmutable $endDateTime): GETClassesRequest
+    public function setEndDateTime(?DateTimeImmutable $endDateTime): GETClassesRequest
     {
         $this->endDateTime = $endDateTime;
 

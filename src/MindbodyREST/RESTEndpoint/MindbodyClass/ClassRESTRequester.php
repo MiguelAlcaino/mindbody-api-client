@@ -28,6 +28,10 @@ class ClassRESTRequester
         $this->responseExceptionHandler = $responseExceptionHandler;
     }
 
+    /**
+     * Note: This endpoint narrows down the selection of classes by the StartDateTime and EndDateTime. If none are
+     * provided
+     */
     public function getClasses(GETClassesRequest $request): GETClassesResponse
     {
         return $this->restRequester->executeRequest($request, GETClassesResponse::class);

@@ -6,6 +6,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClas
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Site\Model\Location;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffMember;
 
 class MindbodyClass
@@ -36,6 +37,11 @@ class MindbodyClass
     private StaffMember $staff;
 
     /**
+     * @Serializer\SerializedName("Location")
+     */
+    private Location $location;
+
+    /**
      * @Serializer\SerializedName("MaxCapacity")
      * @Serializer\SkipWhenEmpty()
      */
@@ -53,12 +59,18 @@ class MindbodyClass
     private ?int $totalBooked;
 
     /**
-     * @var Visit[] $visits
+     * @var null|Visit[] $visits
      * @Serializer\SerializedName("Visits")
      * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\Visit>")
      * @Serializer\SkipWhenEmpty()
      */
-    private array $visits;
+    private ?array $visits;
+
+    /**
+     * @Serializer\SerializedName("Substitute")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?bool $substitute = null;
 
     public function __construct(
         int $id,
@@ -103,9 +115,9 @@ class MindbodyClass
     }
 
     /**
-     * @return Visit[]
+     * @return null|Visit[]
      */
-    public function getVisits(): array
+    public function getVisits(): ?array
     {
         return $this->visits;
     }
@@ -118,5 +130,15 @@ class MindbodyClass
     public function getWebCapacity(): ?int
     {
         return $this->webCapacity;
+    }
+
+    public function getSubstitute(): ?bool
+    {
+        return $this->substitute;
+    }
+
+    public function getLocation(): Location
+    {
+        return $this->location;
     }
 }

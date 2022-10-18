@@ -10,8 +10,17 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Mode
 
 class GETClassVisitsResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("Class")
-     */
-    public readonly MindbodyClass $class;
+    public function __construct(
+        /**
+         * @Serializer\SerializedName("Class")
+         */
+        private readonly MindbodyClass $class
+    ) {
+    }
+
+    public function getClass(): MindbodyClass
+    {
+        return $this->class;
+    }
+
 }

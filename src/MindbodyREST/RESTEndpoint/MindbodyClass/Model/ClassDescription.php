@@ -13,6 +13,21 @@ class ClassDescription
      */
     private SessionType $sessionType;
 
+    /**
+     * @Serializer\SerializedName("Name")
+     */
+    private string $name;
+
+    /**
+     * @Serializer\SerializedName("Description")
+     */
+    private string $description;
+
+    /**
+     * @Serializer\SerializedName("Category")
+     */
+    private ?string $category;
+
     public function __construct(SessionType $sessionType)
     {
         $this->sessionType = $sessionType;
@@ -21,5 +36,20 @@ class ClassDescription
     public function getSessionType(): SessionType
     {
         return $this->sessionType;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
     }
 }

@@ -72,6 +72,16 @@ class MindbodyClass
      */
     private ?bool $substitute = null;
 
+    /**
+     * @Serializer\SerializedName("BookingWindow")
+     */
+    private BookingWindow $bookingWindow;
+
+    /**
+     * @Serializer\SerializedName("IsWaitlistAvailable")
+     */
+    private bool $isWaitlistAvailable;
+
     public function __construct(
         int $id,
         DateTimeImmutable $startDateTime,
@@ -140,5 +150,15 @@ class MindbodyClass
     public function getLocation(): Location
     {
         return $this->location;
+    }
+
+    public function getBookingWindow(): BookingWindow
+    {
+        return $this->bookingWindow;
+    }
+
+    public function isWaitlistAvailable(): bool
+    {
+        return $this->isWaitlistAvailable;
     }
 }

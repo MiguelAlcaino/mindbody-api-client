@@ -82,6 +82,11 @@ class MindbodyClass
      */
     private bool $isWaitlistAvailable;
 
+    /**
+     * @Serializer\SerializedName("ClassScheduleId")
+     */
+    private int $classScheduleId;
+
     public function __construct(
         int $id,
         DateTimeImmutable $startDateTime,
@@ -160,5 +165,10 @@ class MindbodyClass
     public function isWaitlistAvailable(): bool
     {
         return $this->isWaitlistAvailable;
+    }
+
+    public function getClassScheduleId(): int
+    {
+        return $this->classScheduleId;
     }
 }

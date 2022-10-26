@@ -55,9 +55,8 @@ class Visit
     /**
      * @Serializer\SerializedName("LastModifiedDateTime")
      * @Serializer\SkipWhenEmpty()
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
      */
-    private ?DateTimeImmutable $lastModifiedDateTime;
+    private ?string $lastModifiedDateTime;
 
     public function __construct(
         int $id,
@@ -120,6 +119,6 @@ class Visit
 
     public function getLastModifiedDateTime(): ?DateTimeImmutable
     {
-        return $this->lastModifiedDateTime;
+        return new DateTimeImmutable($this->lastModifiedDateTime);
     }
 }

@@ -58,6 +58,12 @@ class Visit
      */
     private ?string $lastModifiedDateTime;
 
+    /**
+     * @Serializer\SerializedName("WaitlistEntryId")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?int $waitlistEntryId;
+
     public function __construct(
         int $id,
         int $classId,
@@ -120,5 +126,15 @@ class Visit
     public function getLastModifiedDateTime(): ?DateTimeImmutable
     {
         return new DateTimeImmutable($this->lastModifiedDateTime);
+    }
+
+    public function getCrossRegionalBookingPerformed(): ?bool
+    {
+        return $this->crossRegionalBookingPerformed;
+    }
+
+    public function getWaitlistEntryId(): ?int
+    {
+        return $this->waitlistEntryId;
     }
 }

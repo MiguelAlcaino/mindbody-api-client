@@ -75,7 +75,7 @@ class MindbodyClass
     /**
      * @Serializer\SerializedName("BookingWindow")
      */
-    private BookingWindow $bookingWindow;
+    private ?BookingWindow $bookingWindow;
 
     /**
      * @Serializer\SerializedName("IsWaitlistAvailable")
@@ -157,7 +157,7 @@ class MindbodyClass
         return $this->location;
     }
 
-    public function getBookingWindow(): BookingWindow
+    public function getBookingWindow(): ?BookingWindow
     {
         return $this->bookingWindow;
     }

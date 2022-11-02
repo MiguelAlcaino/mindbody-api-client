@@ -11,11 +11,13 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Requ
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassVisitsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassWaitlistEntriesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTAddClientToClassRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTRemoveClientFromClassRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassSchedulesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassVisitsResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassWaitlistEntriesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\POSTAddClientToClassResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\POSTRemoveClientFromClassResponse;
 
 class ClassRESTRequester
 {
@@ -57,5 +59,10 @@ class ClassRESTRequester
     public function getClassSchedules(GETClassSchedulesRequest $request): GETClassSchedulesResponse
     {
         return $this->restRequester->executeRequest($request, GETClassSchedulesResponse::class);
+    }
+
+    public function removeClientFromClass(POSTRemoveClientFromClassRequest $request): POSTRemoveClientFromClassResponse
+    {
+        return $this->restRequester->executeRequest($request, POSTRemoveClientFromClassResponse::class);
     }
 }

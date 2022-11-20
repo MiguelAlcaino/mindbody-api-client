@@ -11,9 +11,9 @@ class Location
     /**
      * @Serializer\SerializedName("SiteID")
      */
-    private int $siteId;
+    private ?int $siteId;
 
-    public function getSiteId(): int
+    public function getSiteId(): ?int
     {
         return $this->siteId;
     }

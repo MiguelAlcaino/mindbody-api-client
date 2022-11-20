@@ -47,6 +47,12 @@ class POSTAddClientToClassRequest extends RESTRequest implements UserStaffTokenR
      */
     private ?bool $crossRegionalBooking;
 
+    /**
+     * @Serializer\SerializedName("WaitlistEntryId")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?int $waitlistEntryId;
+
     public function __construct(string $clientId, int $classId)
     {
         $this->clientId             = $clientId;
@@ -55,6 +61,7 @@ class POSTAddClientToClassRequest extends RESTRequest implements UserStaffTokenR
         $this->waitList             = null;
         $this->sendEmail            = null;
         $this->crossRegionalBooking = null;
+        $this->waitlistEntryId      = null;
     }
 
     public function getClientId(): string
@@ -111,6 +118,13 @@ class POSTAddClientToClassRequest extends RESTRequest implements UserStaffTokenR
     public function setCrossRegionalBooking(bool $crossRegionalBooking): self
     {
         $this->crossRegionalBooking = $crossRegionalBooking;
+
+        return $this;
+    }
+
+    public function setWaitlistEntryId(int $waitlistEntryId): self
+    {
+        $this->waitlistEntryId = $waitlistEntryId;
 
         return $this;
     }

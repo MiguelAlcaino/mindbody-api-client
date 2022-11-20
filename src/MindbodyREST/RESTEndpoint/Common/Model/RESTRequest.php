@@ -16,6 +16,12 @@ abstract class RESTRequest
      */
     private int $siteId;
 
+    /**
+     * @var array
+     * @Serializer\Exclude
+     */
+    private array $headers = [];
+
     public function setTest(bool $test): self
     {
         $this->test = $test;
@@ -33,6 +39,18 @@ abstract class RESTRequest
     public function getSiteId(): int
     {
         return $this->siteId;
+    }
+
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
+    public function setHeaders(array $headers): self
+    {
+        $this->headers = $headers;
+
+        return $this;
     }
 
     public abstract function getMethod(): string;

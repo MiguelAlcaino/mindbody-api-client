@@ -36,7 +36,8 @@ class RESTRequesterExecutor
             $request->getPath(),
             $body,
             $siteId,
-            $userStaffToken
+            $userStaffToken,
+            $request->getHeaders()
         );
 
         /**

@@ -7,8 +7,6 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Client extends BasicClient
 {
-
-
     /**
      * @Serializer\SerializedName("SendPromotionalEmails")
      * @Serializer\Type("bool")
@@ -40,7 +38,7 @@ class Client extends BasicClient
     private ?string $state;
 
     /**
-     * @Serializer\SerializedName("email")
+     * @Serializer\SerializedName("Email")
      * @Serializer\Type("string")
      */
     private string $email;
@@ -62,6 +60,11 @@ class Client extends BasicClient
      * @Serializer\Type("string")
      */
     private ?string $addressLine2;
+
+    /**
+     * @Serializer\SerializedName("Country")
+     */
+    private ?string $country;
 
     /**
      * @Serializer\SerializedName("City")
@@ -104,8 +107,6 @@ class Client extends BasicClient
      * @Serializer\Type("string")
      */
     private string $gender;
-
-
 
     public function isSendPromotionalEmail(): bool
     {
@@ -185,5 +186,10 @@ class Client extends BasicClient
     public function getGender(): string
     {
         return $this->gender;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
     }
 }

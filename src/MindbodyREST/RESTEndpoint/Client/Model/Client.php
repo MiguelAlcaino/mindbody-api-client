@@ -148,7 +148,7 @@ class Client extends BasicClient
         return $this->addressLine1;
     }
 
-    public function getAddressLine2(): string
+    public function getAddressLine2(): ?string
     {
         return $this->addressLine2;
     }

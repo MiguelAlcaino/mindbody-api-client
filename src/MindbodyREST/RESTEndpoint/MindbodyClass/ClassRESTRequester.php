@@ -12,6 +12,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Requ
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassWaitlistEntriesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTAddClientToClassRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTRemoveClientFromClassRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTRemoveFromWaitlistRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassSchedulesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassVisitsResponse;
@@ -64,5 +65,17 @@ class ClassRESTRequester
     public function removeClientFromClass(POSTRemoveClientFromClassRequest $request): POSTRemoveClientFromClassResponse
     {
         return $this->restRequester->executeRequest($request, POSTRemoveClientFromClassResponse::class);
+    }
+
+    /**
+     * If this method succeeds, then null will be return. Otherwise, it throws an exception.
+     * This is because th Mindbody endpoint does not return a response body
+     * @see https://developers.mindbodyonline.com/PublicDocumentation/V6#remove-from-waitlist
+     * @param POSTRemoveFromWaitlistRequest $request
+     * @return null
+     */
+    public function removeClientFromWaitlist(POSTRemoveFromWaitlistRequest $request){
+        // This endpoint does not return a body but only an empty response with 200. Anything different to a 200, means error.
+        return $this->restRequester->executeRequest($request, null);
     }
 }

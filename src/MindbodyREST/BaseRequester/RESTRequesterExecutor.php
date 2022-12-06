@@ -3,6 +3,7 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester;
 
 use JMS\Serializer\SerializerInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\NoResponseBodyInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserStaffTokenRequiredInterface;
@@ -20,7 +21,7 @@ class RESTRequesterExecutor
         $this->serializer            = $serializer;
     }
 
-    public function executeRequest(RESTRequest $request, string $responseClass): RESTResponse
+    public function executeRequest(RESTRequest $request, ?string $responseClass): ?RESTResponse
     {
         $body = $this->serializer->serialize($request, 'json');
 
@@ -37,8 +38,12 @@ class RESTRequesterExecutor
             $body,
             $siteId,
             $userStaffToken,
-            $request->getHeaders()
+            $request->getHeaders(),
         );
+
+        if (null === $responseClass) {
+            return null;
+        }
 
         /**
          * @var RESTResponse $response

@@ -7,6 +7,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClas
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Site\Model\Location;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffMember;
 
 class ClassSchedule
 {
@@ -74,6 +75,11 @@ class ClassSchedule
      * @Serializer\SerializedName("ClassDescription")
      */
     private ClassDescription $classDescription;
+
+    /**
+     * @Serializer\SerializedName("Staff")
+     */
+    private StaffMember $staff;
 
     public function getId(): int
     {
@@ -148,5 +154,10 @@ class ClassSchedule
     public function getClassDescription(): ClassDescription
     {
         return $this->classDescription;
+    }
+
+    public function getStaff(): StaffMember
+    {
+        return $this->staff;
     }
 }

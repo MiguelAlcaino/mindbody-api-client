@@ -37,11 +37,18 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
      */
     private ?int $classId;
 
+    /**
+     * @Serializer\SerializedName("ClassScheduleIds")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?int $classScheduleIds;
+
     public function __construct()
     {
         $this->startDateTime = null;
-        $this->endDateTime   = null;
-        $this->classId       = null;
+        $this->endDateTime = null;
+        $this->classId = null;
+        $this->classScheduleIds = null;
     }
 
     public function getStartDateTime(): ?DateTimeImmutable
@@ -76,6 +83,18 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
     public function setClassId(int $classId): self
     {
         $this->classId = $classId;
+
+        return $this;
+    }
+
+    public function getClassScheduleIds(): ?int
+    {
+        return $this->classScheduleIds;
+    }
+
+    public function setClassScheduleIds(?int $classScheduleIds): self
+    {
+        $this->classScheduleIds = $classScheduleIds;
 
         return $this;
     }

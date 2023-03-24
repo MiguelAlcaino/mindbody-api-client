@@ -2,7 +2,6 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -13,7 +12,7 @@ class MindbodyRESTRequester
     private ClientInterface $guzzleClient;
     private string $apiHost;
 
-    public function __construct(string $apiKey, Client $guzzleClient, string $apiHost = null)
+    public function __construct(string $apiKey, ClientInterface $guzzleClient, string $apiHost = null)
     {
         $this->apiKey       = $apiKey;
         $this->guzzleClient = $guzzleClient;

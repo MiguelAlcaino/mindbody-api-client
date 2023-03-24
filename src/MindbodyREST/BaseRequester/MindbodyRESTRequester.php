@@ -3,20 +3,18 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 
 class MindbodyRESTRequester
 {
     private const API_HOST = 'https://api.mindbodyonline.com/public/v6/';
     private string $apiKey;
-    private Client $guzzleClient;
+    private ClientInterface $guzzleClient;
     private string $apiHost;
 
-    public function __construct(
-        string $apiKey,
-        Client $guzzleClient,
-        string $apiHost = null
-    ) {
+    public function __construct(string $apiKey, Client $guzzleClient, string $apiHost = null)
+    {
         $this->apiKey       = $apiKey;
         $this->guzzleClient = $guzzleClient;
         $this->apiHost      = $apiHost ?? self::API_HOST;
@@ -26,13 +24,14 @@ class MindbodyRESTRequester
      * @throws GuzzleException
      */
     public function request(
-        string $method,
-        string $endpointPath,
-        string $body,
-        int $siteId,
+        string  $method,
+        string  $endpointPath,
+        string  $body,
+        int     $siteId,
         ?string $staffUserToken = null,
-        array $newHeaders = []
-    ): string {
+        array   $newHeaders = []
+    ): string
+    {
         $headers = [
             'Content-Type' => 'application/json',
             'Api-Key'      => $this->apiKey,
@@ -53,11 +52,7 @@ class MindbodyRESTRequester
             $options['body'] = $body;
         }
 
-        $result = $this->guzzleClient->request(
-            $method,
-            $this->apiHost . $endpointPath,
-            $options
-        );
+        $result = $this->guzzleClient->request($method, $this->apiHost . $endpointPath, $options);
 
         return $result->getBody()->getContents();
     }

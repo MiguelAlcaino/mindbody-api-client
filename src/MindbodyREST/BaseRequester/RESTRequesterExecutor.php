@@ -3,7 +3,6 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester;
 
 use JMS\Serializer\SerializerInterface;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\NoResponseBodyInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserStaffTokenRequiredInterface;

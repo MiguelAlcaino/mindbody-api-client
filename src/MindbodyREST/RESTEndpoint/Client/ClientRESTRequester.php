@@ -3,10 +3,12 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETAddClientRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETClientPurchasesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETClientServicesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETClientsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETCrossRegionalClientAssociationRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETAddClientResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientPurchasesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientServicesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientsResponse;
@@ -15,13 +17,14 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\Respon
 
 class ClientRESTRequester
 {
-    private RESTRequesterExecutor    $restRequester;
+    private RESTRequesterExecutor $restRequester;
     private ResponseExceptionHandler $responseExceptionHandler;
 
     public function __construct(
-        RESTRequesterExecutor $RESTRequester,
+        RESTRequesterExecutor    $RESTRequester,
         ResponseExceptionHandler $responseExceptionHandler
-    ) {
+    )
+    {
         $this->restRequester            = $RESTRequester;
         $this->responseExceptionHandler = $responseExceptionHandler;
     }
@@ -33,7 +36,8 @@ class ClientRESTRequester
 
     public function getCrossRegionalClientAssociations(
         GETCrossRegionalClientAssociationRequest $request
-    ): GETCrossRegionalClientAssociationResponse {
+    ): GETCrossRegionalClientAssociationResponse
+    {
         return $this->restRequester->executeRequest($request, GETCrossRegionalClientAssociationResponse::class);
     }
 
@@ -45,5 +49,10 @@ class ClientRESTRequester
     public function getClientPurchases(GETClientPurchasesRequest $request): GETClientPurchasesResponse
     {
         return $this->restRequester->executeRequest($request, GETClientPurchasesResponse::class);
+    }
+
+    public function addClient(GETAddClientRequest $request): GETAddClientResponse
+    {
+        return $this->restRequester->executeRequest($request, GETAddClientResponse::class);
     }
 }

@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model\ClientFieldsTrait;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
 
-class GETAddClientRequest extends RESTRequest
+class POSTAddClientRequest extends RESTRequest
 {
     use ClientFieldsTrait;
 

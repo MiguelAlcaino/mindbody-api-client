@@ -3,12 +3,12 @@
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETAddClientRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTAddClientRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETClientPurchasesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETClientServicesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETClientsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETCrossRegionalClientAssociationRequest;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETAddClientResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTAddClientResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientPurchasesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientServicesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientsResponse;
@@ -51,8 +51,8 @@ class ClientRESTRequester
         return $this->restRequester->executeRequest($request, GETClientPurchasesResponse::class);
     }
 
-    public function addClient(GETAddClientRequest $request): GETAddClientResponse
+    public function addClient(POSTAddClientRequest $request): POSTAddClientResponse
     {
-        return $this->restRequester->executeRequest($request, GETAddClientResponse::class);
+        return $this->restRequester->executeRequest($request, POSTAddClientResponse::class);
     }
 }

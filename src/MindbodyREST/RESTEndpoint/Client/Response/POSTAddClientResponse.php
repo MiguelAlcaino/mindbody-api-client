@@ -8,7 +8,7 @@ use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model\Client;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTResponse;
 
-class GETAddClientResponse extends RESTResponse
+class POSTAddClientResponse extends RESTResponse
 {
     #[Serializer\SerializedName('Client')]
     private Client $client;

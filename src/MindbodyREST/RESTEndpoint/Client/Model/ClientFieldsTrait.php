@@ -5,109 +5,65 @@ declare(strict_types=1);
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model;
 
 use DateTimeImmutable;
+use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\Type;
 
 trait ClientFieldsTrait
 {
-    /**
-     * @Serializer\SerializedName("SendPromotionalEmails")
-     * @Serializer\Type("bool")
-     */
+    #[SerializedName('SendPromotionalEmails')]
     private bool $sendPromotionalEmail;
 
-    /**
-     * @Serializer\SerializedName("BirthDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+    #[SerializedName('BirthDate')]
+    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $birthDate;
 
-    /**
-     * @Serializer\SerializedName("FirstName")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('FirstName')]
     private string $firstName;
 
-    /**
-     * @Serializer\SerializedName("LastName")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('LastName')]
     private string $lastName;
 
-    /**
-     * @Serializer\SerializedName("State")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('State')]
     private ?string $state;
 
-    /**
-     * @Serializer\SerializedName("Email")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('Email')]
     private string $email;
 
-    /**
-     * @Serializer\SerializedName("MobilePhone")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('MobilePhone')]
     private string $mobilePhone;
 
-    /**
-     * @Serializer\SerializedName("AddressLine1")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('AddressLine1')]
     private string $addressLine1;
 
-    /**
-     * @Serializer\SerializedName("AddressLine2")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('AddressLine2')]
     private ?string $addressLine2;
 
-    /**
-     * @Serializer\SerializedName("Country")
-     */
+    #[SerializedName('Country')]
     private ?string $country;
 
-    /**
-     * @Serializer\SerializedName("City")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('City')]
     private string $city;
 
-    /**
-     * @Serializer\SerializedName("ReferredBy")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('ReferredBy')]
     private ?string $referredBy;
 
-    /**
-     * @Serializer\SerializedName("EmergencyContactInfoName")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('EmergencyContactInfoName')]
     private string $emergencyContactInfoName;
 
-    /**
-     * @Serializer\SerializedName("EmergencyContactInfoEmail")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('EmergencyContactInfoEmail')]
     private ?string $emergencyContactInfoEmail;
 
-    /**
-     * @Serializer\SerializedName("EmergencyContactInfoPhone")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('EmergencyContactInfoPhone')]
     private string $emergencyContactInfoPhone;
 
-    /**
-     * @Serializer\SerializedName("EmergencyContactInfoRelationship")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('EmergencyContactInfoRelationship')]
     private ?string $emergencyContactInfoRelationship;
 
-    /**
-     * @Serializer\SerializedName("Gender")
-     * @Serializer\Type("string")
-     */
+    #[SerializedName('Gender')]
     private string $gender;
+
+    #[SerializedName('PostalCode')]
+    private string $postalCode;
 
     public function isSendPromotionalEmail(): bool
     {
@@ -309,6 +265,18 @@ trait ClientFieldsTrait
     public function setCountry(?string $country): static
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getPostalCode(): string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(string $postalCode): static
+    {
+        $this->postalCode = $postalCode;
 
         return $this;
     }

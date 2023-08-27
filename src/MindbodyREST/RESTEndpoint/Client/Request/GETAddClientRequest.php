@@ -14,7 +14,7 @@ class GETAddClientRequest extends RESTRequest
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getPath(): string

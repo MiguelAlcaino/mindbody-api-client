@@ -13,10 +13,9 @@ class GETStaffRequest extends RESTRequest implements UserStaffTokenRequiredInter
 {
     use UserStaffTokenRequiredTrait;
 
-    /**
-     * @Serializer\SerializedName("StaffIds")
-     */
-    private int $staffIds;
+    #[Serializer\SerializedName('StaffIds')]
+    #[Serializer\SkipWhenEmpty]
+    private ?int $staffIds;
 
     public function getStaffIds(): int
     {

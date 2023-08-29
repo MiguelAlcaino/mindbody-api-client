@@ -8,25 +8,17 @@ use JMS\Serializer\Annotation as Serializer;
 
 class StaffMember
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName("Id")]
     private int $id;
 
-    /**
-     * @Serializer\SerializedName("FirstName")
-     */
+    #[Serializer\SerializedName("FirstName")]
     private string $firstName;
 
-    /**
-     * @Serializer\SerializedName("LastName")
-     */
+    #[Serializer\SerializedName("LastName")]
     private string $lastName;
 
-    /**
-     * @Serializer\SerializedName("Email")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("Email")]
+    #[Serializer\SkipWhenEmpty]
     private ?string $email = null;
 
     public function getId(): int

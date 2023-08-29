@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Request\GETStaffRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Response\GETStaffResponse;
 

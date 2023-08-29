@@ -12,8 +12,17 @@ class GETStaffResponse extends RESTResponse
 {
     /**
      * @var StaffMember[]
-     * @Serializer\SerializedName("StaffMembers")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffMember>")
      */
+    #[Serializer\SerializedName('StaffMembers')]
+    #[Serializer\Type('array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffMember>')]
     public readonly array $staffMembers;
+
+
+    /**
+     * @return StaffMember[]
+     */
+    public function getStaffMembers(): array
+    {
+        return $this->staffMembers;
+    }
 }

@@ -6,9 +6,13 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Reque
 
 use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserStaffTokenRequiredInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\UserStaffTokenRequiredTrait;
 
-class POSTUpdateClientVisitRequest extends RESTRequest
+class POSTUpdateClientVisitRequest extends RESTRequest implements UserStaffTokenRequiredInterface
 {
+    use UserStaffTokenRequiredTrait;
+
     public function __construct(
         #[Serializer\SerializedName('VisitId')]
         private readonly int  $visitId,

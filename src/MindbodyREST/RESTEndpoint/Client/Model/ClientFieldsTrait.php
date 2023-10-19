@@ -233,7 +233,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getEmergencyContactInfoRelationship(): string
+    public function getEmergencyContactInfoRelationship(): ?string
     {
         return $this->emergencyContactInfoRelationship;
     }

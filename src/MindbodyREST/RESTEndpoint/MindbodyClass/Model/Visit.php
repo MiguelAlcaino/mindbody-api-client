@@ -63,14 +63,17 @@ class Visit
      * @Serializer\SkipWhenEmpty()
      */
     private ?int $waitlistEntryId;
+    #[Serializer\SerializedName("SignedIn")]
+    private ?bool $signedIn;
 
     public function __construct(
-        int $id,
-        int $classId,
+        int               $id,
+        int               $classId,
         DateTimeImmutable $startDateTime,
         DateTimeImmutable $endDateTime,
-        string $name
-    ) {
+        string            $name
+    )
+    {
         $this->id            = $id;
         $this->classId       = $classId;
         $this->startDateTime = $startDateTime;
@@ -136,5 +139,10 @@ class Visit
     public function getWaitlistEntryId(): ?int
     {
         return $this->waitlistEntryId;
+    }
+
+    public function getSignedIn(): ?bool
+    {
+        return $this->signedIn;
     }
 }

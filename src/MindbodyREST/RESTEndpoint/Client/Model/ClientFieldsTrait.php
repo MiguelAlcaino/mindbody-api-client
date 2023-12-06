@@ -65,7 +65,8 @@ trait ClientFieldsTrait
     private string $gender;
 
     #[SerializedName('PostalCode')]
-    private string $postalCode;
+    #[SkipWhenEmpty]
+    private ?string $postalCode = null;
 
     public function isSendPromotionalEmail(): bool
     {
@@ -271,7 +272,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getPostalCode(): string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }

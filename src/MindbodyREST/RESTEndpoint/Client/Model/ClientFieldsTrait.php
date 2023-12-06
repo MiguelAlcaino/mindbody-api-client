@@ -34,7 +34,7 @@ trait ClientFieldsTrait
 
     #[SerializedName('AddressLine1')]
     #[SkipWhenEmpty]
-    private ?string $addressLine1;
+    private ?string $addressLine1 = null;
 
     #[SerializedName('AddressLine2')]
     private ?string $addressLine2;
@@ -43,7 +43,7 @@ trait ClientFieldsTrait
     private ?string $country;
 
     #[SerializedName('City')]
-    private string $city;
+    private ?string $city = null;
 
     #[SerializedName('ReferredBy')]
     private ?string $referredBy;
@@ -174,7 +174,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }

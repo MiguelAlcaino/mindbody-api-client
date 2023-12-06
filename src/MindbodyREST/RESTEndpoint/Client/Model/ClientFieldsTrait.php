@@ -6,6 +6,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 
 trait ClientFieldsTrait
@@ -32,7 +33,8 @@ trait ClientFieldsTrait
     private string $mobilePhone;
 
     #[SerializedName('AddressLine1')]
-    private string $addressLine1;
+    #[SkipWhenEmpty]
+    private ?string $addressLine1;
 
     #[SerializedName('AddressLine2')]
     private ?string $addressLine2;
@@ -148,7 +150,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getAddressLine1(): string
+    public function getAddressLine1(): ?string
     {
         return $this->addressLine1;
     }

@@ -55,7 +55,8 @@ trait ClientFieldsTrait
     private ?string $emergencyContactInfoEmail;
 
     #[SerializedName('EmergencyContactInfoPhone')]
-    private string $emergencyContactInfoPhone;
+    #[SkipWhenEmpty]
+    private ?string $emergencyContactInfoPhone = null;
 
     #[SerializedName('EmergencyContactInfoRelationship')]
     private ?string $emergencyContactInfoRelationship;
@@ -222,7 +223,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getEmergencyContactInfoPhone(): string
+    public function getEmergencyContactInfoPhone(): ?string
     {
         return $this->emergencyContactInfoPhone;
     }

@@ -14,8 +14,7 @@ trait ClientFieldsTrait
     private bool $sendPromotionalEmail;
 
     #[SerializedName('BirthDate')]
-    #[Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
-    private DateTimeImmutable $birthDate;
+    private string $birthDate;
 
     #[SerializedName('FirstName')]
     private string $firstName;
@@ -79,12 +78,12 @@ trait ClientFieldsTrait
 
     public function getBirthDate(): DateTimeImmutable
     {
-        return $this->birthDate;
+        return new DateTimeImmutable($this->birthDate);
     }
 
     public function setBirthDate(DateTimeImmutable $birthDate): static
     {
-        $this->birthDate = $birthDate;
+        $this->birthDate = $birthDate->format('Y-m-d\TH:i:s');
 
         return $this;
     }

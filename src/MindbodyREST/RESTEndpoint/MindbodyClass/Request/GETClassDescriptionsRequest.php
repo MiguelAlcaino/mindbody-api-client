@@ -28,4 +28,11 @@ class GETClassDescriptionsRequest extends RESTRequest implements UserStaffTokenR
     {
         return 'class/classdescriptions';
     }
+
+    public function setClassDescriptionId(?int $classDescriptionId): self
+    {
+        $this->classDescriptionId = $classDescriptionId;
+
+        return $this;
+    }
 }

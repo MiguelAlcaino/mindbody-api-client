@@ -8,6 +8,8 @@ use JMS\Serializer\Annotation as Serializer;
 
 class ClassDescription
 {
+    #[Serializer\SerializedName("Id")]
+    private int $id;
     /**
      * @Serializer\SerializedName("SessionType")
      */
@@ -31,6 +33,11 @@ class ClassDescription
     public function __construct(SessionType $sessionType)
     {
         $this->sessionType = $sessionType;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getSessionType(): SessionType

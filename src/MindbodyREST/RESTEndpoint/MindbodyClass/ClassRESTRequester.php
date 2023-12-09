@@ -6,6 +6,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClas
 
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassDescriptionsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassSchedulesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassVisitsRequest;
@@ -13,6 +14,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Requ
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTAddClientToClassRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTRemoveClientFromClassRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\POSTRemoveFromWaitlistRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassDescriptionsResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassSchedulesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Response\GETClassVisitsResponse;
@@ -22,13 +24,14 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Resp
 
 class ClassRESTRequester
 {
-    private RESTRequesterExecutor    $restRequester;
+    private RESTRequesterExecutor $restRequester;
     private ResponseExceptionHandler $responseExceptionHandler;
 
     public function __construct(
-        RESTRequesterExecutor $RESTRequester,
+        RESTRequesterExecutor    $RESTRequester,
         ResponseExceptionHandler $responseExceptionHandler
-    ) {
+    )
+    {
         $this->restRequester            = $RESTRequester;
         $this->responseExceptionHandler = $responseExceptionHandler;
     }
@@ -67,6 +70,11 @@ class ClassRESTRequester
         return $this->restRequester->executeRequest($request, POSTRemoveClientFromClassResponse::class);
     }
 
+    public function getClassDescriptions(GETClassDescriptionsRequest $request): GETClassDescriptionsResponse
+    {
+        return $this->restRequester->executeRequest($request, GETClassDescriptionsResponse::class);
+    }
+
     /**
      * If this method succeeds, then null will be return. Otherwise, it throws an exception.
      * This is because th Mindbody endpoint does not return a response body
@@ -74,7 +82,8 @@ class ClassRESTRequester
      * @param POSTRemoveFromWaitlistRequest $request
      * @return null
      */
-    public function removeClientFromWaitlist(POSTRemoveFromWaitlistRequest $request){
+    public function removeClientFromWaitlist(POSTRemoveFromWaitlistRequest $request)
+    {
         // This endpoint does not return a body but only an empty response with 200. Anything different to a 200, means error.
         return $this->restRequester->executeRequest($request, null);
     }

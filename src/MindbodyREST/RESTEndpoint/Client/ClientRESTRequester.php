@@ -16,6 +16,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GE
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTAddClientResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientVisitResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientResponse;
 
 class ClientRESTRequester
 {
@@ -61,5 +63,10 @@ class ClientRESTRequester
     public function updateClientVisit(POSTUpdateClientVisitRequest $request): POSTUpdateClientVisitResponse
     {
         return $this->restRequester->executeRequest($request, POSTUpdateClientVisitResponse::class);
+    }
+
+    public function postUpdateClient(POSTUpdateClientRequest $request): POSTUpdateClientResponse
+    {
+        return $this->restRequester->executeRequest($request, POSTUpdateClientResponse::class);
     }
 }

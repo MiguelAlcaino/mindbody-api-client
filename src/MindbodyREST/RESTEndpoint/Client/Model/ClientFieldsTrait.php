@@ -14,6 +14,9 @@ trait ClientFieldsTrait
     #[SerializedName('SendPromotionalEmails')]
     private bool $sendPromotionalEmail;
 
+    #[SerializedName('Active')]
+    private bool $active;
+
     #[SerializedName('BirthDate')]
     private string $birthDate;
 
@@ -280,6 +283,18 @@ trait ClientFieldsTrait
     public function setPostalCode(string $postalCode): static
     {
         $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
 
         return $this;
     }

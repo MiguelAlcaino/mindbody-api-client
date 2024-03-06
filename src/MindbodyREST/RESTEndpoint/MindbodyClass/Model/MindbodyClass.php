@@ -83,6 +83,11 @@ class MindbodyClass
     private bool $isWaitlistAvailable;
 
     /**
+     * @Serializer\SerializedName("WaitlistSize")
+     */
+    private int $waitlistSize;
+
+    /**
      * @Serializer\SerializedName("ClassScheduleId")
      */
     private int $classScheduleId;
@@ -170,5 +175,10 @@ class MindbodyClass
     public function getClassScheduleId(): int
     {
         return $this->classScheduleId;
+    }
+
+    public function getWaitlistSize(): int
+    {
+        return $this->waitlistSize;
     }
 }

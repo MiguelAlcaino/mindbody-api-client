@@ -13,13 +13,15 @@ class GETClassWaitlistEntriesRequest extends RESTRequest implements UserStaffTok
 {
     use UserStaffTokenRequiredTrait;
 
-    public function __construct(
-        /**
-         * @Serializer\SerializedName("ClassIds")
-         */
-        public readonly int $classIds
-    ) {
-    }
+    /**
+     * @Serializer\SerializedName("ClassIds")
+     */
+    private int $classIds;
+
+    /**
+     * @Serializer\SerializedName("WaitlistEntryIds")
+     */
+    private int $waitlistEntryIds;
 
     public function getMethod(): string
     {
@@ -29,5 +31,29 @@ class GETClassWaitlistEntriesRequest extends RESTRequest implements UserStaffTok
     public function getPath(): string
     {
         return '/class/waitlistentries';
+    }
+
+    public function getClassIds(): int
+    {
+        return $this->classIds;
+    }
+
+    public function setClassIds(int $classIds): GETClassWaitlistEntriesRequest
+    {
+        $this->classIds = $classIds;
+
+        return $this;
+    }
+
+    public function getWaitlistEntryIds(): int
+    {
+        return $this->waitlistEntryIds;
+    }
+
+    public function setWaitlistEntryIds(int $waitlistEntryIds): GETClassWaitlistEntriesRequest
+    {
+        $this->waitlistEntryIds = $waitlistEntryIds;
+
+        return $this;
     }
 }

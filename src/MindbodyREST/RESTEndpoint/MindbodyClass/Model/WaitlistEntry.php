@@ -26,11 +26,17 @@ class WaitlistEntry
      */
     private readonly BasicClient $client;
 
+    /**
+     * @Serializer\SerializedName("ClassId")
+     */
+    private int $classId;
+
     public function __construct(
-        int $id,
+        int               $id,
         DateTimeImmutable $requestDateTime,
-        BasicClient $client
-    ) {
+        BasicClient       $client
+    )
+    {
         $this->id              = $id;
         $this->requestDateTime = $requestDateTime;
         $this->client          = $client;
@@ -49,5 +55,10 @@ class WaitlistEntry
     public function getClient(): BasicClient
     {
         return $this->client;
+    }
+
+    public function getClassId(): int
+    {
+        return $this->classId;
     }
 }

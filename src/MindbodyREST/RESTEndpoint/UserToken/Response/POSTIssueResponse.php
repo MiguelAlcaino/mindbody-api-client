@@ -17,6 +17,11 @@ class POSTIssueResponse extends RESTResponse
      */
     private string $accessToken;
 
+    /**
+     * @Serializer\SerializedName("Expires")
+     */
+    private string $expires;
+
     public function getTokenType(): string
     {
         return $this->tokenType;
@@ -25,5 +30,10 @@ class POSTIssueResponse extends RESTResponse
     public function getAccessToken(): string
     {
         return $this->accessToken;
+    }
+
+    public function getExpires(): string
+    {
+        return $this->expires;
     }
 }

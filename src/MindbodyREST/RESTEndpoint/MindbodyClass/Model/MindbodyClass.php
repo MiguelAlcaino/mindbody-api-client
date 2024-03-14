@@ -73,6 +73,12 @@ class MindbodyClass
     private ?bool $substitute = null;
 
     /**
+     * @Serializer\SerializedName("IsCanceled")
+     * @Serializer\SkipWhenEmpty()
+     */
+    private ?bool $isCancelled = null;
+
+    /**
      * @Serializer\SerializedName("BookingWindow")
      */
     private ?BookingWindow $bookingWindow;
@@ -155,6 +161,11 @@ class MindbodyClass
     public function getSubstitute(): ?bool
     {
         return $this->substitute;
+    }
+
+    public function getIsCancelled(): ?bool
+    {
+        return $this->isCancelled;
     }
 
     public function getLocation(): Location

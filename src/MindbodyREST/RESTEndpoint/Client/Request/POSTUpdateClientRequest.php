@@ -14,10 +14,10 @@ class POSTUpdateClientRequest extends RESTRequest implements UserStaffTokenRequi
 {
     use UserStaffTokenRequiredTrait;
 
-    /**
-     * @Serializer\SerializedName("Client")
-     */
+    #[Serializer\SerializedName('Client')]
     private Client $client;
+    #[Serializer\SerializedName('CrossRegionalUpdate')]
+    private bool $crossRegionalUpdate;
 
     /**
      * @param Client $client
@@ -35,5 +35,17 @@ class POSTUpdateClientRequest extends RESTRequest implements UserStaffTokenRequi
     public function getPath(): string
     {
         return 'client/updateclient';
+    }
+
+    public function isCrossRegionalUpdate(): bool
+    {
+        return $this->crossRegionalUpdate;
+    }
+
+    public function setCrossRegionalUpdate(bool $crossRegionalUpdate): self
+    {
+        $this->crossRegionalUpdate = $crossRegionalUpdate;
+
+        return $this;
     }
 }

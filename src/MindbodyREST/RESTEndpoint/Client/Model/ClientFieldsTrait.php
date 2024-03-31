@@ -65,7 +65,7 @@ trait ClientFieldsTrait
     private ?string $emergencyContactInfoRelationship;
 
     #[SerializedName('Gender')]
-    private string $gender;
+    private ?string $gender;
 
     #[SerializedName('PostalCode')]
     #[SkipWhenEmpty]
@@ -251,7 +251,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getGender(): string
+    public function getGender(): ?string
     {
         return $this->gender;
     }

@@ -30,6 +30,9 @@ class ClassDescription
      */
     private ?string $category;
 
+    #[Serializer\SerializedName("Program")]
+    private Program $program;
+
     public function __construct(SessionType $sessionType)
     {
         $this->sessionType = $sessionType;
@@ -58,5 +61,10 @@ class ClassDescription
     public function getCategory(): ?string
     {
         return $this->category;
+    }
+
+    public function getProgram(): Program
+    {
+        return $this->program;
     }
 }

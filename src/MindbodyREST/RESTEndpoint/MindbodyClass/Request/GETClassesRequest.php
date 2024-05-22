@@ -43,6 +43,9 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
      */
     private ?int $classScheduleIds;
 
+    #[Serializer\SerializedName("HideCanceledClasses")]
+    private bool $hideCanceledClasses = false;
+
     public function __construct()
     {
         $this->startDateTime = null;
@@ -95,6 +98,18 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
     public function setClassScheduleIds(?int $classScheduleIds): self
     {
         $this->classScheduleIds = $classScheduleIds;
+
+        return $this;
+    }
+
+    public function getHideCanceledClasses(): bool
+    {
+        return $this->hideCanceledClasses;
+    }
+
+    public function setHideCanceledClasses(bool $hideCanceledClasses): GETClassesRequest
+    {
+        $this->hideCanceledClasses = $hideCanceledClasses;
 
         return $this;
     }

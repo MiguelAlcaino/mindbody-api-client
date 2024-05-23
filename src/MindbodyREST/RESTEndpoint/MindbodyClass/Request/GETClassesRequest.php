@@ -104,7 +104,7 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
 
     public function getHideCanceledClasses(): string
     {
-        return $this->hideCanceledClasses ? 'true' : 'false';
+        return $this->hideCanceledClasses;
     }
 
     public function setHideCanceledClasses(bool $hideCanceledClasses): self

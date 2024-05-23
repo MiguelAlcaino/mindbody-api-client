@@ -9,24 +9,18 @@ use JMS\Serializer\Annotation as Serializer;
 
 class BookingWindow
 {
-    /**
-     * @Serializer\SerializedName("StartDateTime")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
-    private DateTimeImmutable $startDateTime;
-    /**
-     * @Serializer\SerializedName("EndDateTime")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
-    private DateTimeImmutable $endDateTime;
+    #[Serializer\SerializedName("StartDateTime")]
+    private string $startDateTime;
+    #[Serializer\SerializedName("EndDateTime")]
+    private string $endDateTime;
 
     public function getStartDateTime(): DateTimeImmutable
     {
-        return $this->startDateTime;
+        return new DateTimeImmutable($this->startDateTime);
     }
 
     public function getEndDateTime(): DateTimeImmutable
     {
-        return $this->endDateTime;
+        return new DateTimeImmutable($this->endDateTime);
     }
 }

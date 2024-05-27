@@ -4,13 +4,15 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Reque
 
 use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\PaginatedRequestInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserStaffTokenRequiredInterface;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\PaginatedRequestTrait;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\UserStaffTokenRequiredTrait;
 
-class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequiredInterface
+class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequiredInterface, PaginatedRequestInterface
 {
-    use UserStaffTokenRequiredTrait;
+    use UserStaffTokenRequiredTrait, PaginatedRequestTrait;
 
     /**
      * @Serializer\SerializedName("ClientId")

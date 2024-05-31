@@ -4,6 +4,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Query;
 
 class MindbodyRESTRequester
 {
@@ -46,7 +47,7 @@ class MindbodyRESTRequester
         $options = ['headers' => $headers];
 
         if (strtoupper($method) === 'GET') {
-            $options['query'] = json_decode($body, true);
+            $options['query'] = Query::build(json_decode($body, true));
         } elseif (strtoupper($method) === 'POST') {
             $options['body'] = $body;
         }

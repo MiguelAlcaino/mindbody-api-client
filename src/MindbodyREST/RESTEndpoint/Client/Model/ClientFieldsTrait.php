@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 trait ClientFieldsTrait
 {
     #[SerializedName('SendPromotionalEmails')]
-    private bool $sendPromotionalEmail;
+    private ?bool $sendPromotionalEmail = null;
 
     #[SerializedName('Active')]
     private bool $active;
@@ -72,7 +72,7 @@ trait ClientFieldsTrait
 
     public function isSendPromotionalEmail(): bool
     {
-        return $this->sendPromotionalEmail;
+        return $this->sendPromotionalEmail ?? false;
     }
 
     public function setSendPromotionalEmail(bool $sendPromotionalEmail): static

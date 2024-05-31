@@ -7,7 +7,6 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model
 use DateTimeImmutable;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\SkipWhenEmpty;
-use JMS\Serializer\Annotation\Type;
 
 trait ClientFieldsTrait
 {
@@ -18,7 +17,7 @@ trait ClientFieldsTrait
     private bool $active;
 
     #[SerializedName('BirthDate')]
-    private string $birthDate;
+    private ?string $birthDate = null;
 
     #[SerializedName('FirstName')]
     private string $firstName;
@@ -27,7 +26,7 @@ trait ClientFieldsTrait
     private string $lastName;
 
     #[SerializedName('State')]
-    private ?string $state;
+    private ?string $state = null;
 
     #[SerializedName('Email')]
     private string $email;
@@ -40,10 +39,10 @@ trait ClientFieldsTrait
     private ?string $addressLine1 = null;
 
     #[SerializedName('AddressLine2')]
-    private ?string $addressLine2;
+    private ?string $addressLine2 = null;
 
     #[SerializedName('Country')]
-    private ?string $country;
+    private ?string $country = null;
 
     #[SerializedName('City')]
     private ?string $city = null;
@@ -62,10 +61,10 @@ trait ClientFieldsTrait
     private ?string $emergencyContactInfoPhone = null;
 
     #[SerializedName('EmergencyContactInfoRelationship')]
-    private ?string $emergencyContactInfoRelationship;
+    private ?string $emergencyContactInfoRelationship = null;
 
     #[SerializedName('Gender')]
-    private ?string $gender;
+    private ?string $gender = null;
 
     #[SerializedName('PostalCode')]
     #[SkipWhenEmpty]
@@ -83,8 +82,12 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getBirthDate(): DateTimeImmutable
+    public function getBirthDate(): ?DateTimeImmutable
     {
+        if ($this->birthDate === null) {
+            return null;
+        }
+
         return new DateTimeImmutable($this->birthDate);
     }
 

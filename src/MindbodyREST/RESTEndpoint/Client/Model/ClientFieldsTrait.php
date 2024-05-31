@@ -29,7 +29,7 @@ trait ClientFieldsTrait
     private ?string $state = null;
 
     #[SerializedName('Email')]
-    private string $email;
+    private ?string $email = null;
 
     #[SerializedName('MobilePhone')]
     private string $mobilePhone;
@@ -134,7 +134,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }

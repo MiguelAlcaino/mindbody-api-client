@@ -32,7 +32,7 @@ trait ClientFieldsTrait
     private ?string $email = null;
 
     #[SerializedName('MobilePhone')]
-    private string $mobilePhone;
+    private ?string $mobilePhone = null;
 
     #[SerializedName('AddressLine1')]
     #[SkipWhenEmpty]
@@ -146,7 +146,7 @@ trait ClientFieldsTrait
         return $this;
     }
 
-    public function getMobilePhone(): string
+    public function getMobilePhone(): ?string
     {
         return $this->mobilePhone;
     }

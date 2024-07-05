@@ -11,99 +11,74 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffM
 
 class MindbodyClass
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName("Id")]
     private int $id;
-    /**
-     * @Serializer\SerializedName("StartDateTime")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+
+    #[Serializer\SerializedName("StartDateTime")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $startDateTime;
-    /**
-     * @Serializer\SerializedName("EndDateTime")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+
+    #[Serializer\SerializedName("EndDateTime")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $endDateTime;
 
-    /**
-     * @Serializer\SerializedName("ClassDescription")
-     */
+    #[Serializer\SerializedName("ClassDescription")]
     private ClassDescription $classDescription;
 
-    /**
-     * @Serializer\SerializedName("Staff")
-     */
+    #[Serializer\SerializedName("Staff")]
     private StaffMember $staff;
 
-    /**
-     * @Serializer\SerializedName("Location")
-     */
+    #[Serializer\SerializedName("Location")]
     private Location $location;
 
-    /**
-     * @Serializer\SerializedName("MaxCapacity")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("MaxCapacity")]
+    #[Serializer\SkipWhenEmpty]
     private ?int $maxCapacity;
 
-    /**
-     * @Serializer\SerializedName("WebCapacity")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("WebCapacity")]
+    #[Serializer\SkipWhenEmpty]
     private ?int $webCapacity;
-    /**
-     * @Serializer\SerializedName("TotalBooked")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName("TotalBooked")]
+    #[Serializer\SkipWhenEmpty]
     private ?int $totalBooked;
 
-    /**
-     * @var null|Visit[] $visits
-     * @Serializer\SerializedName("Visits")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\Visit>")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("Visits")]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\Visit>")]
+    #[Serializer\SkipWhenEmpty]
     private ?array $visits;
 
-    /**
-     * @Serializer\SerializedName("Substitute")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("Substitute")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $substitute = null;
 
-    /**
-     * @Serializer\SerializedName("IsCanceled")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("IsCanceled")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $isCancelled = null;
 
-    /**
-     * @Serializer\SerializedName("BookingWindow")
-     */
+    #[Serializer\SerializedName("BookingWindow")]
     private ?BookingWindow $bookingWindow;
 
-    /**
-     * @Serializer\SerializedName("IsWaitlistAvailable")
-     */
+    #[Serializer\SerializedName("IsWaitlistAvailable")]
     private bool $isWaitlistAvailable;
 
-    /**
-     * @Serializer\SerializedName("WaitlistSize")
-     */
+    #[Serializer\SerializedName("WaitlistSize")]
     private ?int $waitlistSize;
 
-    /**
-     * @Serializer\SerializedName("ClassScheduleId")
-     */
+    #[Serializer\SerializedName("ClassScheduleId")]
     private int $classScheduleId;
 
+    #[Serializer\SerializedName('LastModifiedDateTime')]
+    #[Serializer\SkipWhenEmpty]
+    private ?string $lastModifiedDateTime = null;
+
     public function __construct(
-        int $id,
+        int               $id,
         DateTimeImmutable $startDateTime,
         DateTimeImmutable $endDateTime,
-        ClassDescription $classDescription
-    ) {
+        ClassDescription  $classDescription
+    )
+    {
         $this->id               = $id;
         $this->startDateTime    = $startDateTime;
         $this->endDateTime      = $endDateTime;
@@ -191,5 +166,14 @@ class MindbodyClass
     public function getWaitlistSize(): ?int
     {
         return $this->waitlistSize;
+    }
+
+    public function getLastModifiedDateTime(): ?DateTimeImmutable
+    {
+        if (null === $this->lastModifiedDateTime) {
+            return null;
+        }
+
+        return new DateTimeImmutable($this->lastModifiedDateTime);
     }
 }

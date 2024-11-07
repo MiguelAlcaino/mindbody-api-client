@@ -63,6 +63,16 @@ class Visit
      * @Serializer\SkipWhenEmpty()
      */
     private ?int $waitlistEntryId;
+
+    /**
+     * @Serializer\SerializedName("ProductId")
+     */
+    private ?int $productId;
+
+    public function getProductId(): ?int
+    {
+        return $this->productId;
+    }
     #[Serializer\SerializedName("SignedIn")]
     private ?bool $signedIn;
 

@@ -33,7 +33,7 @@ abstract class AbstractCredentials
         return $this->password;
     }
 
-    protected function getSiteIds(): array
+    public function getSiteIds(): array
     {
         return $this->siteIds;
     }

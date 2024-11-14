@@ -9,18 +9,17 @@ use JMS\Serializer\Annotation as Serializer;
 abstract class AbstractCredentials
 {
     /**
-     * @var string
      * @Serializer\SerializedName("Password")
      * @Serializer\XmlElement(cdata=false)
      */
-    private $password;
+    private string $password;
 
     /**
-     * @var array
+     * @var string[]
      * @Serializer\SerializedName("SiteIDs")
      * @Serializer\XmlList(entry="int")
      */
-    private $siteIds;
+    private array $siteIds;
 
     public function __construct(string $password, array $siteIds)
     {
@@ -33,6 +32,9 @@ abstract class AbstractCredentials
         return $this->password;
     }
 
+    /**
+     * @return string[]
+     */
     public function getSiteIds(): array
     {
         return $this->siteIds;

@@ -13,7 +13,7 @@ class SourceCredentials extends AbstractCredentials
      * @Serializer\SerializedName("SourceName")
      * @Serializer\XmlElement(cdata=false)
      */
-    private $sourceName;
+    private string $sourceName;
 
     public function __construct(string $username, string $password, array $siteIds)
     {
@@ -21,4 +21,8 @@ class SourceCredentials extends AbstractCredentials
         parent::__construct($password, $siteIds);
     }
 
+    public function getSourceName(): string
+    {
+        return $this->sourceName;
+    }
 }

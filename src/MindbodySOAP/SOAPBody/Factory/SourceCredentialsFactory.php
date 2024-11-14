@@ -9,12 +9,12 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredenti
 
 class SourceCredentialsFactory extends AbstractCredentials
 {
-    /** @var string */
-    private $sourceName;
-
-    public function __construct(string $username, string $sourcePassword, array $siteIds)
+    public function __construct(
+        private readonly string $sourceName,
+        string $sourcePassword,
+        array $siteIds
+    )
     {
-        $this->sourceName = $username;
         parent::__construct($sourcePassword, $siteIds);
     }
 

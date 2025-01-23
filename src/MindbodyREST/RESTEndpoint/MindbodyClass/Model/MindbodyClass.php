@@ -56,6 +56,10 @@ class MindbodyClass
     #[Serializer\SkipWhenEmpty]
     private ?bool $isCancelled = null;
 
+    #[Serializer\SerializedName("HideCancel")]
+    #[Serializer\SkipWhenEmpty]
+    private ?bool $hideCancel = null;
+
     #[Serializer\SerializedName("BookingWindow")]
     private ?BookingWindow $bookingWindow;
 
@@ -175,5 +179,10 @@ class MindbodyClass
         }
 
         return new DateTimeImmutable($this->lastModifiedDateTime);
+    }
+
+    public function getHideCancel(): ?bool
+    {
+        return $this->hideCancel;
     }
 }

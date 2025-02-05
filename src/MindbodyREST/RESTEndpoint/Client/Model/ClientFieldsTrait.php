@@ -11,12 +11,14 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 trait ClientFieldsTrait
 {
     #[SerializedName('SendPromotionalEmails')]
+    #[SkipWhenEmpty]
     private ?bool $sendPromotionalEmail = null;
 
     #[SerializedName('Active')]
     private bool $active;
 
     #[SerializedName('BirthDate')]
+    #[SkipWhenEmpty]
     private ?string $birthDate = null;
 
     #[SerializedName('FirstName')]
@@ -26,34 +28,41 @@ trait ClientFieldsTrait
     private string $lastName;
 
     #[SerializedName('State')]
+    #[SkipWhenEmpty]
     private ?string $state = null;
 
     #[SerializedName('Email')]
-    private ?string $email = null;
+    private string $email;
 
     #[SerializedName('MobilePhone')]
-    private ?string $mobilePhone = null;
+    private string $mobilePhone;
 
     #[SerializedName('AddressLine1')]
     #[SkipWhenEmpty]
     private ?string $addressLine1 = null;
 
     #[SerializedName('AddressLine2')]
+    #[SkipWhenEmpty]
     private ?string $addressLine2 = null;
 
     #[SerializedName('Country')]
+    #[SkipWhenEmpty]
     private ?string $country = null;
 
     #[SerializedName('City')]
+    #[SkipWhenEmpty]
     private ?string $city = null;
 
     #[SerializedName('ReferredBy')]
+    #[SkipWhenEmpty]
     private ?string $referredBy;
 
     #[SerializedName('EmergencyContactInfoName')]
+    #[SkipWhenEmpty]
     private ?string $emergencyContactInfoName = null;
 
     #[SerializedName('EmergencyContactInfoEmail')]
+    #[SkipWhenEmpty]
     private ?string $emergencyContactInfoEmail = null;
 
     #[SerializedName('EmergencyContactInfoPhone')]
@@ -61,9 +70,11 @@ trait ClientFieldsTrait
     private ?string $emergencyContactInfoPhone = null;
 
     #[SerializedName('EmergencyContactInfoRelationship')]
+    #[SkipWhenEmpty]
     private ?string $emergencyContactInfoRelationship = null;
 
     #[SerializedName('Gender')]
+    #[SkipWhenEmpty]
     private ?string $gender = null;
 
     #[SerializedName('PostalCode')]
@@ -75,7 +86,7 @@ trait ClientFieldsTrait
         return $this->sendPromotionalEmail ?? false;
     }
 
-    public function setSendPromotionalEmail(bool $sendPromotionalEmail): static
+    public function setSendPromotionalEmail(?bool $sendPromotionalEmail): static
     {
         $this->sendPromotionalEmail = $sendPromotionalEmail;
 
@@ -91,7 +102,7 @@ trait ClientFieldsTrait
         return new DateTimeImmutable($this->birthDate);
     }
 
-    public function setBirthDate(DateTimeImmutable $birthDate): static
+    public function setBirthDate(?DateTimeImmutable $birthDate): static
     {
         $this->birthDate = $birthDate->format('Y-m-d\TH:i:s');
 
@@ -163,7 +174,7 @@ trait ClientFieldsTrait
         return $this->addressLine1;
     }
 
-    public function setAddressLine1(string $addressLine1): static
+    public function setAddressLine1(?string $addressLine1): static
     {
         $this->addressLine1 = $addressLine1;
 
@@ -187,14 +198,14 @@ trait ClientFieldsTrait
         return $this->city;
     }
 
-    public function setCity(string $city): static
+    public function setCity(?string $city): static
     {
         $this->city = $city;
 
         return $this;
     }
 
-    public function getReferredBy(): string
+    public function getReferredBy(): ?string
     {
         return $this->referredBy;
     }
@@ -211,7 +222,7 @@ trait ClientFieldsTrait
         return $this->emergencyContactInfoName;
     }
 
-    public function setEmergencyContactInfoName(string $emergencyContactInfoName): static
+    public function setEmergencyContactInfoName(?string $emergencyContactInfoName): static
     {
         $this->emergencyContactInfoName = $emergencyContactInfoName;
 
@@ -235,7 +246,7 @@ trait ClientFieldsTrait
         return $this->emergencyContactInfoPhone;
     }
 
-    public function setEmergencyContactInfoPhone(string $emergencyContactInfoPhone): static
+    public function setEmergencyContactInfoPhone(?string $emergencyContactInfoPhone): static
     {
         $this->emergencyContactInfoPhone = $emergencyContactInfoPhone;
 
@@ -259,7 +270,7 @@ trait ClientFieldsTrait
         return $this->gender;
     }
 
-    public function setGender(string $gender): static
+    public function setGender(?string $gender): static
     {
         $this->gender = $gender;
 
@@ -283,7 +294,7 @@ trait ClientFieldsTrait
         return $this->postalCode;
     }
 
-    public function setPostalCode(string $postalCode): static
+    public function setPostalCode(?string $postalCode): static
     {
         $this->postalCode = $postalCode;
 

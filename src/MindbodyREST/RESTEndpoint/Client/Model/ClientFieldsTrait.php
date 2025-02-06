@@ -104,7 +104,7 @@ trait ClientFieldsTrait
 
     public function setBirthDate(?DateTimeImmutable $birthDate): static
     {
-        $this->birthDate = $birthDate->format('Y-m-d\TH:i:s');
+        $this->birthDate = $birthDate?->format('Y-m-d\TH:i:s');
 
         return $this;
     }

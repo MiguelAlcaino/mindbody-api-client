@@ -55,6 +55,6 @@ class PaymentInfo
 
     public function getType(): PaymentInfoTypeEnum
     {
-        return PaymentInfoTypeEnum::make($this->type);
+        return PaymentInfotypeEnum::from($this->type);
     }
 }

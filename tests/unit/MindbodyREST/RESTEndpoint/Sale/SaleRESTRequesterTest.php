@@ -35,10 +35,10 @@ class SaleRESTRequesterTest extends TestCase
         $request      = new POSTCheckoutShoppingCartRequest(
             '100019337',
             [
-                new CartItem(new Item(ItemTypeEnum::Service(), $itemMetadata), 1),
+                new CartItem(new Item(ItemTypeEnum::SERVICE, $itemMetadata), 1),
             ],
             [
-                new PaymentInfo(PaymentInfoTypeEnum::GiftCard(), $paymentMetadata),
+                new PaymentInfo(PaymentInfoTypeEnum::GIFT_CARD, $paymentMetadata),
             ]
         );
         $request

@@ -10,13 +10,10 @@ class GetClientPurchasesResult extends AbstractBaseResultResponse
 {
     use MindbodyPaginatedResultTrait;
 
-    /**
-     * @var SaleItem[]
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\SaleItem>")
-     * @Serializer\XmlList(entry="SaleItem")
-     * @Serializer\SerializedName("Purchases")
-     */
-    private $purchases;
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\SaleItem>")]
+    #[Serializer\XmlList(entry: "SaleItem")]
+    #[Serializer\SerializedName("Purchases")]
+    private array $purchases;
 
     public function getMethodName(): string
     {

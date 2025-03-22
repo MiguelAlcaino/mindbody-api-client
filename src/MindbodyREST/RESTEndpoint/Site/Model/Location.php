@@ -8,9 +8,7 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Location
 {
-    /**
-     * @Serializer\SerializedName("SiteID")
-     */
+    #[Serializer\SerializedName("SiteID")]
     private ?int $siteId;
 
     public function getSiteId(): ?int

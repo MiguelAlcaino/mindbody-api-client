@@ -13,61 +13,45 @@ class POSTAddClientToClassRequest extends RESTRequest implements UserStaffTokenR
 {
     use UserStaffTokenRequiredTrait;
 
-    /**
-     * @Serializer\SerializedName("ClientId")
-     */
+    #[Serializer\SerializedName("ClientId")]
     private string $clientId;
 
-    /**
-     * @Serializer\SerializedName("ClassId")
-     */
+    #[Serializer\SerializedName("ClassId")]
     private int $classId;
 
-    /**
-     * @Serializer\SerializedName("RequirePayment")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName("RequirePayment")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $requirePayment;
 
-    /**
-     * @Serializer\SerializedName("Waitlist")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName("Waitlist")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $waitList;
 
-    /**
-     * @Serializer\SerializedName("SendEmail")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName("SendEmail")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $sendEmail;
 
-    /**
-     * @Serializer\SerializedName("CrossRegionalBooking")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName("CrossRegionalBooking")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $crossRegionalBooking;
 
-    /**
-     * @Serializer\SerializedName("WaitlistEntryId")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("WaitlistEntryId")]
+    #[Serializer\SkipWhenEmpty]
     private ?int $waitlistEntryId;
 
-    /**
-     * @Serializer\SerializedName ("CrossRegionalBookingClientServiceSiteId")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("CrossRegionalBookingClientServiceSiteId")]
+    #[Serializer\SkipWhenEmpty]
     private ?int $crossRegionalBookingClientServiceSiteId;
 
     public function __construct(string $clientId, int $classId)
     {
-        $this->clientId             = $clientId;
-        $this->classId              = $classId;
-        $this->requirePayment       = null;
-        $this->waitList             = null;
-        $this->sendEmail            = null;
+        $this->clientId = $clientId;
+        $this->classId = $classId;
+        $this->requirePayment = null;
+        $this->waitList = null;
+        $this->sendEmail = null;
         $this->crossRegionalBooking = null;
-        $this->waitlistEntryId      = null;
+        $this->waitlistEntryId = null;
         $this->crossRegionalBookingClientServiceSiteId = null;
     }
 
@@ -157,5 +141,4 @@ class POSTAddClientToClassRequest extends RESTRequest implements UserStaffTokenR
     {
         return 'class/addclienttoclass';
     }
-
 }

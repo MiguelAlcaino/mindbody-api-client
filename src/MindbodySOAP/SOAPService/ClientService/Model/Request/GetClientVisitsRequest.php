@@ -10,7 +10,7 @@ class GetClientVisitsRequest extends AbstractSOAPMethod
 {
     /**
      * @var RequestContainer
-     * @Serializer\SerializedName("GetClientVisits")
      */
+    #[Serializer\SerializedName("GetClientVisits")]
     protected $soapMethodName;
 }

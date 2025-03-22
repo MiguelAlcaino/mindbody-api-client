@@ -10,7 +10,7 @@ class GetCustomPaymentMethodsRequest extends AbstractSOAPMethod
 {
     /**
      * @var RequestContainer
-     * @Serializer\SerializedName("GetCustomPaymentMethods")
      */
+    #[Serializer\SerializedName("GetCustomPaymentMethods")]
     protected $soapMethodName;
 }

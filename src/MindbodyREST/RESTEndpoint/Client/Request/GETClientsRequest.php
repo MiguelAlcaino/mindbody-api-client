@@ -13,16 +13,12 @@ class GETClientsRequest extends RESTRequest implements UserStaffTokenRequiredInt
 {
     use UserStaffTokenRequiredTrait;
 
-    /**
-     * @Serializer\SerializedName("ClientIds[]")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName("ClientIds[]")]
+    #[Serializer\SkipWhenEmpty]
     private ?array $clientIds = null;
 
-    /**
-     * @Serializer\SerializedName("SearchText")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName("SearchText")]
+    #[Serializer\SkipWhenEmpty]
     private ?string $searchText = null;
 
     public function setClientIds(?array $clientIds): GETClientsRequest

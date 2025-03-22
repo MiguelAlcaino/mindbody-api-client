@@ -7,13 +7,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class GetProgramsResult extends AbstractBaseResultResponse
 {
-    /**
-     * @var Program[]
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Response\Program>")
-     * @Serializer\XmlList(entry="Program")
-     * @Serializer\SerializedName("Programs")
-     */
-    private $programs;
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Response\Program>")]
+    #[Serializer\XmlList(entry: "Program")]
+    #[Serializer\SerializedName("Programs")]
+    private array $programs;
 
     public function getMethodName(): string
     {

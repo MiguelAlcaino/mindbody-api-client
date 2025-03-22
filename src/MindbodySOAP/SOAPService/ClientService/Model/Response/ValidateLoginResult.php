@@ -8,20 +8,14 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model
 
 class ValidateLoginResult extends AbstractBaseResultResponse
 {
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("GUID")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("GUID")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
     private $guid;
 
-    /**
-     * @var Client|null
-     * @Serializer\SerializedName("Client")
-     * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client")
-     */
-    private $client;
+    #[Serializer\SerializedName("Client")]
+    #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client")]
+    private Client|null $client;
 
     public function getMethodName(): string
     {

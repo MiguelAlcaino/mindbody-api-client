@@ -6,29 +6,20 @@ use JMS\Serializer\Annotation as Serializer;
 
 class CustomPaymentInfo
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("Name")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("Name")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
     private $name;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("Amount")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $amount;
+    #[Serializer\SerializedName("Amount")]
+    #[Serializer\Type("int")]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $amount;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("ID")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $id;
+    #[Serializer\SerializedName("ID")]
+    #[Serializer\Type("int")]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $id;
 
     public function getName(): string
     {

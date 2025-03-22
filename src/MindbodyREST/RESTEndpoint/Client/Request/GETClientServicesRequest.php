@@ -14,19 +14,15 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
 {
     use UserStaffTokenRequiredTrait, PaginatedRequestTrait;
 
-    /**
-     * @Serializer\SerializedName("ClientId")
-     */
+    #[Serializer\SerializedName("ClientId")]
     private string $clientId;
-    /**
-     * @Serializer\SerializedName("StartDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
-     */
+
+    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private DateTimeImmutable $startDate;
-    /**
-     * @Serializer\SerializedName("EndDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
-     */
+
+    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private DateTimeImmutable $endDate;
 
     public function __construct(string $clientId)

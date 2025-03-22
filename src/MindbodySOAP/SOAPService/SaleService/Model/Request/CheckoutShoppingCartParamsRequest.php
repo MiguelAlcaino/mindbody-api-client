@@ -9,63 +9,45 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\P
 
 class CheckoutShoppingCartParamsRequest extends AbstractParamsRequest
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("ClientID")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("ClientID")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
     private $clientId;
 
     /**
-     * @var CartItem[]
-     * @Serializer\SerializedName("CartItems")
-     * @Serializer\XmlList(entry="CartItem")
+     * @var CartItem[] $cartItems
      */
-    private $cartItems;
+    #[Serializer\SerializedName("CartItems")]
+    #[Serializer\XmlList(entry: "CartItem")]
+    private array $cartItems;
 
-    /**
-     * @var PaymentInfo[]
-     * @Serializer\SerializedName("Payments")
-     * @Serializer\XmlList(entry="PaymentInfo")
-     */
+    #[Serializer\SerializedName("Payments")]
+    #[Serializer\XmlList(entry: "PaymentInfo")]
     private $payments;
 
-    /**
-     * @var bool
-     * @Serializer\SerializedName("Test")
-     * @Serializer\Type("bool")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $test;
+    #[Serializer\SerializedName("Test")]
+    #[Serializer\Type("bool")]
+    #[Serializer\XmlElement(cdata: false)]
+    private bool $test;
 
-    /**
-     * @var string[]
-     * @Serializer\SerializedName("Fields")
-     * @Serializer\XmlList(entry="string")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("array<string>")
-     */
+    #[Serializer\SerializedName("Fields")]
+    #[Serializer\XmlList(entry: "string")]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type("array<string>")]
     private $fields;
 
-    /**
-     * @var boolean
-     * @Serializer\SerializedName("InStore")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
-    private $inStore;
+    #[Serializer\SerializedName("InStore")]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type("bool")]
+    private bool $inStore;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("PromotionCode")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $promotionCode;
+    #[Serializer\SerializedName("PromotionCode")]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type("string")]
+    private string $promotionCode;
 
     /**
      * @param string        $clientId

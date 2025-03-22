@@ -7,14 +7,10 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTR
 
 class GetGiftCardBalanceResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("BarcodeId")
-     */
+    #[Serializer\SerializedName("BarcodeId")]
     private string $barCodeId;
 
-    /**
-     * @Serializer\SerializedName("RemainingBalance")
-     */
+    #[Serializer\SerializedName("RemainingBalance")]
     private float $remainingBalance;
 
     public function getBarCodeId(): string

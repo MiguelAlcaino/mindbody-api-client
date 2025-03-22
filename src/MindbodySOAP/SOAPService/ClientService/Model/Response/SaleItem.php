@@ -7,77 +7,50 @@ use JMS\Serializer\Annotation as Serializer;
 
 class SaleItem
 {
-    /**
-     * @var Sale
-     * @Serializer\SerializedName("Sale")
-     * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\Sale")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("Sale")]
+    #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\Sale")]
+    #[Serializer\XmlElement(cdata: false)]
     private $sale;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("Description")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $description;
+    #[Serializer\SerializedName("Description")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
+    private string $description;
 
-    /**
-     * @var bool
-     * @Serializer\SerializedName("AccountPayment")
-     * @Serializer\Type("bool")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("AccountPayment")]
+    #[Serializer\Type("bool")]
+    #[Serializer\XmlElement(cdata: false)]
     private $accountPayment;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("Price")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $price;
+    #[Serializer\SerializedName("Price")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
+    private float $price;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("AmountPaid")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("AmountPaid")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
     private $amountPaid;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("Discount")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $discount;
+    #[Serializer\SerializedName("Discount")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
+    private float $discount;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("Tax")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("Tax")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
     private $tax;
 
-    /**
-     * @var bool
-     * @Serializer\SerializedName("Returned")
-     * @Serializer\Type("bool")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $returned;
+    #[Serializer\SerializedName("Returned")]
+    #[Serializer\Type("bool")]
+    #[Serializer\XmlElement(cdata: false)]
+    private bool $returned;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("Quantity")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $quantity;
+    #[Serializer\SerializedName("Quantity")]
+    #[Serializer\Type("int")]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $quantity;
 
     public function getSale(): Sale
     {

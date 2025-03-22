@@ -8,13 +8,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class SessionType
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName("Id")]
     private int $id;
-    /**
-     * @Serializer\SerializedName("Name")
-     */
+
+    #[Serializer\SerializedName("Name")]
     private string $name;
 
     public function __construct(int $id, string $name)

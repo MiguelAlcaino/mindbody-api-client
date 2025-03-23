@@ -9,9 +9,10 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Respons
 class POSTCheckoutShoppingCartResponse extends RESTResponse
 {
     #[Serializer\SerializedName("ShoppingCart")]
-    private ShoppingCart $shoppingCart;
+    #[Serializer\SkipWhenEmpty]
+    private ?ShoppingCart $shoppingCart = null;
 
-    public function getShoppingCart(): ShoppingCart
+    public function getShoppingCart(): ?ShoppingCart
     {
         return $this->shoppingCart;
     }

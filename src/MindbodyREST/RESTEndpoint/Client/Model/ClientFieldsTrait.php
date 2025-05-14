@@ -35,7 +35,8 @@ trait ClientFieldsTrait
     private string $email;
 
     #[SerializedName('MobilePhone')]
-    private string $mobilePhone;
+    #[SkipWhenEmpty]
+    private ?string $mobilePhone;
 
     #[SerializedName('AddressLine1')]
     #[SkipWhenEmpty]

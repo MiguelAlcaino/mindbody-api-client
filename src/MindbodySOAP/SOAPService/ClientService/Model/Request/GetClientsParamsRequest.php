@@ -13,29 +13,20 @@ class GetClientsParamsRequest extends AbstractParamsRequest
 {
     use MindbodyPaginatedRequestTrait;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("SearchText")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("SearchText")]
+    #[Serializer\XmlElement(cdata: false)]
     private $searchText;
 
-    /**
-     * @var DateTimeImmutable|null
-     * @Serializer\SerializedName("LastModifiedDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $lastModifiedDate;
+    #[Serializer\SerializedName("LastModifiedDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\XmlElement(cdata: false)]
+    private DateTimeImmutable|null $lastModifiedDate;
 
-    /**
-     * @var array
-     * @Serializer\SerializedName("ClientIDs")
-     * @Serializer\XmlList(entry="string")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
-    private $clientIds;
+    #[Serializer\SerializedName("ClientIDs")]
+    #[Serializer\XmlList(entry: "string")]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
+    private array $clientIds;
 
     public function __construct(string $searchText = '')
     {

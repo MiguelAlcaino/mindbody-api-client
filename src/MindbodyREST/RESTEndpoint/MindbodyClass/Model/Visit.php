@@ -9,70 +9,50 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Visit
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName("Id")]
     private int $id;
-    /**
-     * @Serializer\SerializedName("ClassId")
-     */
+
+    #[Serializer\SerializedName("ClassId")]
     private int $classId;
-    /**
-     * @Serializer\SerializedName("StartDateTime")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+
+    #[Serializer\SerializedName("StartDateTime")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $startDateTime;
-    /**
-     * @Serializer\SerializedName("EndDateTime")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+
+    #[Serializer\SerializedName("EndDateTime")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $endDateTime;
-    /**
-     * @Serializer\SerializedName("Name")
-     */
+
+    #[Serializer\SerializedName("Name")]
     private ?string $name;
-    /**
-     * @Serializer\SerializedName("CrossRegionalBookingPerformed")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName("CrossRegionalBookingPerformed")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $crossRegionalBookingPerformed = null;
-    /**
-     * @Serializer\SerializedName("AppointmentStatus")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName("AppointmentStatus")]
+    #[Serializer\SkipWhenEmpty]
     private ?string $appointmentStatus = null;
-    /**
-     * @Serializer\SerializedName("LateCancelled")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName("LateCancelled")]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $lateCancelled = null;
-    /**
-     * @Serializer\SerializedName("ClientId")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName("ClientId")]
+    #[Serializer\SkipWhenEmpty]
     private ?string $clientId = null;
 
-    /**
-     * @Serializer\SerializedName("LastModifiedDateTime")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("LastModifiedDateTime")]
+    #[Serializer\SkipWhenEmpty]
     private ?string $lastModifiedDateTime;
 
-    /**
-     * @Serializer\SerializedName("WaitlistEntryId")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("WaitlistEntryId")]
+    #[Serializer\SkipWhenEmpty]
     private ?int $waitlistEntryId;
 
-    /**
-     * @Serializer\SerializedName("ProductId")
-     */
+    #[Serializer\SerializedName("ProductId")]
     private ?int $productId;
 
-    public function getProductId(): ?int
-    {
-        return $this->productId;
-    }
     #[Serializer\SerializedName("SignedIn")]
     private ?bool $signedIn;
 
@@ -154,5 +134,10 @@ class Visit
     public function getSignedIn(): ?bool
     {
         return $this->signedIn;
+    }
+
+    public function getProductId(): ?int
+    {
+        return $this->productId;
     }
 }

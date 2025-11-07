@@ -7,19 +7,13 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTR
 
 class POSTIssueResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("TokenType")
-     */
+    #[Serializer\SerializedName("TokenType")]
     private string $tokenType;
 
-    /**
-     * @Serializer\SerializedName("AccessToken")
-     */
+    #[Serializer\SerializedName("AccessToken")]
     private string $accessToken;
 
-    /**
-     * @Serializer\SerializedName("Expires")
-     */
+    #[Serializer\SerializedName("Expires")]
     private string $expires;
 
     public function getTokenType(): string

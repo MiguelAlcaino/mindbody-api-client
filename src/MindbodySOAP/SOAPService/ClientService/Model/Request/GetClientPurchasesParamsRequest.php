@@ -11,37 +11,25 @@ class GetClientPurchasesParamsRequest extends AbstractParamsRequest
 {
     use MindbodyPaginatedRequestTrait;
 
-    /**
-     * @var string
-     * @Serializer\Type("string")
-     * @Serializer\SerializedName("ClientID")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\Type("string")]
+    #[Serializer\SerializedName("ClientID")]
+    #[Serializer\XmlElement(cdata: false)]
     private $clientId;
 
-    /**
-     * @var DateTimeImmutable
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SerializedName("StartDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
-    private $startDate;
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    private datetimeimmutable $startDate;
 
-    /**
-     * @var DateTimeImmutable
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     * @Serializer\SerializedName("EndDate")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\XmlElement(cdata: false)]
     private $endDate;
 
-    /**
-     * @var string
-     * @Serializer\Type("string")
-     * @Serializer\SerializedName("SaleID")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $saleId;
+    #[Serializer\Type("string")]
+    #[Serializer\SerializedName("SaleID")]
+    #[Serializer\XmlElement(cdata: false)]
+    private string $saleId;
 
     public function __construct(string $clientId)
     {

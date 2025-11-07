@@ -6,15 +6,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class PaymentInfo
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("Type")
-     */
+    #[Serializer\SerializedName('Type')]
     private string $type;
 
-    /**
-     * @Serializer\SerializedName("Metadata")
-     */
+    #[Serializer\SerializedName('Metadata')]
     private PaymentMetadata $paymentMetadata;
 
     public function __construct(PaymentInfoTypeEnum $type, PaymentMetadata $metadata)
@@ -25,7 +20,7 @@ class PaymentInfo
 
     public function getType(): PaymentInfoTypeEnum
     {
-        return PaymentInfoTypeEnum::make($this->type);
+        return PaymentInfoTypeEnum::from($this->type);
     }
 
     public function getPaymentMetadata(): PaymentMetadata

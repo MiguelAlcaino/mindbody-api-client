@@ -8,24 +8,16 @@ use JMS\Serializer\Annotation as Serializer;
 
 class PaginationResponse
 {
-    /**
-     * @Serializer\SerializedName("RequestedLimit")
-     */
+    #[Serializer\SerializedName("RequestedLimit")]
     private int $requestedLimit;
 
-    /**
-     * @Serializer\SerializedName("RequestedOffset")
-     */
+    #[Serializer\SerializedName("RequestedOffset")]
     private int $requestedOffset;
 
-    /**
-     * @Serializer\SerializedName("PageSize")
-     */
+    #[Serializer\SerializedName("PageSize")]
     private int $pageSize;
 
-    /**
-     * @Serializer\SerializedName("TotalResults")
-     */
+    #[Serializer\SerializedName("TotalResults")]
     private int $totalResults;
 
     public function getRequestedLimit(): int

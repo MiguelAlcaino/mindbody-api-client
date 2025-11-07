@@ -13,13 +13,10 @@ class GetClientsResult extends AbstractBaseResultResponse
 {
     use MindbodyPaginatedResultTrait;
 
-    /**
-     * @var Client[]
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client>")
-     * @Serializer\XmlList(entry="Client")
-     * @Serializer\SerializedName("Clients")
-     */
-    private $clients;
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Client>")]
+    #[Serializer\XmlList(entry: "Client")]
+    #[Serializer\SerializedName("Clients")]
+    private array $clients;
 
     public function getMethodName(): string
     {

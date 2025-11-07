@@ -17,23 +17,17 @@ class GETClassSchedulesRequest extends RESTRequest implements UserStaffTokenRequ
     use UserStaffTokenRequiredTrait;
     use PaginatedRequestTrait;
 
-    /**
-     * @Serializer\SerializedName("StartDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
+    #[Serializer\SkipWhenEmpty]
     private ?DateTimeImmutable $startDate;
 
-    /**
-     * @Serializer\SerializedName("EndDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
+    #[Serializer\SkipWhenEmpty]
     private ?DateTimeImmutable $endDate;
 
-    /**
-     * @Serializer\SerializedName("ClassScheduleIds")
-     */
+    #[Serializer\SerializedName("ClassScheduleIds")]
     private ?int $classScheduleIds;
 
     public function setStartDate(?DateTimeImmutable $startDate): self

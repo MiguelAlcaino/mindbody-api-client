@@ -8,85 +8,55 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\R
 
 class ClientService
 {
-    /**
-     * @var bool
-     * @Serializer\SerializedName("Current")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("Current")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
     private $current;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("Count")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $count;
+    #[Serializer\SerializedName("Count")]
+    #[Serializer\Type("int")]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $count;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("Remaining")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("Remaining")]
+    #[Serializer\Type("int")]
+    #[Serializer\XmlElement(cdata: false)]
     private $remaining;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("ID")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $id;
+    #[Serializer\SerializedName("ID")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
+    private string $id;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("Name")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("Name")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
     private $name;
 
-    /**
-     * @var DateTimeImmutable
-     * @Serializer\SerializedName("PaymentDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $paymentDate;
+    #[Serializer\SerializedName("PaymentDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\XmlElement(cdata: false)]
+    private datetimeimmutable $paymentDate;
 
-    /**
-     * @var DateTimeImmutable
-     * @Serializer\SerializedName("ActiveDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("ActiveDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\XmlElement(cdata: false)]
     private $activeDate;
 
-    /**
-     * @var DateTimeImmutable
-     * @Serializer\SerializedName("ExpirationDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $expirationDate;
+    #[Serializer\SerializedName("ExpirationDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\XmlElement(cdata: false)]
+    private datetimeimmutable $expirationDate;
 
-    /**
-     * @var Program
-     * @Serializer\SerializedName("Program")
-     * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Response\Program")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("Program")]
+    #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Response\Program")]
+    #[Serializer\XmlElement(cdata: false)]
     private $program;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("SiteID")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $siteId;
+    #[Serializer\SerializedName("SiteID")]
+    #[Serializer\Type("int")]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $siteId;
 
     public function isCurrent(): bool
     {

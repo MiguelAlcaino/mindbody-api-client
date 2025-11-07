@@ -12,8 +12,8 @@ class GETClassWaitlistEntriesResponse extends RESTResponse
 {
     /**
      * @var WaitlistEntry[]
-     * @Serializer\SerializedName("WaitlistEntries")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\WaitlistEntry>")
      */
+    #[Serializer\SerializedName("WaitlistEntries")]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\WaitlistEntry>")]
     public readonly array $waitlistEntries;
 }

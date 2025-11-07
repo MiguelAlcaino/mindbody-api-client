@@ -9,26 +9,18 @@ class PaymentInfo
 {
     /**
      * In case of $type=CustomPaymentInfo
-     *
-     * @var int
-     * @Serializer\SerializedName("ID")
-     * @Serializer\Type("int")
      */
-    private $id;
+    #[Serializer\SerializedName("ID")]
+    #[Serializer\Type("int")]
+    private int $id;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("Amount")
-     * @Serializer\Type("float")
-     */
-    private $amount;
+    #[Serializer\SerializedName("Amount")]
+    #[Serializer\Type("float")]
+    private float $amount;
 
-    /**
-     * @var string
-     * @Serializer\XmlAttribute()
-     * @Serializer\SerializedName("xsi:type")
-     */
-    private $type;
+    #[Serializer\XmlAttribute]
+    #[Serializer\SerializedName("xsi:type")]
+    private string $type;
 
     public function __construct(float $amount, PaymentInfoTypeEnum $type)
     {
@@ -53,8 +45,13 @@ class PaymentInfo
         return $this->amount;
     }
 
-    public function getType(): PaymentInfoTypeEnum
+    public function getType(): string
     {
-        return PaymentInfoTypeEnum::make($this->type);
+        return $this->type;
+    }
+    
+    public function getEnum(): PaymentInfoTypeEnum
+    {
+        return PaymentInfoTypeEnum::from($this->type);
     }
 }

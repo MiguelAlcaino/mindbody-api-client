@@ -6,29 +6,20 @@ use JMS\Serializer\Annotation as Serializer;
 
 trait MindbodyPaginatedResultTrait
 {
-    /**
-     * @var int
-     * @Serializer\Type("int")
-     * @Serializer\SerializedName("ResultCount")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\Type("int")]
+    #[Serializer\SerializedName("ResultCount")]
+    #[Serializer\XmlElement(cdata: false)]
     private $resultCount;
 
-    /**
-     * @var int
-     * @Serializer\Type("int")
-     * @Serializer\SerializedName("TotalPageCount")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $totalPageCount;
+    #[Serializer\Type("int")]
+    #[Serializer\SerializedName("TotalPageCount")]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $totalPageCount;
 
-    /**
-     * @var int
-     * @Serializer\Type("int")
-     * @Serializer\SerializedName("CurrentPageIndex")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $currentPageIndex;
+    #[Serializer\Type("int")]
+    #[Serializer\SerializedName("CurrentPageIndex")]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $currentPageIndex;
 
     public function getResultCount(): int
     {

@@ -6,9 +6,7 @@ use JMS\Serializer\Annotation as Serializer;
 
 trait UserStaffTokenRequiredTrait
 {
-    /**
-     * @Serializer\Exclude
-     */
+    #[Serializer\Exclude]
     private ?string $userStaffToken = null;
 
     public function getUserStaffToken(): ?string

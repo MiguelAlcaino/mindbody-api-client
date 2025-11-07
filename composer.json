@@ -16,7 +16,6 @@
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^7.4",
         "jms/serializer": "^3.4",
-        "spatie/enum": "^3.11",
         "vlucas/phpdotenv": "^5.2",
         "psr/cache": "^3.0"
     },

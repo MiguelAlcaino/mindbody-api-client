@@ -8,11 +8,8 @@ use JMS\Serializer\Annotation as Serializer;
 
 abstract class AbstractSerializable
 {
-    /**
-     * @var string
-     * @Serializer\Exclude()
-     */
-    private $payload;
+    #[Serializer\Exclude]
+    private string $payload;
 
     public function getPayload(): string
     {

@@ -10,7 +10,7 @@ class ValidateLoginRequest extends AbstractSOAPMethod
 {
     /**
      * @var RequestContainer
-     * @Serializer\SerializedName("ValidateLogin")
      */
+    #[Serializer\SerializedName("ValidateLogin")]
     protected $soapMethodName;
 }

@@ -25,6 +25,7 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
     #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private DateTimeImmutable $endDate;
 
+    #[Serializer\SerializedName('showActiveOnly')]
     private bool $showActiveOnly = false;
 
     public function __construct(string $clientId)

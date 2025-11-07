@@ -26,7 +26,7 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
     private DateTimeImmutable $endDate;
 
     #[Serializer\SerializedName('showActiveOnly')]
-    private bool $showActiveOnly = false;
+    private string $showActiveOnly = 'false';
 
     public function __construct(string $clientId)
     {
@@ -49,7 +49,11 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
 
     public function setShowActiveOnly(bool $showActiveOnly): void
     {
-        $this->showActiveOnly = $showActiveOnly;
+        if ($showActiveOnly){
+            $this->showActiveOnly = 'true';
+        }else{
+            $this->showActiveOnly = 'false';
+        }
     }
 
 

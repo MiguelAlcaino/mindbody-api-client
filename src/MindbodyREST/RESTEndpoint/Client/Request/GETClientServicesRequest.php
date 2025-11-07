@@ -29,6 +29,8 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
      */
     private DateTimeImmutable $endDate;
 
+    private bool $showActiveOnly = false;
+
     public function __construct(string $clientId)
     {
         $this->clientId = $clientId;
@@ -47,6 +49,13 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
 
         return $this;
     }
+
+    public function setShowActiveOnly(bool $showActiveOnly): void
+    {
+        $this->showActiveOnly = $showActiveOnly;
+    }
+
+
 
     public function getMethod(): string
     {

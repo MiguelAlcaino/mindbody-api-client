@@ -19,7 +19,7 @@ class GetClientPurchasesParamsRequest extends AbstractParamsRequest
     #[Serializer\XmlElement(cdata: false)]
     #[Serializer\SerializedName("StartDate")]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
-    private datetimeimmutable $startDate;
+    private DateTimeImmutable $startDate;
 
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     #[Serializer\SerializedName("EndDate")]

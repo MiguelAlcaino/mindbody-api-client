@@ -1,0 +1,11 @@
+services:
+  php:
+    image: php:8.4-cli-alpine3.23
+    container_name: mindbody-api-client
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: tail -f /dev/null
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+    entrypoint: /bin/sh -c "apk add --no-cache libxml2-dev && docker-php-ext-install dom && docker-php-ext-install xml && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && tail -f /dev/null"

@@ -36,7 +36,7 @@ class ClientService
     #[Serializer\SerializedName("PaymentDate")]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     #[Serializer\XmlElement(cdata: false)]
-    private datetimeimmutable $paymentDate;
+    private DateTimeImmutable $paymentDate;
 
     #[Serializer\SerializedName("ActiveDate")]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
@@ -46,7 +46,7 @@ class ClientService
     #[Serializer\SerializedName("ExpirationDate")]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     #[Serializer\XmlElement(cdata: false)]
-    private datetimeimmutable $expirationDate;
+    private DateTimeImmutable $expirationDate;
 
     #[Serializer\SerializedName("Program")]
     #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Response\Program")]

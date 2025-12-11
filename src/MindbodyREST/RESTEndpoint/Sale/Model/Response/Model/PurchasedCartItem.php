@@ -6,45 +6,29 @@ use JMS\Serializer\Annotation as Serializer;
 
 class PurchasedCartItem
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName("Id")]
     private ?string $id;
 
-    /**
-     * @Serializer\SerializedName("Name")
-     */
+    #[Serializer\SerializedName("Name")]
     private string $name;
 
-    /**
-     * @Serializer\SerializedName("Count")
-     */
+    #[Serializer\SerializedName("Count")]
     private int $count;
 
-    /**
-     * @Serializer\SerializedName("Price")
-     */
+    #[Serializer\SerializedName("Price")]
     private float $price;
 
-    /**
-     * @Serializer\SerializedName("TaxRate")
-     */
+    #[Serializer\SerializedName("TaxRate")]
     private float $taxRate;
 
-    /**
-     * @Serializer\SerializedName("ProductId")
-     */
+    #[Serializer\SerializedName("ProductId")]
     private string $productId;
 
-    /**
-     * @Serializer\SerializedName("ProgramId")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName("ProgramId")]
+    #[Serializer\SkipWhenEmpty]
     private int $programId;
 
-    /**
-     * @Serializer\SerializedName("TaxIncluded")
-     */
+    #[Serializer\SerializedName("TaxIncluded")]
     private float $taxIncluded;
 
     public function getId(): ?string

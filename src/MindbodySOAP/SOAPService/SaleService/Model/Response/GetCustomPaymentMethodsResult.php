@@ -7,13 +7,10 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\AbstractBaseR
 
 class GetCustomPaymentMethodsResult extends AbstractBaseResultResponse
 {
-    /**
-     * @var CustomPaymentInfo[]
-     * @Serializer\SerializedName("PaymentMethods")
-     * @Serializer\XmlList(entry="CustomPaymentInfo")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\CustomPaymentInfo>")
-     */
-    private $paymentMethods;
+    #[Serializer\SerializedName("PaymentMethods")]
+    #[Serializer\XmlList(entry: "CustomPaymentInfo")]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\CustomPaymentInfo>")]
+    private array $paymentMethods;
 
     /**
      * @return CustomPaymentInfo[]

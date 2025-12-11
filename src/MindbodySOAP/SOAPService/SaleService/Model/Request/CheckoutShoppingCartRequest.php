@@ -10,8 +10,7 @@ class CheckoutShoppingCartRequest extends AbstractSOAPMethod
 {
     /**
      * @var RequestContainer
-     * @Serializer\SerializedName("CheckoutShoppingCart")
      */
+    #[Serializer\SerializedName("CheckoutShoppingCart")]
     protected $soapMethodName;
-
 }

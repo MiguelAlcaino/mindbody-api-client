@@ -11,13 +11,10 @@ class GetServicesResult extends AbstractBaseResultResponse
 
     use MindbodyPaginatedResultTrait;
 
-    /**
-     * @var Service[]
-     * @Serializer\Type ("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\Service>")
-     * @Serializer\XmlList(entry="Service")
-     * @Serializer\SerializedName("Services")
-     */
-    private $services;
+    #[Serializer\Type]
+    #[Serializer\XmlList(entry: "Service")]
+    #[Serializer\SerializedName("Services")]
+    private array $services;
 
     public function getMethodName(): string
     {

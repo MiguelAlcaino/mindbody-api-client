@@ -12,21 +12,16 @@ class GETClientPurchasesRequest extends RESTRequest implements PaginatedRequestI
 {
     use PaginatedRequestTrait;
 
-    /**
-     * @Serializer\SerializedName("StartDate")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\SkipWhenEmpty]
     private ?DateTimeImmutable $startDate = null;
-    /**
-     * @Serializer\SerializedName("EndDate")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\SkipWhenEmpty]
     private ?DateTimeImmutable $endDate = null;
 
     public function __construct(
-        /**
-         * @Serializer\SerializedName("ClientId")
-         */
+        #[Serializer\SerializedName("ClientId")]
         private readonly int $clientId
     ) {
     }

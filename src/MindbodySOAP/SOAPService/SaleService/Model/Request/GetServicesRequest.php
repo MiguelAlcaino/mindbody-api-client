@@ -10,7 +10,7 @@ class GetServicesRequest extends AbstractSOAPMethod
 {
     /**
      * @var RequestContainer
-     * @Serializer\SerializedName("GetServices")
      */
+    #[Serializer\SerializedName("GetServices")]
     protected $soapMethodName;
 }

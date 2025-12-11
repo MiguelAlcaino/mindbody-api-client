@@ -6,14 +6,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Item
 {
-    /**
-     * @Serializer\SerializedName("Type")
-     */
+    #[Serializer\SerializedName('Type')]
     private string $type;
 
-    /**
-     * @Serializer\SerializedName("Metadata")
-     */
+    #[Serializer\SerializedName('Metadata')]
     private CartItemMetadata $metadata;
 
     public function __construct(ItemTypeEnum $type, CartItemMetadata $metadata)
@@ -22,4 +18,13 @@ class Item
         $this->metadata = $metadata;
     }
 
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getMetadata(): CartItemMetadata
+    {
+        return $this->metadata;
+    }
 }

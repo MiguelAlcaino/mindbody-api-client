@@ -14,20 +14,19 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
 {
     use UserStaffTokenRequiredTrait, PaginatedRequestTrait;
 
-    /**
-     * @Serializer\SerializedName("ClientId")
-     */
+    #[Serializer\SerializedName("ClientId")]
     private string $clientId;
-    /**
-     * @Serializer\SerializedName("StartDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
-     */
+
+    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private DateTimeImmutable $startDate;
-    /**
-     * @Serializer\SerializedName("EndDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d'>")
-     */
+
+    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private DateTimeImmutable $endDate;
+
+    #[Serializer\SerializedName('showActiveOnly')]
+    private string $showActiveOnly = 'false';
 
     public function __construct(string $clientId)
     {
@@ -47,6 +46,17 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
 
         return $this;
     }
+
+    public function setShowActiveOnly(bool $showActiveOnly): void
+    {
+        if ($showActiveOnly){
+            $this->showActiveOnly = 'true';
+        }else{
+            $this->showActiveOnly = 'false';
+        }
+    }
+
+
 
     public function getMethod(): string
     {

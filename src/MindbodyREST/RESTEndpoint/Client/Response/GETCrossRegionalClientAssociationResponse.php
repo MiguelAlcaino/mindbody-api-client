@@ -8,11 +8,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTR
 
 class GETCrossRegionalClientAssociationResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("CrossRegionalClientAssociations")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\CrossRegionalClientAssociation>")
-     * @var CrossRegionalClientAssociation[]
-     */
+    #[Serializer\SerializedName("CrossRegionalClientAssociations")]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\CrossRegionalClientAssociation>")]
     private array $crossRegionalClientAssociations;
 
     /**

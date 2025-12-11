@@ -8,62 +8,47 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserS
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\UserStaffTokenRequiredTrait;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\CartItem;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\PaymentInfo;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\Request;
 
 class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTokenRequiredInterface
 {
     use UserStaffTokenRequiredTrait;
 
-    /**
-     * @Serializer\SerializedName("CartId")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName('CartId')]
+    #[Serializer\SkipWhenEmpty]
     private ?string $cartId;
 
-    /**
-     * @Serializer\SerializedName("ClientId")
-     */
+    #[Serializer\SerializedName('ClientId')]
     private string $clientId;
 
-    /**
-     * @Serializer\SerializedName("Items")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\CartItem>")
-     */
+    #[Serializer\SerializedName('Items')]
+    #[Serializer\Type('array<' . CartItem::class . '>')]
     private array $items;
 
-    /**
-     * @Serializer\SerializedName("Payments")
-     * @var PaymentInfo[]
-     */
+    #[Serializer\SerializedName('Payments')]
     private array $payments;
 
-    /**
-     * @Serializer\SerializedName("PromotionCode")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName('PromotionCode')]
+    #[Serializer\SkipWhenEmpty]
     private ?string $promotionCode;
 
-    /**
-     * @Serializer\SerializedName("InStore")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName('InStore')]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $inStore;
 
-    /**
-     * @Serializer\SerializedName("SendEmail")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName('SendEmail')]
+    #[Serializer\SkipWhenEmpty]
     private ?bool $sendEmail;
 
     /**
-     * @param CartItem[]    $items
+     * @param CartItem[] $items
      * @param PaymentInfo[] $payments
      */
     public function __construct(
         string $clientId,
-        array $items,
-        array $payments
-    ) {
+        array  $items,
+        array  $payments
+    )
+    {
         $this->clientId      = $clientId;
         $this->items         = $items;
         $this->payments      = $payments;
@@ -71,6 +56,7 @@ class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTo
         $this->promotionCode = null;
         $this->inStore       = null;
         $this->sendEmail     = null;
+        $this->test          = null;
     }
 
     public function setCartId(?string $cartId): self
@@ -115,5 +101,4 @@ class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTo
     {
         return 'sale/checkoutshoppingcart';
     }
-
 }

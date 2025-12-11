@@ -7,53 +7,37 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\C
 
 class ShoppingCart
 {
-    /**
-     * @var int
-     * @Serializer\SerializedName("ID")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("ID")]
+    #[Serializer\Type("string")]
+    #[Serializer\XmlElement(cdata: false)]
     private $id;
 
-    /**
-     * @var CartItem[]
-     * @Serializer\SerializedName("CartItems")
-     * @Serializer\XmlList(entry="CartItem")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem>")
-     */
-    private $cartItems;
+    #[Serializer\SerializedName("CartItems")]
+    #[Serializer\XmlList(entry: "CartItem")]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem>")]
+    private array $cartItems;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("SubTotal")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName("SubTotal")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
     private $subTotal;
 
     /**
-     * @var float
-     * @Serializer\SerializedName("DiscountTotal")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $discountTotal;
+     * */
+    #[Serializer\SerializedName("DiscountTotal")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
+    private float $discountTotal;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("TaxTotal")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false))
-     */
+    #[Serializer\SerializedName("TaxTotal")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
     private $taxTotal;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("GrandTotal")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $grandTotal;
+    #[Serializer\SerializedName("GrandTotal")]
+    #[Serializer\Type("float")]
+    #[Serializer\XmlElement(cdata: false)]
+    private float $grandTotal;
 
     /**
      * @return int

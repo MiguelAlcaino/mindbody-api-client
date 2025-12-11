@@ -8,11 +8,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Site\Model\Payment
 
 class GETPaymentTypesResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("PaymentTypes")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Site\Model\PaymentType>")
-     * @var PaymentType[]
-     */
+    #[Serializer\SerializedName("PaymentTypes")]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Site\Model\PaymentType>")]
     private array $paymentTypes;
 
     public function getPaymentTypes(): array

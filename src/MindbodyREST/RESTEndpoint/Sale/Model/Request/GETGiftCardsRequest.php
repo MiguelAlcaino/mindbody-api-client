@@ -11,19 +11,13 @@ class GETGiftCardsRequest extends RESTRequest implements UserStaffTokenRequiredI
 {
     use UserStaffTokenRequiredTrait;
 
-    /**
-     * @Serializer\SerializedName("Ids")
-     */
+    #[Serializer\SerializedName("Ids")]
     private ?array $ids = null;
 
-    /**
-     * @Serializer\SerializedName("LocationId")
-     */
+    #[Serializer\SerializedName("LocationId")]
     private ?int $locationId = null;
 
-    /**
-     * @Serializer\SerializedName("SoldOnline")
-     */
+    #[Serializer\SerializedName("SoldOnline")]
     private ?bool $soldOnline = null;
 
     public function getIds(): ?array

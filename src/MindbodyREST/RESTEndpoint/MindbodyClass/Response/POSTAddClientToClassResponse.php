@@ -10,14 +10,10 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Mode
 
 class POSTAddClientToClassResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("Visit")
-     */
-    private Visit $visit;
-
-    public function __construct(Visit $visit)
-    {
-        $this->visit = $visit;
+    public function __construct(
+        #[Serializer\SerializedName("Visit")]
+        private readonly Visit $visit
+    ) {
     }
 
     public function getVisit(): Visit

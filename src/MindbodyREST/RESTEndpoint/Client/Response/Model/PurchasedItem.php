@@ -6,18 +6,14 @@ use JMS\Serializer\Annotation as Serializer;
 
 class PurchasedItem
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName("Id")]
     private int $id;
-    /**
-     * @Serializer\SerializedName("IsService")
-     */
+
+    #[Serializer\SerializedName("IsService")]
     private bool $isService;
-    /**
-     * @Serializer\SerializedName("ExpDate")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName("ExpDate")]
+    #[Serializer\SkipWhenEmpty]
     private ?string $expDate = null;
 
     public function getId(): int

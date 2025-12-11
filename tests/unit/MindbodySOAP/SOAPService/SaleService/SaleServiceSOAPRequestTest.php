@@ -32,14 +32,14 @@ class SaleServiceSOAPRequestTest extends TestCase
     //             new CartItem(
     //                 new Item(
     //                     100007,
-    //                     ItemTypeEnum::Service()
+    //                     ItemTypeEnum::SERVICE
     //                 ),
     //                 1
     //             ),
     //         ], [
     //                 (new PaymentInfo(
     //                     1050,
-    //                     PaymentInfoTypeEnum::CustomPaymentInfo()
+    //                     PaymentInfoTypeEnum::CUSTOM_PAYMENT_INFO
     //                 ))->setId(17),
     //             ],
     //             null,
@@ -60,14 +60,14 @@ class SaleServiceSOAPRequestTest extends TestCase
     //             new CartItem(
     //                 new Item(
     //                     100007,
-    //                     ItemTypeEnum::Service()
+    //                     ItemTypeEnum::SERVICE
     //                 ),
     //                 1
     //             ),
     //         ], [
     //                 (new PaymentInfo(
     //                     1050,
-    //                     PaymentInfoTypeEnum::CustomPaymentInfo()
+    //                     PaymentInfoTypeEnum::CUSTOM_PAYMENT_INFO
     //                 ))->setId(17),
     //             ],
     //             null,
@@ -90,14 +90,14 @@ class SaleServiceSOAPRequestTest extends TestCase
     //             new CartItem(
     //                 new Item(
     //                     100007,
-    //                     ItemTypeEnum::Service()
+    //                     ItemTypeEnum::SERVICE
     //                 ),
     //                 1
     //             ),
     //         ], [
     //                 (new PaymentInfo(
     //                     1050,
-    //                     PaymentInfoTypeEnum::CustomPaymentInfo()
+    //                     PaymentInfoTypeEnum::CUSTOM_PAYMENT_INFO
     //                 ))->setId(17),
     //             ],
     //             $this->getPromoCode(),

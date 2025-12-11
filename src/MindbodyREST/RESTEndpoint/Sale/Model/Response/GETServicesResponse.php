@@ -8,11 +8,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Service
 
 class GETServicesResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("Services")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Service>")
-     * @var ?Service[]
-     */
+    #[Serializer\SerializedName("Services")]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Service>")]
     private ?array $services;
 
     public function getServices(): ?array

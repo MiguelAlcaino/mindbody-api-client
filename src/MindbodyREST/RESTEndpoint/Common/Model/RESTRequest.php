@@ -6,20 +6,13 @@ use JMS\Serializer\Annotation as Serializer;
 
 abstract class RESTRequest
 {
-    /**
-     * @Serializer\SerializedName("Test")
-     */
+    #[Serializer\SerializedName('Test')]
     private bool $test = false;
 
-    /**
-     * @Serializer\Exclude
-     */
+    #[Serializer\Exclude]
     private int $siteId;
 
-    /**
-     * @var array
-     * @Serializer\Exclude
-     */
+    #[Serializer\Exclude]
     private array $headers = [];
 
     public function setTest(bool $test): self

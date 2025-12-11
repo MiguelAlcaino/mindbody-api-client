@@ -8,36 +8,24 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Request
 {
-    /**
-     * @var SourceCredentials
-     * @Serializer\SerializedName("SourceCredentials")
-     */
+    #[Serializer\SerializedName("SourceCredentials")]
     private $sourceCredentials;
 
-    /**
-     * @var RequestParamsInterface
-     * @Serializer\XmlList(inline=true)
-     * @Serializer\SkipWhenEmpty()
-     */
-    private $requestParams;
+    #[Serializer\XmlList(inline: true)]
+    #[Serializer\SkipWhenEmpty]
+    private RequestParamsInterface $requestParams;
 
-    /**
-     * @var UserCredentials
-     * @Serializer\SerializedName("UserCredentials")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName("UserCredentials")]
+    #[Serializer\SkipWhenEmpty]
     private $userCredentials;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("XMLDetail")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $xmlDetails;
+    #[Serializer\SerializedName("XMLDetail")]
+    #[Serializer\XmlElement(cdata: false)]
+    private string $xmlDetails;
 
     public function __construct(
         SourceCredentials $sourceCredentials,
-        RequestParamsInterface $requestParams = null,
+        ?RequestParamsInterface $requestParams = null,
         ?UserCredentials $userCredentials = null,
         string $xmlDetails = 'Full'
     ) {

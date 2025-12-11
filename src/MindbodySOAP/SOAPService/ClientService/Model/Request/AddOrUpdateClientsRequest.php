@@ -12,7 +12,7 @@ class AddOrUpdateClientsRequest extends AbstractSOAPMethod
 {
     /**
      * @var RequestContainer
-     * @Serializer\SerializedName("AddOrUpdateClients")
      */
+    #[Serializer\SerializedName("AddOrUpdateClients")]
     protected $soapMethodName;
 }

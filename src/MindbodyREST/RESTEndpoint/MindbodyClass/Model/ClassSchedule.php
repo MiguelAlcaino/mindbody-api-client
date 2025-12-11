@@ -11,56 +11,56 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffM
 
 class ClassSchedule
 {
-    #[Serializer\SerializedName("Id")]
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    #[Serializer\SerializedName("IsAvailable")]
+    #[Serializer\SerializedName('IsAvailable')]
     private bool $isAvailable;
 
-    #[Serializer\SerializedName("DaySunday")]
+    #[Serializer\SerializedName('DaySunday')]
     private bool $daySunday;
 
-    #[Serializer\SerializedName("DayMonday")]
+    #[Serializer\SerializedName('DayMonday')]
     private bool $dayMonday;
 
-    #[Serializer\SerializedName("DayTuesday")]
+    #[Serializer\SerializedName('DayTuesday')]
     private bool $dayTuesday;
 
-    #[Serializer\SerializedName("DayWednesday")]
+    #[Serializer\SerializedName('DayWednesday')]
     private bool $dayWednesday;
 
-    #[Serializer\SerializedName("DayThursday")]
+    #[Serializer\SerializedName('DayThursday')]
     private bool $dayThursday;
 
-    #[Serializer\SerializedName("DayFriday")]
+    #[Serializer\SerializedName('DayFriday')]
     private bool $dayFriday;
 
-    #[Serializer\SerializedName("DaySaturday")]
+    #[Serializer\SerializedName('DaySaturday')]
     private bool $daySaturday;
 
-    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\SerializedName('StartDate')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $startDate;
 
-    #[Serializer\SerializedName("StartTime")]
+    #[Serializer\SerializedName('StartTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $startTime;
 
-    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\SerializedName('EndDate')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $endDate;
 
-    #[Serializer\SerializedName("EndTime")]
+    #[Serializer\SerializedName('EndTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $endTime;
 
-    #[Serializer\SerializedName("Location")]
+    #[Serializer\SerializedName('Location')]
     private Location $location;
 
-    #[Serializer\SerializedName("ClassDescription")]
+    #[Serializer\SerializedName('ClassDescription')]
     private ClassDescription $classDescription;
 
-    #[Serializer\SerializedName("Staff")]
+    #[Serializer\SerializedName('Staff')]
     private StaffMember $staff;
 
     public function getId(): int

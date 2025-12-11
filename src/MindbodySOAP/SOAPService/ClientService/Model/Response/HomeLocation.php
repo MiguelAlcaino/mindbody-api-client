@@ -8,8 +8,8 @@ use JMS\Serializer\Annotation as Serializer;
 
 class HomeLocation
 {
-    #[Serializer\SerializedName("SiteID")]
-    #[Serializer\Type("int")]
+    #[Serializer\SerializedName('SiteID')]
+    #[Serializer\Type('int')]
     #[Serializer\XmlElement(cdata: false)]
     private int $siteId;
 

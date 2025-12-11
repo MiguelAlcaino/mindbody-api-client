@@ -13,7 +13,7 @@ class GETClassVisitsRequest extends RESTRequest implements UserStaffTokenRequire
 {
     use UserStaffTokenRequiredTrait;
 
-    #[Serializer\SerializedName("classId")]
+    #[Serializer\SerializedName('classId')]
     public readonly int $classId;
 
     public function __construct(int $classId)

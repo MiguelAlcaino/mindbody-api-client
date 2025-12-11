@@ -10,12 +10,12 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\UserToken\Response
 
 class UserTokenRESTRequester
 {
-    private RESTRequesterExecutor    $restRequester;
+    private RESTRequesterExecutor $restRequester;
     private ResponseExceptionHandler $responseExceptionHandler;
 
     public function __construct(
-        RESTRequesterExecutor $restRequester,
-        ResponseExceptionHandler $responseExceptionHandler
+        RESTRequesterExecutor    $restRequester,
+        ResponseExceptionHandler $responseExceptionHandler,
     ) {
         $this->restRequester            = $restRequester;
         $this->responseExceptionHandler = $responseExceptionHandler;

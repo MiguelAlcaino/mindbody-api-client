@@ -12,16 +12,17 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\UserSt
 
 class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequiredInterface, PaginatedRequestInterface
 {
-    use UserStaffTokenRequiredTrait, PaginatedRequestTrait;
+    use UserStaffTokenRequiredTrait;
+    use PaginatedRequestTrait;
 
-    #[Serializer\SerializedName("ClientId")]
+    #[Serializer\SerializedName('ClientId')]
     private string $clientId;
 
-    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\SerializedName('StartDate')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private DateTimeImmutable $startDate;
 
-    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\SerializedName('EndDate')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private DateTimeImmutable $endDate;
 
@@ -49,14 +50,12 @@ class GETClientServicesRequest extends RESTRequest implements UserStaffTokenRequ
 
     public function setShowActiveOnly(bool $showActiveOnly): void
     {
-        if ($showActiveOnly){
+        if ($showActiveOnly) {
             $this->showActiveOnly = 'true';
-        }else{
+        } else {
             $this->showActiveOnly = 'false';
         }
     }
-
-
 
     public function getMethod(): string
     {

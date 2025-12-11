@@ -11,8 +11,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Mode
 class GETClassVisitsResponse extends RESTResponse
 {
     public function __construct(
-        #[Serializer\SerializedName("Class")]
-        private readonly MindbodyClass $class
+        #[Serializer\SerializedName('Class')]
+        private readonly MindbodyClass $class,
     ) {
     }
 

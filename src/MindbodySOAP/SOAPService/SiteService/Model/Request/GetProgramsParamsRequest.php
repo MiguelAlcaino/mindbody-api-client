@@ -7,13 +7,13 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParams
 
 class GetProgramsParamsRequest extends AbstractParamsRequest
 {
-    #[Serializer\SerializedName("OnlineOnly")]
-    #[Serializer\Type("bool")]
+    #[Serializer\SerializedName('OnlineOnly')]
+    #[Serializer\Type('bool')]
     #[Serializer\XmlElement(cdata: false)]
     private $onlineOnly;
 
-    #[Serializer\SerializedName("ScheduleType")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('ScheduleType')]
+    #[Serializer\Type('string')]
     #[Serializer\XmlElement(cdata: false)]
     private string $scheduleType;
 

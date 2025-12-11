@@ -12,6 +12,9 @@ abstract class RESTRequest
     #[Serializer\Exclude]
     private int $siteId;
 
+    /**
+     * @var array<string, mixed>
+     */
     #[Serializer\Exclude]
     private array $headers = [];
 
@@ -34,11 +37,17 @@ abstract class RESTRequest
         return $this->siteId;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getHeaders(): array
     {
         return $this->headers;
     }
 
+    /**
+     * @param array<string, mixed> $headers
+     */
     public function setHeaders(array $headers): self
     {
         $this->headers = $headers;
@@ -46,7 +55,7 @@ abstract class RESTRequest
         return $this;
     }
 
-    public abstract function getMethod(): string;
+    abstract public function getMethod(): string;
 
-    public abstract function getPath(): string;
+    abstract public function getPath(): string;
 }

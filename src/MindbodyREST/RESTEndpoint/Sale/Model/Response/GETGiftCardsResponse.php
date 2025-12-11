@@ -8,10 +8,16 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\GiftCar
 
 class GETGiftCardsResponse extends RESTResponse
 {
-    #[Serializer\SerializedName("GiftCards")]
+    /**
+     * @var array<GiftCard>|null
+     */
+    #[Serializer\SerializedName('GiftCards')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\GiftCard>")]
     private ?array $giftCards;
 
+    /**
+     * @return array<GiftCard>|null
+     */
     public function getGiftCards(): ?array
     {
         return $this->giftCards;

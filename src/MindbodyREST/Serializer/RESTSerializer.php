@@ -7,6 +7,4 @@ use JMS\Serializer\SerializerInterface;
 class RESTSerializer
 {
     protected SerializerInterface $serializer;
-
-
 }

@@ -7,5 +7,5 @@ enum ItemTypeEnum: string
     case SERVICE = 'Service';
     case PRODUCT = 'Product';
     case PACKAGE = 'Package';
-    case TIP = 'Tip';
+    case TIP     = 'Tip';
 }

@@ -2,8 +2,8 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyRequestHandler;
 
-use MiguelAlcaino\MindbodyPaymentsBundle\Service\MB_API;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SiteServiceSOAPRequest;
+use MiguelAlcaino\MindbodyPaymentsBundle\Service\MB_API;
 use Psr\SimpleCache\CacheInterface;
 
 class SiteServiceRequestHandler
@@ -25,10 +25,6 @@ class SiteServiceRequestHandler
 
     /**
      * SiteServiceRequestHandler constructor.
-     *
-     * @param CacheInterface         $cache
-     * @param MB_API                 $mb
-     * @param SiteServiceSOAPRequest $siteServiceSOAPRequest
      */
     public function __construct(CacheInterface $cache, MB_API $mb, SiteServiceSOAPRequest $siteServiceSOAPRequest)
     {
@@ -38,9 +34,8 @@ class SiteServiceRequestHandler
     }
 
     /**
-     * Returns an array with id and name of the different Mindbody locations
+     * Returns an array with id and name of the different Mindbody locations.
      *
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getFormattedLocations(): array
@@ -67,11 +62,12 @@ class SiteServiceRequestHandler
     }
 
     /**
-     * Returns a formatted array of Online's Mindbody Programs
+     * Returns a formatted array of Online's Mindbody Programs.
      *
      * @param bool $useCache
      *
      * @return array|mixed|null
+     *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function getPrograms($useCache = true)
@@ -83,7 +79,7 @@ class SiteServiceRequestHandler
                 [
                     'OnlineOnly'   => true,
                     'ScheduleType' => 'All',
-                ]
+                ],
             );
 
             $formattedPrograms = [];

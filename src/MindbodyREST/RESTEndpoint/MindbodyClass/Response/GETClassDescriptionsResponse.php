@@ -15,6 +15,9 @@ class GETClassDescriptionsResponse extends RESTResponse implements PaginatedResp
 {
     use PaginatedResponseTrait;
 
+    /**
+     * @var array<ClassDescription>
+     */
     #[SerializedName('ClassDescriptions')]
     #[Type('array<' . ClassDescription::class . '>')]
     private array $classDescriptions;

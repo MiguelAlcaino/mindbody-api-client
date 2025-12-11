@@ -12,26 +12,29 @@ class GetClientServicesParamsRequest extends AbstractParamsRequest
 {
     use MindbodyPaginatedRequestTrait;
 
-    #[Serializer\SerializedName("ClientID")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('ClientID')]
+    #[Serializer\Type('string')]
     #[Serializer\XmlElement(cdata: false)]
     private $clientId;
 
-    #[Serializer\XmlList(entry: "int")]
+    #[Serializer\XmlList(entry: 'int')]
     #[Serializer\XmlElement(cdata: false)]
-    #[Serializer\SerializedName("ProgramIDs")]
+    #[Serializer\SerializedName('ProgramIDs')]
     private array $programIds;
 
-    #[Serializer\SerializedName("ClassID")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('ClassID')]
+    #[Serializer\Type('string')]
     #[Serializer\XmlElement(cdata: false)]
     private $classId;
 
-    #[Serializer\SerializedName("ShowActiveOnly")]
-    #[Serializer\Type("bool")]
+    #[Serializer\SerializedName('ShowActiveOnly')]
+    #[Serializer\Type('bool')]
     #[Serializer\XmlElement(cdata: false)]
     private bool $showActiveOnly;
 
+    /**
+     * @param int[] $programIds
+     */
     public function __construct(string $clientId, array $programIds)
     {
         $this->clientId   = $clientId;

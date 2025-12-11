@@ -7,41 +7,36 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\C
 
 class ShoppingCart
 {
-    #[Serializer\SerializedName("ID")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\Type('string')]
     #[Serializer\XmlElement(cdata: false)]
     private $id;
 
-    #[Serializer\SerializedName("CartItems")]
-    #[Serializer\XmlList(entry: "CartItem")]
+    #[Serializer\SerializedName('CartItems')]
+    #[Serializer\XmlList(entry: 'CartItem')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem>")]
     private array $cartItems;
 
-    #[Serializer\SerializedName("SubTotal")]
-    #[Serializer\Type("float")]
+    #[Serializer\SerializedName('SubTotal')]
+    #[Serializer\Type('float')]
     #[Serializer\XmlElement(cdata: false)]
     private $subTotal;
 
-    /**
-     * */
-    #[Serializer\SerializedName("DiscountTotal")]
-    #[Serializer\Type("float")]
+    #[Serializer\SerializedName('DiscountTotal')]
+    #[Serializer\Type('float')]
     #[Serializer\XmlElement(cdata: false)]
     private float $discountTotal;
 
-    #[Serializer\SerializedName("TaxTotal")]
-    #[Serializer\Type("float")]
+    #[Serializer\SerializedName('TaxTotal')]
+    #[Serializer\Type('float')]
     #[Serializer\XmlElement(cdata: false)]
     private $taxTotal;
 
-    #[Serializer\SerializedName("GrandTotal")]
-    #[Serializer\Type("float")]
+    #[Serializer\SerializedName('GrandTotal')]
+    #[Serializer\Type('float')]
     #[Serializer\XmlElement(cdata: false)]
     private float $grandTotal;
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;

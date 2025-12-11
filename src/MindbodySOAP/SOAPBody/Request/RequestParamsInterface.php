@@ -6,5 +6,4 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request;
 
 interface RequestParamsInterface
 {
-
 }

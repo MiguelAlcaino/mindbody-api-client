@@ -6,12 +6,9 @@ use JMS\Serializer\Annotation as Serializer;
 
 abstract class RESTResponse
 {
-    /**
-     * @var string
-     */
     private string $payload;
 
-    #[Serializer\SerializedName("Error")]
+    #[Serializer\SerializedName('Error')]
     #[Serializer\SkipWhenEmpty]
     private ?ErrorResponse $error = null;
 

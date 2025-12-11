@@ -17,7 +17,7 @@ trait MindbodyUtilsTrait
 
         return new MindbodySerializer(
             $jmsSerializer,
-            new MindbodyDeserializer($jmsSerializer)
+            new MindbodyDeserializer($jmsSerializer),
         );
     }
 
@@ -26,7 +26,7 @@ trait MindbodyUtilsTrait
         return new SourceCredentials(
             $useFreeClient ? $_SERVER['MINDBODY_FREE_API_SOURCE_NAME'] : $_SERVER['MINDBODY_SOURCE_NAME'],
             $useFreeClient ? $_SERVER['MINDBODY_FREE_API_SOURCE_PASSWORD'] : $_SERVER['MINDBODY_SOURCE_PASSWORD'],
-            $this->getSiteIds($useFreeClient)
+            $this->getSiteIds($useFreeClient),
         );
     }
 
@@ -35,7 +35,7 @@ trait MindbodyUtilsTrait
         return new UserCredentials(
             $useFreeClient ? $_SERVER['MINDBODY_FREE_API_ADMIN_USER'] : $_SERVER['MINDBODY_ADMIN_USER'],
             $useFreeClient ? $_SERVER['MINDBODY_FREE_API_ADMIN_PASSWORD'] : $_SERVER['MINDBODY_ADMIN_PASSWORD'],
-            $this->getSiteIds($useFreeClient)
+            $this->getSiteIds($useFreeClient),
         );
     }
 

@@ -39,7 +39,7 @@ class SaleRESTRequesterTest extends TestCase
             ],
             [
                 new PaymentInfo(PaymentInfoTypeEnum::GIFT_CARD, $paymentMetadata),
-            ]
+            ],
         );
         $request
             ->setSiteId($this->getSiteIds()[0])
@@ -57,7 +57,7 @@ class SaleRESTRequesterTest extends TestCase
 
         $restRequester = new MindbodyRESTRequester(
             $this->getApiKey(),
-            new Client()
+            new Client(),
         );
 
         $restRequesterExecutor = new RESTRequesterExecutor($restRequester, $serializer);

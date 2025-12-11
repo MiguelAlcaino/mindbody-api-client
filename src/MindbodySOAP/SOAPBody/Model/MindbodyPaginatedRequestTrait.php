@@ -6,13 +6,13 @@ use JMS\Serializer\Annotation as Serializer;
 
 trait MindbodyPaginatedRequestTrait
 {
-    #[Serializer\SerializedName("PageSize")]
+    #[Serializer\SerializedName('PageSize')]
     #[Serializer\XmlElement(cdata: false)]
     private $pageSize;
 
-    #[Serializer\SerializedName("CurrentPageIndex")]
+    #[Serializer\SerializedName('CurrentPageIndex')]
     #[Serializer\XmlElement(cdata: true)]
-    private int|null $currentPageIndex;
+    private ?int $currentPageIndex;
 
     public function setPageSize(?int $pageSize): self
     {

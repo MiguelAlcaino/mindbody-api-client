@@ -11,23 +11,23 @@ class GetClientPurchasesParamsRequest extends AbstractParamsRequest
 {
     use MindbodyPaginatedRequestTrait;
 
-    #[Serializer\Type("string")]
-    #[Serializer\SerializedName("ClientID")]
+    #[Serializer\Type('string')]
+    #[Serializer\SerializedName('ClientID')]
     #[Serializer\XmlElement(cdata: false)]
     private $clientId;
 
     #[Serializer\XmlElement(cdata: false)]
-    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\SerializedName('StartDate')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $startDate;
 
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
-    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\SerializedName('EndDate')]
     #[Serializer\XmlElement(cdata: false)]
     private $endDate;
 
-    #[Serializer\Type("string")]
-    #[Serializer\SerializedName("SaleID")]
+    #[Serializer\Type('string')]
+    #[Serializer\SerializedName('SaleID')]
     #[Serializer\XmlElement(cdata: false)]
     private string $saleId;
 

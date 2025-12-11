@@ -8,18 +8,18 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\E
 class PaymentInfo
 {
     /**
-     * In case of $type=CustomPaymentInfo
+     * In case of $type=CustomPaymentInfo.
      */
-    #[Serializer\SerializedName("ID")]
-    #[Serializer\Type("int")]
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\Type('int')]
     private int $id;
 
-    #[Serializer\SerializedName("Amount")]
-    #[Serializer\Type("float")]
+    #[Serializer\SerializedName('Amount')]
+    #[Serializer\Type('float')]
     private float $amount;
 
     #[Serializer\XmlAttribute]
-    #[Serializer\SerializedName("xsi:type")]
+    #[Serializer\SerializedName('xsi:type')]
     private string $type;
 
     public function __construct(float $amount, PaymentInfoTypeEnum $type)
@@ -49,7 +49,7 @@ class PaymentInfo
     {
         return $this->type;
     }
-    
+
     public function getEnum(): PaymentInfoTypeEnum
     {
         return PaymentInfoTypeEnum::from($this->type);

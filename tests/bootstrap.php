@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 // require __DIR__ . '/../vendor/autoload.php';
 
-
 (static function () {
     if (!is_file($autoloadFile = __DIR__ . '/../vendor/autoload.php')) {
         throw new RuntimeException('Did not find vendor/autoload.php. Did you run "composer install --dev"?');
@@ -17,5 +16,4 @@ declare(strict_types=1);
         $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
         $dotenv->load();
     }
-
 })();

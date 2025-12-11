@@ -2,6 +2,7 @@
 
 namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\SOAPService\ClientService;
 
+use DateTimeImmutable;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
@@ -38,14 +39,14 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
             ->setState('London')
             ->setPostalCode('12345')
             ->setMobilePhone('2132132132')
-            ->setBirthday(new \DateTimeImmutable('1988-09-09 11:11:11'))
+            ->setBirthday(new DateTimeImmutable('1988-09-09 11:11:11'))
             ->setEmail($email)
             ->setReferredBy('Manolito');
 
         $newClientParamsRequest = new AddOrUpdateClientsParamsRequest(
             [
                 $newClient,
-            ]
+            ],
         );
 
         // Add a new client to Mindbody
@@ -63,7 +64,7 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
         $request = new AddOrUpdateClientsParamsRequest(
             [
                 (new Client($newClient->getId()))->setPromotionalEmailOptIn(true),
-            ]
+            ],
         );
 
         $response = $clientServiceSOAPRequester->addOrUpdateClient($request);
@@ -75,7 +76,7 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
 
         // Get full list of clients in Mindbody
         $response = $clientServiceSOAPRequester->getClients(
-            (new GetClientsParamsRequest())->setPageSize(2)->setCurrentPageIndex(0)
+            (new GetClientsParamsRequest())->setPageSize(2)->setCurrentPageIndex(0),
         );
 
         $clients = $response->getClients();
@@ -102,15 +103,15 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
                     (new Client($client->getId()))
                         ->setUsername($email)
                         ->setPassword($newPassword),
-                ]
-            )
+                ],
+            ),
         );
 
         $clients = $response->getClients();
         self::assertCount(1, $clients);
         self::assertEquals($email, $clients[0]->getEmail());
 
-        //Login with new password
+        // Login with new password
         $this->testLogin($clientServiceSOAPRequester, $email, $newPassword);
     }
 
@@ -119,8 +120,8 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
         $response = $clientServiceSOAPRequester->validateLogin(
             new ValidateLoginParamsRequest(
                 $email,
-                $password
-            )
+                $password,
+            ),
         );
 
         $client = $response->getClient();
@@ -134,14 +135,14 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
         $mock                       = new MockHandler(
             [
                 new Response(200, [], $this->getClientVisitsResponseBody()),
-            ]
+            ],
         );
         $handlerStack               = HandlerStack::create($mock);
         $guzzleClient               = new \GuzzleHttp\Client(['handler' => $handlerStack]);
         $clientServiceSOAPRequester = $this->getClientServiceSoapRequester(true, $guzzleClient);
 
         $requestParams = new GetClientVisitsParamsRequest('FAKE_CLIENT_ID');
-        //Not setting parameters as the response is mocked
+        // Not setting parameters as the response is mocked
         $result = $clientServiceSOAPRequester->getClientVisits($requestParams);
 
         $visits = $result->getVisits();
@@ -186,13 +187,13 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
     //     $this->addToAssertionCount(1);
     // }
 
-    private function getClientServiceSoapRequester($useFreeSite = true, \GuzzleHttp\Client $guzzleClient = null): ClientServiceSOAPRequester
+    private function getClientServiceSoapRequester($useFreeSite = true, ?\GuzzleHttp\Client $guzzleClient = null): ClientServiceSOAPRequester
     {
         return new ClientServiceSOAPRequester(
             new MindbodySOAPRequester($guzzleClient),
             $this->getMindbodySerializer(),
             $this->getSourceCredentials($useFreeSite),
-            $this->getUserCredentials($useFreeSite)
+            $this->getUserCredentials($useFreeSite),
         );
     }
 
@@ -202,12 +203,12 @@ class ClientServiceSOAPRequesterIntegrationTest extends TestCase
             new MindbodySOAPRequester(),
             $this->getMindbodySerializer(),
             $this->getSourceCredentials(),
-            $this->getUserCredentials()
+            $this->getUserCredentials(),
         );
     }
 
     private function getClientVisitsResponseBody(): string
     {
-        return file_get_contents(__DIR__.'/../../../Resources/mindbody_responses/GetClientVisitsResponse.xml');
+        return file_get_contents(__DIR__ . '/../../../Resources/mindbody_responses/GetClientVisitsResponse.xml');
     }
 }

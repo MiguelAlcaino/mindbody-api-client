@@ -6,18 +6,18 @@ use JMS\Serializer\Annotation as Serializer;
 
 class CustomPaymentInfo
 {
-    #[Serializer\SerializedName("Name")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('Name')]
+    #[Serializer\Type('string')]
     #[Serializer\XmlElement(cdata: false)]
     private $name;
 
-    #[Serializer\SerializedName("Amount")]
-    #[Serializer\Type("int")]
+    #[Serializer\SerializedName('Amount')]
+    #[Serializer\Type('int')]
     #[Serializer\XmlElement(cdata: false)]
     private int $amount;
 
-    #[Serializer\SerializedName("ID")]
-    #[Serializer\Type("int")]
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\Type('int')]
     #[Serializer\XmlElement(cdata: false)]
     private int $id;
 

@@ -13,10 +13,10 @@ class GETClassWaitlistEntriesRequest extends RESTRequest implements UserStaffTok
 {
     use UserStaffTokenRequiredTrait;
 
-    #[Serializer\SerializedName("ClassIds")]
+    #[Serializer\SerializedName('ClassIds')]
     private int $classIds;
 
-    #[Serializer\SerializedName("WaitlistEntryIds")]
+    #[Serializer\SerializedName('WaitlistEntryIds')]
     private int $waitlistEntryIds;
 
     public function getMethod(): string

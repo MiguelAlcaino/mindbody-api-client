@@ -6,17 +6,17 @@ use JMS\Serializer\Annotation as Serializer;
 
 class CartItem
 {
-    #[Serializer\SerializedName("Item")]
+    #[Serializer\SerializedName('Item')]
     #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\Model\PurchasedCartItem")]
     private PurchasedCartItem $item;
 
-    #[Serializer\SerializedName("DiscountAmount")]
+    #[Serializer\SerializedName('DiscountAmount')]
     private float $discountAmount;
 
-    #[Serializer\SerializedName("Id")]
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    #[Serializer\SerializedName("Quantity")]
+    #[Serializer\SerializedName('Quantity')]
     private int $quantity;
 
     public function getItem(): PurchasedCartItem

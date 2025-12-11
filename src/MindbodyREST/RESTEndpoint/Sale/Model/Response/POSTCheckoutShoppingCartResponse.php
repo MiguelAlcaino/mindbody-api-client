@@ -8,7 +8,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Respons
 
 class POSTCheckoutShoppingCartResponse extends RESTResponse
 {
-    #[Serializer\SerializedName("ShoppingCart")]
+    #[Serializer\SerializedName('ShoppingCart')]
     #[Serializer\SkipWhenEmpty]
     private ?ShoppingCart $shoppingCart = null;
 

@@ -11,7 +11,7 @@ class GETGiftCardBalanceRequest extends RESTRequest implements UserStaffTokenReq
 {
     use UserStaffTokenRequiredTrait;
 
-    #[Serializer\SerializedName("barcodeId")]
+    #[Serializer\SerializedName('barcodeId')]
     private string $barCodeId;
 
     public function __construct(string $barCodeId)

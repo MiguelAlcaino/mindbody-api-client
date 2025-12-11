@@ -8,22 +8,22 @@ use JMS\Serializer\Annotation as Serializer;
 
 class ClassDescription
 {
-    #[Serializer\SerializedName("Id")]
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    #[Serializer\SerializedName("SessionType")]
+    #[Serializer\SerializedName('SessionType')]
     private SessionType $sessionType;
 
-    #[Serializer\SerializedName("Name")]
+    #[Serializer\SerializedName('Name')]
     private string $name;
 
-    #[Serializer\SerializedName("Description")]
+    #[Serializer\SerializedName('Description')]
     private string $description;
 
-    #[Serializer\SerializedName("Category")]
+    #[Serializer\SerializedName('Category')]
     private ?string $category;
 
-    #[Serializer\SerializedName("Program")]
+    #[Serializer\SerializedName('Program')]
     private Program $program;
 
     public function __construct(SessionType $sessionType)

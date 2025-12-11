@@ -11,7 +11,7 @@ class GETGiftCardsResponse extends RESTResponse
     /**
      * @var array<GiftCard>|null
      */
-    #[Serializer\SerializedName("GiftCards")]
+    #[Serializer\SerializedName('GiftCards')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\GiftCard>")]
     private ?array $giftCards;
 

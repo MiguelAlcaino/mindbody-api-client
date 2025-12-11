@@ -17,25 +17,25 @@ class GETClassesRequest extends RESTRequest implements UserStaffTokenRequiredInt
     use UserStaffTokenRequiredTrait;
     use PaginatedRequestTrait;
 
-    #[Serializer\SerializedName("StartDateTime")]
+    #[Serializer\SerializedName('StartDateTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     #[Serializer\SkipWhenEmpty]
     private ?DateTimeImmutable $startDateTime;
 
-    #[Serializer\SerializedName("EndDateTime")]
+    #[Serializer\SerializedName('EndDateTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     #[Serializer\SkipWhenEmpty]
     private ?DateTimeImmutable $endDateTime;
 
-    #[Serializer\SerializedName("ClassIds")]
+    #[Serializer\SerializedName('ClassIds')]
     #[Serializer\SkipWhenEmpty]
     private ?int $classId;
 
-    #[Serializer\SerializedName("ClassScheduleIds")]
+    #[Serializer\SerializedName('ClassScheduleIds')]
     #[Serializer\SkipWhenEmpty]
     private ?int $classScheduleIds;
 
-    #[Serializer\SerializedName("HideCanceledClasses")]
+    #[Serializer\SerializedName('HideCanceledClasses')]
     private string $hideCanceledClasses = 'false';
 
     public function __construct()

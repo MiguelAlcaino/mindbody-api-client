@@ -2,7 +2,9 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model;
 
-class AddClientToClassRequest implements \JsonSerializable
+use JsonSerializable;
+
+class AddClientToClassRequest implements JsonSerializable
 {
     private string $ClientID;
 

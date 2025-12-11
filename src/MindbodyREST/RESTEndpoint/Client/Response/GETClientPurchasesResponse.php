@@ -15,7 +15,7 @@ class GETClientPurchasesResponse extends RESTResponse implements PaginatedRespon
     /**
      * @var array<Purchase>
      */
-    #[Serializer\SerializedName("Purchases")]
+    #[Serializer\SerializedName('Purchases')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\Purchase>")]
     private array $purchases;
 

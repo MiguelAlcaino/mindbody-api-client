@@ -8,6 +8,6 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestContain
 
 class CheckoutShoppingCartRequest extends AbstractSOAPMethod
 {
-    #[Serializer\SerializedName("CheckoutShoppingCart")]
+    #[Serializer\SerializedName('CheckoutShoppingCart')]
     protected RequestContainer $soapMethodName;
 }

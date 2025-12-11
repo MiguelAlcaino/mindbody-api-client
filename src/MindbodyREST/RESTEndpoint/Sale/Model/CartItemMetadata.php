@@ -2,7 +2,6 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model;
 
-
 use JMS\Serializer\Annotation as Serializer;
 
 class CartItemMetadata

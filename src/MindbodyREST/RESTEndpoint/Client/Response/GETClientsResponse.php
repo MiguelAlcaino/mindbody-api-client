@@ -13,7 +13,7 @@ class GETClientsResponse extends RESTResponse
     /**
      * @var array<Client>
      */
-    #[Serializer\SerializedName("Clients")]
+    #[Serializer\SerializedName('Clients')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model\Client>")]
     private array $clients;
 

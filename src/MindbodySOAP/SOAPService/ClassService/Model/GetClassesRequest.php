@@ -2,11 +2,11 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model;
 
-
-
+use DateTimeImmutable;
+use JsonSerializable;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPRequester;
 
-class GetClassesRequest implements \JsonSerializable
+class GetClassesRequest implements JsonSerializable
 {
     /**
      * @var int[]
@@ -14,12 +14,12 @@ class GetClassesRequest implements \JsonSerializable
     private $ClassIDs;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     private $StartDateTime;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     private $EndDateTime;
 
@@ -30,17 +30,17 @@ class GetClassesRequest implements \JsonSerializable
     {
         $jsonArray = [];
 
-        if ($this->ClassIDs !== null) {
+        if (null !== $this->ClassIDs) {
             $jsonArray['ClassIDs'] = [
                 'int' => $this->ClassIDs,
             ];
         }
 
-        if ($this->StartDateTime !== null) {
+        if (null !== $this->StartDateTime) {
             $jsonArray['StartDateTime'] = $this->StartDateTime->format(AbstractSOAPRequester::DATE_MINDBODY_FORMAT);
         }
 
-        if ($this->EndDateTime !== null) {
+        if (null !== $this->EndDateTime) {
             $jsonArray['EndDateTime'] = $this->EndDateTime->format(AbstractSOAPRequester::DATE_MINDBODY_FORMAT);
         }
 
@@ -57,8 +57,6 @@ class GetClassesRequest implements \JsonSerializable
 
     /**
      * @param int[] $ClassIDs
-     *
-     * @return GetClassesRequest
      */
     public function setClassIDs(array $ClassIDs): GetClassesRequest
     {
@@ -67,40 +65,24 @@ class GetClassesRequest implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getStartDateTime(): ?\DateTimeImmutable
+    public function getStartDateTime(): ?DateTimeImmutable
     {
         return $this->StartDateTime;
     }
 
-    /**
-     * @param \DateTimeImmutable $StartDateTime
-     *
-     * @return GetClassesRequest
-     */
-    public function setStartDateTime(\DateTimeImmutable $StartDateTime): GetClassesRequest
+    public function setStartDateTime(DateTimeImmutable $StartDateTime): GetClassesRequest
     {
         $this->StartDateTime = $StartDateTime;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getEndDateTime(): ?\DateTimeImmutable
+    public function getEndDateTime(): ?DateTimeImmutable
     {
         return $this->EndDateTime;
     }
 
-    /**
-     * @param \DateTimeImmutable $EndDateTime
-     *
-     * @return GetClassesRequest
-     */
-    public function setEndDateTime(\DateTimeImmutable $EndDateTime): GetClassesRequest
+    public function setEndDateTime(DateTimeImmutable $EndDateTime): GetClassesRequest
     {
         $this->EndDateTime = $EndDateTime;
 

@@ -55,7 +55,7 @@ abstract class RESTRequest
         return $this;
     }
 
-    public abstract function getMethod(): string;
+    abstract public function getMethod(): string;
 
-    public abstract function getPath(): string;
+    abstract public function getPath(): string;
 }

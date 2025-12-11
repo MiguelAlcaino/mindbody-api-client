@@ -9,51 +9,51 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Visit
 {
-    #[Serializer\SerializedName("Id")]
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    #[Serializer\SerializedName("ClassId")]
+    #[Serializer\SerializedName('ClassId')]
     private int $classId;
 
-    #[Serializer\SerializedName("StartDateTime")]
+    #[Serializer\SerializedName('StartDateTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $startDateTime;
 
-    #[Serializer\SerializedName("EndDateTime")]
+    #[Serializer\SerializedName('EndDateTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $endDateTime;
 
-    #[Serializer\SerializedName("Name")]
+    #[Serializer\SerializedName('Name')]
     private ?string $name;
 
-    #[Serializer\SerializedName("CrossRegionalBookingPerformed")]
+    #[Serializer\SerializedName('CrossRegionalBookingPerformed')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $crossRegionalBookingPerformed = null;
 
-    #[Serializer\SerializedName("AppointmentStatus")]
+    #[Serializer\SerializedName('AppointmentStatus')]
     #[Serializer\SkipWhenEmpty]
     private ?string $appointmentStatus = null;
 
-    #[Serializer\SerializedName("LateCancelled")]
+    #[Serializer\SerializedName('LateCancelled')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $lateCancelled = null;
 
-    #[Serializer\SerializedName("ClientId")]
+    #[Serializer\SerializedName('ClientId')]
     #[Serializer\SkipWhenEmpty]
     private ?string $clientId = null;
 
-    #[Serializer\SerializedName("LastModifiedDateTime")]
+    #[Serializer\SerializedName('LastModifiedDateTime')]
     #[Serializer\SkipWhenEmpty]
     private ?string $lastModifiedDateTime;
 
-    #[Serializer\SerializedName("WaitlistEntryId")]
+    #[Serializer\SerializedName('WaitlistEntryId')]
     #[Serializer\SkipWhenEmpty]
     private ?int $waitlistEntryId;
 
-    #[Serializer\SerializedName("ProductId")]
+    #[Serializer\SerializedName('ProductId')]
     private ?int $productId;
 
-    #[Serializer\SerializedName("SignedIn")]
+    #[Serializer\SerializedName('SignedIn')]
     private ?bool $signedIn;
 
     public function __construct(
@@ -61,9 +61,8 @@ class Visit
         int               $classId,
         DateTimeImmutable $startDateTime,
         DateTimeImmutable $endDateTime,
-        string            $name
-    )
-    {
+        string            $name,
+    ) {
         $this->id            = $id;
         $this->classId       = $classId;
         $this->startDateTime = $startDateTime;

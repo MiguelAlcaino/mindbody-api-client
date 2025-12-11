@@ -2,15 +2,12 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SiteService\Model\Request;
 
+use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractSOAPMethod;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestContainer;
-use JMS\Serializer\Annotation as Serializer;
 
 class GetProgramsRequest extends AbstractSOAPMethod
 {
-    /**
-     * @var RequestContainer
-     */
-    #[Serializer\SerializedName("GetPrograms")]
+    #[Serializer\SerializedName('GetPrograms')]
     protected RequestContainer $soapMethodName;
 }

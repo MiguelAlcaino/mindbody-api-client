@@ -26,7 +26,7 @@ class UserCredentialsFactory extends AbstractCredentials
         return new UserCredentials(
             $this->username,
             $this->getPassword(),
-            $this->getSiteIds()
+            $this->getSiteIds(),
         );
     }
 }

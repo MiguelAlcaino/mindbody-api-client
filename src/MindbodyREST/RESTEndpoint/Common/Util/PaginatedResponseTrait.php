@@ -7,7 +7,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\Pagin
 
 trait PaginatedResponseTrait
 {
-    #[Serializer\SerializedName("PaginationResponse")]
+    #[Serializer\SerializedName('PaginationResponse')]
     private PaginationResponse $paginationResponse;
 
     public function getPaginationResponse(): PaginationResponse

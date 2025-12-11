@@ -11,7 +11,7 @@ class GETPaymentTypesResponse extends RESTResponse
     /**
      * @var array<PaymentType>
      */
-    #[Serializer\SerializedName("PaymentTypes")]
+    #[Serializer\SerializedName('PaymentTypes')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Site\Model\PaymentType>")]
     private array $paymentTypes;
 

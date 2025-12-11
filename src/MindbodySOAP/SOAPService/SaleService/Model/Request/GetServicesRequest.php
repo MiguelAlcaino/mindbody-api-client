@@ -8,6 +8,6 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestContain
 
 class GetServicesRequest extends AbstractSOAPMethod
 {
-    #[Serializer\SerializedName("GetServices")]
+    #[Serializer\SerializedName('GetServices')]
     protected RequestContainer $soapMethodName;
 }

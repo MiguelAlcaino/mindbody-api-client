@@ -14,7 +14,7 @@ class NotEnoughBalanceInGiftCardException extends MindbodyRESTResponseException
         return new self(
             sprintf('Your gift card does not have enough balance. Current balance is %f', $balance),
             0,
-            $guzzleException
+            $guzzleException,
         );
     }
 

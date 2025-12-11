@@ -8,26 +8,26 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParams
 
 class GetClientVisitsParamsRequest extends AbstractParamsRequest
 {
-    #[Serializer\SerializedName("ClientID")]
+    #[Serializer\SerializedName('ClientID')]
     #[Serializer\XmlElement(cdata: false)]
-    #[Serializer\Type("string")]
+    #[Serializer\Type('string')]
     private $clientId;
 
-    #[Serializer\SerializedName("UnpaidsOnly")]
+    #[Serializer\SerializedName('UnpaidsOnly')]
     #[Serializer\SkipWhenEmpty]
     #[Serializer\XmlElement(cdata: false)]
-    #[Serializer\Type("bool")]
+    #[Serializer\Type('bool')]
     private bool $unpaidsOnly;
 
-    #[Serializer\SerializedName("StartDate")]
+    #[Serializer\SerializedName('StartDate')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     #[Serializer\XmlElement(cdata: false)]
     private $startDate;
 
-    #[Serializer\SerializedName("EndDate")]
+    #[Serializer\SerializedName('EndDate')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     #[Serializer\XmlElement(cdata: false)]
-    private DateTimeImmutable|null $endDate;
+    private ?DateTimeImmutable $endDate;
 
     public function __construct(string $clientId)
     {

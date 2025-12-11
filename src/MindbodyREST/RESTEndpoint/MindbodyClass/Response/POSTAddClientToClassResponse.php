@@ -11,8 +11,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Mode
 class POSTAddClientToClassResponse extends RESTResponse
 {
     public function __construct(
-        #[Serializer\SerializedName("Visit")]
-        private readonly Visit $visit
+        #[Serializer\SerializedName('Visit')]
+        private readonly Visit $visit,
     ) {
     }
 

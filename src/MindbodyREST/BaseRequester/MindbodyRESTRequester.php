@@ -22,6 +22,7 @@ class MindbodyRESTRequester
 
     /**
      * @param array<string, mixed> $newHeaders
+     *
      * @throws GuzzleException
      */
     public function request(
@@ -30,9 +31,8 @@ class MindbodyRESTRequester
         string  $body,
         int     $siteId,
         ?string $staffUserToken = null,
-        array   $newHeaders = []
-    ): string
-    {
+        array   $newHeaders = [],
+    ): string {
         $headers = [
             'Content-Type' => 'application/json',
             'Api-Key'      => $this->apiKey,
@@ -47,9 +47,9 @@ class MindbodyRESTRequester
 
         $options = ['headers' => $headers];
 
-        if (strtoupper($method) === 'GET') {
+        if ('GET' === strtoupper($method)) {
             $options['query'] = Query::build(json_decode($body, true));
-        } elseif (strtoupper($method) === 'POST') {
+        } elseif ('POST' === strtoupper($method)) {
             $options['body'] = $body;
         }
 

@@ -2,11 +2,11 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyRequestHandler;
 
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SaleServiceSOAPRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CheckoutShoppingCartRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\GetServicesRequest;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\PaymentInfo;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SaleServiceSOAPRequest;
 
 class SaleServiceRequestHandler
 {
@@ -17,8 +17,6 @@ class SaleServiceRequestHandler
 
     /**
      * SaleServiceRequestHandler constructor.
-     *
-     * @param SaleServiceSOAPRequest $saleServiceSOAPRequest
      */
     public function __construct(SaleServiceSOAPRequest $saleServiceSOAPRequest)
     {
@@ -26,9 +24,6 @@ class SaleServiceRequestHandler
     }
 
     /**
-     * @param GetServicesRequest $request
-     *
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getFormattedServices(?GetServicesRequest $request = null): array
@@ -51,17 +46,15 @@ class SaleServiceRequestHandler
                 $pos_b = $b['price'];
 
                 return $pos_a - $pos_b;
-            }
+            },
         );
 
         return $formattedServices;
     }
 
     /**
-     * @param string     $clientId
      * @param CartItem[] $cartItems
      *
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function calculateShoppingCart(string $clientId, array $cartItems): array
@@ -69,7 +62,7 @@ class SaleServiceRequestHandler
         $checkoutShoppingCartRequest = new CheckoutShoppingCartRequest(
             $clientId,
             $cartItems,
-            true
+            true,
         );
         $checkoutShoppingCartRequest
             ->setInStore(true)
@@ -79,9 +72,8 @@ class SaleServiceRequestHandler
     }
 
     /**
-     * Returns an array of formatted custom payment methods
+     * Returns an array of formatted custom payment methods.
      *
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getFormattedCustomPaymentMethods(): array
@@ -90,7 +82,7 @@ class SaleServiceRequestHandler
         dump($customPaymentMethods);
         $formattedCustomPaymentMethods = [];
 
-        if ((int)$customPaymentMethods['GetCustomPaymentMethodsResult']['ResultCount'] === 1) {
+        if (1 === (int)$customPaymentMethods['GetCustomPaymentMethodsResult']['ResultCount']) {
             $customPaymentMethod                                         = $customPaymentMethods['GetCustomPaymentMethodsResult']['PaymentMethods']['CustomPaymentInfo'];
             $formattedCustomPaymentMethods[$customPaymentMethod['Name']] = $customPaymentMethod['ID'];
         } else {
@@ -103,26 +95,22 @@ class SaleServiceRequestHandler
     }
 
     /**
-     * @param string        $clientId
      * @param CartItem[]    $cartItems
      * @param PaymentInfo[] $paymentInfos
-     * @param string|null   $promotionalCode
-     * @param bool          $test
      *
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function purchaseShoppingCart(
-        string $clientId,
-        array $cartItems,
-        array $paymentInfos,
-        string $promotionalCode = null,
-        bool $test = true
+        string  $clientId,
+        array   $cartItems,
+        array   $paymentInfos,
+        ?string $promotionalCode = null,
+        bool    $test = true,
     ): array {
         $checkoutShoppingCartRequest = new CheckoutShoppingCartRequest(
             $clientId,
             $cartItems,
-            $test
+            $test,
         );
         $checkoutShoppingCartRequest
             ->setPayments($paymentInfos)

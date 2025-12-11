@@ -11,7 +11,7 @@ class GETServicesResponse extends RESTResponse
     /**
      * @var array<Service>|null
      */
-    #[Serializer\SerializedName("Services")]
+    #[Serializer\SerializedName('Services')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Service>")]
     private ?array $services;
 

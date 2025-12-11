@@ -17,7 +17,7 @@ class Sale
      * @var array<PurchasedItem>
      */
     #[Serializer\SerializedName('PurchasedItems')]
-    #[Serializer\Type('array<'.PurchasedItem::class.'>')]
+    #[Serializer\Type('array<' . PurchasedItem::class . '>')]
     private array $purchasedItems;
 
     public function getId(): int

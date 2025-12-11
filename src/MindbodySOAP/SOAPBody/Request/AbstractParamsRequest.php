@@ -6,8 +6,8 @@ use JMS\Serializer\Annotation as Serializer;
 
 abstract class AbstractParamsRequest implements RequestParamsInterface
 {
-    #[Serializer\SerializedName("Test")]
-    #[Serializer\Type("bool")]
+    #[Serializer\SerializedName('Test')]
+    #[Serializer\Type('bool')]
     #[Serializer\XmlElement(cdata: false)]
     #[Serializer\SkipWhenEmpty]
     private bool $test;

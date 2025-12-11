@@ -14,7 +14,7 @@ class MindbodyDeserializerTest extends TestCase
     {
         $jmsSerializerFactory = new JmsSerializerFactory();
         $deserializer         = new MindbodyDeserializer(
-            $jmsSerializerFactory->create()
+            $jmsSerializerFactory->create(),
         );
         $responseBody         = $this->getGetClientsResponse();
 
@@ -38,7 +38,7 @@ class MindbodyDeserializerTest extends TestCase
     {
         $jmsSerializerFactory = new JmsSerializerFactory();
         $deserializer         = new MindbodyDeserializer(
-            $jmsSerializerFactory->create()
+            $jmsSerializerFactory->create(),
         );
         $responseBody         = 'mierda';
 

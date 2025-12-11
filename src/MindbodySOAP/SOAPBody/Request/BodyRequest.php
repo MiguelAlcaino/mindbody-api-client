@@ -10,7 +10,7 @@ class BodyRequest
 {
     /**
      * This attribute will be serialized as the SOAP method depending on the AbstractSOAPMethod instance that is injected here.
-     * As $content is inline, it will not be added to the serialized string but its content will
+     * As $content is inline, it will not be added to the serialized string but its content will.
      */
     #[Serializer\XmlList(inline: true)]
     private AbstractSOAPMethod $content;

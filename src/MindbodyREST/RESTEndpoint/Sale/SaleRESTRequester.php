@@ -16,12 +16,12 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Respons
 
 class SaleRESTRequester
 {
-    private RESTRequesterExecutor    $restRequester;
+    private RESTRequesterExecutor $restRequester;
     private ResponseExceptionHandler $responseExceptionHandler;
 
     public function __construct(
-        RESTRequesterExecutor $RESTRequester,
-        ResponseExceptionHandler $responseExceptionHandler
+        RESTRequesterExecutor    $RESTRequester,
+        ResponseExceptionHandler $responseExceptionHandler,
     ) {
         $this->restRequester            = $RESTRequester;
         $this->responseExceptionHandler = $responseExceptionHandler;

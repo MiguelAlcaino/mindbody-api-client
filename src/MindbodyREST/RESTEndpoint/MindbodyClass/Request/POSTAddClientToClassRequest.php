@@ -13,45 +13,45 @@ class POSTAddClientToClassRequest extends RESTRequest implements UserStaffTokenR
 {
     use UserStaffTokenRequiredTrait;
 
-    #[Serializer\SerializedName("ClientId")]
+    #[Serializer\SerializedName('ClientId')]
     private string $clientId;
 
-    #[Serializer\SerializedName("ClassId")]
+    #[Serializer\SerializedName('ClassId')]
     private int $classId;
 
-    #[Serializer\SerializedName("RequirePayment")]
+    #[Serializer\SerializedName('RequirePayment')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $requirePayment;
 
-    #[Serializer\SerializedName("Waitlist")]
+    #[Serializer\SerializedName('Waitlist')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $waitList;
 
-    #[Serializer\SerializedName("SendEmail")]
+    #[Serializer\SerializedName('SendEmail')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $sendEmail;
 
-    #[Serializer\SerializedName("CrossRegionalBooking")]
+    #[Serializer\SerializedName('CrossRegionalBooking')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $crossRegionalBooking;
 
-    #[Serializer\SerializedName("WaitlistEntryId")]
+    #[Serializer\SerializedName('WaitlistEntryId')]
     #[Serializer\SkipWhenEmpty]
     private ?int $waitlistEntryId;
 
-    #[Serializer\SerializedName("CrossRegionalBookingClientServiceSiteId")]
+    #[Serializer\SerializedName('CrossRegionalBookingClientServiceSiteId')]
     #[Serializer\SkipWhenEmpty]
     private ?int $crossRegionalBookingClientServiceSiteId;
 
     public function __construct(string $clientId, int $classId)
     {
-        $this->clientId = $clientId;
-        $this->classId = $classId;
-        $this->requirePayment = null;
-        $this->waitList = null;
-        $this->sendEmail = null;
-        $this->crossRegionalBooking = null;
-        $this->waitlistEntryId = null;
+        $this->clientId                                = $clientId;
+        $this->classId                                 = $classId;
+        $this->requirePayment                          = null;
+        $this->waitList                                = null;
+        $this->sendEmail                               = null;
+        $this->crossRegionalBooking                    = null;
+        $this->waitlistEntryId                         = null;
         $this->crossRegionalBookingClientServiceSiteId = null;
     }
 

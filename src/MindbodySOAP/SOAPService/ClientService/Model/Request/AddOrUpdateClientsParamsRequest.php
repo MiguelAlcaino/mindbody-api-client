@@ -13,8 +13,8 @@ class AddOrUpdateClientsParamsRequest extends AbstractParamsRequest
     /**
      * @var Client[]
      */
-    #[Serializer\SerializedName("Clients")]
-    #[Serializer\XmlList(entry: "Client")]
+    #[Serializer\SerializedName('Clients')]
+    #[Serializer\XmlList(entry: 'Client')]
     private array $clients;
 
     /**

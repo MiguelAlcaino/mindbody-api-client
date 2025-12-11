@@ -8,7 +8,7 @@ use JMS\Serializer\Annotation as Serializer;
 
 class UserCredentials extends AbstractCredentials
 {
-    #[Serializer\SerializedName("Username")]
+    #[Serializer\SerializedName('Username')]
     #[Serializer\XmlElement(cdata: false)]
     private string $username;
 

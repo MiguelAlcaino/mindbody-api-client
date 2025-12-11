@@ -6,16 +6,16 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Service
 {
-    #[Serializer\SerializedName("Id")]
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    #[Serializer\SerializedName("Name")]
+    #[Serializer\SerializedName('Name')]
     private string $name;
 
-    #[Serializer\SerializedName("Price")]
+    #[Serializer\SerializedName('Price')]
     private float $price;
 
-    #[Serializer\SerializedName("OnlinePrice")]
+    #[Serializer\SerializedName('OnlinePrice')]
     private float $onlinePrice;
 
     public function getId(): int

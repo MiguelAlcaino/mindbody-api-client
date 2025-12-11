@@ -7,24 +7,24 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\E
 
 class Item
 {
-    #[Serializer\SerializedName("ID")]
-    #[Serializer\Type("int")]
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\Type('int')]
     #[Serializer\XmlElement(cdata: false)]
     private int $id;
 
     #[Serializer\XmlAttribute]
-    #[Serializer\SerializedName("xsi:type")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('xsi:type')]
+    #[Serializer\Type('string')]
     private string $type;
 
-    #[Serializer\SerializedName("Price")]
-    #[Serializer\Type("float")]
+    #[Serializer\SerializedName('Price')]
+    #[Serializer\Type('float')]
     #[Serializer\XmlElement(cdata: false)]
     #[Serializer\SkipWhenEmpty]
     private float $price;
 
-    #[Serializer\SerializedName("Name")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('Name')]
+    #[Serializer\Type('string')]
     #[Serializer\XmlElement(cdata: false)]
     #[Serializer\SkipWhenEmpty]
     private string $name;

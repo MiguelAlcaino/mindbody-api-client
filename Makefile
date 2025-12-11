@@ -39,3 +39,7 @@ test: ## Run PHPUnit tests
 
 phpstan: ## Run PHPStan static analysis
 	docker-compose exec php vendor/bin/phpstan analyse
+
+style-fix:
+	docker compose exec --env XDEBUG_MODE=off php php ./vendor/bin/php-cs-fixer fix src
+	docker compose exec --env XDEBUG_MODE=off php php ./vendor/bin/php-cs-fixer fix tests

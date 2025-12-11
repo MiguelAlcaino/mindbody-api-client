@@ -9,18 +9,18 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Model\AbstractSerializ
 
 abstract class AbstractBaseResultResponse extends AbstractSerializable implements SOAPMethodResultInterface
 {
-    #[Serializer\Type("string")]
-    #[Serializer\SerializedName("Status")]
+    #[Serializer\Type('string')]
+    #[Serializer\SerializedName('Status')]
     #[Serializer\XmlElement(cdata: false)]
     private $status;
 
-    #[Serializer\Type("int")]
-    #[Serializer\SerializedName("ErrorCode")]
+    #[Serializer\Type('int')]
+    #[Serializer\SerializedName('ErrorCode')]
     #[Serializer\XmlElement(cdata: false)]
     private int $errorCode;
 
-    #[Serializer\Type("string")]
-    #[Serializer\SerializedName("XMLDetail")]
+    #[Serializer\Type('string')]
+    #[Serializer\SerializedName('XMLDetail')]
     #[Serializer\XmlElement(cdata: false)]
     private string $xmlDetail;
 

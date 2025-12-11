@@ -13,19 +13,19 @@ class POSTRemoveClientFromClassRequest extends RESTRequest implements UserStaffT
 {
     use UserStaffTokenRequiredTrait;
 
-    #[Serializer\SerializedName("SendEmail")]
+    #[Serializer\SerializedName('SendEmail')]
     #[Serializer\SkipWhenEmpty]
     private bool $sendEmail;
 
-    #[Serializer\SerializedName("LateCancel")]
+    #[Serializer\SerializedName('LateCancel')]
     #[Serializer\SkipWhenEmpty]
     private bool $lateCancel;
 
     public function __construct(
-        #[Serializer\SerializedName("ClassId")]
+        #[Serializer\SerializedName('ClassId')]
         private readonly int $classId,
-        #[Serializer\SerializedName("ClientId")]
-        private readonly int $clientId
+        #[Serializer\SerializedName('ClientId')]
+        private readonly int $clientId,
     ) {
         $this->sendEmail  = false;
         $this->lateCancel = false;

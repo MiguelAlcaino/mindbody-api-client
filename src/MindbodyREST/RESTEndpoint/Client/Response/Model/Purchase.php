@@ -6,27 +6,27 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Purchase
 {
-    #[Serializer\SerializedName("Sale")]
+    #[Serializer\SerializedName('Sale')]
     private Sale $sale;
 
-    #[Serializer\SerializedName("AmountPaid")]
+    #[Serializer\SerializedName('AmountPaid')]
     private float $amountPaid;
 
-    #[Serializer\SerializedName("Price")]
+    #[Serializer\SerializedName('Price')]
     private float $price;
 
-    #[Serializer\SerializedName("Discount")]
+    #[Serializer\SerializedName('Discount')]
     private float $discount;
 
-    #[Serializer\SerializedName("Tax")]
+    #[Serializer\SerializedName('Tax')]
     private float $tax;
 
-    #[Serializer\SerializedName("Returned")]
+    #[Serializer\SerializedName('Returned')]
     private bool $returned;
 
     private int $quantity;
 
-    #[Serializer\SerializedName("Description")]
+    #[Serializer\SerializedName('Description')]
     private string $description;
 
     public function getSale(): Sale

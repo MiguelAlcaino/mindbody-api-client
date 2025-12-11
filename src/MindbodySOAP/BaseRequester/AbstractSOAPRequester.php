@@ -19,20 +19,20 @@ use Webmozart\Assert\Assert;
 abstract class AbstractSOAPRequester
 {
     /**
-     * Date format used in mindbody requests
+     * Date format used in mindbody requests.
      */
     public const DATE_MINDBODY_FORMAT = 'Y-m-d\TH:i:s';
 
     protected MindbodySOAPRequester $minbodySoapRequester;
-    protected MindbodySerializer    $mindbodySerializer;
-    private SourceCredentials       $sourceCredentials;
-    private UserCredentials         $userCredentials;
+    protected MindbodySerializer $mindbodySerializer;
+    private SourceCredentials $sourceCredentials;
+    private UserCredentials $userCredentials;
 
     public function __construct(
         MindbodySOAPRequester $minbodySoapRequester,
-        MindbodySerializer $mindbodySerializer,
-        SourceCredentials $sourceCredentials,
-        UserCredentials $userCredentials
+        MindbodySerializer    $mindbodySerializer,
+        SourceCredentials     $sourceCredentials,
+        UserCredentials       $userCredentials,
     ) {
         $this->minbodySoapRequester = $minbodySoapRequester;
         $this->mindbodySerializer   = $mindbodySerializer;
@@ -41,32 +41,32 @@ abstract class AbstractSOAPRequester
     }
 
     /**
-     * @param mixed $requesterObject
-     *
      * @return array<string, mixed>
      */
     public function decodeRequesterObject($requesterObject): array
     {
-        return $requesterObject === null ? [] : json_decode(json_encode($requesterObject), true);
+        return null === $requesterObject ? [] : json_decode(json_encode($requesterObject), true);
     }
 
     /**
      * @template T of SOAPMethodResultInterface
-     * @param class-string<T> $resultClass
+     *
+     * @param class-string<T>                              $resultClass
      * @param AbstractParamsRequest|RequestParamsInterface $requestParams
      *
      * @return T
+     *
      * @throws MindbodySerializerException
      * @throws MindbodyDeserializerException
      * @throws RequestException
      */
     protected function executeRequest(
-        string $requestClass,
-        string $resultClass,
-        string $methodName,
-        string $serviceUrl,
+        string                 $requestClass,
+        string                 $resultClass,
+        string                 $methodName,
+        string                 $serviceUrl,
         ?AbstractParamsRequest $requestParams = null,
-        bool $useUserCredentials = true
+        bool                   $useUserCredentials = true,
     ): SOAPMethodResultInterface {
         $preEnvelopedRequest = $this->getRequest($requestClass, $requestParams, $useUserCredentials);
         $serializedBody      = $this->mindbodySerializer->serialize($preEnvelopedRequest);
@@ -76,7 +76,7 @@ abstract class AbstractSOAPRequester
                 $serviceUrl,
                 $methodName,
                 $serializedBody,
-                null !== $requestParams ? $requestParams->getHeaders() : []
+                null !== $requestParams ? $requestParams->getHeaders() : [],
             );
         } catch (GuzzleException $exception) {
             throw RequestException::createFromRequest($serializedBody, $requestParams, $exception);
@@ -102,16 +102,16 @@ abstract class AbstractSOAPRequester
     }
 
     private function getRequest(
-        string $requestClass,
+        string                 $requestClass,
         ?AbstractParamsRequest $requestParams,
-        bool $useUserCredentials
+        bool                   $useUserCredentials,
     ): AbstractSOAPMethod {
         $preEnvelopedInstance = new $requestClass(
             new Request(
                 $this->sourceCredentials,
                 $requestParams,
-                $useUserCredentials ? $this->userCredentials : null
-            )
+                $useUserCredentials ? $this->userCredentials : null,
+            ),
         );
 
         Assert::isInstanceOf($preEnvelopedInstance, AbstractSOAPMethod::class);

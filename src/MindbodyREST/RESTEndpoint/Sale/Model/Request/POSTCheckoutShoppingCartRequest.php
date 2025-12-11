@@ -46,15 +46,14 @@ class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTo
     private ?bool $sendEmail;
 
     /**
-     * @param CartItem[] $items
+     * @param CartItem[]    $items
      * @param PaymentInfo[] $payments
      */
     public function __construct(
         string $clientId,
         array  $items,
-        array  $payments
-    )
-    {
+        array  $payments,
+    ) {
         $this->clientId      = $clientId;
         $this->items         = $items;
         $this->payments      = $payments;

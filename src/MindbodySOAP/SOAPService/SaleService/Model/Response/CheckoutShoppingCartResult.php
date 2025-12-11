@@ -7,7 +7,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\AbstractBaseR
 
 class CheckoutShoppingCartResult extends AbstractBaseResultResponse
 {
-    #[Serializer\SerializedName("ShoppingCart")]
+    #[Serializer\SerializedName('ShoppingCart')]
     #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\ShoppingCart")]
     private ShoppingCart $shoppingCart;
 
@@ -15,7 +15,6 @@ class CheckoutShoppingCartResult extends AbstractBaseResultResponse
     {
         return 'CheckoutShoppingCart';
     }
-
 
     public function getShoppingCart(): ShoppingCart
     {

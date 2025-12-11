@@ -10,7 +10,7 @@ class PaymentMetadata
     private float $amount;
 
     /**
-     * In case of $type=CustomPaymentInfo
+     * In case of $type=CustomPaymentInfo.
      */
     #[Serializer\SerializedName('Id')]
     #[Serializer\SkipWhenEmpty]

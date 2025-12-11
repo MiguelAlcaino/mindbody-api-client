@@ -14,10 +14,9 @@ class SourceCredentialsFactory extends AbstractCredentials
      */
     public function __construct(
         private readonly string $sourceName,
-        string $sourcePassword,
-        array $siteIds
-    )
-    {
+        string                  $sourcePassword,
+        array                   $siteIds,
+    ) {
         parent::__construct($sourcePassword, $siteIds);
     }
 
@@ -26,7 +25,7 @@ class SourceCredentialsFactory extends AbstractCredentials
         return new SourceCredentials(
             $this->sourceName,
             $this->getPassword(),
-            $this->getSiteIds()
+            $this->getSiteIds(),
         );
     }
 }

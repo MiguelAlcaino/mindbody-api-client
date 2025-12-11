@@ -26,7 +26,7 @@ class MindbodySerializerException extends RuntimeException
             $envelopeRequest,
             'There has been an error trying to serialize this envelope request. Check the $envelope for more details',
             0,
-            $previous
+            $previous,
         );
     }
 

@@ -9,59 +9,56 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\P
 
 class CheckoutShoppingCartParamsRequest extends AbstractParamsRequest
 {
-    #[Serializer\SerializedName("ClientID")]
-    #[Serializer\Type("string")]
+    #[Serializer\SerializedName('ClientID')]
+    #[Serializer\Type('string')]
     #[Serializer\XmlElement(cdata: false)]
     private $clientId;
 
     /**
      * @var CartItem[] $cartItems
      */
-    #[Serializer\SerializedName("CartItems")]
-    #[Serializer\XmlList(entry: "CartItem")]
+    #[Serializer\SerializedName('CartItems')]
+    #[Serializer\XmlList(entry: 'CartItem')]
     private array $cartItems;
 
-    #[Serializer\SerializedName("Payments")]
-    #[Serializer\XmlList(entry: "PaymentInfo")]
+    #[Serializer\SerializedName('Payments')]
+    #[Serializer\XmlList(entry: 'PaymentInfo')]
     private $payments;
 
-    #[Serializer\SerializedName("Test")]
-    #[Serializer\Type("bool")]
+    #[Serializer\SerializedName('Test')]
+    #[Serializer\Type('bool')]
     #[Serializer\XmlElement(cdata: false)]
     private bool $test;
 
-    #[Serializer\SerializedName("Fields")]
-    #[Serializer\XmlList(entry: "string")]
+    #[Serializer\SerializedName('Fields')]
+    #[Serializer\XmlList(entry: 'string')]
     #[Serializer\SkipWhenEmpty]
     #[Serializer\XmlElement(cdata: false)]
-    #[Serializer\Type("array<string>")]
+    #[Serializer\Type('array<string>')]
     private $fields;
 
-    #[Serializer\SerializedName("InStore")]
+    #[Serializer\SerializedName('InStore')]
     #[Serializer\SkipWhenEmpty]
     #[Serializer\XmlElement(cdata: false)]
-    #[Serializer\Type("bool")]
+    #[Serializer\Type('bool')]
     private bool $inStore;
 
-    #[Serializer\SerializedName("PromotionCode")]
+    #[Serializer\SerializedName('PromotionCode')]
     #[Serializer\SkipWhenEmpty]
     #[Serializer\XmlElement(cdata: false)]
-    #[Serializer\Type("string")]
+    #[Serializer\Type('string')]
     private string $promotionCode;
 
     /**
-     * @param string        $clientId
      * @param CartItem[]    $cartItems
      * @param PaymentInfo[] $payments
-     * @param null|string   $promotionCode
-     * @param bool          $test
      */
     public function __construct(
-        string $clientId,
-        array $cartItems,
-        array $payments,
+        string  $clientId,
+        array   $cartItems,
+        array   $payments,
         ?string $promotionCode = null,
-        bool $test = true
+        bool    $test = true,
     ) {
         $this->clientId      = $clientId;
         $this->cartItems     = $cartItems;

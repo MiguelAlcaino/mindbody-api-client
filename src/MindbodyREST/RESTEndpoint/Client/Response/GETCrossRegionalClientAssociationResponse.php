@@ -11,7 +11,7 @@ class GETCrossRegionalClientAssociationResponse extends RESTResponse
     /**
      * @var array<CrossRegionalClientAssociation>
      */
-    #[Serializer\SerializedName("CrossRegionalClientAssociations")]
+    #[Serializer\SerializedName('CrossRegionalClientAssociations')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\CrossRegionalClientAssociation>")]
     private array $crossRegionalClientAssociations;
 

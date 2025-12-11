@@ -41,9 +41,11 @@ abstract class AbstractSOAPRequester
     }
 
     /**
+     * @param array<string, mixed> $requesterObject
+     *
      * @return array<string, mixed>
      */
-    public function decodeRequesterObject($requesterObject): array
+    public function decodeRequesterObject(?array $requesterObject): array
     {
         return null === $requesterObject ? [] : json_decode(json_encode($requesterObject), true);
     }

@@ -2,9 +2,6 @@ parameters:
     level: 6
     paths:
         - src
-    excludePaths:
-        - src/*/Test/*
-        - src/MindbodyRequestHandler/*
     ignoreErrors:
         # Ignore property.onlyRead and property.onlyWritten for JMS Serializer properties
         - '#Property .* is never written, only read\.#'
@@ -29,10 +26,4 @@ parameters:
         # Ignore unknown classes in SOAP code
         -
             message: '#Call to static method.*on an unknown class#'
-            path: src/MindbodySOAP/*
-        -
-            message: '#has invalid type.*#'
-            path: src/MindbodySOAP/*
-        -
-            message: '#on an unknown class#'
             path: src/MindbodySOAP/*

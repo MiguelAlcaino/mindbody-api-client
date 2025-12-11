@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation as Serializer;
 class EnvelopeRequest
 {
     #[Serializer\SerializedName("soapenv:Body")]
-    private bodyrequest $body;
+    private BodyRequest $body;
 
     public function __construct(BodyRequest $body)
     {

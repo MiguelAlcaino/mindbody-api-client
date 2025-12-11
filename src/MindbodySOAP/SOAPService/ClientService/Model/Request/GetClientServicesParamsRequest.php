@@ -32,6 +32,9 @@ class GetClientServicesParamsRequest extends AbstractParamsRequest
     #[Serializer\XmlElement(cdata: false)]
     private bool $showActiveOnly;
 
+    /**
+     * @param int[] $programIds
+     */
     public function __construct(string $clientId, array $programIds)
     {
         $this->clientId   = $clientId;

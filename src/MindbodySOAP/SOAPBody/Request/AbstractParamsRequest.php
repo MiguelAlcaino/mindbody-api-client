@@ -25,6 +25,9 @@ abstract class AbstractParamsRequest implements RequestParamsInterface
         return $this->headers;
     }
 
+    /**
+     * @param array<string, int|string> $headers
+     */
     public function setHeaders(array $headers): self
     {
         $this->headers = $headers;

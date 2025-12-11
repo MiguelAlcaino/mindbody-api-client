@@ -8,9 +8,6 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestContain
 
 class ValidateLoginRequest extends AbstractSOAPMethod
 {
-    /**
-     * @var RequestContainer
-     */
     #[Serializer\SerializedName("ValidateLogin")]
-    protected $soapMethodName;
+    protected RequestContainer $soapMethodName;
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass;
 
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassDescriptionsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Request\GETClassSchedulesRequest;
@@ -25,15 +24,10 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Resp
 class ClassRESTRequester
 {
     private RESTRequesterExecutor $restRequester;
-    private ResponseExceptionHandler $responseExceptionHandler;
 
-    public function __construct(
-        RESTRequesterExecutor    $RESTRequester,
-        ResponseExceptionHandler $responseExceptionHandler
-    )
+    public function __construct(RESTRequesterExecutor $RESTRequester)
     {
-        $this->restRequester            = $RESTRequester;
-        $this->responseExceptionHandler = $responseExceptionHandler;
+        $this->restRequester = $RESTRequester;
     }
 
     /**
@@ -85,6 +79,7 @@ class ClassRESTRequester
     public function removeClientFromWaitlist(POSTRemoveFromWaitlistRequest $request): null
     {
         // This endpoint does not return a body but only an empty response with 200. Anything different to a 200, means error.
+        /** @phpstan-ignore-next-line Unable to resolve template type for null response class */
         return $this->restRequester->executeRequest($request, null);
     }
 }

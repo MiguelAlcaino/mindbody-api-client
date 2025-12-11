@@ -4,29 +4,20 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\
 
 class AddClientToClassRequest implements \JsonSerializable
 {
-    /**
-     * @var string
-     */
-    private $ClientID;
+    private string $ClientID;
 
-    /**
-     * @var int
-     */
-    private $ClassID;
+    private int $ClassID;
 
-    /**
-     * AddClientToClassRequest constructor.
-     *
-     * @param string $ClientID
-     * @param int    $ClassID
-     */
     public function __construct(string $ClientID, int $ClassID)
     {
         $this->ClientID = $ClientID;
         $this->ClassID  = $ClassID;
     }
 
-    public function jsonSerialize()
+    /**
+     * @return array{ClientID: string, ClassID: int}
+     */
+    public function jsonSerialize(): array
     {
         return [
             'ClientID' => $this->ClientID,
@@ -34,17 +25,11 @@ class AddClientToClassRequest implements \JsonSerializable
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getClientID(): string
     {
         return $this->ClientID;
     }
 
-    /**
-     * @return int
-     */
     public function getClassID(): int
     {
         return $this->ClassID;

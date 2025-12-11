@@ -4,7 +4,7 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\
 
 class GetClassDescriptionsRequest implements \JsonSerializable
 {
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [];
     }

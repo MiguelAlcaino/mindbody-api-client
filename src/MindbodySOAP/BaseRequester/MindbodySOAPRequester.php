@@ -18,6 +18,10 @@ class MindbodySOAPRequester
     }
 
     /**
+     * @param string $uri
+     * @param string $methodName
+     * @param string $body
+     * @param array<string, mixed> $newHeaders
      * @throws GuzzleException
      */
     public function request(

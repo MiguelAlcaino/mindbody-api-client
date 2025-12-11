@@ -9,6 +9,9 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\SourceCredenti
 
 class SourceCredentialsFactory extends AbstractCredentials
 {
+    /**
+     * @param int[] $siteIds
+     */
     public function __construct(
         private readonly string $sourceName,
         string $sourcePassword,

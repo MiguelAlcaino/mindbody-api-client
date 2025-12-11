@@ -16,6 +16,10 @@ abstract class AbstractCredentials
     #[Serializer\XmlList(entry: "int")]
     private array $siteIds;
 
+    /**
+     * @param string $password
+     * @param int[] $siteIds
+     */
     public function __construct(string $password, array $siteIds)
     {
         $this->password = $password;
@@ -28,7 +32,7 @@ abstract class AbstractCredentials
     }
 
     /**
-     * @return string[]
+     * @return int[]
      */
     public function getSiteIds(): array
     {

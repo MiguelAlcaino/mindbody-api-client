@@ -15,7 +15,7 @@ class GetClientServicesParamsRequestFactory
         return new GetClientServicesParamsRequest(
             $clientId, array_map(
                          function (Program $program) {
-                             return $program->getId();
+                             return (int)$program->getId();
                          },
                          $programs
                      )

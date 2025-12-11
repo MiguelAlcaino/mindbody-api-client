@@ -9,7 +9,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPReque
 class GetClassesRequest implements \JsonSerializable
 {
     /**
-     * @var array
+     * @var int[]
      */
     private $ClassIDs;
 
@@ -23,7 +23,10 @@ class GetClassesRequest implements \JsonSerializable
      */
     private $EndDateTime;
 
-    public function jsonSerialize()
+    /**
+     * @return array<string, mixed>
+     */
+    public function jsonSerialize(): array
     {
         $jsonArray = [];
 
@@ -45,7 +48,7 @@ class GetClassesRequest implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return int[]|null
      */
     public function getClassIDs(): ?array
     {
@@ -53,7 +56,7 @@ class GetClassesRequest implements \JsonSerializable
     }
 
     /**
-     * @param array $ClassIDs
+     * @param int[] $ClassIDs
      *
      * @return GetClassesRequest
      */

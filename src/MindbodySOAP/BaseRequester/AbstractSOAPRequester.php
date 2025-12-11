@@ -43,7 +43,7 @@ abstract class AbstractSOAPRequester
     /**
      * @param mixed $requesterObject
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function decodeRequesterObject($requesterObject): array
     {
@@ -65,7 +65,7 @@ abstract class AbstractSOAPRequester
         string $resultClass,
         string $methodName,
         string $serviceUrl,
-        AbstractParamsRequest $requestParams = null,
+        ?AbstractParamsRequest $requestParams = null,
         bool $useUserCredentials = true
     ): SOAPMethodResultInterface {
         $preEnvelopedRequest = $this->getRequest($requestClass, $requestParams, $useUserCredentials);

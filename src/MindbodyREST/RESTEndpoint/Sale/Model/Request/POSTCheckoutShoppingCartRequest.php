@@ -20,10 +20,16 @@ class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTo
     #[Serializer\SerializedName('ClientId')]
     private string $clientId;
 
+    /**
+     * @var array<CartItem>
+     */
     #[Serializer\SerializedName('Items')]
     #[Serializer\Type('array<' . CartItem::class . '>')]
     private array $items;
 
+    /**
+     * @var array<PaymentInfo>
+     */
     #[Serializer\SerializedName('Payments')]
     private array $payments;
 
@@ -56,7 +62,6 @@ class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTo
         $this->promotionCode = null;
         $this->inStore       = null;
         $this->sendEmail     = null;
-        $this->test          = null;
     }
 
     public function setCartId(?string $cartId): self
@@ -87,6 +92,9 @@ class POSTCheckoutShoppingCartRequest extends RESTRequest implements UserStaffTo
         return $this;
     }
 
+    /**
+     * @return array<PaymentInfo>
+     */
     public function getPayments(): array
     {
         return $this->payments;

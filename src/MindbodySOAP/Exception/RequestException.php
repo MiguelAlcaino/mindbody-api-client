@@ -21,7 +21,7 @@ class RequestException extends RuntimeException
         RequestParamsInterface $requestParams,
         string $message = '',
         int $code = 0,
-        Throwable $previous = null
+        ?Throwable $previous = null
     ) {
         $this->payload = $payload;
         $this->requestParams = $requestParams;

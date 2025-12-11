@@ -45,6 +45,9 @@ class GetClientsParamsRequest extends AbstractParamsRequest
         return $this->clientIds;
     }
 
+    /**
+     * @param string[] $clientIds
+     */
     public function setClientIds(array $clientIds): self
     {
         $this->clientIds = $clientIds;

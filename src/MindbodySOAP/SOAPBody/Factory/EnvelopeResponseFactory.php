@@ -9,6 +9,9 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\EnvelopeRespo
 
 class EnvelopeResponseFactory
 {
+    /**
+     * @param mixed $content
+     */
     public static function create($content): EnvelopeResponse
     {
         return new EnvelopeResponse(new BodyResponse($content));

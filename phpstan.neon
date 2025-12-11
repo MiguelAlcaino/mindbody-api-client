@@ -4,6 +4,7 @@ parameters:
         - src
     excludePaths:
         - src/*/Test/*
+        - src/MindbodyRequestHandler/*
     ignoreErrors:
         # Ignore property.onlyRead and property.onlyWritten for JMS Serializer properties
         - '#Property .* is never written, only read\.#'
@@ -14,3 +15,24 @@ parameters:
         - '#Class .* has an uninitialized readonly property .* Assign it in the constructor\.#'
         # Ignore unused properties that may be used by serialization
         - '#Property .* is unused\.#'
+        # Ignore missing type hints in SOAP code (deprecated, being phased out)
+        -
+            message: '#has no type specified#'
+            path: src/MindbodySOAP/*
+        -
+            message: '#has no value type specified in iterable type array#'
+            path: src/MindbodySOAP/*
+        # Ignore PHPDoc mismatches in SOAP code
+        -
+            message: '#PHPDoc tag @param.*is not subtype of native type#'
+            path: src/MindbodySOAP/*
+        # Ignore unknown classes in SOAP code
+        -
+            message: '#Call to static method.*on an unknown class#'
+            path: src/MindbodySOAP/*
+        -
+            message: '#has invalid type.*#'
+            path: src/MindbodySOAP/*
+        -
+            message: '#on an unknown class#'
+            path: src/MindbodySOAP/*

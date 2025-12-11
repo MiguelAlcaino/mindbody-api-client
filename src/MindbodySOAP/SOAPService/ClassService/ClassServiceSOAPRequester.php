@@ -9,8 +9,6 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\
 
 class ClassServiceSOAPRequester extends AbstractSOAPRequester
 {
-    private const SERVICE_URI = 'https://api.mindbodyonline.com/0_5_1/ClassService.asmx';
-
     /**
      * @deprecated This method is deprecated and should not be used. Use REST API instead.
      * @throws \RuntimeException

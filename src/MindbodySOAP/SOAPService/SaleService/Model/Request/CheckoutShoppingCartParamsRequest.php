@@ -70,6 +70,9 @@ class CheckoutShoppingCartParamsRequest extends AbstractParamsRequest
         $this->test          = $test;
     }
 
+    /**
+     * @param string[] $fields
+     */
     public function setFields(array $fields): self
     {
         $this->fields = $fields;

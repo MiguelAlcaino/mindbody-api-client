@@ -17,6 +17,9 @@ class AddOrUpdateClientsParamsRequest extends AbstractParamsRequest
     #[Serializer\XmlList(entry: "Client")]
     private array $clients;
 
+    /**
+     * @param Client[] $clients
+     */
     public function __construct(array $clients)
     {
         $this->clients = $clients;

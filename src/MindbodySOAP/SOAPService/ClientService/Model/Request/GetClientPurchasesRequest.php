@@ -10,9 +10,6 @@ use JMS\Serializer\Annotation as Serializer;
 
 class GetClientPurchasesRequest extends AbstractSOAPMethod
 {
-    /**
-     * @var RequestContainer
-     */
     #[Serializer\SerializedName("GetClientPurchases")]
-    protected $soapMethodName;
+    protected RequestContainer $soapMethodName;
 }

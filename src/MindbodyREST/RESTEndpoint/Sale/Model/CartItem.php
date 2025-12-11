@@ -12,6 +12,9 @@ class CartItem
     #[Serializer\SerializedName('Quantity')]
     private int $quantity;
 
+    /**
+     * @var array<int>|null
+     */
     #[Serializer\SerializedName('VisitIds')]
     #[Serializer\Type('array<int>')]
     #[Serializer\SkipWhenEmpty]
@@ -29,6 +32,9 @@ class CartItem
         $this->discountAmount = null;
     }
 
+    /**
+     * @param array<int> $visitIds
+     */
     public function setVisitIds(array $visitIds): self
     {
         $this->visitIds = $visitIds;

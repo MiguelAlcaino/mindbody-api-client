@@ -20,6 +20,11 @@ class RESTRequesterExecutor
         $this->serializer            = $serializer;
     }
 
+    /**
+     * @template T of RESTResponse
+     * @param class-string<T>|null $responseClass
+     * @return T|null
+     */
     public function executeRequest(RESTRequest $request, ?string $responseClass): ?RESTResponse
     {
         $body = $this->serializer->serialize($request, 'json');

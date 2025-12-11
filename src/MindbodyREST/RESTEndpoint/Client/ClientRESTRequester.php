@@ -15,22 +15,16 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GE
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETCrossRegionalClientAssociationResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTAddClientResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientVisitResponse;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientResponse;
 
 class ClientRESTRequester
 {
     private RESTRequesterExecutor $restRequester;
-    private ResponseExceptionHandler $responseExceptionHandler;
 
-    public function __construct(
-        RESTRequesterExecutor    $RESTRequester,
-        ResponseExceptionHandler $responseExceptionHandler
-    )
+    public function __construct(RESTRequesterExecutor $RESTRequester)
     {
-        $this->restRequester            = $RESTRequester;
-        $this->responseExceptionHandler = $responseExceptionHandler;
+        $this->restRequester = $RESTRequester;
     }
 
     public function getClientServices(GETClientServicesRequest $request): GETClientServicesResponse

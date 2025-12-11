@@ -9,7 +9,7 @@ class NotEnoughBalanceInGiftCardException extends MindbodyRESTResponseException
 {
     private float $balance;
 
-    public static function create(float $balance, ClientException $guzzleException = null): self
+    public static function create(float $balance, ?ClientException $guzzleException = null): self
     {
         return new self(
             sprintf('Your gift card does not have enough balance. Current balance is %f', $balance),

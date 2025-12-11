@@ -51,8 +51,11 @@ abstract class AbstractSOAPRequester
     }
 
     /**
+     * @template T of SOAPMethodResultInterface
+     * @param class-string<T> $resultClass
      * @param AbstractParamsRequest|RequestParamsInterface $requestParams
      *
+     * @return T
      * @throws MindbodySerializerException
      * @throws MindbodyDeserializerException
      * @throws RequestException

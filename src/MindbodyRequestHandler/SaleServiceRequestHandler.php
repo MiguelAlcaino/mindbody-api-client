@@ -31,7 +31,7 @@ class SaleServiceRequestHandler
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getFormattedServices(GetServicesRequest $request = null): array
+    public function getFormattedServices(?GetServicesRequest $request = null): array
     {
         $services = $this->saleServiceSOAPRequest->getServices($request);
 

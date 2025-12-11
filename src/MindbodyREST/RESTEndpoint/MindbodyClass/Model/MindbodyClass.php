@@ -43,6 +43,9 @@ class MindbodyClass
     #[Serializer\SkipWhenEmpty]
     private ?int $totalBooked;
 
+    /**
+     * @var array<Visit>|null
+     */
     #[Serializer\SerializedName("Visits")]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\Visit>")]
     #[Serializer\SkipWhenEmpty]

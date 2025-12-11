@@ -82,7 +82,7 @@ class ClassRESTRequester
      * @param POSTRemoveFromWaitlistRequest $request
      * @return null
      */
-    public function removeClientFromWaitlist(POSTRemoveFromWaitlistRequest $request)
+    public function removeClientFromWaitlist(POSTRemoveFromWaitlistRequest $request): null
     {
         // This endpoint does not return a body but only an empty response with 200. Anything different to a 200, means error.
         return $this->restRequester->executeRequest($request, null);

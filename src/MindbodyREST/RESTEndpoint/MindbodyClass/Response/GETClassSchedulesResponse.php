@@ -21,6 +21,9 @@ class GETClassSchedulesResponse extends RESTResponse implements PaginatedRespons
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\ClassSchedule>")]
     private array $classSchedules;
 
+    /**
+     * @return array<ClassSchedule>
+     */
     public function getClassSchedules(): array
     {
         return $this->classSchedules;

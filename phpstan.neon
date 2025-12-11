@@ -4,3 +4,13 @@ parameters:
         - src
     excludePaths:
         - src/*/Test/*
+    ignoreErrors:
+        # Ignore property.onlyRead and property.onlyWritten for JMS Serializer properties
+        - '#Property .* is never written, only read\.#'
+        - '#Property .* is never read, only written\.#'
+        # Ignore unusedType warnings for nullable properties (JMS Serializer may not assign all types)
+        - '#Property .* is never assigned .* so it can be removed from the property type\.#'
+        # Ignore uninitialized readonly properties (JMS Serializer uses reflection)
+        - '#Class .* has an uninitialized readonly property .* Assign it in the constructor\.#'
+        # Ignore unused properties that may be used by serialization
+        - '#Property .* is unused\.#'

@@ -13,7 +13,7 @@ class MindbodyRESTRequester
     private ClientInterface $guzzleClient;
     private string $apiHost;
 
-    public function __construct(string $apiKey, ClientInterface $guzzleClient, string $apiHost = null)
+    public function __construct(string $apiKey, ClientInterface $guzzleClient, ?string $apiHost = null)
     {
         $this->apiKey       = $apiKey;
         $this->guzzleClient = $guzzleClient;
@@ -21,6 +21,7 @@ class MindbodyRESTRequester
     }
 
     /**
+     * @param array<string, mixed> $newHeaders
      * @throws GuzzleException
      */
     public function request(

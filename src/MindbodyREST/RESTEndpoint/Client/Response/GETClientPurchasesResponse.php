@@ -12,6 +12,9 @@ class GETClientPurchasesResponse extends RESTResponse implements PaginatedRespon
 {
     use PaginatedResponseTrait;
 
+    /**
+     * @var array<Purchase>
+     */
     #[Serializer\SerializedName("Purchases")]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\Purchase>")]
     private array $purchases;

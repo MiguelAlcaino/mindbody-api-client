@@ -21,6 +21,9 @@ class GETClassesResponse extends RESTResponse implements PaginatedResponseInterf
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\MindbodyClass>")]
     private array $classes;
 
+    /**
+     * @param array<MindbodyClass> $classes
+     */
     public function __construct(array $classes)
     {
         $this->classes = $classes;

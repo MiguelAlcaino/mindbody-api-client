@@ -2,12 +2,8 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model;
 
-use Spatie\Enum\Enum;
-
-/**
- * @method static self Custom();
- * @method static self GiftCard();
- */
-class PaymentInfoTypeEnum extends Enum
+enum PaymentInfoTypeEnum: string
 {
+    case CUSTOM    = 'Custom';
+    case GIFT_CARD = 'GiftCard';
 }

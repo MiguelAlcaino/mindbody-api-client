@@ -7,78 +7,51 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParams
 
 class GetServicesParamsRequest extends AbstractParamsRequest
 {
-    /**
-     * @var int[]
-     * @Serializer\SerializedName("ProgramIDs")
-     * @Serializer\XmlList(entry="int")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName('ProgramIDs')]
+    #[Serializer\XmlList(entry: 'int')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
     private $programIds;
 
-    /**
-     * @var int[]
-     * @Serializer\SerializedName("SessionTypeIDs")
-     * @Serializer\XmlList(entry="int")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
-    private $sessionTypeIds;
+    #[Serializer\SerializedName('SessionTypeIDs')]
+    #[Serializer\XmlList(entry: 'int')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
+    private array $sessionTypeIds;
 
-    /**
-     * @var string[]
-     * @Serializer\SerializedName("ServiceIDs")
-     * @Serializer\XmlList(entry="string")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName('ServiceIDs')]
+    #[Serializer\XmlList(entry: 'string')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
     private $serviceIds;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("ClassID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("int")
-     */
-    private $classId;
+    #[Serializer\SerializedName('ClassID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('int')]
+    private int $classId;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("ClassScheduleID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("int")
-     */
+    #[Serializer\SerializedName('ClassScheduleID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('int')]
     private $classScheduleID;
 
-    /**
-     * @var bool
-     * @Serializer\SerializedName("SellOnline")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
-    private $sellOnline;
+    #[Serializer\SerializedName('SellOnline')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
+    private bool $sellOnline;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("LocationID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("int")
-     */
+    #[Serializer\SerializedName('LocationID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('int')]
     private $locationId;
 
-    /**
-     * @var bool
-     * @Serializer\SerializedName("HideRelatedPrograms")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
-    private $hideRelatedPrograms;
+    #[Serializer\SerializedName('HideRelatedPrograms')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
+    private bool $hideRelatedPrograms;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("StaffID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("int")
-     */
-    private $staffId;
+    #[Serializer\SerializedName('StaffID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('int')]
+    private int $staffId;
 }

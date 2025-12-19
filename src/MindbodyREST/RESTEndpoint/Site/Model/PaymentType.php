@@ -6,24 +6,16 @@ use JMS\Serializer\Annotation as Serializer;
 
 class PaymentType
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    /**
-     * @Serializer\SerializedName("PaymentTypeName")
-     */
+    #[Serializer\SerializedName('PaymentTypeName')]
     private string $paymentTypeName;
 
-    /**
-     * @Serializer\SerializedName("Active")
-     */
+    #[Serializer\SerializedName('Active')]
     private bool $active;
 
-    /**
-     * @Serializer\SerializedName("Fee")
-     */
+    #[Serializer\SerializedName('Fee')]
     private ?float $fee;
 
     public function getId(): int

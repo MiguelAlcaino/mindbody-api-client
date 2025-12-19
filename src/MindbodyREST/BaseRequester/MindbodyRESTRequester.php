@@ -13,7 +13,7 @@ class MindbodyRESTRequester
     private ClientInterface $guzzleClient;
     private string $apiHost;
 
-    public function __construct(string $apiKey, ClientInterface $guzzleClient, string $apiHost = null)
+    public function __construct(string $apiKey, ClientInterface $guzzleClient, ?string $apiHost = null)
     {
         $this->apiKey       = $apiKey;
         $this->guzzleClient = $guzzleClient;
@@ -21,6 +21,8 @@ class MindbodyRESTRequester
     }
 
     /**
+     * @param array<string, mixed> $newHeaders
+     *
      * @throws GuzzleException
      */
     public function request(
@@ -29,9 +31,8 @@ class MindbodyRESTRequester
         string  $body,
         int     $siteId,
         ?string $staffUserToken = null,
-        array   $newHeaders = []
-    ): string
-    {
+        array   $newHeaders = [],
+    ): string {
         $headers = [
             'Content-Type' => 'application/json',
             'Api-Key'      => $this->apiKey,
@@ -46,9 +47,9 @@ class MindbodyRESTRequester
 
         $options = ['headers' => $headers];
 
-        if (strtoupper($method) === 'GET') {
+        if ('GET' === strtoupper($method)) {
             $options['query'] = Query::build(json_decode($body, true));
-        } elseif (strtoupper($method) === 'POST') {
+        } elseif ('POST' === strtoupper($method)) {
             $options['body'] = $body;
         }
 

@@ -6,29 +6,22 @@ use JMS\Serializer\Annotation as Serializer;
 
 class PaymentMetadata
 {
-    /**
-     * @Serializer\SerializedName("Amount")
-     * @Serializer\Type("float")
-     */
+    #[Serializer\SerializedName('Amount')]
     private float $amount;
+
     /**
-     * In case of $type=CustomPaymentInfo
-     *
-     * @Serializer\SerializedName("Id")
-     * @Serializer\SkipWhenEmpty
+     * In case of $type=CustomPaymentInfo.
      */
+    #[Serializer\SerializedName('Id')]
+    #[Serializer\SkipWhenEmpty]
     private ?int $id;
 
-    /**
-     * @Serializer\SerializedName("CardNumber")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName('CardNumber')]
+    #[Serializer\SkipWhenEmpty]
     private ?string $cardNumber;
 
-    /**
-     * @Serializer\SerializedName("Notes")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName('Notes')]
+    #[Serializer\SkipWhenEmpty]
     private ?string $notes;
 
     public function __construct(float $amount)

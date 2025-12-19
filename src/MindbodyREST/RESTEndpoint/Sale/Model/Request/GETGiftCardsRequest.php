@@ -12,25 +12,28 @@ class GETGiftCardsRequest extends RESTRequest implements UserStaffTokenRequiredI
     use UserStaffTokenRequiredTrait;
 
     /**
-     * @Serializer\SerializedName("Ids")
+     * @var array<string>|null
      */
+    #[Serializer\SerializedName('Ids')]
     private ?array $ids = null;
 
-    /**
-     * @Serializer\SerializedName("LocationId")
-     */
+    #[Serializer\SerializedName('LocationId')]
     private ?int $locationId = null;
 
-    /**
-     * @Serializer\SerializedName("SoldOnline")
-     */
+    #[Serializer\SerializedName('SoldOnline')]
     private ?bool $soldOnline = null;
 
+    /**
+     * @return array<string>|null
+     */
     public function getIds(): ?array
     {
         return $this->ids;
     }
 
+    /**
+     * @param array<string>|null $ids
+     */
     public function setIds(?array $ids): self
     {
         $this->ids = $ids;

@@ -11,15 +11,13 @@ class GETServicesRequest extends RESTRequest implements UserStaffTokenRequiredIn
 {
     use UserStaffTokenRequiredTrait;
 
-    /**
-     * @Serializer\SerializedName("SellOnline")
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('SellOnline')]
+    #[Serializer\Type('string')]
     private string $sellOnline;
 
     public function __construct()
     {
-        $this->sellOnline = false;
+        $this->sellOnline = 'false';
     }
 
     public function setSellOnline(bool $sellOnline): self
@@ -38,5 +36,4 @@ class GETServicesRequest extends RESTRequest implements UserStaffTokenRequiredIn
     {
         return 'sale/services';
     }
-
 }

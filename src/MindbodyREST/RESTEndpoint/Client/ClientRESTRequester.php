@@ -8,29 +8,23 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GET
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETClientsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETCrossRegionalClientAssociationRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTAddClientRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientVisitRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientPurchasesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientServicesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientsResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETCrossRegionalClientAssociationResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTAddClientResponse;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientVisitResponse;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
-use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientVisitResponse;
 
 class ClientRESTRequester
 {
     private RESTRequesterExecutor $restRequester;
-    private ResponseExceptionHandler $responseExceptionHandler;
 
-    public function __construct(
-        RESTRequesterExecutor    $RESTRequester,
-        ResponseExceptionHandler $responseExceptionHandler
-    )
+    public function __construct(RESTRequesterExecutor $RESTRequester)
     {
-        $this->restRequester            = $RESTRequester;
-        $this->responseExceptionHandler = $responseExceptionHandler;
+        $this->restRequester = $RESTRequester;
     }
 
     public function getClientServices(GETClientServicesRequest $request): GETClientServicesResponse
@@ -39,9 +33,8 @@ class ClientRESTRequester
     }
 
     public function getCrossRegionalClientAssociations(
-        GETCrossRegionalClientAssociationRequest $request
-    ): GETCrossRegionalClientAssociationResponse
-    {
+        GETCrossRegionalClientAssociationRequest $request,
+    ): GETCrossRegionalClientAssociationResponse {
         return $this->restRequester->executeRequest($request, GETCrossRegionalClientAssociationResponse::class);
     }
 

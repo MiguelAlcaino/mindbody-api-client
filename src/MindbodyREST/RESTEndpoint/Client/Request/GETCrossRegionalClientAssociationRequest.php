@@ -31,5 +31,4 @@ class GETCrossRegionalClientAssociationRequest extends RESTRequest implements Us
     {
         return 'client/crossRegionalClientAssociations';
     }
-
 }

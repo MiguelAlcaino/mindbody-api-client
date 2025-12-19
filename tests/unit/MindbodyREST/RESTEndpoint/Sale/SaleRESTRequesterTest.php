@@ -35,11 +35,11 @@ class SaleRESTRequesterTest extends TestCase
         $request      = new POSTCheckoutShoppingCartRequest(
             '100019337',
             [
-                new CartItem(new Item(ItemTypeEnum::Service(), $itemMetadata), 1),
+                new CartItem(new Item(ItemTypeEnum::SERVICE, $itemMetadata), 1),
             ],
             [
-                new PaymentInfo(PaymentInfoTypeEnum::GiftCard(), $paymentMetadata),
-            ]
+                new PaymentInfo(PaymentInfoTypeEnum::GIFT_CARD, $paymentMetadata),
+            ],
         );
         $request
             ->setSiteId($this->getSiteIds()[0])
@@ -57,7 +57,7 @@ class SaleRESTRequesterTest extends TestCase
 
         $restRequester = new MindbodyRESTRequester(
             $this->getApiKey(),
-            new Client()
+            new Client(),
         );
 
         $restRequesterExecutor = new RESTRequesterExecutor($restRequester, $serializer);

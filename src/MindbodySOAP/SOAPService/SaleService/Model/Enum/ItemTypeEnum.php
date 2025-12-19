@@ -2,14 +2,10 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Enum;
 
-use Spatie\Enum\Enum;
-
-/**
- * @method static self Service()
- * @method static self Product()
- * @method static self Package()
- * @method static self Tip()
- */
-class ItemTypeEnum extends Enum
+enum ItemTypeEnum: string
 {
+    case SERVICE = 'Service';
+    case PRODUCT = 'Product';
+    case PACKAGE = 'Package';
+    case TIP     = 'Tip';
 }

@@ -23,7 +23,7 @@ class SaleServiceSOAPRequester extends AbstractSOAPRequester
             GetServicesResult::class,
             'GetServices',
             self::SERVICE_URI,
-            $request
+            $request,
         );
     }
 
@@ -34,7 +34,7 @@ class SaleServiceSOAPRequester extends AbstractSOAPRequester
             CheckoutShoppingCartResult::class,
             'CheckoutShoppingCart',
             self::SERVICE_URI,
-            $request
+            $request,
         );
     }
 
@@ -44,7 +44,7 @@ class SaleServiceSOAPRequester extends AbstractSOAPRequester
             GetCustomPaymentMethodsRequest::class,
             GetCustomPaymentMethodsResult::class,
             'GetCustomPaymentMethods',
-            self::SERVICE_URI
+            self::SERVICE_URI,
         );
     }
 }

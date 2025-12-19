@@ -6,36 +6,26 @@ use JMS\Serializer\Annotation as Serializer;
 
 class ShoppingCart
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     private string $id;
 
     /**
      * @var CartItem[]
-     * @Serializer\SerializedName("CartItems")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\Model\CartItem>")
      */
+    #[Serializer\SerializedName('CartItems')]
+    #[Serializer\Type('array<' . CartItem::class . '>')]
     private array $cartItems;
 
-    /**
-     * @Serializer\SerializedName("SubTotal")
-     */
+    #[Serializer\SerializedName('SubTotal')]
     private float $subTotal;
 
-    /**
-     * @Serializer\SerializedName("DiscountTotal")
-     */
+    #[Serializer\SerializedName('DiscountTotal')]
     private float $discountTotal;
 
-    /**
-     * @Serializer\SerializedName("TaxTotal")
-     */
+    #[Serializer\SerializedName('TaxTotal')]
     private float $taxTotal;
 
-    /**
-     * @Serializer\SerializedName("GrandTotal")
-     */
+    #[Serializer\SerializedName('GrandTotal')]
     private float $grandTotal;
 
     public function getId(): string

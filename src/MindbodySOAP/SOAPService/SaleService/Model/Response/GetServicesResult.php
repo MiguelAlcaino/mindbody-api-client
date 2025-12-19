@@ -2,22 +2,18 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response;
 
+use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Model\MindbodyPaginatedResultTrait;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\AbstractBaseResultResponse;
-use JMS\Serializer\Annotation as Serializer;
 
 class GetServicesResult extends AbstractBaseResultResponse
 {
-
     use MindbodyPaginatedResultTrait;
 
-    /**
-     * @var Service[]
-     * @Serializer\Type ("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Response\Service>")
-     * @Serializer\XmlList(entry="Service")
-     * @Serializer\SerializedName("Services")
-     */
-    private $services;
+    #[Serializer\Type]
+    #[Serializer\XmlList(entry: 'Service')]
+    #[Serializer\SerializedName('Services')]
+    private array $services;
 
     public function getMethodName(): string
     {

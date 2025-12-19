@@ -6,72 +6,48 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Service
 {
-    /**
-     * @var float
-     * @Serializer\SerializedName("Price")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName('Price')]
+    #[Serializer\Type('float')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
     private $price;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("OnlinePrice")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
-    private $onlinePrice;
+    #[Serializer\SerializedName('OnlinePrice')]
+    #[Serializer\Type('float')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
+    private float $onlinePrice;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("ProgramID")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName('ProgramID')]
+    #[Serializer\Type('int')]
+    #[Serializer\XmlElement(cdata: false)]
     private $programId;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("TaxRate")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
-    private $taxRate;
+    #[Serializer\SerializedName('TaxRate')]
+    #[Serializer\Type('float')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
+    private float $taxRate;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("ProductID")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName('ProductID')]
+    #[Serializer\Type('int')]
+    #[Serializer\XmlElement(cdata: false)]
     private $productId;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("ID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $id;
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private string $id;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("Name")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('Name')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $name;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("Count")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("int")
-     */
-    private $count;
+    #[Serializer\SerializedName('Count')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('int')]
+    private int $count;
 
     public function getPrice(): float
     {

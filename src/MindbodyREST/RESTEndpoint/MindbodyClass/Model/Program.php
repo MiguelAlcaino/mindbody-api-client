@@ -8,10 +8,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Program
 {
-    #[Serializer\SerializedName("Id")]
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    #[Serializer\SerializedName("CancelOffset")]
+    #[Serializer\SerializedName('CancelOffset')]
     private ?int $cancelOffset;
 
     public function getId(): int

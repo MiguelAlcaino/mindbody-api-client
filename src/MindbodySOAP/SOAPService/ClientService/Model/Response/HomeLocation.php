@@ -8,13 +8,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class HomeLocation
 {
-    /**
-     * @var int
-     * @Serializer\SerializedName("SiteID")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $siteId;
+    #[Serializer\SerializedName('SiteID')]
+    #[Serializer\Type('int')]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $siteId;
 
     public function getSiteId(): int
     {

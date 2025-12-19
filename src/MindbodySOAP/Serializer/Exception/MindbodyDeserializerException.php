@@ -12,7 +12,7 @@ class MindbodyDeserializerException extends RuntimeException
     /** @var string */
     private $payload;
 
-    public function __construct(string $payload, string $message = '', int $code = 0, Throwable $previous = null)
+    public function __construct(string $payload, string $message = '', int $code = 0, ?Throwable $previous = null)
     {
         $this->payload = $payload;
         parent::__construct($message, $code, $previous);

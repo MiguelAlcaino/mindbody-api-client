@@ -16,9 +16,6 @@ class ClientServiceRequestHandler
     }
 
     /**
-     * @param GetClientServicesRequest $getClientServicesRequest
-     *
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getClientServicesFormatted(GetClientServicesRequest $getClientServicesRequest): array
@@ -29,10 +26,10 @@ class ClientServiceRequestHandler
 
         if (count($clientServices['GetClientServicesResult']['ClientServices']) > 0) {
             if (
-            array_key_exists(
-                'Current',
-                $clientServices['GetClientServicesResult']['ClientServices']['ClientService']
-            )
+                array_key_exists(
+                    'Current',
+                    $clientServices['GetClientServicesResult']['ClientServices']['ClientService'],
+                )
             ) {
                 $clientService             = $clientServices['GetClientServicesResult']['ClientServices']['ClientService'];
                 $clientServicesFormatted[] = [
@@ -61,9 +58,6 @@ class ClientServiceRequestHandler
     }
 
     /**
-     * @param GetClientServicesRequest $getClientServicesRequest
-     *
-     * @return bool
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function canClientBookClass(GetClientServicesRequest $getClientServicesRequest): bool

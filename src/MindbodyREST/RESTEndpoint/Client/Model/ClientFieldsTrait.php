@@ -36,7 +36,7 @@ trait ClientFieldsTrait
 
     #[SerializedName('MobilePhone')]
     #[SkipWhenEmpty]
-    private ?string $mobilePhone;
+    private ?string $mobilePhone = null;
 
     #[SerializedName('AddressLine1')]
     #[SkipWhenEmpty]
@@ -96,7 +96,7 @@ trait ClientFieldsTrait
 
     public function getBirthDate(): ?DateTimeImmutable
     {
-        if ($this->birthDate === null) {
+        if (null === $this->birthDate) {
             return null;
         }
 

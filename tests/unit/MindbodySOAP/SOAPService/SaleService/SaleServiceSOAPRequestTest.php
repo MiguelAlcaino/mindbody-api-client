@@ -32,14 +32,14 @@ class SaleServiceSOAPRequestTest extends TestCase
     //             new CartItem(
     //                 new Item(
     //                     100007,
-    //                     ItemTypeEnum::Service()
+    //                     ItemTypeEnum::SERVICE
     //                 ),
     //                 1
     //             ),
     //         ], [
     //                 (new PaymentInfo(
     //                     1050,
-    //                     PaymentInfoTypeEnum::CustomPaymentInfo()
+    //                     PaymentInfoTypeEnum::CUSTOM_PAYMENT_INFO
     //                 ))->setId(17),
     //             ],
     //             null,
@@ -60,14 +60,14 @@ class SaleServiceSOAPRequestTest extends TestCase
     //             new CartItem(
     //                 new Item(
     //                     100007,
-    //                     ItemTypeEnum::Service()
+    //                     ItemTypeEnum::SERVICE
     //                 ),
     //                 1
     //             ),
     //         ], [
     //                 (new PaymentInfo(
     //                     1050,
-    //                     PaymentInfoTypeEnum::CustomPaymentInfo()
+    //                     PaymentInfoTypeEnum::CUSTOM_PAYMENT_INFO
     //                 ))->setId(17),
     //             ],
     //             null,
@@ -90,14 +90,14 @@ class SaleServiceSOAPRequestTest extends TestCase
     //             new CartItem(
     //                 new Item(
     //                     100007,
-    //                     ItemTypeEnum::Service()
+    //                     ItemTypeEnum::SERVICE
     //                 ),
     //                 1
     //             ),
     //         ], [
     //                 (new PaymentInfo(
     //                     1050,
-    //                     PaymentInfoTypeEnum::CustomPaymentInfo()
+    //                     PaymentInfoTypeEnum::CUSTOM_PAYMENT_INFO
     //                 ))->setId(17),
     //             ],
     //             $this->getPromoCode(),
@@ -124,7 +124,7 @@ class SaleServiceSOAPRequestTest extends TestCase
         $mock         = new MockHandler(
             [
                 new Response(200, [], $this->getServicesResponse()),
-            ]
+            ],
         );
         $handlerStack = HandlerStack::create($mock);
         $guzzleClient = new Client(['handler' => $handlerStack]);
@@ -144,7 +144,7 @@ class SaleServiceSOAPRequestTest extends TestCase
          * <ID>1111</ID>
          * <Name>Intense Bootcamp</Name>
          * <Count>8</Count>
-         * </Service>
+         * </Service>.
          */
         $service = $services[0];
         self::assertEquals(100.0000, $service->getPrice());
@@ -157,13 +157,13 @@ class SaleServiceSOAPRequestTest extends TestCase
         self::assertEquals(8, $service->getCount());
     }
 
-    private function getSaleServiceSoapRequester(bool $useFreeSite, Client $guzzleClient = null)
+    private function getSaleServiceSoapRequester(bool $useFreeSite, ?Client $guzzleClient = null)
     {
         return new SaleServiceSOAPRequester(
             new MindbodySOAPRequester($guzzleClient),
             $this->getMindbodySerializer(),
             $this->getSourceCredentials($useFreeSite),
-            $this->getUserCredentials($useFreeSite)
+            $this->getUserCredentials($useFreeSite),
         );
     }
 

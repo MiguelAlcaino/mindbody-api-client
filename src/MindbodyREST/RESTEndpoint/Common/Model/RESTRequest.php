@@ -6,20 +6,16 @@ use JMS\Serializer\Annotation as Serializer;
 
 abstract class RESTRequest
 {
-    /**
-     * @Serializer\SerializedName("Test")
-     */
+    #[Serializer\SerializedName('Test')]
     private bool $test = false;
 
-    /**
-     * @Serializer\Exclude
-     */
+    #[Serializer\Exclude]
     private int $siteId;
 
     /**
-     * @var array
-     * @Serializer\Exclude
+     * @var array<string, mixed>
      */
+    #[Serializer\Exclude]
     private array $headers = [];
 
     public function setTest(bool $test): self
@@ -41,11 +37,17 @@ abstract class RESTRequest
         return $this->siteId;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getHeaders(): array
     {
         return $this->headers;
     }
 
+    /**
+     * @param array<string, mixed> $headers
+     */
     public function setHeaders(array $headers): self
     {
         $this->headers = $headers;
@@ -53,7 +55,7 @@ abstract class RESTRequest
         return $this;
     }
 
-    public abstract function getMethod(): string;
+    abstract public function getMethod(): string;
 
-    public abstract function getPath(): string;
+    abstract public function getPath(): string;
 }

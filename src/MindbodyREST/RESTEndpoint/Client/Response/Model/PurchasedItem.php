@@ -2,22 +2,19 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model;
 
+use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
 
 class PurchasedItem
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     private int $id;
-    /**
-     * @Serializer\SerializedName("IsService")
-     */
+
+    #[Serializer\SerializedName('IsService')]
     private bool $isService;
-    /**
-     * @Serializer\SerializedName("ExpDate")
-     * @Serializer\SkipWhenEmpty()
-     */
+
+    #[Serializer\SerializedName('ExpDate')]
+    #[Serializer\SkipWhenEmpty]
     private ?string $expDate = null;
 
     public function getId(): int
@@ -30,12 +27,12 @@ class PurchasedItem
         return $this->isService;
     }
 
-    public function getExpDate(): ?\DateTimeImmutable
+    public function getExpDate(): ?DateTimeImmutable
     {
         if (null === $this->expDate) {
             return null;
         }
 
-        return new \DateTimeImmutable($this->expDate);
+        return new DateTimeImmutable($this->expDate);
     }
 }

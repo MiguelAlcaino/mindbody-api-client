@@ -15,11 +15,11 @@ class ResponseExceptionHandler
         $decodedBody = json_decode($body, true);
 
         if (isset($decodedBody['Error']) && isset($decodedBody['Error']['Message'])) {
-            if (strpos($decodedBody['Error']['Message'], 'Payment does not have enough credit. Gift Card Id ') !== false) {
+            if (false !== strpos($decodedBody['Error']['Message'], 'Payment does not have enough credit. Gift Card Id ')) {
                 $explodedErrorMessage = explode('Balance is $', $decodedBody['Error']['Message']);
 
                 return NotEnoughBalanceInGiftCardException::create((float)$explodedErrorMessage[1], $guzzleException);
-            } elseif (isset($decodedBody['Error']['Code']) && $decodedBody['Error']['Code'] === 'DeniedAccess') {
+            } elseif (isset($decodedBody['Error']['Code']) && 'DeniedAccess' === $decodedBody['Error']['Code']) {
                 return AccessDeniedException::create($decodedBody['Error']['Message'], $guzzleException);
             }
         }

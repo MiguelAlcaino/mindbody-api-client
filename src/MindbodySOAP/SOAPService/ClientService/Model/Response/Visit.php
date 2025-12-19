@@ -7,91 +7,61 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Visit
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("ID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $id;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("ClassID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $classId;
+    #[Serializer\SerializedName('ClassID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private string $classId;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("AppointmentID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('AppointmentID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $appointmentId;
 
-    /**
-     * @var DateTimeImmutable|null
-     * @Serializer\SerializedName("StartDateTime")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
-    private $startDateTime;
+    #[Serializer\SerializedName('StartDateTime')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    private ?DateTimeImmutable $startDateTime;
 
-    /**
-     * @var bool|null
-     * @Serializer\SerializedName("LateCancelled")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
+    #[Serializer\SerializedName('LateCancelled')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
     private $lateCancelled;
 
-    /**
-     * @var DateTimeImmutable|null
-     * @Serializer\SerializedName("EndDateTime")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
-    private $endDateTime;
+    #[Serializer\SerializedName('EndDateTime')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    private ?DateTimeImmutable $endDateTime;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("Name")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('Name')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $name;
 
-    /**
-     * @var bool|null
-     * @Serializer\SerializedName("WebSignup")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
-    private $webSignup;
+    #[Serializer\SerializedName('WebSignup')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
+    private ?bool $webSignup;
 
-    /**
-     * @var bool|null
-     * @Serializer\SerializedName("SignedIn")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
+    #[Serializer\SerializedName('SignedIn')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
     private $signedIn;
 
-    /**
-     * @var bool|null
-     * @Serializer\SerializedName("MakeUp")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
-    private $makeUp;
+    #[Serializer\SerializedName('MakeUp')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
+    private ?bool $makeUp;
 
     public function getId(): string
     {

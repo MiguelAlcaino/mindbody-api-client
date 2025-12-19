@@ -7,39 +7,27 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\E
 
 class Item
 {
-    /**
-     * @var int
-     * @Serializer\SerializedName("ID")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $id;
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\Type('int')]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $id;
 
-    /**
-     * @var string
-     * @Serializer\XmlAttribute()
-     * @Serializer\SerializedName("xsi:type")
-     * @Serializer\Type("string")
-     */
-    private $type;
+    #[Serializer\XmlAttribute]
+    #[Serializer\SerializedName('xsi:type')]
+    #[Serializer\Type('string')]
+    private string $type;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("Price")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
-    private $price;
+    #[Serializer\SerializedName('Price')]
+    #[Serializer\Type('float')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
+    private float $price;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("Name")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SkipWhenEmpty()
-     */
-    private $name;
+    #[Serializer\SerializedName('Name')]
+    #[Serializer\Type('string')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SkipWhenEmpty]
+    private string $name;
 
     public function __construct(int $id, ItemTypeEnum $type)
     {

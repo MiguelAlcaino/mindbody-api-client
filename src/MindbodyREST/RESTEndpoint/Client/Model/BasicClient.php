@@ -8,9 +8,7 @@ use JMS\Serializer\Annotation as Serializer;
 
 class BasicClient
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     protected int $id;
 
     public function getId(): int

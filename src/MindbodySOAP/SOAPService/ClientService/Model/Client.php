@@ -10,214 +10,145 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model
 
 class Client
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("ID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     * @Serializer\SkipWhenEmpty()
-     */
+    #[Serializer\SerializedName('ID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    #[Serializer\SkipWhenEmpty]
     private $id;
 
-    /**
-     * @var bool|null
-     * @Serializer\SerializedName("PromotionalEmailOptIn")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
-    private $promotionalEmailOptIn;
+    #[Serializer\SerializedName('PromotionalEmailOptIn')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
+    private ?bool $promotionalEmailOptIn;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("FirstName")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('FirstName')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $firstName;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("LastName")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $lastName;
+    #[Serializer\SerializedName('LastName')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $lastName;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("Email")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('Email')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $email;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("AddressLine1")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $addressLine1;
+    #[Serializer\SerializedName('AddressLine1')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $addressLine1;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("AddressLine2")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('AddressLine2')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $addressLine2;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("City")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $city;
+    #[Serializer\SerializedName('City')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $city;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("State")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('State')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $state;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("PostalCode")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $postalCode;
+    #[Serializer\SerializedName('PostalCode')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $postalCode;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("Country")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('Country')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $country;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("MobilePhone")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $mobilePhone;
+    #[Serializer\SerializedName('MobilePhone')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $mobilePhone;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("HomePhone")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('HomePhone')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $homePhone;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("WorkPhone")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $workPhone;
+    #[Serializer\SerializedName('WorkPhone')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $workPhone;
 
-    /**
-     * @var DateTimeImmutable|null
-     * @Serializer\SerializedName("BirthDate")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s','',['Y-m-d\TH:i:s.v','Y-m-d\TH:i:s']>")
-     */
+    #[Serializer\SerializedName('BirthDate')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s','',['Y-m-d\TH:i:s.v','Y-m-d\TH:i:s']>")]
     private $birthday;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("Gender")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $gender;
+    #[Serializer\SerializedName('Gender')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $gender;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("Password")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('Password')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $password;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("Username")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $username;
+    #[Serializer\SerializedName('Username')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $username;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("ReferredBy")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('ReferredBy')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $referredBy;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("EmergencyContactInfoName")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $emergencyContactInfoName;
+    #[Serializer\SerializedName('EmergencyContactInfoName')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $emergencyContactInfoName;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("EmergencyContactInfoRelationship")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('EmergencyContactInfoRelationship')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $emergencyContactInfoRelationship;
 
-    /**
-     * @var string|null
-     * @Serializer\SerializedName("EmergencyContactInfoPhone")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
-    private $emergencyContactInfoPhone;
+    #[Serializer\SerializedName('EmergencyContactInfoPhone')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
+    private ?string $emergencyContactInfoPhone;
 
-    /**
-     * @var HomeLocation|null
-     * @Serializer\SerializedName("HomeLocation")
-     * @Serializer\SkipWhenEmpty
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\HomeLocation")
-     */
-    private $homeLocation;
+    #[Serializer\SerializedName('HomeLocation')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\HomeLocation")]
+    private ?HomeLocation $homeLocation;
 
-    public function __construct(string $id = null)
+    public function __construct(?string $id = null)
     {
         $this->id = $id;
     }

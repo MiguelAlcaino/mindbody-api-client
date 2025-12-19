@@ -6,35 +6,37 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\BaseRequester\AbstractSOAPReque
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\AddClientToClassRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\GetClassDescriptionsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClassService\Model\GetClassesRequest;
+use RuntimeException;
 
 class ClassServiceSOAPRequester extends AbstractSOAPRequester
 {
-    private const SERVICE_URI = 'https://api.mindbodyonline.com/0_5_1/ClassService.asmx';
-
+    /**
+     * @deprecated This method is deprecated and should not be used. Use REST API instead.
+     *
+     * @throws RuntimeException
+     */
     public function getClasses(GetClassesRequest $request): array
     {
-        return $this->minbodySoapRequester->createEnvelopeAndExecuteRequest(
-            self::SERVICE_URI,
-            'GetClasses',
-            $this->decodeRequesterObject($request)
-        );
+        throw new RuntimeException('This method is deprecated and should not be used. Please use the REST API instead.');
     }
 
+    /**
+     * @deprecated This method is deprecated and should not be used. Use REST API instead.
+     *
+     * @throws RuntimeException
+     */
     public function addClientToClass(AddClientToClassRequest $request): array
     {
-        return $this->minbodySoapRequester->createEnvelopeAndExecuteRequest(
-            self::SERVICE_URI,
-            'AddClientToClass',
-            $this->decodeRequesterObject($request)
-        );
+        throw new RuntimeException('This method is deprecated and should not be used. Please use the REST API instead.');
     }
 
-    public function getClassDescriptions(GetClassDescriptionsRequest $request = null): array
+    /**
+     * @deprecated This method is deprecated and should not be used. Use REST API instead.
+     *
+     * @throws RuntimeException
+     */
+    public function getClassDescriptions(?GetClassDescriptionsRequest $request = null): array
     {
-        return $this->minbodySoapRequester->createEnvelopeAndExecuteRequest(
-            self::SERVICE_URI,
-            'GetClassDescriptions',
-            $this->decodeRequesterObject($request)
-        );
+        throw new RuntimeException('This method is deprecated and should not be used. Please use the REST API instead.');
     }
 }

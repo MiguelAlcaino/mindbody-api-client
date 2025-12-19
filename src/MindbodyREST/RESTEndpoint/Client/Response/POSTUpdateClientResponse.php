@@ -10,10 +10,8 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTR
 
 class POSTUpdateClientResponse extends RESTResponse
 {
-    /**
-     * @Serializer\SerializedName("Client")
-     */
-    private Client  $client;
+    #[Serializer\SerializedName('Client')]
+    private Client $client;
 
     public function getClient(): Client
     {

@@ -8,12 +8,9 @@ use JMS\Serializer\Annotation as Serializer;
 
 class UserCredentials extends AbstractCredentials
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("Username")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $username;
+    #[Serializer\SerializedName('Username')]
+    #[Serializer\XmlElement(cdata: false)]
+    private string $username;
 
     public function __construct(string $username, string $password, array $siteIds)
     {

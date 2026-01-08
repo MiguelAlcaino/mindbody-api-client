@@ -9,10 +9,12 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\GETGiftCardsRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\GETServicesRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\POSTCheckoutShoppingCartRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request\POSTPurchaseGiftCardRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\GetGiftCardBalanceResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\GETGiftCardsResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\GETServicesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\POSTCheckoutShoppingCartResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Response\POSTPurchaseGiftCardResponse;
 
 class SaleRESTRequester
 {
@@ -49,5 +51,10 @@ class SaleRESTRequester
     public function getServices(GETServicesRequest $request): GETServicesResponse
     {
         return $this->restRequester->executeRequest($request, GETServicesResponse::class);
+    }
+
+    public function postPurchaseGiftCard(POSTPurchaseGiftCardRequest $request): POSTPurchaseGiftCardResponse
+    {
+        return $this->restRequester->executeRequest($request, POSTPurchaseGiftCardResponse::class);
     }
 }

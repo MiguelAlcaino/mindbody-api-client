@@ -12,8 +12,8 @@ class POSTUpdateClientVisitResponse extends RESTResponse
 {
     public function __construct(
         #[Serializer\SerializedName('Visit')]
-        private readonly Visit $visit)
-    {
+        private readonly Visit $visit,
+    ) {
     }
 
     public function getVisit(): Visit

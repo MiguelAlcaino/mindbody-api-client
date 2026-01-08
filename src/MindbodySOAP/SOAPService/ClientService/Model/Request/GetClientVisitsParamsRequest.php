@@ -8,38 +8,26 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParams
 
 class GetClientVisitsParamsRequest extends AbstractParamsRequest
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("ClientID")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("string")
-     */
+    #[Serializer\SerializedName('ClientID')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('string')]
     private $clientId;
 
-    /**
-     * @var bool
-     * @Serializer\SerializedName("UnpaidsOnly")
-     * @Serializer\SkipWhenEmpty()
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\Type("bool")
-     */
-    private $unpaidsOnly;
+    #[Serializer\SerializedName('UnpaidsOnly')]
+    #[Serializer\SkipWhenEmpty]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\Type('bool')]
+    private bool $unpaidsOnly;
 
-    /**
-     * @var DateTimeImmutable|null
-     * @Serializer\SerializedName("StartDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName('StartDate')]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\XmlElement(cdata: false)]
     private $startDate;
 
-    /**
-     * @var DateTimeImmutable|null
-     * @Serializer\SerializedName("EndDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $endDate;
+    #[Serializer\SerializedName('EndDate')]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\XmlElement(cdata: false)]
+    private ?DateTimeImmutable $endDate;
 
     public function __construct(string $clientId)
     {

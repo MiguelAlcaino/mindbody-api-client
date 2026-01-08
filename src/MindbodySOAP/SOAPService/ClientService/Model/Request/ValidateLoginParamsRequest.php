@@ -7,21 +7,15 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\AbstractParams
 
 class ValidateLoginParamsRequest extends AbstractParamsRequest
 {
-    /**
-     * @var string
-     * @Serializer\SerializedName("Username")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName('Username')]
+    #[Serializer\Type('string')]
+    #[Serializer\XmlElement(cdata: false)]
     private $username;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("Password")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $password;
+    #[Serializer\SerializedName('Password')]
+    #[Serializer\Type('string')]
+    #[Serializer\XmlElement(cdata: false)]
+    private string $password;
 
     public function __construct(string $username, string $password)
     {

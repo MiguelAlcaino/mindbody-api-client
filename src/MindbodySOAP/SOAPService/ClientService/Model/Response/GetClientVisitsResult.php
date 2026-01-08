@@ -7,13 +7,10 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response\AbstractBaseR
 
 class GetClientVisitsResult extends AbstractBaseResultResponse
 {
-    /**
-     * @var Visit[]
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\Visit>")
-     * @Serializer\XmlList(entry="Visit")
-     * @Serializer\SerializedName("Visits")
-     */
-    private $visits;
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\ClientService\Model\Response\Visit>")]
+    #[Serializer\XmlList(entry: 'Visit')]
+    #[Serializer\SerializedName('Visits')]
+    private array $visits;
 
     public function getVisits(): array
     {
@@ -24,5 +21,4 @@ class GetClientVisitsResult extends AbstractBaseResultResponse
     {
         return 'GetClientVisits';
     }
-
 }

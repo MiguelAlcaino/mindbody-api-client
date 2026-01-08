@@ -2,12 +2,10 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model;
 
-use Spatie\Enum\Enum;
-
-/**
- * @method static self Service();
- */
-class ItemTypeEnum extends Enum
+enum ItemTypeEnum: string
 {
-
+    case SERVICE = 'Service';
+    case PRODUCT = 'Product';
+    case PACKAGE = 'Package';
+    case TIP     = 'Tip';
 }

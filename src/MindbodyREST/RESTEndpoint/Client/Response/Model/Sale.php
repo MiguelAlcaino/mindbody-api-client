@@ -7,23 +7,17 @@ use JMS\Serializer\Annotation as Serializer;
 
 class Sale
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     private int $id;
-    /**
-     * @Serializer\SerializedName("SaleDateTime")
-     */
+    #[Serializer\SerializedName('SaleDateTime')]
     private string $saleDatetime;
-    /**
-     * @Serializer\SerializedName("ClientId")
-     */
+    #[Serializer\SerializedName('ClientId')]
     private string $clientId;
     /**
-     * @var PurchasedItem[]
-     * @Serializer\SerializedName("PurchasedItems")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\PurchasedItem>")
+     * @var array<PurchasedItem>
      */
+    #[Serializer\SerializedName('PurchasedItems')]
+    #[Serializer\Type('array<' . PurchasedItem::class . '>')]
     private array $purchasedItems;
 
     public function getId(): int

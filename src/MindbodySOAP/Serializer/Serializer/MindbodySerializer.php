@@ -24,9 +24,9 @@ class MindbodySerializer
     private $format;
 
     public function __construct(
-        SerializerInterface $serializer,
+        SerializerInterface  $serializer,
         MindbodyDeserializer $deserializer,
-        string $format = 'xml'
+        string               $format = 'xml',
     ) {
         $this->serializer   = $serializer;
         $this->deserializer = $deserializer;

@@ -24,8 +24,7 @@ class POSTUpdateClientVisitRequest extends RESTRequest implements UserStaffToken
     public function __construct(
         #[Serializer\SerializedName('VisitId')]
         private readonly int $visitId,
-    )
-    {
+    ) {
     }
 
     public function getMethod(): string

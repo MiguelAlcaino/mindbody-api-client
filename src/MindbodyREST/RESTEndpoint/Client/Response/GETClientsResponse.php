@@ -11,12 +11,15 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTR
 class GETClientsResponse extends RESTResponse
 {
     /**
-     * @var Client[]
-     * @Serializer\SerializedName("Clients")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model\Client>")
+     * @var array<Client>
      */
+    #[Serializer\SerializedName('Clients')]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model\Client>")]
     private array $clients;
 
+    /**
+     * @return array<Client>
+     */
     public function getClients(): array
     {
         return $this->clients;

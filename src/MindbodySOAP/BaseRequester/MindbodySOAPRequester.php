@@ -18,13 +18,15 @@ class MindbodySOAPRequester
     }
 
     /**
+     * @param array<string, mixed> $newHeaders
+     *
      * @throws GuzzleException
      */
     public function request(
         string $uri,
         string $methodName,
         string $body,
-        array $newHeaders = []
+        array  $newHeaders = [],
     ): string {
         $headers = [
             'Content-Type' => 'text/xml; charset=utf-8',
@@ -40,7 +42,7 @@ class MindbodySOAPRequester
             [
                 'body'    => $body,
                 'headers' => $headers,
-            ]
+            ],
         );
 
         return $result->getBody()->getContents();

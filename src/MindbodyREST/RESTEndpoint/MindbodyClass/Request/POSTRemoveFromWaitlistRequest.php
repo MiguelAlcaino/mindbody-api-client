@@ -11,7 +11,7 @@ class POSTRemoveFromWaitlistRequest extends RESTRequest implements UserStaffToke
     use UserStaffTokenRequiredTrait;
 
     public function __construct(
-        private readonly int $waitlistEntryId
+        private readonly int $waitlistEntryId,
     ) {
     }
 

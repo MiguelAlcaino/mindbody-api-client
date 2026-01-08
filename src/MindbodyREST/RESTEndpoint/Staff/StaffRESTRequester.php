@@ -11,7 +11,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Response\GET
 class StaffRESTRequester
 {
     public function __construct(
-        private readonly RESTRequesterExecutor $restRequester
+        private readonly RESTRequesterExecutor $restRequester,
     ) {
     }
 

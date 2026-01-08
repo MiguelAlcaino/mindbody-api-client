@@ -8,13 +8,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 abstract class AbstractSOAPMethod
 {
-    /**
-     * @var RequestContainer
-     * @Serializer\Exclude()
-     */
-    protected $soapMethodName;
+    #[Serializer\Exclude]
+    protected RequestContainer $soapMethodName;
 
-    public function __construct($request)
+    public function __construct(Request $request)
     {
         $this->soapMethodName = new RequestContainer($request);
     }

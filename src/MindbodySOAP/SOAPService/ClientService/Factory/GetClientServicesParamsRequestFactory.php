@@ -13,12 +13,13 @@ class GetClientServicesParamsRequestFactory
     public static function createFromPrograms(string $clientId, array $programs): GetClientServicesParamsRequest
     {
         return new GetClientServicesParamsRequest(
-            $clientId, array_map(
-                         function (Program $program) {
-                             return $program->getId();
-                         },
-                         $programs
-                     )
+            $clientId,
+            array_map(
+                function (Program $program) {
+                    return (int)$program->getId();
+                },
+                $programs,
+            ),
         );
     }
 }

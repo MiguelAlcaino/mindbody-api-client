@@ -13,10 +13,10 @@ class GETClientServicesResponse extends RESTResponse implements PaginatedRespons
     use PaginatedResponseTrait;
 
     /**
-     * @Serializer\SerializedName("ClientServices")
-     * @Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\ClientService>")
-     * @var ClientService[]
+     * @var array<ClientService>
      */
+    #[Serializer\SerializedName('ClientServices')]
+    #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\Model\ClientService>")]
     private array $clientServices;
 
     /**

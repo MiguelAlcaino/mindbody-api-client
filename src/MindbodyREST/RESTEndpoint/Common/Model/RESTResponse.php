@@ -2,12 +2,15 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+
 abstract class RESTResponse
 {
-    /**
-     * @var string
-     */
     private string $payload;
+
+    #[Serializer\SerializedName('Error')]
+    #[Serializer\SkipWhenEmpty]
+    private ?ErrorResponse $error = null;
 
     public function getPayload(): string
     {
@@ -19,5 +22,10 @@ abstract class RESTResponse
         $this->payload = $payload;
 
         return $this;
+    }
+
+    public function getError(): ?ErrorResponse
+    {
+        return $this->error;
     }
 }

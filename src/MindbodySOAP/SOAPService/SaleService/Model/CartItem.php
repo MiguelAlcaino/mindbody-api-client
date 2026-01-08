@@ -6,35 +6,22 @@ use JMS\Serializer\Annotation as Serializer;
 
 class CartItem
 {
-    /**
-     * @var Item
-     * @Serializer\SerializedName("Item")
-     * @Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Item")
-     */
+    #[Serializer\SerializedName('Item')]
+    #[Serializer\Type("MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Item")]
     private $item;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("Quantity")
-     * @Serializer\Type("int")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $quantity;
+    #[Serializer\SerializedName('Quantity')]
+    #[Serializer\Type('int')]
+    #[Serializer\XmlElement(cdata: false)]
+    private int $quantity;
 
-    /**
-     * @var float
-     * @Serializer\SerializedName("DiscountAmount")
-     * @Serializer\Type("float")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $discountAmount;
+    #[Serializer\SerializedName('DiscountAmount')]
+    #[Serializer\Type('float')]
+    #[Serializer\XmlElement(cdata: false)]
+    private float $discountAmount;
 
     /**
      * CartItemRequest constructor.
-     *
-     * @param Item  $Item
-     * @param int   $Quantity
-     * @param float $DiscountAmount
      */
     public function __construct(Item $Item, int $Quantity, float $DiscountAmount = 0)
     {

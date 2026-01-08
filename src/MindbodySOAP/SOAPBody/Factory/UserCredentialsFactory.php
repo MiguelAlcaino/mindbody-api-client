@@ -12,6 +12,9 @@ class UserCredentialsFactory extends AbstractCredentials
     /** @var string */
     private $username;
 
+    /**
+     * @param int[] $siteIds
+     */
     public function __construct(string $username, string $sourcePassword, array $siteIds)
     {
         $this->username = $username;
@@ -23,7 +26,7 @@ class UserCredentialsFactory extends AbstractCredentials
         return new UserCredentials(
             $this->username,
             $this->getPassword(),
-            $this->getSiteIds()
+            $this->getSiteIds(),
         );
     }
 }

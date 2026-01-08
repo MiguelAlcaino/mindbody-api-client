@@ -11,65 +11,68 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffM
 
 class MindbodyClass
 {
-    #[Serializer\SerializedName("Id")]
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    #[Serializer\SerializedName("StartDateTime")]
+    #[Serializer\SerializedName('StartDateTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $startDateTime;
 
-    #[Serializer\SerializedName("EndDateTime")]
+    #[Serializer\SerializedName('EndDateTime')]
     #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $endDateTime;
 
-    #[Serializer\SerializedName("ClassDescription")]
+    #[Serializer\SerializedName('ClassDescription')]
     private ClassDescription $classDescription;
 
-    #[Serializer\SerializedName("Staff")]
+    #[Serializer\SerializedName('Staff')]
     private StaffMember $staff;
 
-    #[Serializer\SerializedName("Location")]
+    #[Serializer\SerializedName('Location')]
     private Location $location;
 
-    #[Serializer\SerializedName("MaxCapacity")]
+    #[Serializer\SerializedName('MaxCapacity')]
     #[Serializer\SkipWhenEmpty]
     private ?int $maxCapacity;
 
-    #[Serializer\SerializedName("WebCapacity")]
+    #[Serializer\SerializedName('WebCapacity')]
     #[Serializer\SkipWhenEmpty]
     private ?int $webCapacity;
 
-    #[Serializer\SerializedName("TotalBooked")]
+    #[Serializer\SerializedName('TotalBooked')]
     #[Serializer\SkipWhenEmpty]
     private ?int $totalBooked;
 
-    #[Serializer\SerializedName("Visits")]
+    /**
+     * @var array<Visit>|null
+     */
+    #[Serializer\SerializedName('Visits')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\Visit>")]
     #[Serializer\SkipWhenEmpty]
     private ?array $visits;
 
-    #[Serializer\SerializedName("Substitute")]
+    #[Serializer\SerializedName('Substitute')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $substitute = null;
 
-    #[Serializer\SerializedName("IsCanceled")]
+    #[Serializer\SerializedName('IsCanceled')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $isCancelled = null;
 
-    #[Serializer\SerializedName("HideCancel")]
+    #[Serializer\SerializedName('HideCancel')]
     #[Serializer\SkipWhenEmpty]
     private ?bool $hideCancel = null;
 
-    #[Serializer\SerializedName("BookingWindow")]
+    #[Serializer\SerializedName('BookingWindow')]
     private ?BookingWindow $bookingWindow;
 
-    #[Serializer\SerializedName("IsWaitlistAvailable")]
+    #[Serializer\SerializedName('IsWaitlistAvailable')]
     private bool $isWaitlistAvailable;
 
-    #[Serializer\SerializedName("WaitlistSize")]
+    #[Serializer\SerializedName('WaitlistSize')]
     private ?int $waitlistSize;
 
-    #[Serializer\SerializedName("ClassScheduleId")]
+    #[Serializer\SerializedName('ClassScheduleId')]
     private int $classScheduleId;
 
     #[Serializer\SerializedName('LastModifiedDateTime')]
@@ -80,9 +83,8 @@ class MindbodyClass
         int               $id,
         DateTimeImmutable $startDateTime,
         DateTimeImmutable $endDateTime,
-        ClassDescription  $classDescription
-    )
-    {
+        ClassDescription  $classDescription,
+    ) {
         $this->id               = $id;
         $this->startDateTime    = $startDateTime;
         $this->endDateTime      = $endDateTime;
@@ -120,7 +122,7 @@ class MindbodyClass
     }
 
     /**
-     * @return null|Visit[]
+     * @return Visit[]|null
      */
     public function getVisits(): ?array
     {

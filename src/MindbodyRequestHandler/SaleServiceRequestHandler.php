@@ -2,132 +2,81 @@
 
 namespace MiguelAlcaino\MindbodyApiClient\MindbodyRequestHandler;
 
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CheckoutShoppingCartRequest;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\GetServicesRequest;
+use GuzzleHttp\Exception\GuzzleException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\CartItem;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\PaymentInfo;
-use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SaleServiceSOAPRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\Model\Request\GetServicesRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPService\SaleService\SaleServiceSOAPRequester;
+use RuntimeException;
 
 class SaleServiceRequestHandler
 {
     /**
-     * @var SaleServiceSOAPRequest
+     * @var SaleServiceSOAPRequester
      */
     private $saleServiceSOAPRequest;
 
     /**
      * SaleServiceRequestHandler constructor.
-     *
-     * @param SaleServiceSOAPRequest $saleServiceSOAPRequest
      */
-    public function __construct(SaleServiceSOAPRequest $saleServiceSOAPRequest)
+    public function __construct(SaleServiceSOAPRequester $saleServiceSOAPRequest)
     {
         $this->saleServiceSOAPRequest = $saleServiceSOAPRequest;
     }
 
     /**
-     * @param GetServicesRequest $request
+     * @deprecated This method is deprecated and should not be used. Use REST API instead.
      *
-     * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
+     * @throws RuntimeException
      */
-    public function getFormattedServices(GetServicesRequest $request = null): array
+    public function getFormattedServices(GetServicesRequest $request): array
     {
-        $services = $this->saleServiceSOAPRequest->getServices($request);
-
-        $formattedServices = [];
-        foreach ($services['GetServicesResult']['Services']['Service'] as $service) {
-            $formattedServices[] = [
-                'name'  => $service['Name'],
-                'price' => $service['OnlinePrice'],
-                'id'    => $service['ID'],
-            ];
-        }
-
-        usort(
-            $formattedServices,
-            function ($a, $b) {
-                $pos_a = $a['price'];
-                $pos_b = $b['price'];
-
-                return $pos_a - $pos_b;
-            }
-        );
-
-        return $formattedServices;
+        throw new RuntimeException('This method is deprecated and should not be used. Please use the REST API instead.');
     }
 
     /**
-     * @param string     $clientId
+     * @deprecated This method is deprecated and should not be used. Use REST API instead.
+     *
      * @param CartItem[] $cartItems
      *
-     * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
+     * @throws RuntimeException
      */
     public function calculateShoppingCart(string $clientId, array $cartItems): array
     {
-        $checkoutShoppingCartRequest = new CheckoutShoppingCartRequest(
-            $clientId,
-            $cartItems,
-            true
-        );
-        $checkoutShoppingCartRequest
-            ->setInStore(true)
-            ->setFields(['paymentcheck']);
-
-        return $this->saleServiceSOAPRequest->checkoutShoppingCart($checkoutShoppingCartRequest);
+        throw new RuntimeException('This method is deprecated and should not be used. Please use the REST API instead.');
     }
 
     /**
-     * Returns an array of formatted custom payment methods
+     * @deprecated This method is deprecated and should not be used. Use REST API instead.
      *
-     * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * Returns an array of formatted custom payment methods.
+     *
+     * @throws GuzzleException
+     * @throws RuntimeException
      */
     public function getFormattedCustomPaymentMethods(): array
     {
-        $customPaymentMethods = $this->saleServiceSOAPRequest->getCustomPaymentMethods();
-        dump($customPaymentMethods);
-        $formattedCustomPaymentMethods = [];
-
-        if ((int)$customPaymentMethods['GetCustomPaymentMethodsResult']['ResultCount'] === 1) {
-            $customPaymentMethod                                         = $customPaymentMethods['GetCustomPaymentMethodsResult']['PaymentMethods']['CustomPaymentInfo'];
-            $formattedCustomPaymentMethods[$customPaymentMethod['Name']] = $customPaymentMethod['ID'];
-        } else {
-            foreach ($customPaymentMethods['GetCustomPaymentMethodsResult']['PaymentMethods']['CustomPaymentInfo'] as $customPaymentMethod) {
-                $formattedCustomPaymentMethods[$customPaymentMethod['Name']] = $customPaymentMethod['ID'];
-            }
-        }
-
-        return $formattedCustomPaymentMethods;
+        throw new RuntimeException('This method is deprecated and should not be used. Please use the REST API instead.');
     }
 
     /**
-     * @param string        $clientId
+     * @deprecated This method is deprecated and should not be used. Use REST API instead.
+     *
      * @param CartItem[]    $cartItems
      * @param PaymentInfo[] $paymentInfos
-     * @param string|null   $promotionalCode
-     * @param bool          $test
      *
-     * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
+     * @throws RuntimeException
      */
     public function purchaseShoppingCart(
-        string $clientId,
-        array $cartItems,
-        array $paymentInfos,
-        string $promotionalCode = null,
-        bool $test = true
+        string  $clientId,
+        array   $cartItems,
+        array   $paymentInfos,
+        ?string $promotionalCode = null,
+        bool    $test = true,
     ): array {
-        $checkoutShoppingCartRequest = new CheckoutShoppingCartRequest(
-            $clientId,
-            $cartItems,
-            $test
-        );
-        $checkoutShoppingCartRequest
-            ->setPayments($paymentInfos)
-            ->setPromotionCode($promotionalCode);
-
-        return $this->saleServiceSOAPRequest->checkoutShoppingCart($checkoutShoppingCartRequest);
+        throw new RuntimeException('This method is deprecated and should not be used. Please use the REST API instead.');
     }
 }

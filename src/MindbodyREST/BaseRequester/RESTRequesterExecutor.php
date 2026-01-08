@@ -10,16 +10,23 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserS
 class RESTRequesterExecutor
 {
     private MindbodyRESTRequester $mindbodyRESTRequester;
-    private SerializerInterface   $serializer;
+    private SerializerInterface $serializer;
 
     public function __construct(
         MindbodyRESTRequester $mindbodyRESTRequester,
-        SerializerInterface $serializer
+        SerializerInterface   $serializer,
     ) {
         $this->mindbodyRESTRequester = $mindbodyRESTRequester;
         $this->serializer            = $serializer;
     }
 
+    /**
+     * @template T of RESTResponse
+     *
+     * @param class-string<T>|null $responseClass
+     *
+     * @return T|null
+     */
     public function executeRequest(RESTRequest $request, ?string $responseClass): ?RESTResponse
     {
         $body = $this->serializer->serialize($request, 'json');

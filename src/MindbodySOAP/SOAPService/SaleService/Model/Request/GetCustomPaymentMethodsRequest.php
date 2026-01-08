@@ -8,9 +8,6 @@ use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Request\RequestContain
 
 class GetCustomPaymentMethodsRequest extends AbstractSOAPMethod
 {
-    /**
-     * @var RequestContainer
-     * @Serializer\SerializedName("GetCustomPaymentMethods")
-     */
-    protected $soapMethodName;
+    #[Serializer\SerializedName('GetCustomPaymentMethods')]
+    protected RequestContainer $soapMethodName;
 }

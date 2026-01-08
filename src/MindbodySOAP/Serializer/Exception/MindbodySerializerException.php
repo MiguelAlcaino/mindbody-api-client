@@ -13,7 +13,7 @@ class MindbodySerializerException extends RuntimeException
     /** @var EnvelopeRequest */
     private $envelope;
 
-    public function __construct(EnvelopeRequest $envelope, string $message = '', int $code = 0, Throwable $previous = null)
+    public function __construct(EnvelopeRequest $envelope, string $message = '', int $code = 0, ?Throwable $previous = null)
     {
         $this->envelope = $envelope;
 
@@ -26,7 +26,7 @@ class MindbodySerializerException extends RuntimeException
             $envelopeRequest,
             'There has been an error trying to serialize this envelope request. Check the $envelope for more details',
             0,
-            $previous
+            $previous,
         );
     }
 

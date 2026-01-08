@@ -6,34 +6,22 @@ use JMS\Serializer\Annotation as Serializer;
 
 class GiftCard
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     private int $id;
 
-    /**
-     * @Serializer\SerializedName("Description")
-     */
+    #[Serializer\SerializedName('Description')]
     private string $description;
 
-    /**
-     * @Serializer\SerializedName("CardValue")
-     */
+    #[Serializer\SerializedName('CardValue')]
     private float $cardValue;
 
-    /**
-     * @Serializer\SerializedName("SalePrice")
-     */
+    #[Serializer\SerializedName('SalePrice')]
     private float $salePrice;
 
-    /**
-     * @Serializer\SerializedName("SoldOnline")
-     */
+    #[Serializer\SerializedName('SoldOnline')]
     private bool $soldOnline;
 
-    /**
-     * @Serializer\SerializedName("GiftCardTerms")
-     */
+    #[Serializer\SerializedName('GiftCardTerms')]
     private string $giftCardTerms;
 
     public function getId(): int

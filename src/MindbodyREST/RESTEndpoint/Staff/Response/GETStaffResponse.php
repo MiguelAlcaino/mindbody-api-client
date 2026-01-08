@@ -17,7 +17,6 @@ class GETStaffResponse extends RESTResponse
     #[Serializer\Type('array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Staff\Model\StaffMember>')]
     public readonly array $staffMembers;
 
-
     /**
      * @return StaffMember[]
      */

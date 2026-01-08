@@ -10,33 +10,24 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Model\Basic
 
 class WaitlistEntry
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     private readonly int $id;
 
-    /**
-     * @Serializer\SerializedName("RequestDateTime")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+    #[Serializer\SerializedName('RequestDateTime')]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private readonly DateTimeImmutable $requestDateTime;
 
-    /**
-     * @Serializer\SerializedName("Client")
-     */
+    #[Serializer\SerializedName('Client')]
     private readonly BasicClient $client;
 
-    /**
-     * @Serializer\SerializedName("ClassId")
-     */
+    #[Serializer\SerializedName('ClassId')]
     private int $classId;
 
     public function __construct(
         int               $id,
         DateTimeImmutable $requestDateTime,
-        BasicClient       $client
-    )
-    {
+        BasicClient       $client,
+    ) {
         $this->id              = $id;
         $this->requestDateTime = $requestDateTime;
         $this->client          = $client;

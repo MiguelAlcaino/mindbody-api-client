@@ -17,13 +17,13 @@ class RequestException extends RuntimeException
     private $requestParams;
 
     public function __construct(
-        string $payload,
+        string                 $payload,
         RequestParamsInterface $requestParams,
-        string $message = '',
-        int $code = 0,
-        Throwable $previous = null
+        string                 $message = '',
+        int                    $code = 0,
+        ?Throwable             $previous = null,
     ) {
-        $this->payload = $payload;
+        $this->payload       = $payload;
         $this->requestParams = $requestParams;
 
         parent::__construct($message, $code, $previous);
@@ -43,5 +43,4 @@ class RequestException extends RuntimeException
     {
         return $this->requestParams;
     }
-
 }

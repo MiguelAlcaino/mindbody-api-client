@@ -33,7 +33,7 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             GetClientPurchasesResult::class,
             'GetClientPurchases',
             self::SERVICE_URI,
-            $request
+            $request,
         );
     }
 
@@ -44,7 +44,7 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             GetClientServicesResult::class,
             'GetClientServices',
             self::SERVICE_URI,
-            $request
+            $request,
         );
     }
 
@@ -56,7 +56,7 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             'AddOrUpdateClients',
             self::SERVICE_URI,
             $request,
-            false
+            false,
         );
     }
 
@@ -67,7 +67,7 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             GetClientsResult::class,
             'GetClients',
             self::SERVICE_URI,
-            $request
+            $request,
         );
     }
 
@@ -79,7 +79,7 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             'ValidateLogin',
             self::SERVICE_URI,
             $request,
-            false
+            false,
         );
     }
 
@@ -91,7 +91,7 @@ class ClientServiceSOAPRequester extends AbstractSOAPRequester
             'GetClientVisits',
             self::SERVICE_URI,
             $request,
-            false
+            false,
         );
     }
 }

@@ -7,49 +7,36 @@ use JMS\Serializer\Annotation as Serializer;
 
 class ClientService
 {
-    /**
-     * @Serializer\SerializedName("Id")
-     */
+    #[Serializer\SerializedName('Id')]
     private int $id;
-    /**
-     * @var DateTimeImmutable
-     * @Serializer\SerializedName("ActiveDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+
+    #[Serializer\SerializedName('ActiveDate')]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $activeDate;
-    /**
-     * @var DateTimeImmutable
-     * @Serializer\SerializedName("ExpirationDate")
-     * @Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")
-     */
+
+    #[Serializer\SerializedName('ExpirationDate')]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
     private DateTimeImmutable $expirationDate;
-    /**
-     * @Serializer\SerializedName("Current")
-     */
+
+    #[Serializer\SerializedName('Current')]
     private bool $current;
-    /**
-     * @Serializer\SerializedName("Name")
-     */
+
+    #[Serializer\SerializedName('Name')]
     private string $name;
-    /**
-     * @Serializer\SerializedName("PaymentDate")
-     */
+
+    #[Serializer\SerializedName('PaymentDate')]
     private string $paymentDate;
-    /**
-     * @Serializer\SerializedName("Count")
-     */
+
+    #[Serializer\SerializedName('Count')]
     private int $count;
-    /**
-     * @Serializer\SerializedName("Remaining")
-     */
+
+    #[Serializer\SerializedName('Remaining')]
     private int $remaining;
-    /**
-     * @Serializer\SerializedName("SiteId")
-     */
+
+    #[Serializer\SerializedName('SiteId')]
     private int $siteId;
-    /**
-     * @Serializer\SerializedName("ProductId")
-     */
+
+    #[Serializer\SerializedName('ProductId')]
     private int $productId;
 
     public function getActiveDate(): DateTimeImmutable

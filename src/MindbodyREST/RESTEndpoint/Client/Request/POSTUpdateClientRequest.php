@@ -19,9 +19,6 @@ class POSTUpdateClientRequest extends RESTRequest implements UserStaffTokenRequi
     #[Serializer\SerializedName('CrossRegionalUpdate')]
     private bool $crossRegionalUpdate;
 
-    /**
-     * @param Client $client
-     */
     public function __construct(Client $client)
     {
         $this->client = $client;

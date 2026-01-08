@@ -6,9 +6,9 @@ namespace MiguelAlcaino\MindbodyApiClient\MindbodySOAP\SOAPBody\Response;
 
 class BodyResponse
 {
-    private $content;
+    private mixed $content;
 
-    public function __construct($content)
+    public function __construct(mixed $content)
     {
         $this->content = $content;
     }

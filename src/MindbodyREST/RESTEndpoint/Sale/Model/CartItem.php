@@ -6,27 +6,22 @@ use JMS\Serializer\Annotation as Serializer;
 
 class CartItem
 {
-    /**
-     * @Serializer\SerializedName("Item")
-     */
+    #[Serializer\SerializedName('Item')]
     private Item $item;
 
-    /**
-     * @Serializer\SerializedName("Quantity")
-     */
+    #[Serializer\SerializedName('Quantity')]
     private int $quantity;
 
     /**
-     * @Serializer\SerializedName("VisitIds")
-     * @Serializer\Type("array<int>")
-     * @Serializer\SkipWhenEmpty
+     * @var array<int>|null
      */
+    #[Serializer\SerializedName('VisitIds')]
+    #[Serializer\Type('array<int>')]
+    #[Serializer\SkipWhenEmpty]
     private ?array $visitIds;
 
-    /**
-     * @Serializer\SerializedName("DiscountAmount")
-     * @Serializer\SkipWhenEmpty
-     */
+    #[Serializer\SerializedName('DiscountAmount')]
+    #[Serializer\SkipWhenEmpty]
     private ?float $discountAmount;
 
     public function __construct(Item $item, int $quantity)
@@ -37,6 +32,9 @@ class CartItem
         $this->discountAmount = null;
     }
 
+    /**
+     * @param array<int> $visitIds
+     */
     public function setVisitIds(array $visitIds): self
     {
         $this->visitIds = $visitIds;

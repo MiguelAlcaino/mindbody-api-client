@@ -6,19 +6,13 @@ use JMS\Serializer\Annotation as Serializer;
 
 class CrossRegionalClientAssociation
 {
-    /**
-     * @Serializer\SerializedName("SiteId")
-     */
+    #[Serializer\SerializedName('SiteId')]
     private int $siteId;
 
-    /**
-     * @Serializer\SerializedName("ClientId")
-     */
+    #[Serializer\SerializedName('ClientId')]
     private string $clientId;
 
-    /**
-     * @Serializer\SerializedName("UniqueId")
-     */
+    #[Serializer\SerializedName('UniqueId')]
     private int $uniqueId;
 
     public function getSiteId(): int

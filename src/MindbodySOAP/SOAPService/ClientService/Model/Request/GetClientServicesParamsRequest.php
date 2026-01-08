@@ -12,38 +12,29 @@ class GetClientServicesParamsRequest extends AbstractParamsRequest
 {
     use MindbodyPaginatedRequestTrait;
 
-    /**
-     * @var string
-     * @Serializer\SerializedName("ClientID")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName('ClientID')]
+    #[Serializer\Type('string')]
+    #[Serializer\XmlElement(cdata: false)]
     private $clientId;
 
-    /**
-     * @var array
-     * @Serializer\XmlList(entry="int")
-     * @Serializer\XmlElement(cdata=false)
-     * @Serializer\SerializedName("ProgramIDs")
-     */
-    private $programIds;
+    #[Serializer\XmlList(entry: 'int')]
+    #[Serializer\XmlElement(cdata: false)]
+    #[Serializer\SerializedName('ProgramIDs')]
+    private array $programIds;
 
-    /**
-     * @var int
-     * @Serializer\SerializedName("ClassID")
-     * @Serializer\Type("string")
-     * @Serializer\XmlElement(cdata=false)
-     */
+    #[Serializer\SerializedName('ClassID')]
+    #[Serializer\Type('string')]
+    #[Serializer\XmlElement(cdata: false)]
     private $classId;
 
-    /**
-     * @var bool
-     * @Serializer\SerializedName("ShowActiveOnly")
-     * @Serializer\Type("bool")
-     * @Serializer\XmlElement(cdata=false)
-     */
-    private $showActiveOnly;
+    #[Serializer\SerializedName('ShowActiveOnly')]
+    #[Serializer\Type('bool')]
+    #[Serializer\XmlElement(cdata: false)]
+    private bool $showActiveOnly;
 
+    /**
+     * @param int[] $programIds
+     */
     public function __construct(string $clientId, array $programIds)
     {
         $this->clientId   = $clientId;

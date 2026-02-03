@@ -42,7 +42,7 @@ class GETClientsRequest extends RESTRequest implements UserStaffTokenRequiredInt
     }
 
     /**
-     * @return array<string>|null
+     * @return array<int>|null
      */
     public function getClientIds(): ?array
     {

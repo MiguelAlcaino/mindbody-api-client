@@ -25,8 +25,18 @@ jobs:
       - name: Start containers
         run: docker compose up -d
 
-      - name: Wait for containers to be ready
-        run: sleep 5
+      - name: Wait for Composer to be installed
+        run: |
+          echo "Waiting for Composer to be installed in the container..."
+          for i in {1..30}; do
+            if docker compose exec -T php which composer > /dev/null 2>&1; then
+              echo "Composer is ready!"
+              break
+            fi
+            echo "Waiting... ($i/30)"
+            sleep 2
+          done
+          docker compose exec -T php composer --version
 
       - name: Install dependencies
         run: docker compose exec -T php composer install --no-interaction --prefer-dist --optimize-autoloader

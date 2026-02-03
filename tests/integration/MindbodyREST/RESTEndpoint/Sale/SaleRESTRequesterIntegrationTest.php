@@ -1,8 +1,11 @@
 <?php
 
-namespace MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodyREST\RESTEndpoint\Sale;
+namespace MiguelAlcainoTest\MindbodyApiClient\Test\Integration\MindbodyREST\RESTEndpoint\Sale;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\MindbodyRESTRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\BaseRequester\RESTRequesterExecutor;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\ResponseExceptionHandler;
@@ -17,22 +20,30 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\Model\Request
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Sale\SaleRESTRequester;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\UserToken\Exception\AccessDeniedException;
 use MiguelAlcaino\MindbodyApiClient\MindbodySOAP\Serializer\Factory\JmsSerializerFactory;
-use MiguelAlcainoTest\MindbodyApiClient\Test\Unit\MindbodySOAP\Helper\MindbodyUtilsTrait;
 use PHPUnit\Framework\TestCase;
 
-class SaleRESTRequesterTest extends TestCase
+class SaleRESTRequesterIntegrationTest extends TestCase
 {
-    use MindbodyUtilsTrait;
-
-    public function testPostCheckoutShoppingCart()
+    public function testPostCheckoutShoppingCartWithAccessDenied(): void
     {
-        $saleRequester = $this->getRequester();
+        $mock = new MockHandler([
+            new Response(401, [], json_encode([
+                'Error' => [
+                    'Message' => 'Access denied',
+                    'Code' => 'DeniedAccess'
+                ]
+            ])),
+        ]);
+
+        $handlerStack = HandlerStack::create($mock);
+        $guzzleClient = new Client(['handler' => $handlerStack]);
+
+        $saleRequester = $this->getRequester($guzzleClient);
 
         $paymentMetadata = new PaymentMetadata(550);
-        // $paymentMetadata->setId(17);
         $paymentMetadata->setCardNumber('403829317418');
         $itemMetadata = new CartItemMetadata(100006);
-        $request      = new POSTCheckoutShoppingCartRequest(
+        $request = new POSTCheckoutShoppingCartRequest(
             '100019337',
             [
                 new CartItem(new Item(ItemTypeEnum::SERVICE, $itemMetadata), 1),
@@ -42,26 +53,25 @@ class SaleRESTRequesterTest extends TestCase
             ],
         );
         $request
-            ->setSiteId($this->getSiteIds()[0])
-            ->setUserStaffToken('FAKE')
+            ->setSiteId(123456)
+            ->setUserStaffToken('FAKE_TOKEN')
             ->setTest(true);
 
         $this->expectException(AccessDeniedException::class);
-        $response = $saleRequester->postCheckoutShoppingCart($request);
+        $saleRequester->postCheckoutShoppingCart($request);
     }
 
-    private function getRequester(): SaleRESTRequester
+    private function getRequester(Client $guzzleClient): SaleRESTRequester
     {
         $serializerFactory = new JmsSerializerFactory();
-        $serializer        = $serializerFactory->create();
+        $serializer = $serializerFactory->create();
 
         $restRequester = new MindbodyRESTRequester(
-            $this->getApiKey(),
-            new Client(),
+            'FAKE_API_KEY',
+            $guzzleClient,
         );
 
         $restRequesterExecutor = new RESTRequesterExecutor($restRequester, $serializer);
-
         $exceptionHandler = new ResponseExceptionHandler();
 
         return new SaleRESTRequester($restRequesterExecutor, $exceptionHandler);

@@ -31,7 +31,7 @@ class GETClientVisitsRequest extends RESTRequest implements UserStaffTokenRequir
 
     public function __construct(string $clientId, DateTimeImmutable $startDate)
     {
-        $this->clientId = $clientId;
+        $this->clientId  = $clientId;
         $this->startDate = $startDate;
     }
 

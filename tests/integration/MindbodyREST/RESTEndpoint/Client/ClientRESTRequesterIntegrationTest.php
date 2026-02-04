@@ -123,7 +123,7 @@ class ClientRESTRequesterIntegrationTest extends TestCase
     private function getClientRequester(Client $guzzleClient): ClientRESTRequester
     {
         $serializerFactory = new JmsSerializerFactory();
-        $serializer = $serializerFactory->create();
+        $serializer        = $serializerFactory->create();
 
         $restRequester = new MindbodyRESTRequester(
             'FAKE_API_KEY',

@@ -30,8 +30,8 @@ class SaleRESTRequesterIntegrationTest extends TestCase
             new Response(401, [], json_encode([
                 'Error' => [
                     'Message' => 'Access denied',
-                    'Code' => 'DeniedAccess'
-                ]
+                    'Code'    => 'DeniedAccess',
+                ],
             ])),
         ]);
 
@@ -43,7 +43,7 @@ class SaleRESTRequesterIntegrationTest extends TestCase
         $paymentMetadata = new PaymentMetadata(550);
         $paymentMetadata->setCardNumber('403829317418');
         $itemMetadata = new CartItemMetadata(100006);
-        $request = new POSTCheckoutShoppingCartRequest(
+        $request      = new POSTCheckoutShoppingCartRequest(
             '100019337',
             [
                 new CartItem(new Item(ItemTypeEnum::SERVICE, $itemMetadata), 1),
@@ -64,7 +64,7 @@ class SaleRESTRequesterIntegrationTest extends TestCase
     private function getRequester(Client $guzzleClient): SaleRESTRequester
     {
         $serializerFactory = new JmsSerializerFactory();
-        $serializer = $serializerFactory->create();
+        $serializer        = $serializerFactory->create();
 
         $restRequester = new MindbodyRESTRequester(
             'FAKE_API_KEY',
@@ -72,7 +72,7 @@ class SaleRESTRequesterIntegrationTest extends TestCase
         );
 
         $restRequesterExecutor = new RESTRequesterExecutor($restRequester, $serializer);
-        $exceptionHandler = new ResponseExceptionHandler();
+        $exceptionHandler      = new ResponseExceptionHandler();
 
         return new SaleRESTRequester($restRequesterExecutor, $exceptionHandler);
     }

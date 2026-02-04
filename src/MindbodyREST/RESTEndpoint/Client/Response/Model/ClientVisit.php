@@ -58,16 +58,16 @@ class ClientVisit
     private string $name;
 
     #[Serializer\SerializedName('ServiceId')]
-    private int $serviceId;
+    private ?int $serviceId = null;
 
     #[Serializer\SerializedName('ServiceName')]
-    private string $serviceName;
+    private ?string $serviceName = null;
 
     #[Serializer\SerializedName('Service')]
-    private VisitService $service;
+    private ?VisitService $service = null;
 
     #[Serializer\SerializedName('ProductId')]
-    private int $productId;
+    private ?int $productId = null;
 
     #[Serializer\SerializedName('SignedIn')]
     private bool $signedIn;
@@ -173,22 +173,22 @@ class ClientVisit
         return $this->name;
     }
 
-    public function getServiceId(): int
+    public function getServiceId(): ?int
     {
         return $this->serviceId;
     }
 
-    public function getServiceName(): string
+    public function getServiceName(): ?string
     {
         return $this->serviceName;
     }
 
-    public function getService(): VisitService
+    public function getService(): ?VisitService
     {
         return $this->service;
     }
 
-    public function getProductId(): int
+    public function getProductId(): ?int
     {
         return $this->productId;
     }

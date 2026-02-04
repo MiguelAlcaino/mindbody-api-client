@@ -19,25 +19,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
       - name: Start containers
         run: docker compose up -d
 
-      - name: Wait for container to be ready
-        run: sleep 3
-
-      - name: Install PHP extensions
+      - name: Wait for container setup to complete
         run: |
-          docker compose exec -T php apk add --no-cache libxml2-dev
-          docker compose exec -T php docker-php-ext-install dom
-          docker compose exec -T php docker-php-ext-install xml
-
-      - name: Install Composer
-        run: |
-          docker compose exec -T php sh -c "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer"
-          docker compose exec -T php composer --version
+          echo "Waiting for container entrypoint to complete setup..."
+          for i in {1..30}; do
+            if docker compose exec -T php test -f /usr/local/bin/composer 2>/dev/null; then
+              echo "Container setup complete!"
+              docker compose exec -T php composer --version
+              break
+            fi
+            echo "Waiting... ($i/30)"
+            sleep 2
+          done
 
       - name: Install dependencies
         run: docker compose exec -T php composer install --no-interaction --prefer-dist --optimize-autoloader

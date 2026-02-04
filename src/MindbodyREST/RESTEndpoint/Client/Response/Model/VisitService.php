@@ -36,7 +36,7 @@ class VisitService
     private DateTimeImmutable $paymentDate;
 
     #[Serializer\SerializedName('Program')]
-    private Program $program;
+    private ?Program $program = null;
 
     #[Serializer\SerializedName('Remaining')]
     private int $remaining;
@@ -93,7 +93,7 @@ class VisitService
         return $this->paymentDate;
     }
 
-    public function getProgram(): Program
+    public function getProgram(): ?Program
     {
         return $this->program;
     }

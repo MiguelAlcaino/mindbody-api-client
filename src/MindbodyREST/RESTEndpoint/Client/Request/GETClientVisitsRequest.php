@@ -26,6 +26,9 @@ class GETClientVisitsRequest extends RESTRequest implements UserStaffTokenRequir
     #[Serializer\Type("DateTimeImmutable<'Y-m-d'>")]
     private ?DateTimeImmutable $endDate = null;
 
+    #[Serializer\SerializedName('unpaidsOnly')]
+    private bool $unpaidsOnly = false;
+
     public function __construct(string $clientId, DateTimeImmutable $startDate)
     {
         $this->clientId = $clientId;
@@ -35,6 +38,13 @@ class GETClientVisitsRequest extends RESTRequest implements UserStaffTokenRequir
     public function setEndDate(DateTimeImmutable $endDate): self
     {
         $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    public function setUnpaidsOnly(bool $unpaidsOnly): self
+    {
+        $this->unpaidsOnly = $unpaidsOnly;
 
         return $this;
     }

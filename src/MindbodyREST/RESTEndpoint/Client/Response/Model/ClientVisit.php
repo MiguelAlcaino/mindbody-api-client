@@ -32,11 +32,11 @@ class ClientVisit
     private int $clientUniqueId;
 
     #[Serializer\SerializedName('StartDateTime')]
-    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s.v', '', ['Y-m-d\TH:i:s.v', 'Y-m-d\TH:i:s']>")]
     private DateTimeImmutable $startDateTime;
 
     #[Serializer\SerializedName('EndDateTime')]
-    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s.v', '', ['Y-m-d\TH:i:s.v', 'Y-m-d\TH:i:s']>")]
     private DateTimeImmutable $endDateTime;
 
     #[Serializer\SerializedName('LastModifiedDateTime')]

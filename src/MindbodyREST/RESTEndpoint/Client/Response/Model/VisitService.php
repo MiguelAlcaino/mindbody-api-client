@@ -9,7 +9,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Site\Model\Program
 class VisitService
 {
     #[Serializer\SerializedName('ActiveDate')]
-    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s.v', '', ['Y-m-d\TH:i:s.v', 'Y-m-d\TH:i:s']>")]
     private DateTimeImmutable $activeDate;
 
     #[Serializer\SerializedName('Count')]
@@ -19,7 +19,7 @@ class VisitService
     private bool $current;
 
     #[Serializer\SerializedName('ExpirationDate')]
-    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s.v', '', ['Y-m-d\TH:i:s.v', 'Y-m-d\TH:i:s']>")]
     private DateTimeImmutable $expirationDate;
 
     #[Serializer\SerializedName('Id')]
@@ -32,7 +32,7 @@ class VisitService
     private string $name;
 
     #[Serializer\SerializedName('PaymentDate')]
-    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s'>")]
+    #[Serializer\Type("DateTimeImmutable<'Y-m-d\TH:i:s.v', '', ['Y-m-d\TH:i:s.v', 'Y-m-d\TH:i:s']>")]
     private DateTimeImmutable $paymentDate;
 
     #[Serializer\SerializedName('Program')]

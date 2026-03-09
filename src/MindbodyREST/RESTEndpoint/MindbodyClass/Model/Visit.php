@@ -53,6 +53,14 @@ class Visit
     #[Serializer\SerializedName('ProductId')]
     private ?int $productId;
 
+    #[Serializer\SerializedName('ServiceName')]
+    #[Serializer\SkipWhenEmpty]
+    private ?string $serviceName = null;
+
+    #[Serializer\SerializedName('ServiceId')]
+    #[Serializer\SkipWhenEmpty]
+    private ?int $serviceId = null;
+
     #[Serializer\SerializedName('SignedIn')]
     private ?bool $signedIn;
 
@@ -138,5 +146,15 @@ class Visit
     public function getProductId(): ?int
     {
         return $this->productId;
+    }
+
+    public function getServiceName(): ?string
+    {
+        return $this->serviceName;
+    }
+
+    public function getServiceId(): ?int
+    {
+        return $this->serviceId;
     }
 }

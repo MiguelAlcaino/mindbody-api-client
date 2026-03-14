@@ -10,6 +10,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GET
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\GETCrossRegionalClientAssociationRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTAddClientRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientServiceRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Request\POSTUpdateClientVisitRequest;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientPurchasesResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETClientServicesResponse;
@@ -18,6 +19,7 @@ use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GE
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\GETCrossRegionalClientAssociationResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTAddClientResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientResponse;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientServiceResponse;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Client\Response\POSTUpdateClientVisitResponse;
 
 class ClientRESTRequester
@@ -58,6 +60,11 @@ class ClientRESTRequester
     public function updateClientVisit(POSTUpdateClientVisitRequest $request): POSTUpdateClientVisitResponse
     {
         return $this->restRequester->executeRequest($request, POSTUpdateClientVisitResponse::class);
+    }
+
+    public function updateClientService(POSTUpdateClientServiceRequest $request): POSTUpdateClientServiceResponse
+    {
+        return $this->restRequester->executeRequest($request, POSTUpdateClientServiceResponse::class);
     }
 
     public function postUpdateClient(POSTUpdateClientRequest $request): POSTUpdateClientResponse

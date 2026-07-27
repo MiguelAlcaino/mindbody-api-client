@@ -21,7 +21,7 @@ class ClassDescription
     private string $description;
 
     #[Serializer\SerializedName('Category')]
-    private ?string $category;
+    private ?string $category = null;
 
     #[Serializer\SerializedName('Program')]
     private Program $program;

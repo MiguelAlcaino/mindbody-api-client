@@ -12,7 +12,7 @@ class Program
     private int $id;
 
     #[Serializer\SerializedName('CancelOffset')]
-    private ?int $cancelOffset;
+    private ?int $cancelOffset = null;
 
     public function getId(): int
     {

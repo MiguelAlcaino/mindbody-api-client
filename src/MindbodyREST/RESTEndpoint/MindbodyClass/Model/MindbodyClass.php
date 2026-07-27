@@ -33,15 +33,15 @@ class MindbodyClass
 
     #[Serializer\SerializedName('MaxCapacity')]
     #[Serializer\SkipWhenEmpty]
-    private ?int $maxCapacity;
+    private ?int $maxCapacity = null;
 
     #[Serializer\SerializedName('WebCapacity')]
     #[Serializer\SkipWhenEmpty]
-    private ?int $webCapacity;
+    private ?int $webCapacity = null;
 
     #[Serializer\SerializedName('TotalBooked')]
     #[Serializer\SkipWhenEmpty]
-    private ?int $totalBooked;
+    private ?int $totalBooked = null;
 
     /**
      * @var array<Visit>|null
@@ -49,7 +49,7 @@ class MindbodyClass
     #[Serializer\SerializedName('Visits')]
     #[Serializer\Type("array<MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\MindbodyClass\Model\Visit>")]
     #[Serializer\SkipWhenEmpty]
-    private ?array $visits;
+    private ?array $visits = null;
 
     #[Serializer\SerializedName('Substitute')]
     #[Serializer\SkipWhenEmpty]
@@ -64,13 +64,13 @@ class MindbodyClass
     private ?bool $hideCancel = null;
 
     #[Serializer\SerializedName('BookingWindow')]
-    private ?BookingWindow $bookingWindow;
+    private ?BookingWindow $bookingWindow = null;
 
     #[Serializer\SerializedName('IsWaitlistAvailable')]
     private bool $isWaitlistAvailable;
 
     #[Serializer\SerializedName('WaitlistSize')]
-    private ?int $waitlistSize;
+    private ?int $waitlistSize = null;
 
     #[Serializer\SerializedName('ClassScheduleId')]
     private int $classScheduleId;

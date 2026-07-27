@@ -24,7 +24,7 @@ class Visit
     private DateTimeImmutable $endDateTime;
 
     #[Serializer\SerializedName('Name')]
-    private ?string $name;
+    private ?string $name = null;
 
     #[Serializer\SerializedName('CrossRegionalBookingPerformed')]
     #[Serializer\SkipWhenEmpty]
@@ -44,14 +44,14 @@ class Visit
 
     #[Serializer\SerializedName('LastModifiedDateTime')]
     #[Serializer\SkipWhenEmpty]
-    private ?string $lastModifiedDateTime;
+    private ?string $lastModifiedDateTime = null;
 
     #[Serializer\SerializedName('WaitlistEntryId')]
     #[Serializer\SkipWhenEmpty]
-    private ?int $waitlistEntryId;
+    private ?int $waitlistEntryId = null;
 
     #[Serializer\SerializedName('ProductId')]
-    private ?int $productId;
+    private ?int $productId = null;
 
     #[Serializer\SerializedName('ServiceName')]
     #[Serializer\SkipWhenEmpty]
@@ -62,7 +62,7 @@ class Visit
     private ?int $serviceId = null;
 
     #[Serializer\SerializedName('SignedIn')]
-    private ?bool $signedIn;
+    private ?bool $signedIn = null;
 
     public function __construct(
         int               $id,
@@ -125,6 +125,10 @@ class Visit
 
     public function getLastModifiedDateTime(): ?DateTimeImmutable
     {
+        if (null === $this->lastModifiedDateTime) {
+            return null;
+        }
+
         return new DateTimeImmutable($this->lastModifiedDateTime);
     }
 

@@ -28,6 +28,6 @@ class GETClassVisitsRequest extends RESTRequest implements UserStaffTokenRequire
 
     public function getPath(): string
     {
-        return '/class/classvisits';
+        return 'class/classvisits';
     }
 }

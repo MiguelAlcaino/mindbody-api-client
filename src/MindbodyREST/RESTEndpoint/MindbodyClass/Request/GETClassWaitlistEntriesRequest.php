@@ -26,7 +26,7 @@ class GETClassWaitlistEntriesRequest extends RESTRequest implements UserStaffTok
 
     public function getPath(): string
     {
-        return '/class/waitlistentries';
+        return 'class/waitlistentries';
     }
 
     public function getClassIds(): int

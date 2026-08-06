@@ -36,6 +36,6 @@ class GETStaffRequest extends RESTRequest implements UserStaffTokenRequiredInter
 
     public function getPath(): string
     {
-        return '/staff/staff';
+        return 'staff/staff';
     }
 }

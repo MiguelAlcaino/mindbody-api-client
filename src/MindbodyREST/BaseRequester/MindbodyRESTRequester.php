@@ -53,7 +53,9 @@ class MindbodyRESTRequester
             $options['body'] = $body;
         }
 
-        $result = $this->guzzleClient->request($method, $this->apiHost . $endpointPath, $options);
+        $url = rtrim($this->apiHost, '/') . '/' . ltrim($endpointPath, '/');
+
+        $result = $this->guzzleClient->request($method, $url, $options);
 
         return $result->getBody()->getContents();
     }

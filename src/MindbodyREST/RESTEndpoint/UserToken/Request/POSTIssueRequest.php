@@ -32,6 +32,6 @@ class POSTIssueRequest extends RESTRequest
 
     public function getPath(): string
     {
-        return '/usertoken/issue';
+        return 'usertoken/issue';
     }
 }

@@ -24,6 +24,13 @@ class CartItem
     #[Serializer\SkipWhenEmpty]
     private ?float $discountAmount;
 
+    /**
+     * Freeform notes stored on the sale item (Mindbody accepts up to 255 characters).
+     */
+    #[Serializer\SerializedName('SalesNotes')]
+    #[Serializer\SkipWhenEmpty]
+    private ?string $salesNotes = null;
+
     public function __construct(Item $item, int $quantity)
     {
         $this->item           = $item;
@@ -45,6 +52,18 @@ class CartItem
     public function setDiscountAmount(float $discountAmount): self
     {
         $this->discountAmount = $discountAmount;
+
+        return $this;
+    }
+
+    public function getSalesNotes(): ?string
+    {
+        return $this->salesNotes;
+    }
+
+    public function setSalesNotes(?string $salesNotes): self
+    {
+        $this->salesNotes = $salesNotes;
 
         return $this;
     }

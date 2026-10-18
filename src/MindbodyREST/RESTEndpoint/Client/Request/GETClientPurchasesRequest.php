@@ -6,11 +6,18 @@ use DateTimeImmutable;
 use JMS\Serializer\Annotation as Serializer;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\PaginatedRequestInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\RESTRequest;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Model\UserStaffTokenRequiredInterface;
 use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\PaginatedRequestTrait;
+use MiguelAlcaino\MindbodyApiClient\MindbodyREST\RESTEndpoint\Common\Util\UserStaffTokenRequiredTrait;
 
-class GETClientPurchasesRequest extends RESTRequest implements PaginatedRequestInterface
+/**
+ * The staff user token is optional here: the endpoint answers without one, but a token can be
+ * set when the caller wants the request made on behalf of a staff user.
+ */
+class GETClientPurchasesRequest extends RESTRequest implements PaginatedRequestInterface, UserStaffTokenRequiredInterface
 {
     use PaginatedRequestTrait;
+    use UserStaffTokenRequiredTrait;
 
     #[Serializer\SerializedName('StartDate')]
     #[Serializer\SkipWhenEmpty]

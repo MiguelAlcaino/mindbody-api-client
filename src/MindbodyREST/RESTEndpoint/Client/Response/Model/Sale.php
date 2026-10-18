@@ -19,6 +19,14 @@ class Sale
     #[Serializer\SerializedName('PurchasedItems')]
     #[Serializer\Type('array<' . PurchasedItem::class . '>')]
     private array $purchasedItems;
+    #[Serializer\SerializedName('LocationId')]
+    private ?int $locationId = null;
+    /**
+     * @var array<SalePayment>|null
+     */
+    #[Serializer\SerializedName('Payments')]
+    #[Serializer\Type('array<' . SalePayment::class . '>')]
+    private ?array $payments = null;
 
     public function getId(): int
     {
@@ -41,5 +49,20 @@ class Sale
     public function getPurchasedItems(): array
     {
         return $this->purchasedItems;
+    }
+
+    public function getLocationId(): ?int
+    {
+        return $this->locationId;
+    }
+
+    /**
+     * Empty when Mindbody does not send the Payments key.
+     *
+     * @return SalePayment[]
+     */
+    public function getPayments(): array
+    {
+        return $this->payments ?? [];
     }
 }

@@ -39,13 +39,19 @@ class POSTPurchaseGiftCardResponse extends RESTResponse
     #[Serializer\SerializedName('PurchaserClientId')]
     private string $purchaserClientId;
     #[Serializer\SerializedName('PurchaserEmail')]
-    private string $purchaserEmail;
+    private ?string $purchaserEmail = null;
     #[Serializer\SerializedName('RecipientEmail')]
     private ?string $recipientEmail = null;
     #[Serializer\SerializedName('SaleId')]
     private int $saleId;
+    /**
+     * JMS cannot deserialize an untyped property, so without a type every response failed, null included.
+     *
+     * @var array<int|string, mixed>|null
+     */
     #[Serializer\SerializedName('PaymentProcessingFailures')]
-    private mixed $paymentProcessingFailures = null;
+    #[Serializer\Type('array')]
+    private ?array $paymentProcessingFailures = null;
 
     public function getBarCodeId(): string
     {
@@ -82,7 +88,7 @@ class POSTPurchaseGiftCardResponse extends RESTResponse
         return $this->purchaserClientId;
     }
 
-    public function getPurchaserEmail(): string
+    public function getPurchaserEmail(): ?string
     {
         return $this->purchaserEmail;
     }
@@ -97,7 +103,10 @@ class POSTPurchaseGiftCardResponse extends RESTResponse
         return $this->saleId;
     }
 
-    public function getPaymentProcessingFailures(): mixed
+    /**
+     * @return array<int|string, mixed>|null
+     */
+    public function getPaymentProcessingFailures(): ?array
     {
         return $this->paymentProcessingFailures;
     }
